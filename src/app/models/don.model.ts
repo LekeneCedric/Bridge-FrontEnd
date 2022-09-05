@@ -1,0 +1,18 @@
+export interface IDon{
+ id?:number,
+ association_id?:number,
+ donateur_id:number,
+ donateur?:any,
+ media?:any,
+ titre:string,
+ category:string,
+ etat:string,
+ adresse:string,
+ description:string,
+ longitude:number,
+ latitude:number,
+ nombre_reserve?:number,
+ disponible?:number,
+ created_at?:Date,
+ updated_at?:Date,   
+}

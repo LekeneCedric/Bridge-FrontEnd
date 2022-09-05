@@ -1,0 +1,58 @@
+
+
+
+.my-card{
+    width:80%;
+    float:right;
+    display: flex;
+    flex-wrap: wrap;
+    & .date-message{
+        color:rgb(170, 169, 169);
+        width: 100%;
+        float: right;
+        text-align: right;
+        font-weight: bold;
+        margin-top:5px
+    }
+    & .my-message-card{
+        background-color:#ec566a ;
+        border:0.5px solid rgb(195, 195, 195);
+        width:100%;
+        margin-top:5%;
+        float: right;
+        border-top-left-radius: 8px;
+        border-top-right-radius:8px;
+        border-bottom-left-radius: 8px;
+        & .content{
+            font-weight:bold;color:white
+        }
+        
+    }
+}
+.her-card{
+    width:80%;
+    float:left;
+    display: flex;
+    flex-wrap: wrap;
+    & .date-message{
+        color:rgb(170, 169, 169);
+        width: 100%;
+        text-align: left;
+        font-weight: bold;
+        margin-top:5px
+    }
+    & .her-message-card{
+        border-top-left-radius: 8px;
+        border-top-right-radius:8px;
+        border-bottom-right-radius: 8px;
+        background-color:#e3e3e3 ;
+        border:0.5px solid rgb(195, 195, 195);
+        width:100%;
+        margin-top:5%;
+        float: left;
+        & .content{
+            font-weight: bold;
+        }
+        
+    }
+}

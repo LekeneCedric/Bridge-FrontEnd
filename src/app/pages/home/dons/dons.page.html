@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-row style="width: 100%;">
+    <ion-col class="logo" size="6">
+      <ion-title class="title">BRIDGE</ion-title>
+      <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>
+    </ion-col>
+    <ion-col>
+      <ion-row style="width: 100%;">
+        <ion-col size="4">
+          <ion-icon [routerLink]="['/menu/settings',id]" name="settings"  size="large" color="danger"></ion-icon>
+        </ion-col>
+      <ion-col style="text-align: right" size="4">
+        <ion-icon name="notifications" size="large" color="warning"></ion-icon>
+        <ion-badge color="danger">1</ion-badge>
+      </ion-col>
+      <ion-col style="text-align: right" size="4">
+        <ion-icon name="person-circle-outline" size="large" color="danger" [routerLink]="['/profil-donateur',id]"></ion-icon>
+      </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-segment scrollable>
+       <ion-chip style="padding:0;border-radius:20%" color="danger">
+        <ion-icon name="options-outline" color="danger" size="large" style="text-align:center;margin-right:5px"></ion-icon>
+       </ion-chip>
+       <ion-chip (click)="openModal()">
+       <ion-text>Category</ion-text>
+       <ion-badge color="danger" style="margin-left:2px">{{selectedCategory.length}}</ion-badge>
+       <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-chip>
+       <ion-chip (click)="openModalEtat()">
+        <ion-text>Etat</ion-text>
+        <ion-badge color="danger" style="margin-left:2px">{{selectedEtat.length}}</ion-badge>
+        <ion-icon name="chevron-down-outline"></ion-icon>
+       </ion-chip>
+       <ion-chip class="chip" color="success" (click)="refreshFilter()"  style="padding:0;border-radius:100%">
+        <ion-icon name="refresh-outline" size="large" style="margin-left:5px"></ion-icon>
+        </ion-chip>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid style="text-align:center;margin-top:15%" *ngIf="dons.length<1">
+      <img src="../../../../assets/images/no-results.png" class="ion-margin-vertical">
+      <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
+        <ion-text style="color:rgb(64, 64, 64)">Aucun don disponible dans cette categorie</ion-text>
+      </ion-item>
+      <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%">raffraichir la page</ion-button>
+  </ion-grid>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button color="danger" routerLink="/creation-dons">
+        <ion-icon name="gift-outline" size="large"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" routerLink="/creation-demandes">
+        <ion-icon name="hand-left-outline" size="large" color="danger"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+<ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
+  
+  <div *ngFor="let don of dons" style="width:50%">
+  <ion-card  [routerLink]="['details',don.id]"style="width:90%">
+    <div style="width:100%;height:150px;margin:0;padding:0;background-size:cover;"
+    [style.background-image]="image(don)"
+    >
+      
+    </div>
+      <ion-item>
+        <ion-text style="font-weight: bold">{{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
+      </ion-item>
+  <ion-item>
+    <ion-icon name="location-outline" color="danger"></ion-icon>
+    <ion-label>{{don.adresse}}</ion-label>
+</ion-item>
+  </ion-card>
+</div>
+<ion-infinite-scroll class="scroll-content" threshold="100px" id="infinite-scroll" (ionInfinite)="loadData($event)" >
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Chargement de dons...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-grid>
+</ion-content>

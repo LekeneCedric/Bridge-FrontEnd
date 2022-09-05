@@ -1,0 +1,25 @@
+*{
+    font-family: 'Roboto Mono', monospace;
+}
+.grid{
+    margin-top:60%;
+    display: grid;
+}
+.title{
+    &{
+        text-align: center;
+        font-weight:bolder;
+    }
+}
+.subtitle{
+    margin-top:5%;
+    &{
+
+        text-align: center;
+        color:gray;
+        font-weight: 500;
+    }
+}
+.started{
+    margin-top:5%;
+}

@@ -1,0 +1,66 @@
+
+<ion-content>
+<ion-grid class="grid">
+  <ion-row>
+    <ion-col size="12">
+      <ion-img src="../../../../assets/images/undraw_Access_account_re_8spm.png"></ion-img>
+    </ion-col>
+  </ion-row>
+  <form [formGroup]="credential" (ngSubmit)="signIN()">
+  <ion-row>
+    <ion-col size="12" class="hello-text">
+      <h1>Welcome back ! </h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-input type="email" placeholder="Enter email" formControlName="email" maxlength="45"></ion-input>
+        <ion-note slot="error" *ngIf="(email.dirty||email.touched)&& email.errors">invalid email</ion-note>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-input [type]="password_input_type" placeholder="password" formControlName="password"></ion-input>
+        <ion-icon name="eye-off-outline" *ngIf="password_input_type=='password'" (click)="changePassInputType()"></ion-icon>
+      <ion-icon name="eye-outline" *ngIf="password_input_type=='text'" (click)="changePassInputType()"></ion-icon>
+        <ion-note slot="error" *ngIf="(password.dirty||password.touched)&& password.errors">invalid password</ion-note>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-top" style="margin-left:15px">
+    <ion-checkbox color="danger" (click)="validcondition()"></ion-checkbox>
+    <ion-label class="ion-margin-horizontal">acccept term and condition</ion-label>
+</ion-row>
+  <ion-row>
+    <ion-col size="12">
+     <ion-button [disabled]="!credential.valid || !term_condition" type="submit" color="success"  type="submit" expand="block" color="danger">Enroll now !</ion-button>
+    </ion-col>
+  </ion-row>
+</form>
+  <ion-row>
+    <ion-col>
+      <ion-item-divider></ion-item-divider>
+    </ion-col>
+    <ion-col class="google_elt">
+      <ion-chip>
+        <ion-avatar>
+          <img src="../../../../assets/images/google.png">
+        </ion-avatar>
+        <ion-label>Google</ion-label>
+      </ion-chip> 
+    </ion-col>
+    <ion-col><ion-item-divider></ion-item-divider></ion-col>
+  </ion-row>
+  <ion-row class="rowSignup">
+    <ion-col class="signupMessage" style="text-align: center;" size="9">
+     <ion-text>You don't have account ? </ion-text>
+    </ion-col>
+      <ion-col class='signup' size="3" routerLink="/register">
+         <ion-text color="danger">Sign Up</ion-text>
+      </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

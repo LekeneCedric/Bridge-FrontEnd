@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-icon (click)="navBack()" name="chevron-back-outline" size="large" color="danger"></ion-icon>
+      <ion-title>creation-demande</ion-title>
+    </ion-row>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-modal [isOpen]="iscategoriesModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Categories</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setCategoriesModalOpen(false)">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-list class="ion-justify-content-between">
+          <ion-item (click)="electromenagerSheet()">
+            <ion-icon name="build-outline" slot="start"></ion-icon>
+            <ion-text>Electromenager</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item (click)="modebeautySheet()">
+            <ion-icon name="shirt-outline" slot="start"></ion-icon>
+            <ion-text>Mode,beaute & accessoire</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item (click)="universbebeSheet()">
+            <ion-icon name="logo-reddit" slot="start"></ion-icon>
+            <ion-text>Univers bebe</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item (click)="maison_ammeublementSheet()">
+            <ion-icon name="bed-outline" slot="start"></ion-icon>
+            <ion-text>Maison & ameublement</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item (click)="electroniqueSheet()">
+            <ion-icon name="laptop-outline" slot="start"></ion-icon>
+            <ion-text>High-tech & electronique</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item (click)="culture_sport_loisir_Sheet()">
+            <ion-icon name="library-outline" slot="start"></ion-icon>
+            <ion-text>Culture,sports & loisirs</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item (click)="jardin_bricolage_Sheet()">
+            <ion-icon name="leaf-outline" slot="start"></ion-icon>
+            <ion-text>jardin & bricolage</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+          <ion-item (click)="monde_animaux_Sheet()">
+            <ion-icon name="paw-outline" slot="start"></ion-icon>
+            <ion-text>Monde des animaux</ion-text>
+            <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+<ion-item>
+  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large"></ion-icon>
+  <ion-row><ion-text>Type d'annonce : </ion-text><ion-text style="font-weight: bold">Demande</ion-text></ion-row>
+</ion-item>
+<!--  -->
+<!--  -->
+<ion-item lines="none">
+  <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedTitle==''"></ion-icon>
+  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedTitle!=''"></ion-icon>
+  <ion-row><ion-text>Titre de la demande: </ion-text></ion-row>
+</ion-item>
+<ion-item class="input ion-margin-horizontal"><ion-input [(ngModel)]="selectedTitle" type="text" placeholder="Ex : Table,chaise,cahier... " maxlength="45"></ion-input>
+</ion-item>
+<ion-row style="width: 100%;padding:0;margin:0">
+  <ion-col size="6"></ion-col>
+  <ion-col size="6" style="text-align: left;"><ion-text style="color:gray" >30 caracteres max</ion-text></ion-col>
+</ion-row>
+  
+<!--  -->
+<ion-item lines="none">
+  <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedDescription==''"></ion-icon>
+  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedDescription!=''"></ion-icon>
+  <ion-row><ion-text>Description : </ion-text></ion-row>
+</ion-item>
+<ion-item class="input ion-margin-horizontal">
+  <ion-textarea [(ngModel)]="selectedDescription" placeholder="Ex : ordinateur noir , ecran 17 pouces ......En fournisant un maximum de details vous augmenter les chances d'aider "
+   maxlength="191" rows="5"></ion-textarea>
+</ion-item>
+<ion-row style="width: 100%;padding:0;margin:0">
+  <ion-col size="6"></ion-col>
+  <ion-col size="6" style="text-align: left;"><ion-text style="color:gray" >191 caracteres max</ion-text></ion-col>
+  </ion-row>
+<!--  -->
+<ion-item (click)="setCategoriesModalOpen(true)">
+  <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedCategory==''"></ion-icon>
+  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedCategory!=''"></ion-icon>
+  <ion-text style="margin-left:10px">{{selectedCategory!=''?selectedCategory:'Choose a Category'}}</ion-text>
+  <ion-icon name="chevron-forward-outline"  color="medium" slot="end"></ion-icon>
+</ion-item>
+<!--  -->
+<ion-item lines="none" (click)="locationSheet()">
+  <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedLatitude==null || selectedLongitude==null"></ion-icon>
+  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedLatitude!=null || selectedLongitude!=null"></ion-icon>
+  <ion-icon name="location" color="danger"></ion-icon>
+  <ion-text style="margin-left:10px">{{myAdress!=''?myAdress:'Adresse' }}</ion-text>
+  <ion-icon name="chevron-forward-outline"  color="medium" slot="end"></ion-icon>
+</ion-item>
+<ion-item-divider></ion-item-divider>
+
+<ion-card-subtitle style="color:grey" class="ion-margin">
+Votre adresse restera confidentielle et ne sera jamais affiche publiquement , elle nous permet d'afficher un point aleatoire dans un rayoun de 600 m dee vous 
+</ion-card-subtitle>
+</ion-content>
+<ion-card style="width:100%;margin:0">
+<ion-button expand="block" color="danger" (click)="createDonation()" class="ion-margin"[disabled]="!validationDemande" >Publier Demande</ion-button>
+</ion-card>

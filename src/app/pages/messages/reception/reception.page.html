@@ -1,0 +1,347 @@
+<ion-header>
+</ion-header>
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
+    <ion-segment-button value="dons">
+      <ion-label>Dons</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="reception">
+      <ion-label>Receptions</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-list  *ngif="selectedSegment=='dons'">
+    <ion-item *ngfor="let salon of salons" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
+      <ion-thumbnail slot="start">
+        <img alt="" style="border-radius:10px">
+      </ion-thumbnail>
+      <ion-col>
+        <ion-row style="width:100%">
+        <ion-text>
+          {{salon.data.titre}}
+        </ion-text>
+        </ion-row>
+        <ion-row style="margin-top:10px">
+          <ion-text>
+           {{salon.data.adresse}} 
+          </ion-text>
+        </ion-row>
+      </ion-col>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngif="selectedSegment=='reception'">
+
+  </ion-list>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-header class="ion-no-border" style="background:#ec566a">
+  <ion-row style="width: 100%;">
+    <ion-col class="logo" size="8" style="margin-top:10px">
+      <ion-title class="title" color="light" style="font-weight:bold">BRIDGE</ion-title>
+    </ion-col>
+    <ion-col size="4">
+      <ion-row style="width: 100%;">
+      <ion-col style="text-align: right" size="6">
+        <ion-icon name="notifications" size="large" color="light"></ion-icon>
+      </ion-col>
+      <ion-col style="text-align: right" size="6">
+        <ion-icon name="person-circle-outline" size="large" color="light" [routerLink]="['/profil-donateur',id]"></ion-icon>
+      </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <ion-grid  style="height:100px;width:100%;background:#ec566a;position:relative">
+  </ion-grid>
+  <ion-list style="position:absolute;width:100%;top:0;background: transparent;">
+    <ion-card style="width:95%" class="ion-padding-vertical">
+    <ion-row style="width:100%" class="ion-padding-horizontal">
+     <ion-col size="9" >
+      <ion-row style="text-align:center;width:100%"><ion-text style="font-weight:bold;color:black">Total balance</ion-text></ion-row>
+      <ion-row style="text-align:center;width:100%;margin-top:1em"><ion-text style="font-weight:bolder;font-size:2em;color:black">$ 2,562.50</ion-text></ion-row>
+     </ion-col>
+     <ion-col size="3">
+      <ion-button style="border-radius:10px" size="large">
+        <ion-icon name="add-outline" size="large"></ion-icon>
+      </ion-button>
+     </ion-col>
+    </ion-row>
+    <ion-row style="margin:0;padding:0">
+      <ion-item-divider class="ion-margin-horizontal"></ion-item-divider>
+    </ion-row>
+    <ion-item lines="none">
+    <ion-col>
+      <ion-row>
+        <ion-button style="border-radius:10px" size="large" color="danger">
+          <ion-icon name="arrow-down-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-row>
+      <ion-row><ion-text style="margin-top:10px;font-weight: bold;">Withdraw</ion-text></ion-row>
+    </ion-col>
+    <ion-col>
+      <ion-row>
+        <ion-button style="border-radius:10px" size="large" color="success">
+          <ion-icon name="card-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-row>
+      <ion-row style="width:100%;text-align:center;font-weight: bold;margin-left:15%">
+        <ion-text style="margin-top:10px;text-align: center;">send</ion-text>
+      </ion-row>
+    </ion-col>
+    <ion-col>
+      <ion-row>
+        <ion-button style="border-radius:10px" size="large" color="warning">
+          <ion-icon name="cash-outline" size="large" color="light"></ion-icon>
+        </ion-button>
+      </ion-row>
+      <ion-row><ion-text style="margin-top:10px;font-weight: bold;">Exchange</ion-text></ion-row>
+    </ion-col>
+    
+    </ion-item>
+    </ion-card>
+    <ion-row style="width:100%">
+    <ion-col size="6"> 
+     <ion-card class="ion-padding">
+      <ion-row>
+        <ion-text style="font-weight:bold;color:gray">income</ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-text color="success" style="font-weight:bold;font-size:2em;margin-top:12px">$ 552.95</ion-text>
+      </ion-row>
+     </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card class="ion-padding">
+        <ion-row>
+          <ion-text style="font-weight:bold;color:gray">Express</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text color="danger" style="font-weight:bold;font-size:2em;margin-top:12px">$ 86.45</ion-text>
+        </ion-row>
+       </ion-card>
+    </ion-col>
+    </ion-row>
+    <ion-row style="width:100%">
+      <ion-col size="6"> 
+       <ion-card class="ion-padding">
+        <ion-row>
+          <ion-text style="font-weight:bold;color:gray">income</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text color="success" style="font-weight:bold;font-size:2em;margin-top:12px">$ 552.95</ion-text>
+        </ion-row>
+       </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="ion-padding">
+          <ion-row>
+            <ion-text style="font-weight:bold;color:gray">Express</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text color="danger" style="font-weight:bold;font-size:2em;margin-top:12px">$ 86.45</ion-text>
+          </ion-row>
+         </ion-card>
+      </ion-col>
+      </ion-row>
+      <ion-row style="width:100%">
+        <ion-col size="6"> 
+         <ion-card class="ion-padding">
+          <ion-row>
+            <ion-text style="font-weight:bold;color:gray">income</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text color="success" style="font-weight:bold;font-size:2em;margin-top:12px">$ 552.95</ion-text>
+          </ion-row>
+         </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="ion-padding">
+            <ion-row>
+              <ion-text style="font-weight:bold;color:gray">Express</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text color="danger" style="font-weight:bold;font-size:2em;margin-top:12px">$ 86.45</ion-text>
+            </ion-row>
+           </ion-card>
+        </ion-col>
+        </ion-row>
+
+    <ion-item lines="none">
+      <ion-text slot="start" style="font-weight:bold;font-size:1.2em;">Transactions</ion-text>
+      <ion-text slot="end" color="medium"> view all </ion-text>
+    </ion-item>
+    <ion-card class="ion-no-border">
+    <ion-item lines="none" class="ion-margin-horizontal" style="margin:0;padding:0">
+      <ion-thumbnail slot="start">
+        <img src="../../../../assets/images/apple.png" alt="">
+      </ion-thumbnail>
+      <ion-col>
+        <ion-row><ion-text style="font-weight:bold;color:black">Apple</ion-text></ion-row>
+        <ion-row><ion-text color="medium">Shopping</ion-text></ion-row>
+      </ion-col>
+      <ion-text color="danger"style="font-weight:bold" slot="end"> - $ 150</ion-text>
+    </ion-item>
+  </ion-card>
+  <ion-card class="ion-no-border">
+    <ion-item lines="none" class="ion-margin-horizontal" style="margin:0;padding:0">
+      <ion-thumbnail slot="start">
+        <img src="../../../../assets/images/amazon-pay.png" alt="">
+      </ion-thumbnail>
+      <ion-col>
+        <ion-row><ion-text style="font-weight:bold;color:black">Amazon</ion-text></ion-row>
+        <ion-row><ion-text color="medium">Shopping</ion-text></ion-row>
+      </ion-col>
+      <ion-text color="danger" style="font-weight:bold" slot="end"> - $ 150</ion-text>
+    </ion-item>
+  </ion-card>
+  <ion-item lines="none">
+    <ion-text slot="start" style="font-weight:bold;font-size:1.2em;">My cards</ion-text>
+    <ion-text slot="end" color="medium"> view all </ion-text>
+  </ion-item>
+  </ion-list>
+  
+</ion-content> -->

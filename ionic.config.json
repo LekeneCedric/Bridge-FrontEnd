@@ -1,5 +1,7 @@
 {
   "name": "bridge",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

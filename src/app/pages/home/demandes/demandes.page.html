@@ -1,0 +1,88 @@
+<ion-header class="ion-no-border">
+  <ion-row style="width: 100%;">
+    <ion-col class="logo" size="6">
+      <ion-title class="title">BRIDGE</ion-title>
+      <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>
+    </ion-col>
+    <ion-col>
+      <ion-row style="width: 100%;">
+        <ion-col size="4">
+          <ion-icon [routerLink]="['/menu/settings',id]" name="settings"  size="large" color="danger"></ion-icon>
+        </ion-col>
+      <ion-col style="text-align: right" size="4">
+        <ion-icon name="notifications" size="large" color="warning"></ion-icon>
+        <ion-badge color="danger">1</ion-badge>
+      </ion-col>
+      <ion-col style="text-align: right" size="4">
+        <ion-icon name="person-circle-outline" size="large" color="danger" [routerLink]="['/profil-donateur',id]"></ion-icon>
+      </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-segment scrollable>
+       <ion-chip class="chip" color="danger" style="padding:0;border-radius: 20%;">
+        <ion-icon name="options-outline" color = 'danger' size="large" style="margin-right:5px"></ion-icon>
+       </ion-chip>
+       <ion-chip class="chip" (click)="openModal()">
+       <ion-text>Category</ion-text>
+       <ion-badge color="danger" style="margin-left:2px;border-radius: 100%;">{{selectedCategory.length}}</ion-badge>
+       <ion-icon name="chevron-down-outline"></ion-icon>
+       </ion-chip>
+       <ion-chip class="chip" color="success" (click)="refreshFilter()" style="padding:0;border-radius:100%" >
+        <ion-icon name="refresh-outline" color="success" size="large" ></ion-icon>
+        </ion-chip>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid style="text-align:center;margin-top:15%" *ngIf="demandes.length<1">
+    <img src="../../../../assets/images/emptydemande.png" class="ion-margin-vertical">
+    <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
+      <ion-text style="color:rgb(64, 64, 64)">Aucune demande disponible dans cette categorie</ion-text>
+    </ion-item>
+    <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%">reessayer</ion-button>
+  </ion-grid>
+  <ion-row>
+    <div *ngFor="let demand of demandes" style="width: 95%">
+      <ion-card *ngIf="selectedCategory.indexOf(demand.category)!=-1 || selectedCategory.length<1" style="width: 100%;" [routerLink]="['details',demand.id]">
+        <ion-item style="width:100%;" lines="none">
+          <ion-thumbnail class="ion-margin-start" slot="start" >
+            <img style="border-radius:10px" [src]="storage+demand.donateur.media[0].filePath" />
+          </ion-thumbnail>
+          <ion-col style="text-align: left">
+            <ion-row>
+             <ion-text style="font-weight: bold">{{demand.donateur.name}}  {{demand.donateur.surname | slice:0:8 }}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text style="color:gray"> donateur/necessiteux</ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-item>
+        <ion-item style="width:100%;">
+          <ion-text style="color:gray" slot="start">Besoin</ion-text>
+          <ion-text> {{demand.title}}</ion-text>
+        </ion-item>
+        <ion-item style="width:100%;">
+          <ion-text style="color:gray" slot="start">Heure</ion-text>
+          <ion-text> {{demand.created_at | date:'medium'}}</ion-text>
+        </ion-item>
+        <ion-item style="width:100%;">
+          <ion-text style="color:gray" slot="start">Adresse</ion-text>
+          <ion-text  style="vertical-align: middle;justify-self: center;"> {{demand.adresse}} </ion-text>
+        </ion-item>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" color="danger" [routerLink]="['details',demand.id]" style="font-weight:bold">Consulter</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card> 
+    </div>
+   
+  </ion-row>
+  </ion-content>

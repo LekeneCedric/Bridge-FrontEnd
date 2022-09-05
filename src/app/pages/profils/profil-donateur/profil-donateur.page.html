@@ -1,0 +1,133 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-row style="width:100%">
+      <ion-item style="width:100%" lines="none">
+        <ion-icon name="chevron-back-outline" size="large" color="danger" slot="start"(click)="navBack()"></ion-icon>
+        <ion-icon name="ellipsis-vertical" size="large" color="danger" slot="end"></ion-icon>
+      </ion-item> 
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="userInfo!=null">
+  <ion-item style="width:100%;" lines="none">
+    <ion-thumbnail class="ion-margin-start" slot="start" class="profil">
+      <img style="border-radius:10px" src="{{userInfo.media.length>0 ? storage+userInfo.media[0].filePath:'../../../../assets/images/full-moon.png'}}" />
+    </ion-thumbnail>
+    <ion-col style="text-align: left">
+      <ion-row>
+       <ion-text style="font-weight: bold;font-size:large">{{userInfo.name}} {{userInfo.surname}}</ion-text>
+      </ion-row>
+      <ion-row style="margin-top:10px">
+        <ion-text style="color:gray">Membre depuis le {{userInfo.created_at|date:'dd/mm/yyyy'}}</ion-text>
+      </ion-row>
+    </ion-col>
+  </ion-item>
+  <ion-item style="width:100%;margin:0;padding:0" lines="none">
+  <img src="../../../../assets/images/donation.png" style="margin-right:15px" alt="" >
+  <ion-text style="font-weight:bold">{{userInfo.dons}}</ion-text>
+  <ion-text style="margin-left:5px">dons</ion-text>
+  <ion-text style="font-weight:bold;margin-left:5px">, 0</ion-text>
+  <ion-text style="margin-left:5px">receptions</ion-text>
+  </ion-item>
+  <ion-item style="width:100%;margin:0;padding:0" lines="none">
+    <img src="../../../../assets/images/demande.png" style="margin-right:15px" alt="" >
+    <ion-text style="font-weight:bold">{{userInfo.nbdemandes}}</ion-text>
+    <ion-text style="margin-left:5px">demandes</ion-text>
+  </ion-item>
+  <ion-item style="width:100%;margin:0;padding:0" lines="none">
+    <img src="../../../../assets/images/group.png" style="margin-right:15px" alt="" >
+    <ion-text style="margin-left:5px">appartient a</ion-text>
+    <ion-text style="font-weight:bold;margin-left:5px">{{userInfo.nbassociations}}</ion-text>
+    <ion-text style="margin-left:5px">associations</ion-text>
+  </ion-item>
+  <ion-item-divider></ion-item-divider>
+  <ion-item lines="none">
+    <ion-text style="font-weight:bold;color: gray;">Activites</ion-text>
+  </ion-item>
+  <ion-item style="width:100%;margin:0" lines="none">
+    <img src="../../../../assets/images/placard.png" style="margin-right:15px" alt="" >
+    <ion-text style="font-weight:bold">{{userInfo.nbmouvements}}</ion-text>
+    <ion-text style="margin-left:5px">evenements participes</ion-text>
+  </ion-item>
+  <ion-item-divider></ion-item-divider>
+  <ion-item lines="none">
+    <ion-text style="font-weight:bold;color: gray;">Niveau</ion-text>
+  </ion-item>
+  <ion-row>
+    <ion-col size="3" style="text-align:center;align-items: center;">
+        <ion-img style="border-radius:10px" style="width:60%;margin-left: 10px;" src="../../../../assets/images/stars.png"></ion-img>
+    </ion-col>
+    <ion-col size="8">
+      <ion-row>
+        <ion-text style="font-weight: bold;font-size:medium">{{userInfo.statut}}</ion-text>
+       </ion-row>
+       <ion-row style="margin-top:10px">
+         <ion-text style="color:gray">Niveau {{userInfo.niveau}}</ion-text>
+       </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
+    <ion-segment-button value="dons">
+      <ion-label>Dons</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="demandes">
+      <ion-label>Demandes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <div style="height:250px;overflow-y: scroll;" >
+    <ion-list *ngIf="selectedSegment=='dons'">
+      <ion-grid style="text-align:center" *ngIf="userInfo.don.length<1">
+        <img src="../../../../assets/images/no-results.png" class="ion-margin-vertical">
+        <ion-item lines="none"style="text-align:center;width: 100%;">
+          <ion-text style="color:rgb(64, 64, 64);width: 100%" color="danger">Aucun don disponible realise</ion-text>
+        </ion-item>
+       </ion-grid>
+     <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
+            <div *ngFor="let don of userInfo.don" style="width:50%">
+            <ion-card  [routerLink]="['/menu/dons/details',don.id]"style="width:90%">
+              <div style="width:100%;height:150px;margin:0;padding:0;background-size:cover;"
+              [style.background-image]="image(don)"
+              >
+                
+              </div>
+                <ion-item>
+                  <ion-text style="font-weight: bold">{{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
+                </ion-item>
+            <ion-item>
+              <ion-icon name="location-outline" color="danger"></ion-icon>
+              <ion-label>{{don.adresse}}</ion-label>
+          </ion-item>
+            </ion-card>
+          </div>
+          </ion-grid>
+    </ion-list>
+    <ion-list *ngIf="selectedSegment=='demandes'">
+      
+      <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
+        <ion-card *ngFor="let demand of userInfo.demande" style="width: 100%;">
+          <ion-item style="width:100%;">
+            <ion-text style="color:gray" slot="start">Besoin</ion-text>
+            <ion-text> {{demand.title}}</ion-text>
+          </ion-item>
+          <ion-item style="width:100%;">
+            <ion-text style="color:gray" slot="start">Heure</ion-text>
+            <ion-text> {{demand.created_at | date:'medium'}}</ion-text>
+          </ion-item>
+          <ion-item style="width:100%;">
+            <ion-text style="color:gray" slot="start">Adresse</ion-text>
+            <ion-text  style="vertical-align: middle;justify-self: center;"> {{demand.adresse}} </ion-text>
+          </ion-item>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" color="danger" [routerLink]="['/menu/demandes/details',demand.id]">Consulter</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+      </ion-grid>
+    </ion-list>
+  </div>
+  </ion-grid>
+</ion-content>

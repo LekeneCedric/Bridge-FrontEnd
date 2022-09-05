@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-row style="width: 100%;">
+    <ion-col class="logo" size="6">
+      <ion-title class="title">BRIDGE</ion-title>
+      <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>
+    </ion-col>
+    <ion-col>
+      <ion-row style="width: 100%;">
+        <ion-col size="4">
+          <ion-icon name="settings"  size="large" color="danger"></ion-icon>
+        </ion-col>
+      <ion-col style="text-align: right" size="4">
+        <ion-icon name="notifications" size="large" color="warning"></ion-icon>
+        <ion-badge color="danger">1</ion-badge>
+      </ion-col>
+      <ion-col style="text-align: right" size="4">
+        <ion-icon name="person-circle-outline" size="large" color="danger" [routerLink]="['/profil-donateur',id]"></ion-icon>
+      </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-segment  scrollable>
+       <ion-chip>
+        <ion-icon name="options-outline" size="large"></ion-icon>
+        <ion-text>Filter</ion-text>
+       </ion-chip>
+       <ion-chip>
+       <ion-text>Category</ion-text>
+       <ion-icon name="chevron-down-outline"></ion-icon>
+       </ion-chip>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
+    <ion-segment-button value="annonces">
+      <ion-label>Annonces</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="evenements">
+      <ion-label>Evenements</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content>
+    <ion-list *ngIf="selectedSegment=='annonces'">
+      <ion-card *ngFor="let card of [1,2,3,4]" [routerLink]="['detailsAnnonce',1]">
+        <ion-img styl src="https://media.ooreka.fr/public/image/ensemble-association-solidarite-aide-main-main-10575538.jpg"></ion-img>
+        <ion-item style="width:100%;" lines="none">
+          <ion-thumbnail class="ion-margin-start" slot="start" >
+            <img style="border-radius:10px" src="https://i.pinimg.com/564x/44/9e/5e/449e5e93c14f34fb7b90559e4f9908ab.jpg" />
+          </ion-thumbnail>
+          <ion-col style="text-align: left">
+            <ion-row>
+             <ion-text style="font-weight: bold">Les Armandins </ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text style="color:gray"> association carritative</ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-item>
+        <ion-item style="width:100%" lines="none">
+          <ion-text style="font-weight:bold;text-align: center;">L'orphelinat qui s'est transforme</ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-text style="color:gray">
+          {{testtext| slice:0:200}}{{testtext.length > 200 ? '&hellip;':'' }}
+          </ion-text>
+        </ion-item>
+        <ion-item lines="none" style="width:100%;margin-top: 15px;margin-bottom:15px">
+          <ion-icon name="heart-outline" size="large"></ion-icon>
+          <ion-chip slot="end" color="warning" style="padding: 20px;">
+              <img src="../../../../assets/images/gift.png">
+              <ion-text >Soutenir</ion-text>
+          </ion-chip>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  <ion-grid *ngIf="selectedSegment=='evenements'">
+    <ion-card *ngFor="let card of [1,2,3,4]" lines="none" [routerLink]="['detailsEvenement',1]">
+      <ion-img src="https://cdn.futura-sciences.com/buildsv6/images/wide1920/f/e/f/fef910bf42_50174338_marche-sportive-lzf-adobe-stock.jpg"></ion-img>
+      <ion-item style="width:100%;" lines="none">
+        <ion-thumbnail slot="start" >
+          <img style="border-radius:10px" src="https://media.ooreka.fr/public/image/ensemble-association-solidarite-aide-main-main-10575538.jpg" />
+        </ion-thumbnail>
+        <ion-col style="text-align: left">
+          <ion-row>
+           <ion-text style="font-weight: bold">Les Armandins </ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text style="color:gray"> association carritative</ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+      <ion-item style="width:100%" lines="none">
+        <ion-text style="font-weight:bold;text-align: center;">L'orphelinat qui s'est transforme</ion-text>
+      </ion-item>
+      <ion-item style="width:100%;" lines="none">
+        <ion-icon name="today-outline" size="large" slot="start"></ion-icon>
+        <ion-text style="color:gray">30-09-2002 | </ion-text>
+        <ion-text style="color:gray">15h35 - 18h00</ion-text>
+      </ion-item>
+      <ion-item style="width:100%;" lines="none"> 
+        <img src="../../../../assets/images/location.png" slot="start">
+        <ion-text style="color:gray">yaounde , bastos , marche central</ion-text>
+      </ion-item>
+      <ion-item lines="none" style="margin-top:10px">
+        <ion-text style="color:gray">
+        {{testtext| slice:0:200}}{{testtext.length > 200 ? '&hellip;':'' }}
+        </ion-text>
+      </ion-item>
+      <ion-item lines="none" style="width:100%;margin-top: 15px;margin-bottom:15px">
+        <ion-button expand="block" color="success"> Participer</ion-button>
+        <ion-chip slot="end" color="warning" style="padding: 20px;">
+            <img src="../../../../assets/images/gift.png">
+            <ion-text>Soutenir</ion-text>
+        </ion-chip>
+      </ion-item>
+    </ion-card>
+     </ion-grid>
+</ion-content>

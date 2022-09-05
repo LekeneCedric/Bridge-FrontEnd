@@ -24,3 +24,63 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* Fonts-importation */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+//font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+//font-family: 'Roboto Mono', monospace;
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+//font-family: 'Rubik Glitch', cursive;
+*{
+   transition: 0.8s;
+}
+.selected{
+    ion-icon{
+     --color:#ec566a !important;
+    }
+ }
+ .noselected{
+    --button-background-activated{
+        --color: #fd8b9a;
+    }
+ }
+ .modal-wrapper{
+    background: transparent !important;
+}
+ ion-modal {
+    --border-radius: 2%!important;
+  }
+  .red.refresher-native{
+   ion-spinner{
+      color: #ec566a!important;      
+   }
+
+   .arrow-container ion-icon{
+      color: #ec566a!important;   
+   }
+} 
+
+.green.refresher-native{
+   ion-spinner{
+      color: #ec566a !important;      
+   }
+   .arrow-container ion-icon{
+      color: #ec566a !important;   
+   }
+} 
+.purple.refresher-native{
+   ion-spinner{
+      color: #ec566a !important;      
+   }
+   .arrow-container ion-icon{
+      color: #ec566a !important;   
+   }}
+.scroll-content{
+      ion-spinner{
+         color: #ec566a !important;      
+      }
+   }
+   .deconnexion-alert{
+      color:#ec566a;
+   }

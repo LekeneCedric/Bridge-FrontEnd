@@ -1,0 +1,288 @@
+"use strict";
+(self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_home_dons_dons_module_ts"],{
+
+/***/ 3321:
+/*!********************************************************!*\
+  !*** ./src/app/pages/home/dons/dons-routing.module.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DonsPageRoutingModule": () => (/* binding */ DonsPageRoutingModule)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _dons_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dons.page */ 2347);
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _dons_page__WEBPACK_IMPORTED_MODULE_0__.DonsPage,
+    },
+    {
+        path: 'details/:id',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("src_app_pages_details_details-don_details-don_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../details/details-don/details-don.module */ 8975)).then(m => m.DetailsDonPageModule)
+    }
+];
+let DonsPageRoutingModule = class DonsPageRoutingModule {
+};
+DonsPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule],
+    })
+], DonsPageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ 4984:
+/*!************************************************!*\
+  !*** ./src/app/pages/home/dons/dons.module.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DonsPageModule": () => (/* binding */ DonsPageModule)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _dons_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dons-routing.module */ 3321);
+/* harmony import */ var _dons_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dons.page */ 2347);
+/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
+
+
+
+
+
+
+
+
+let DonsPageModule = class DonsPageModule {
+};
+DonsPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormsModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule,
+            _dons_routing_module__WEBPACK_IMPORTED_MODULE_0__.DonsPageRoutingModule
+        ],
+        providers: [_ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__.NativeGeocoder],
+        declarations: [_dons_page__WEBPACK_IMPORTED_MODULE_1__.DonsPage]
+    })
+], DonsPageModule);
+
+
+
+/***/ }),
+
+/***/ 2347:
+/*!**********************************************!*\
+  !*** ./src/app/pages/home/dons/dons.page.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DonsPage": () => (/* binding */ DonsPage)
+/* harmony export */ });
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dons.page.html?ngResource */ 7145);
+/* harmony import */ var _dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dons.page.scss?ngResource */ 474);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
+/* harmony import */ var src_app_modals_modal_category_modal_category_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/modals/modal-category/modal-category.page */ 4098);
+/* harmony import */ var src_app_modals_modal_etat_modal_etat_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/modals/modal-etat/modal-etat.page */ 192);
+
+
+
+
+
+
+
+
+
+
+let DonsPage = class DonsPage {
+  constructor(manageDataService, nativGeocoder, modalCtrl) {
+    this.manageDataService = manageDataService;
+    this.nativGeocoder = nativGeocoder;
+    this.modalCtrl = modalCtrl;
+    /*-----------------------------VARIABLES-----------------------------*/
+
+    this.myid = null;
+    this.dons = [];
+    this.GeocoderOption = {
+      useLocale: true,
+      maxResults: 5
+    };
+    this.selectedCategory = [];
+    this.selectedEtat = [];
+    this.storage = 'http://127.0.0.1:8000/storage/';
+  }
+
+  ngOnInit() {
+    this.dons = [];
+    this.getDons();
+    this.myid = JSON.parse(localStorage.getItem('mydata')).id;
+    setInterval(() => {
+      const tabBar = document.getElementById('app-tab-bar');
+      tabBar.style.display = 'flex';
+    }, 100);
+    this.manageDataService.getDons().toPromise().then(data => {
+      data.data.forEach(don => {
+        this.dons.push(don);
+      });
+    }).catch(err => {});
+  }
+  /*-----------------------------FUNCTIONS-----------------------------*/
+
+
+  get id() {
+    return this.myid;
+  }
+
+  openModal() {
+    var _this = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this.modalCtrl.create({
+        component: src_app_modals_modal_category_modal_category_page__WEBPACK_IMPORTED_MODULE_5__.ModalCategoryPage,
+        componentProps: {
+          selectedCategory: _this.selectedCategory
+        },
+        breakpoints: [0, 0.65],
+        initialBreakpoint: 0.65,
+        animated: true,
+        handle: true
+      });
+      modal.present();
+      const {
+        data,
+        role
+      } = yield modal.onWillDismiss();
+
+      if (role === 'confirm') {
+        _this.selectedCategory = data;
+      }
+    })();
+  }
+
+  openModalEtat() {
+    var _this2 = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this2.modalCtrl.create({
+        component: src_app_modals_modal_etat_modal_etat_page__WEBPACK_IMPORTED_MODULE_6__.ModalEtatPage,
+        componentProps: {
+          selectedEtat: _this2.selectedEtat
+        },
+        mode: 'md',
+        breakpoints: [0, 1],
+        initialBreakpoint: 0.35,
+        animated: true,
+        handle: true
+      });
+      modal.present();
+      const {
+        data,
+        role
+      } = yield modal.onWillDismiss();
+
+      if (role === 'confirm') {
+        _this2.selectedEtat = data;
+      }
+    })();
+  }
+
+  refreshFilter() {
+    this.selectedCategory = [];
+    this.selectedEtat = [];
+  }
+
+  image(don) {
+    let url = '';
+    don.media.length > 1 ? url = `${this.storage + don.media[0].filePath.toString()}` : url = '../../../../../../assets/images/empty.webp';
+    return `url(${url})`;
+  }
+
+  getDons() {
+    this.manageDataService.getDons().toPromise().then(data => {
+      data.forEach(don => {
+        this.dons.unshift(don);
+      });
+    }).catch(err => {});
+  }
+
+  filtre(category, etat) {
+    let res;
+    this.selectedCategory.includes(category) && this.selectedEtat.includes(etat) || this.selectedCategory.includes(category) && this.selectedEtat.length < 1 || this.selectedCategory.length < 1 && this.selectedEtat.includes(etat) || this.selectedCategory.length < 1 && this.selectedEtat.length < 1 ? res = true : res = false;
+    return res;
+  }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.ngOnInit();
+      event.target.complete();
+    }, 500);
+  }
+
+  refresh() {
+    this.ngOnInit();
+  }
+
+};
+
+DonsPage.ctorParameters = () => [{
+  type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__.ManageDataService
+}, {
+  type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__.NativeGeocoder
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ModalController
+}];
+
+DonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
+  selector: 'app-dons',
+  template: _dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], DonsPage);
+
+
+/***/ }),
+
+/***/ 474:
+/*!***********************************************************!*\
+  !*** ./src/app/pages/home/dons/dons.page.scss?ngResource ***!
+  \***********************************************************/
+/***/ ((module) => {
+
+module.exports = ".logo {\n  margin-left: 2%;\n  text-align: left;\n  color: #eb445a;\n  font-family: \"Rubik Glitch\";\n  font-size: 3em;\n  margin-bottom: 2%;\n}\n\n.title {\n  padding: 0;\n  margin: 0;\n  font-size: 0.7em;\n}\n\nion-chip {\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRvbnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZUFBQTtFQUNBLGdCQUFBO0VBQ0EsY0FBQTtFQUNBLDJCQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FBQ0o7O0FBRUE7RUFDSSxVQUFBO0VBQ0EsU0FBQTtFQUNBLGdCQUFBO0FBQ0o7O0FBR0E7RUFDSSxtQkFBQTtBQUFKIiwiZmlsZSI6ImRvbnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvZ297XG4gICAgbWFyZ2luLWxlZnQ6IDIlO1xuICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgY29sb3I6ICNlYjQ0NWE7XG4gICAgZm9udC1mYW1pbHk6J1J1YmlrIEdsaXRjaCc7XG4gICAgZm9udC1zaXplOiAzZW07XG4gICAgbWFyZ2luLWJvdHRvbTogMiU7XG59XG5cbi50aXRsZXtcbiAgICBwYWRkaW5nOiAwO1xuICAgIG1hcmdpbjogMDtcbiAgICBmb250LXNpemU6IDAuN2VtO1xufVxuLmlucHV0e1xufVxuaW9uLWNoaXB7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbn1cbiJdfQ== */";
+
+/***/ }),
+
+/***/ 7145:
+/*!***********************************************************!*\
+  !*** ./src/app/pages/home/dons/dons.page.html?ngResource ***!
+  \***********************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-row style=\"width: 100%;\">\n    <ion-col class=\"logo\" size=\"6\">\n      <ion-title class=\"title\">BRIDGE</ion-title>\n      <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>\n    </ion-col>\n    <ion-col>\n      <ion-row style=\"width: 100%;\">\n        <ion-col size=\"4\">\n          <ion-icon [routerLink]=\"['/menu/settings',id]\" name=\"settings\"  size=\"large\" color=\"danger\"></ion-icon>\n        </ion-col>\n      <ion-col style=\"text-align: right\" size=\"4\">\n        <ion-icon name=\"notifications\" size=\"large\" color=\"warning\"></ion-icon>\n        <ion-badge color=\"danger\">1</ion-badge>\n      </ion-col>\n      <ion-col style=\"text-align: right\" size=\"4\">\n        <ion-icon name=\"person-circle-outline\" size=\"large\" color=\"danger\" [routerLink]=\"['/profil-donateur',id]\"></ion-icon>\n      </ion-col>\n      </ion-row>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-segment scrollable>\n       <ion-chip style=\"padding:0;border-radius:20%\" color=\"danger\">\n        <ion-icon name=\"options-outline\" color=\"danger\" size=\"large\" style=\"text-align:center;margin-right:5px\"></ion-icon>\n       </ion-chip>\n       <ion-chip (click)=\"openModal()\">\n       <ion-text>Category</ion-text>\n       <ion-badge color=\"danger\" style=\"margin-left:2px\">{{selectedCategory.length}}</ion-badge>\n       <ion-icon name=\"chevron-down-outline\"></ion-icon>\n      </ion-chip>\n       <ion-chip (click)=\"openModalEtat()\">\n        <ion-text>Etat</ion-text>\n        <ion-badge color=\"danger\" style=\"margin-left:2px\">{{selectedEtat.length}}</ion-badge>\n        <ion-icon name=\"chevron-down-outline\"></ion-icon>\n       </ion-chip>\n       <ion-chip class=\"chip\" color=\"success\" (click)=\"refreshFilter()\"  style=\"padding:0;border-radius:100%\">\n        <ion-icon name=\"refresh-outline\" size=\"large\" style=\"margin-left:5px\"></ion-icon>\n        </ion-chip>\n      </ion-segment>\n    </ion-col>\n  </ion-row>\n</ion-header>\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\" class=\"red\">\n    <ion-refresher-content color=\"danger\"></ion-refresher-content>\n  </ion-refresher>\n  <ion-grid style=\"text-align:center;margin-top:15%\" *ngIf=\"dons.length<1\">\n      <img src=\"../../../../assets/images/no-results.png\" class=\"ion-margin-vertical\">\n      <ion-item lines=\"none\"style=\"text-align:center;width: 100%;\" class=\"ion-margin-vertical\">\n        <ion-text style=\"color:rgb(64, 64, 64)\">Aucun don disponible dans cette categorie</ion-text>\n      </ion-item>\n      <ion-button (click)=\"refresh()\" expand=\"block\" class=\"ion-margin-horizontal\" color=\"danger\" class=\"ion-margin-vertical\" style=\"font-weight:bold;margin-left: 20%;margin-right:20%\">raffraichir la page</ion-button>\n  </ion-grid>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"danger\">\n      <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n    <ion-fab-list side=\"start\">\n      <ion-fab-button color=\"danger\" routerLink=\"/creation-dons\">\n        <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" routerLink=\"/creation-demandes\">\n        <ion-icon name=\"hand-left-outline\" size=\"large\" color=\"danger\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab-list>\n  </ion-fab>\n<ion-grid style=\"display: flex; flex-wrap:wrap;justify-content: space-between;\">\n  <div *ngFor=\"let don of dons\" style=\"width:50%\">\n  <ion-card  [routerLink]=\"['details',don.id]\" *ngIf=\"filtre(don.category,don.etat)\" style=\"width:90%\">\n    <div style=\"width:100%;height:150px;margin:0;padding:0;background-size:cover;\"\n    [style.background-image]=\"image(don)\"\n    >\n      \n    </div>\n      <ion-item>\n        <ion-text style=\"font-weight: bold\">{{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>\n      </ion-item>\n  <ion-item>\n    <ion-icon name=\"location-outline\" color=\"danger\"></ion-icon>\n    <ion-label>{{don.adresse}}</ion-label>\n</ion-item>\n  </ion-card>\n</div>\n</ion-grid>\n</ion-content>\n";
+
+/***/ })
+
+}]);
+//# sourceMappingURL=src_app_pages_home_dons_dons_module_ts.js.map

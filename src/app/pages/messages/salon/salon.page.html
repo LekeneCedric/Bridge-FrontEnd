@@ -1,0 +1,123 @@
+<ion-header >
+  <ion-item>
+    <ion-icon name="chevron-back-outline" size="large" color="dark" (click)="back()"></ion-icon>
+    <ion-item *ngIf="isdon && don!=null ">
+      <ion-thumbnail >
+        <img style="border-radius:10px" [src]="don.media.length>0?storage+don.media[0].filePath:'../../../../assets/images/full-moon.png'" alt="">
+      </ion-thumbnail>
+      <ion-col size="9">
+        <ion-row>
+          <ion-text style="font-weight:bold;margin-left:5%">{{don.titre|slice:0:12}}</ion-text>
+        </ion-row>
+        <ion-row style="margin-top:10px;width:100%">
+          <ion-text style="width:100%;font-weight:bold;margin-left:5%;color:gray">Don {{don.nombre_reserve==0?"Disponible":"Reserve"}}<strong>({{nbreserv}})</strong></ion-text>
+        </ion-row>
+      </ion-col>
+    </ion-item>
+    <ion-icon name="ellipsis-vertical-outline" size="large" color="dark" slot="end"></ion-icon>
+  </ion-item>
+  <ion-item lines="none" *ngIf="donateur!=null && receiver!=null" >
+    <ion-thumbnail >
+      <img style="border-radius:10px" *ngIf="id!=donat_id" [src]="donateur.media.length>0?storage+donateur.media[0].filePath:'../../../../assets/images/full-moon.png'" >
+      <img style="border-radius:10px" *ngIf="id==donat_id" [src]="receiver.media.length>0?storage+receiver.media[0].filePath:'../../../../assets/images/full-moon.png'" >
+    </ion-thumbnail>
+    <ion-col>
+      <ion-row>
+        <ion-text *ngIf="id!=donat_id" style="font-weight:bold;margin-left:5%">{{donateur.surname|slice:0:12}} {{donateur.name | uppercase | slice:0:1}}.</ion-text>
+        <ion-text *ngIf="id==donat_id" style="font-weight:bold;margin-left:5%">{{receiver.surname|slice:0:12}} {{receiver.name | uppercase | slice:0:1}}.</ion-text>
+      </ion-row>
+      <ion-row style="margin-top:10px">
+        <ion-text *ngIf="id!=donat_id" style="font-weight:bold;margin-left:5%;color:gray">{{donateur.pays}},{{donateur.ville}}</ion-text>
+        <ion-text *ngIf="id==donat_id" style="font-weight:bold;margin-left:5%;color:gray">{{receiver.pays}},{{receiver.ville}}</ion-text>
+      </ion-row>
+    </ion-col>
+  </ion-item>
+  <ion-row style="width:100%;border-bottom:0.5px solid rgb(190, 190, 190)" *ngIf="id==donat_id">
+    <ion-col size="12" style="text-align:center">
+      <ion-button color="danger">
+        <ion-text>Reserver</ion-text>
+        <ion-icon name="receipt-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content style="margin:0;padding:0;border:0">
+  	
+  
+  <!-- USER -------- -->
+  <ion-grid class="ion-padding">
+ 
+ <!-- Content -->
+ <ion-list *ngIf="donateur!=null && receiver!=null">
+  <div style="border:0.5px solid rgb(195, 195, 195);width:90%" class="ion-padding">
+  <ion-row><ion-text style="font-weight:bold">A propos de {{id!=donat_id?donateur.name:receiver.name}}</ion-text></ion-row>
+  <ion-row style="width:100%;">
+    <ion-text style="width:100%;" *ngIf="id!=donat_id">Membre depuis le <strong>{{donateur.created_at |date:'MMM d, y'}}</strong></ion-text>
+    <ion-text style="width:100%;" *ngIf="id==donat_id">Membre depuis le <strong>{{receiver.created_at |date:'MMM d, y'}}</strong></ion-text>
+  </ion-row>
+  <ion-row class="ion-margin-top">
+      <img src="../../../../assets/images/donation.png" style="margin-right:15px" alt="" >
+      <ion-text style="font-weight:bold">{{id!=donat_id?donateur.dons:receiver.dons}}</ion-text>
+      <ion-text style="margin-left:5px">dons</ion-text>
+      <ion-text style="font-weight:bold;margin-left:5px">, 0</ion-text>
+      <ion-text style="margin-left:5px">receptions</ion-text>
+      
+  </ion-row>
+  
+  <ion-row>
+      <img src="../../../../assets/images/demande.png" style="margin-right:15px" alt="" >
+      <ion-text style="font-weight:bold">{{id!=donat_id?donateur.nbdemandes:receiver.nbdemandes}}</ion-text>
+      <ion-text style="margin-left:5px">demandes</ion-text>
+  </ion-row>
+  </div>
+  <div style="border:0.5px solid rgb(195, 195, 195);width:90%;margin-top:5%" class="ion-padding">
+    <ion-row>
+      <img src="../../../../assets/images/law.png" style="margin-right:15px" alt="" >
+      <ion-text style="font-weight:bold">Charte de bonne conduite</ion-text>
+  </ion-row>
+  <ion-row style="width:100%;padding:0;margin:0">
+    <ul class="list" style="margin:0">
+      <li class="item" style="font-weight:bold">je respecte les autres Bridgers</li>
+      je discute avec politesse et courtoisie
+    </ul>
+    <ul class="list"  style="margin:0">
+      <li class="item" style="font-weight:bold">je tiens mes engagements</li>
+      je prend rendez-vous uniquement si je suis sur(e) de pouvoir l'honorer
+    </ul>
+    <ul class="list"  style="margin:0">
+      <li class="item" style="font-weight:bold">je suis a l'heure</li>
+      je previens en cas de retard ou d'empechement
+    </ul>
+  </ion-row>
+  </div>
+  <div style="width:100%;" *ngFor="let message of conversation">
+    <div  class="my-card" *ngIf="message.donateur_id==id">
+        <div class="ion-padding my-message-card">
+          <ion-row>
+            <ion-text class="content" >{{message.contenu}}</ion-text>
+          </ion-row>
+          </div>
+        <ion-text class="date-message">{{message.created_at | date:'hh:mm - dd MMM'}}</ion-text>
+    </div> 
+    <div class="her-card" *ngIf="message.donateur_id!=id">
+      <div class="ion-padding her-message-card">
+        <ion-row>
+          <ion-text class="content">{{message.contenu}}</ion-text>
+        </ion-row>
+        </div>
+      <ion-text class="date-message">{{message.created_at | date:'hh:mm - dd MMM'}}</ion-text>
+  </div> 
+  </div>
+ </ion-list>
+</ion-grid>
+</ion-content>
+<ion-footer style="border-top:1px solid rgb(208, 208, 208);border:0;">
+  <ion-item>
+    <ion-icon name="add-outline" slot="start" size="large" color="danger"></ion-icon>
+    
+    <ion-textarea maxRows="4" [(ngModel)]="new_message"  placeholder="Votre message" style="margin:0"></ion-textarea>
+    
+    <ion-icon  *ngIf="new_message.length>1" name="paper-plane-outline" size="large" slot="end" color="danger" (click)="addMessage()" ></ion-icon>
+      
+  </ion-item>
+</ion-footer>
