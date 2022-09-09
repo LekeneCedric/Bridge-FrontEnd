@@ -13,19 +13,30 @@ export class AuthService {
   constructor(private http:HttpClient,private toast:ToastController,
     private router:Router) { }
   public signup(credential:any):Observable<any>{
-   return this.http.post(`${environment.apiURL}/auth/register`, credential);
+   return this.http.post(`${environment.apiURL}/auth/register`, credential,{headers: {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  }});
   }
 
 
   public signIn(credential:any):Observable<any>{
-   return this.http.post(`${environment.apiURL}/auth/login`, credential);
+   return this.http.post(`${environment.apiURL}/auth/login`, credential,{headers: {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  }});
   }
 
 
   public validToken(token:string):Observable<any>{
     const headers = new HttpHeaders({
+      'X-XSRF-TOKEN': token,
       'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
     })
     const api = environment.apiURL+'/validate-token'
     return this.http.get(api,{headers:headers});
@@ -38,7 +49,9 @@ export class AuthService {
     const api = environment.apiURL+'/auth/logout'
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
     })
     this.http.post(api,null,{headers:headers}).toPromise().then(
       async response=>{
@@ -62,6 +75,7 @@ export class AuthService {
           color:"warning"
         });
         (await (toast)).present();  
+        this.router.navigateByUrl('/login',{replaceUrl:true});
       }
     )
   }

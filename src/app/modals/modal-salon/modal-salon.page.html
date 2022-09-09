@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Discussions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list  *ngIf="load==false">
+  <div *ngFor="let room of rooms">
+    <ion-item lines="none" *ngIf="room.id_don==selectedRoom.id_don" 
+    [routerLink]="['/salon',room.id_donateur,room.id_receiver,0,room.id_don]" (click)="cancel()">
+      <ion-thumbnail slot="start">
+        <img [src]="room.reic_img" style="border-radius:10px">
+      </ion-thumbnail>
+      <ion-col>
+        <ion-row style="width:100%">
+        <ion-text style="font-weight:bold">
+         {{room.reic_name}}
+        </ion-text>
+        </ion-row>
+        <ion-row style="margin-top:10px">
+          <ion-text color="medium">
+           {{room.reic_contact}}
+          </ion-text>
+        </ion-row>
+      </ion-col>
+      <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+    </ion-item>
+  </div>
+  
+</ion-list>
+</ion-content>

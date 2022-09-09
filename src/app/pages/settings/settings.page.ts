@@ -27,8 +27,8 @@ export class SettingsPage implements OnInit {
 
       }
     )
-    },500)
-    this.id = this.route.snapshot.params['id'];
+    },500);
+    this.id = JSON.parse(localStorage.getItem('mydata')).id;
   }
 
   /*------------------------------VARIABLES------------------------------*/

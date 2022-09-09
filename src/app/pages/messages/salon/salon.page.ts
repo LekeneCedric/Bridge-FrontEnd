@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { IDemande } from 'src/app/models/demande.model';
 import { IDon } from 'src/app/models/don.model';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
@@ -14,9 +14,10 @@ import { environment } from 'src/environments/environment';
 export class SalonPage implements OnInit {
 
   constructor(private route:ActivatedRoute,private manageDataService:ManageDataService,
-    private router:NavController) { }
+    private router:NavController,private toast:ToastController) { }
 
   ngOnInit() {
+    this.convers = [];
     this.myId = JSON.parse(localStorage.getItem('mydata')).id as number;
     this.id_donateur = this.route.snapshot.params['id_donateur'];
     this.id_reicv = this.route.snapshot.params['id_receiver'];
@@ -27,15 +28,23 @@ export class SalonPage implements OnInit {
     this.getReceiver();
     this.getnbreservations();
     this.isdon?this.getDon():this.getDemande();
-    this.isdon?this.getConversDons():this.getConversDons();
+    this.isdon?this.getConversDons():this.getConversDemande();
     setTimeout(()=>{
       this.isdon?console.log(this.don):console.log(this.demande);
       console.log(this.donateur);
       console.log(this.receiver);
     },2000)
-   
+    setTimeout(()=>{      
+      this.manageDataService.isReserv(this.id_don,this.id_reicv).toPromise().then(
+        data=>{
+          console.log(data.message)
+          data.message == 'oui'?this.isReserv = true:this.isReserv=false;
+        }
+      )
+    },500)
     }
   /*-------------------------------------------VARIABLES------------------------------------*/
+  public isReserv:boolean = false;
   private id_donateur:number=null;
   private id_reicv:number=null;
   private id_demande:number=null;
@@ -50,10 +59,52 @@ export class SalonPage implements OnInit {
   private myId:number=null;
   public new_message:string="";
   public nbreserv:number=null;
+  public createur:number=null;
   /*-------------------------------------------FUNCTIONS-------------------------------------------*/
+  public reserveDon(){
+   let don_id = this.don_id;
+   let donateur_id = this.id_reicv;
+   this.manageDataService.reserverDon(don_id, donateur_id).toPromise().then(
+    async (data)=>{
+      const toast = this.toast.create({
+        message:`Don reserve avec success`,
+        icon: 'information-circle',
+        duration:1000,
+        color:"success"
+      });
+      
+      (await (toast)).present();  
+    }
+   ).finally(()=>{
+    this.ngOnInit();
+   })
+  }
+  public annulerReservation(){
+    let don_id = this.don_id;
+   let donateur_id = this.id_reicv;
+   this.manageDataService.annulerReservation(don_id, donateur_id).toPromise().then(
+    async (data)=>{
+      const toast = this.toast.create({
+        message:`Reservation annule`,
+        icon: 'information-circle',
+        duration:1000,
+        color:"warning"
+      });
+      (await (toast)).present();  
+    }
+   ).finally(()=>{
+    this.ngOnInit();
+   })
+  }
   public back(){
     this.router.back();
   }
+  doRefresh(event){
+    setTimeout(()=>{
+     this.ngOnInit(); 
+     event.target.complete();
+    },500)
+   }
   public get id():number { return this.myId;};
   public get donat_id():number{return this.id_donateur;}
   public get reic_id():number{return this.id_reicv;}
@@ -79,7 +130,7 @@ export class SalonPage implements OnInit {
     ).catch(err=>{console.log(err);})
   }
   public addMessage(){
-    this.manageDataService.addMessageDon(this.don_id,this.id,this.donat_id,this.new_message,0)
+    this.isdon?this.manageDataService.addMessageDon(this.don_id,this.donat_id,this.reic_id,this.new_message,0,this.id,this.id==this.donat_id?this.reic_id:this.donat_id)
     .toPromise()
     .then(
       res=>{
@@ -87,6 +138,28 @@ export class SalonPage implements OnInit {
           id:res.id,
           donateur_id:Number(res.donateur_id),
           receiver_id:Number(res.receiver_id),
+          sender:res.sender,
+          receiver:res.receiver,
+          contenu:res.contenu,
+          created_at:res.created_at
+        }
+        this.convers.push(message);
+        console.log(message)
+        this.new_message = "";
+      }
+    ).catch(
+      err=>{}
+    ):
+    this.manageDataService.addMessageDemande(this.demand_id,this.donat_id,this.reic_id,this.new_message,0,this.id,this.id==this.donat_id?this.reic_id:this.donat_id)
+    .toPromise()
+    .then(
+      res=>{
+        const message = {
+          id:res.id,
+          donateur_id:Number(res.donateur_id),
+          receiver_id:Number(res.receiver_id),
+          sender:res.sender,
+          receiver:res.receiver,
           contenu:res.contenu,
           created_at:res.created_at
         }
@@ -101,29 +174,60 @@ export class SalonPage implements OnInit {
   public getConversDons(){
     this.manageDataService.getConversationsDon(this.donat_id,this.reic_id,this.don_id).toPromise().then(
       data=>{
-        data.data.forEach(conv=>{
+        this.createur = data.createur_don_id;
+        data.data1.forEach(conv=>{
           this.convers.push({
             id:conv.id,
             donateur_id:conv.donateur_id,
             receiver_id:conv.receiver_id,
             contenu:conv.contenu,
+            sender:conv.sender,
+            receiver:conv.receiver,
             created_at:conv.created_at
           })
         });
-        
+        data.data2.forEach(conv=>{
+          this.convers.push({
+            id:conv.id,
+            donateur_id:conv.donateur_id,
+            receiver_id:conv.receiver_id,
+            contenu:conv.contenu,
+            sender:conv.sender,
+            receiver:conv.receiver,
+            created_at:conv.created_at
+          })
+        });
+        this.convers.sort((a, b) => a.created_at.localeCompare(b.created_at))
       }
     )
   }
   public getConversDemande(){
-    this.manageDataService.getConversationsDon(this.donat_id,this.reic_id,this.demand_id).toPromise().then(
+    this.manageDataService.getConversationsDemande(this.donat_id,this.reic_id,this.demand_id).toPromise().then(
       data=>{
-        data.data.forEach(conv=>{
+        this.createur = data.createur_demande_id;
+        data.data1.forEach(conv=>{
           this.convers.push({
+            id:conv.id,
             donateur_id:conv.donateur_id,
             receiver_id:conv.receiver_id,
-            contenu:conv.contenu
+            contenu:conv.contenu,
+            sender:conv.sender,
+            receiver:conv.receiver,
+            created_at:conv.created_at
+          })
+        });
+        data.data2.forEach(conv=>{
+          this.convers.push({
+            id:conv.id,
+            donateur_id:conv.donateur_id,
+            receiver_id:conv.receiver_id,
+            contenu:conv.contenu,
+            sender:conv.sender,
+            receiver:conv.receiver,
+            created_at:conv.created_at
           })
         })
+        this.convers.sort((a, b) => a.created_at.localeCompare(b.created_at))
       }
     )
   }

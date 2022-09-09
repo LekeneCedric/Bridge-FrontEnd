@@ -36,6 +36,8 @@ export class DetailsDonPage implements OnInit {
   public don:IDon = null;
   public donsSimilaires:IDon[];
   public storage = environment.storage;
+  public nbreReserve:number=null;
+  public reserve :boolean = false;
   public slideOpts = {
     initialSlide: 0,
     speed: 1000,
@@ -69,10 +71,16 @@ export class DetailsDonPage implements OnInit {
     this.manageDataService.getOneDon(this.detail_id).toPromise()
     .then(
       (data)=>{
+        data.nombre_reserve>0?this.reserve = true :this.reserve = false;
         this.don = data;
         TimeAgo.addDefaultLocale(fr);
         const timeAgo = new TimeAgo('fr-EU');
-        this.elapsedTime = timeAgo.format(new Date(Date.parse(data.created_at)))
+        this.elapsedTime = timeAgo.format(new Date(Date.parse(data.created_at)));
+        this.manageDataService.nbreInteressesDon(data.id).toPromise().then(
+          (data)=>{
+            this.nbreReserve = data.nb;
+          }
+        )
       }
     )
     .catch(err=>{

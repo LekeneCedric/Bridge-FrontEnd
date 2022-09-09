@@ -7,6 +7,7 @@ export interface IDemande{
     title:string,
     resolu:number,
     donateur:any,
+    media?:any[],
     created_at?:Date,
     updated_at?:Date,
 }

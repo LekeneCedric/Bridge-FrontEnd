@@ -14,6 +14,7 @@ export class DemandesPage implements OnInit {
   constructor(public manageDataService: ManageDataService,private modalCtrl:ModalController) { }
 
   ngOnInit() {
+    this.myData = JSON.parse(localStorage.getItem('mydata'));
     this.myid = JSON.parse(localStorage.getItem('mydata')).id;
 
     setInterval(()=>{
@@ -24,6 +25,7 @@ export class DemandesPage implements OnInit {
   }
 
 /*------------------------------VARIABLES------------------------------*/
+public myData:any = {};
 public myid :number = null;
 public demandes:IDemande[]=[];
 public storage = 'http://127.0.0.1:8000/storage/';

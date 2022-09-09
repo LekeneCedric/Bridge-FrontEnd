@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit {
       name:['',[Validators.required,Validators.minLength(6)]],
       surname:['',[Validators.required,Validators.minLength(6)]],
       email:['',[Validators.required,Validators.email]],
-      birthday:['',[Validators.required]],
+      birthday:[''],
       gender:['',[Validators.required]],
       codeCountry:['',[Validators.required]],
       contact:['',[Validators.required,Validators.minLength(6)]],
@@ -38,6 +38,7 @@ export class RegisterPage implements OnInit {
   
   
   /*-----------------------------------------_FUNCTIONS------------------------------------ */
+  
   public async signUP(){
     const loading = await this.loadingController.create({
       spinner: 'lines-small',
@@ -50,7 +51,7 @@ export class RegisterPage implements OnInit {
       name: this.name.value,
       surname:this.surname.value,
       email:this.email.value,
-      date_naissance:this.birthday.value,
+      date_naissance:!isNaN(Date.parse(this.birthday.value))?this.birthday.value:null,
       sexe:this.gender.value,
       contact:Number(this.codeCountry.value+this.contact.value),
       pays:this.country.value,
@@ -61,15 +62,17 @@ export class RegisterPage implements OnInit {
     this.authService.signup(credential).toPromise().then(
      async data=>{
       loading.dismiss();
+      localStorage.setItem('token',data.token);
+      localStorage.setItem('mydata',JSON.stringify( data.user));
       //on affiche un message de success
       const toast = this.toast.create({
-        message:`Utilisateur creer avec success`,
-        icon: 'information-circle',
-        duration:4000,
+        message:`Bienvenue ${data.user.name}`,
+        icon: 'hand-left-outline',
+        duration:2000,
         color:"success"
       });
       (await (toast)).present();  
-          this.router.navigateByUrl('/login',{replaceUrl:true});
+          this.router.navigateByUrl('/menu/dons',{replaceUrl:true});
       }
     ).catch(async err=>{
         loading.dismiss();
@@ -99,6 +102,10 @@ export class RegisterPage implements OnInit {
   public changePassConfirmInputType(){
     this.password_confirm_input_type == 'password'?this.password_confirm_input_type='text':
     this.password_confirm_input_type="password";
+  }
+  get isDate(){
+    console.log(!isNaN( Date.parse(this.birthday.value)));
+    return !isNaN(Date.parse(this.birthday.value));
   }
   get name(){return this.credential.get('name');}
   get surname(){return this.credential.get('surname');}

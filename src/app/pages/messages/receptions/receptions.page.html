@@ -1,0 +1,810 @@
+<ion-header class="ion-no-border">
+ <ion-item lines="none" class="search-item">
+  <ion-icon name="menu-outline" slot="start"></ion-icon>
+  <ion-input placeholder="Recherche dans les messages"></ion-input>
+ </ion-item>
+  <ion-segment scrollable style="margin-bottom:0;padding-bottom:0">
+    <ion-chip id="category_select">
+      <ion-text>{{category}}</ion-text>
+      <ion-icon name="chevron-down-outline"></ion-icon>
+    </ion-chip>
+    <ion-popover trigger="category_select" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item [button]="true" [detail]="false" id="dons_list">Dons..</ion-item>
+            <ion-item [button]="true" [detail]="false" id="demandes_list">Demandes..</ion-item>
+    
+            <ion-popover trigger="dons_list" [dismissOnSelect]="true" side="end">
+              <ng-template>
+                <ion-content>
+                  <ion-list>
+                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('mesdons')">Mes dons</ion-item>
+                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('donsdesires')">Dons desires</ion-item>
+                  </ion-list>
+                </ion-content>
+              </ng-template>
+            </ion-popover>
+            <ion-popover trigger="demandes_list" [dismissOnSelect]="true" side="end">
+              <ng-template>
+                <ion-content>
+                  <ion-list>
+                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('mesdemandes')">Mes demandes</ion-item>
+                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('demandesrepondus')">Demandes repondus</ion-item>
+                  </ion-list>
+                </ion-content>
+              </ng-template>
+            </ion-popover>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+    <ion-chip>
+      <ion-text>Periode</ion-text>
+      <ion-icon name="chevron-down-outline"></ion-icon>
+    </ion-chip>
+  </ion-segment>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger" *ngIf="category=='mesdons' || category=='donsdesires'">
+    <ion-segment-button value="attente">
+      <ion-label>En Attente (<strong>{{filterDonAttente.length}}</strong>)</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="reserve">
+      <ion-label>Reserve (<strong>{{filterDonReserve.length}}</strong>)</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="finalise">
+      <ion-label>Finalises (<strong>{{filterDonFinalise.length}}</strong>)</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger" *ngIf="category=='mesdemandes' || category=='demandesrepondus'">
+    <ion-segment-button value="attente">
+      <ion-label>En Attente (<strong>{{filterDemandeAttente.length}}</strong>)</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="resolus">
+      <ion-label>Resolus (<strong>{{filterDemandeResolu.length}}</strong>)</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <ion-list *ngIf=" selectedSegment=='attente'&& filterDemandeAttente.length>0 && category=='mesdemandes'">
+    <div *ngFor="let demande of filterDemandeAttente" lines="none">
+      <ion-item lines="none" [routerLink]="['/salon',demande.id_receiver,demande.id_donateur,demande.id_demande,0]">
+        <ion-thumbnail slot="start">
+          <img src='../../../../assets/images/ask.png' style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{demande.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{demande.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf=" selectedSegment=='resolus'&& filterDemandeResolu.length>0 && category=='mesdemandes'">
+    <div *ngFor="let demande of filterDemandeResolu" lines="none">
+      <ion-item lines="none" [routerLink]="['/salon',demande.id_receiver,demande.id_donateur,demande.id_demande,0]">
+        <ion-thumbnail slot="start">
+          <img src='../../../../assets/images/ask.png' style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{demande.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{demande.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-list *ngIf=" selectedSegment=='attente'&& filterDemandeAttente.length>0 && category=='demandesrepondus'">
+    <div *ngFor="let demande of filterDemandeAttente" lines="none">
+      <ion-item lines="none" [routerLink]="['/salon',demande.id_receiver,demande.id_donateur,demande.id_demande,0]">
+        <ion-thumbnail slot="start">
+          <img src='../../../../assets/images/ask.png' style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{demande.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{demande.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-list *ngIf=" selectedSegment=='resolus'&& filterDemandeResolu.length>0 && category=='demandesrepondus'">
+    <div *ngFor="let demande of filterDemandeResolu" lines="none">
+      <ion-item lines="none" [routerLink]="['/salon',demande.id_receiver,demande.id_donateur,demande.id_demande,0]">
+        <ion-thumbnail slot="start">
+          <img src='../../../../assets/images/ask.png' style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{demande.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{demande.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+
+
+
+
+
+
+
+
+  <ion-list *ngIf=" selectedSegment=='attente'&& filterDonAttente.length>0 && category=='donsdesires'">
+    <div *ngFor="let salon of filterDonAttente" lines="none">
+      <ion-item lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,0,salon.id_don]">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-list *ngIf=" selectedSegment=='reserve'&& filterDonReserve.length>0 && category=='donsdesires'">
+    <div *ngFor="let salon of filterDonReserve" lines="none">
+      <ion-item lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,0,salon.id_don]">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-list *ngIf=" selectedSegment=='finalise'&& filterDonFinalise.length>0 && category=='donsdesires'">
+    <div *ngFor="let salon of filterDonFinalise" lines="none">
+      <ion-item lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,0,salon.id_don]">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  </ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ion-list *ngIf=" selectedSegment=='attente'&& filterDonAttente.length>0 && category=='mesdons'">
+    <div *ngFor="let salon of filterDonAttente" lines="none">
+      <ion-item lines="none" (click)="openModalMesdonsAttentes(salon)">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      </ion-item>
+    </div>
+  
+  </ion-list>
+  <ion-list *ngIf=" selectedSegment=='reserve'&& filterDonReserve.length>0 && category=='mesdons'">
+    <div *ngFor="let salon of filterDonReserve" lines="none" (click)="openModalMesdonsReserves(salon)">
+      <ion-item lines="none">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+    </div>
+  
+  </ion-list>
+  <ion-list *ngIf=" selectedSegment=='finalise'&& filterDonFinalise.length>0 && category=='mesdons'">
+    <div *ngFor="let salon of filterDonFinalise" lines="none">
+      <ion-item lines="none">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+    </div>
+  
+  </ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ion-list  *ngIf="selectedSegment=='dons'">
+
+    <ion-item lines="none">
+      <ion-title slot="start">Dons contactes ({{mesdonsContactes.length}})</ion-title>
+      <ion-icon *ngIf="!seeDonContacte" (click)="showDonContacte()" slot="end" name="chevron-forward-outline" size="large"></ion-icon>
+      <ion-icon *ngIf="seeDonContacte" (click)="showDonContacte()" name="chevron-down-outline" slot="end" size="large"></ion-icon>
+    </ion-item>
+    <div *ngIf="seeDonContacte">
+      <div *ngFor="let salon of mesdonsContactes" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
+        <ion-item *ngIf="salon.id_createur==id" lines="none">
+          <ion-thumbnail slot="start">
+            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+          </ion-thumbnail>
+          <ion-col>
+            <ion-row style="width:100%">
+            <ion-text style="font-weight:bold">
+              {{salon.data.titre}}
+            </ion-text>
+            </ion-row>
+            <ion-row style="margin-top:10px">
+              <ion-text color="medium">
+               {{salon.data.adresse}} 
+              </ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-item>
+      </div>
+    </div>
+    
+    
+    <ion-item lines="none">
+      <ion-title slot="start">Dons reserves ({{mesdonsReserves.length}})</ion-title>
+      <ion-icon *ngIf="!seeDonReserve" (click)="showDonReserve()" slot="end" name="chevron-forward-outline" size="large"></ion-icon>
+      <ion-icon *ngIf="seeDonReserve" (click)="showDonReserve()" name="chevron-down-outline" slot="end" size="large"></ion-icon>
+    </ion-item>
+    <div *ngIf="seeDonReserve">
+      <div *ngFor="let salon of mesdonsReserves" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
+        <ion-item *ngIf="salon.id_createur==id" lines="none">
+          <ion-thumbnail slot="start">
+            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+          </ion-thumbnail>
+          <ion-col>
+            <ion-row style="width:100%">
+            <ion-text style="font-weight:bold">
+              {{salon.data.titre}}
+            </ion-text>
+            </ion-row>
+            <ion-row style="margin-top:10px">
+              <ion-text color="medium">
+               {{salon.data.adresse}} 
+              </ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-item>
+      </div>
+    </div>
+
+    <ion-item lines="none">
+      <ion-title slot="start">Dons finalises ({{mesdonsFinalise.length}})</ion-title>
+      <ion-icon *ngIf="!seeDonFinalise" (click)="showDonFinalise()" slot="end" name="chevron-forward-outline" size="large"></ion-icon>
+      <ion-icon *ngIf="seeDonFinalise" (click)="showDonFinalise()" name="chevron-down-outline" slot="end" size="large"></ion-icon>
+    </ion-item>
+    <div *ngIf="seeDonFinalise">
+      <div *ngFor="let salon of mesdonsFinalise" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
+        <ion-item *ngIf="salon.id_createur==id" lines="none">
+          <ion-thumbnail slot="start">
+            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+          </ion-thumbnail>
+          <ion-col>
+            <ion-row style="width:100%">
+            <ion-text style="font-weight:bold">
+              {{salon.data.titre}}
+            </ion-text>
+            </ion-row>
+            <ion-row style="margin-top:10px">
+              <ion-text color="medium">
+               {{salon.data.adresse}} 
+              </ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-item>
+      </div>
+    </div>
+    
+    
+    <!-- <ion-title>Dons convoites </ion-title>
+    <div *ngFor="let salon of salonsDons" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
+      <ion-item *ngIf="salon.id_createur!=id" lines="none">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.data.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.data.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+    </div> -->
+    
+  </ion-list>
+  <ion-list *ngIf="selectedSegment=='demandes'">
+    <ion-title>Mes demandes de receptions</ion-title>
+    <div *ngFor="let salon of salonsDemandes" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don!=null?salon.id_don:0]">
+      <ion-item *ngIf="salon.id_createur!=id"> 
+        <ion-thumbnail slot="start">
+          <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/ask.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <img  alt="">
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.data.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.data.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+    </div>
+    <ion-title>Mes reponses de receptions</ion-title>
+    <div *ngFor="let salon of salonsDemandes" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don!=null?salon.id_don:0]">
+      <ion-item *ngIf="salon.id_createur==id"> 
+        <ion-thumbnail slot="start">
+          <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/ask.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <img  alt="">
+          <ion-row style="width:100%">
+          <ion-text style="font-weight:bold">
+            {{salon.data.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text color="medium">
+             {{salon.data.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-header class="ion-no-border" style="background:#ec566a">
+  <ion-row style="width: 100%;">
+    <ion-col class="logo" size="8" style="margin-top:10px">
+      <ion-title class="title" color="light" style="font-weight:bold">BRIDGE</ion-title>
+    </ion-col>
+    <ion-col size="4">
+      <ion-row style="width: 100%;">
+      <ion-col style="text-align: right" size="6">
+        <ion-icon name="notifications" size="large" color="light"></ion-icon>
+      </ion-col>
+      <ion-col style="text-align: right" size="6">
+        <ion-icon name="person-circle-outline" size="large" color="light" [routerLink]="['/profil-donateur',id]"></ion-icon>
+      </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <ion-grid  style="height:100px;width:100%;background:#ec566a;position:relative">
+  </ion-grid>
+  <ion-list style="position:absolute;width:100%;top:0;background: transparent;">
+    <ion-card style="width:95%" class="ion-padding-vertical">
+    <ion-row style="width:100%" class="ion-padding-horizontal">
+     <ion-col size="9" >
+      <ion-row style="text-align:center;width:100%"><ion-text style="font-weight:bold;color:black">Total balance</ion-text></ion-row>
+      <ion-row style="text-align:center;width:100%;margin-top:1em"><ion-text style="font-weight:bolder;font-size:2em;color:black">$ 2,562.50</ion-text></ion-row>
+     </ion-col>
+     <ion-col size="3">
+      <ion-button style="border-radius:10px" size="large">
+        <ion-icon name="add-outline" size="large"></ion-icon>
+      </ion-button>
+     </ion-col>
+    </ion-row>
+    <ion-row style="margin:0;padding:0">
+      <ion-item-divider class="ion-margin-horizontal"></ion-item-divider>
+    </ion-row>
+    <ion-item lines="none">
+    <ion-col>
+      <ion-row>
+        <ion-button style="border-radius:10px" size="large" color="danger">
+          <ion-icon name="arrow-down-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-row>
+      <ion-row><ion-text style="margin-top:10px;font-weight: bold;">Withdraw</ion-text></ion-row>
+    </ion-col>
+    <ion-col>
+      <ion-row>
+        <ion-button style="border-radius:10px" size="large" color="success">
+          <ion-icon name="card-outline" size="large"></ion-icon>
+        </ion-button>
+      </ion-row>
+      <ion-row style="width:100%;text-align:center;font-weight: bold;margin-left:15%">
+        <ion-text style="margin-top:10px;text-align: center;">send</ion-text>
+      </ion-row>
+    </ion-col>
+    <ion-col>
+      <ion-row>
+        <ion-button style="border-radius:10px" size="large" color="warning">
+          <ion-icon name="cash-outline" size="large" color="light"></ion-icon>
+        </ion-button>
+      </ion-row>
+      <ion-row><ion-text style="margin-top:10px;font-weight: bold;">Exchange</ion-text></ion-row>
+    </ion-col>
+    
+    </ion-item>
+    </ion-card>
+    <ion-row style="width:100%">
+    <ion-col size="6"> 
+     <ion-card class="ion-padding">
+      <ion-row>
+        <ion-text style="font-weight:bold;color:gray">income</ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-text color="success" style="font-weight:bold;font-size:2em;margin-top:12px">$ 552.95</ion-text>
+      </ion-row>
+     </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card class="ion-padding">
+        <ion-row>
+          <ion-text style="font-weight:bold;color:gray">Express</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text color="danger" style="font-weight:bold;font-size:2em;margin-top:12px">$ 86.45</ion-text>
+        </ion-row>
+       </ion-card>
+    </ion-col>
+    </ion-row>
+    <ion-row style="width:100%">
+      <ion-col size="6"> 
+       <ion-card class="ion-padding">
+        <ion-row>
+          <ion-text style="font-weight:bold;color:gray">income</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text color="success" style="font-weight:bold;font-size:2em;margin-top:12px">$ 552.95</ion-text>
+        </ion-row>
+       </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="ion-padding">
+          <ion-row>
+            <ion-text style="font-weight:bold;color:gray">Express</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text color="danger" style="font-weight:bold;font-size:2em;margin-top:12px">$ 86.45</ion-text>
+          </ion-row>
+         </ion-card>
+      </ion-col>
+      </ion-row>
+      <ion-row style="width:100%">
+        <ion-col size="6"> 
+         <ion-card class="ion-padding">
+          <ion-row>
+            <ion-text style="font-weight:bold;color:gray">income</ion-text>
+          </ion-row>
+          <ion-row>
+            <ion-text color="success" style="font-weight:bold;font-size:2em;margin-top:12px">$ 552.95</ion-text>
+          </ion-row>
+         </ion-card>
+        </ion-col>
+        <ion-col size="6">
+          <ion-card class="ion-padding">
+            <ion-row>
+              <ion-text style="font-weight:bold;color:gray">Express</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text color="danger" style="font-weight:bold;font-size:2em;margin-top:12px">$ 86.45</ion-text>
+            </ion-row>
+           </ion-card>
+        </ion-col>
+        </ion-row>
+
+    <ion-item lines="none">
+      <ion-text slot="start" style="font-weight:bold;font-size:1.2em;">Transactions</ion-text>
+      <ion-text slot="end" color="medium"> view all </ion-text>
+    </ion-item>
+    <ion-card class="ion-no-border">
+    <ion-item lines="none" class="ion-margin-horizontal" style="margin:0;padding:0">
+      <ion-thumbnail slot="start">
+        <img src="../../../../assets/images/apple.png" alt="">
+      </ion-thumbnail>
+      <ion-col>
+        <ion-row><ion-text style="font-weight:bold;color:black">Apple</ion-text></ion-row>
+        <ion-row><ion-text color="medium">Shopping</ion-text></ion-row>
+      </ion-col>
+      <ion-text color="danger"style="font-weight:bold" slot="end"> - $ 150</ion-text>
+    </ion-item>
+  </ion-card>
+  <ion-card class="ion-no-border">
+    <ion-item lines="none" class="ion-margin-horizontal" style="margin:0;padding:0">
+      <ion-thumbnail slot="start">
+        <img src="../../../../assets/images/amazon-pay.png" alt="">
+      </ion-thumbnail>
+      <ion-col>
+        <ion-row><ion-text style="font-weight:bold;color:black">Amazon</ion-text></ion-row>
+        <ion-row><ion-text color="medium">Shopping</ion-text></ion-row>
+      </ion-col>
+      <ion-text color="danger" style="font-weight:bold" slot="end"> - $ 150</ion-text>
+    </ion-item>
+  </ion-card>
+  <ion-item lines="none">
+    <ion-text slot="start" style="font-weight:bold;font-size:1.2em;">My cards</ion-text>
+    <ion-text slot="end" color="medium"> view all </ion-text>
+  </ion-item>
+  </ion-list>
+  
+</ion-content> -->

@@ -54,6 +54,14 @@ const routes: Routes = [
     path: 'salon/:id_donateur/:id_receiver/:id_demande/:id_don',
     loadChildren: () => import('./pages/messages/salon/salon.module').then( m => m.SalonPageModule)
   },
+  {
+    path: 'receptions',
+    loadChildren: () => import('./pages/messages/receptions/receptions.module').then( m => m.ReceptionsPageModule)
+  },
+  {
+    path: 'modal-salon',
+    loadChildren: () => import('./modals/modal-salon/modal-salon.module').then( m => m.ModalSalonPageModule)
+  },
 ];
 @NgModule({
   imports: [

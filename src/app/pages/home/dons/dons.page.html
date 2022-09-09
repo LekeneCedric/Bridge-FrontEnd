@@ -1,21 +1,18 @@
 <ion-header>
   <ion-row style="width: 100%;">
-    <ion-col class="logo" size="6">
+    <ion-col class="logo" size="5">
       <ion-title class="title">BRIDGE</ion-title>
       <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>
     </ion-col>
     <ion-col>
-      <ion-row style="width: 100%;">
-        <ion-col size="4">
-          <ion-icon [routerLink]="['/menu/settings',id]" name="settings"  size="large" color="danger"></ion-icon>
+      <ion-row>
+        <ion-col size="4" style="text-align:center">
+          <ion-icon name="notifications" size="large" color="warning" ></ion-icon>
         </ion-col>
-      <ion-col style="text-align: right" size="4">
-        <ion-icon name="notifications" size="large" color="warning"></ion-icon>
-        <ion-badge color="danger">1</ion-badge>
-      </ion-col>
-      <ion-col style="text-align: right" size="4">
-        <ion-icon name="person-circle-outline" size="large" color="danger" [routerLink]="['/profil-donateur',id]"></ion-icon>
-      </ion-col>
+        <ion-col size="8" [routerLink]="['/profil-donateur',id]" style="display:flex;flex-direction: row">
+          <ion-icon name="person-circle-outline" size="large" color="danger" ></ion-icon>
+          <ion-text style="margin-top:8px;margin-left:10px;font-weight: bold;">{{myData.name}}{{myData.surname |slice:0:1}}.</ion-text>
+        </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>
@@ -69,19 +66,24 @@
 <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
   
   <div *ngFor="let don of dons" style="width:50%">
-  <ion-card  [routerLink]="['details',don.id]"style="width:90%">
-    <div style="width:100%;height:150px;margin:0;padding:0;background-size:cover;"
-    [style.background-image]="image(don)"
-    >
-      
+  <ion-card  [routerLink]="['details',don.id]"style="width:90%;position: relative;">
+    <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
+    <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
     </div>
-      <ion-item>
-        <ion-text style="font-weight: bold">{{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
-      </ion-item>
-  <ion-item>
-    <ion-icon name="location-outline" color="danger"></ion-icon>
-    <ion-label>{{don.adresse}}</ion-label>
-</ion-item>
+    <div style="width:100%;height:150px;margin:0;padding:0;background-size:cover; opacity: {{don.nombre_reserve>0?0.5:1}};
+    background-image: url({{image(don)}});">   
+    </div>
+      <ion-row style="margin-top:2%">
+        <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;padding:2%"color="dark">
+          {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
+      </ion-row>
+      <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;padding:2%"color="medium">
+        {{don.adresse | slice:0:12}}{{don.adresse.length>12?'...':''}}</ion-text>
+      <ion-row style="margin-top:10px;padding:0;width:100%;display: flex;">
+        <ion-col size="2" style="padding-right:0;text-align: right;"><ion-icon name="timer-outline" color="dark"style="font-weight:bold" size="medium" style="padding-right:0"></ion-icon></ion-col>
+        <ion-col style="padding-left:0"> <ion-text style="margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;" color="dark">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> 
+    </ion-row>
+        
   </ion-card>
 </div>
 <ion-infinite-scroll class="scroll-content" threshold="100px" id="infinite-scroll" (ionInfinite)="loadData($event)" >

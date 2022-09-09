@@ -116,6 +116,9 @@ let LoginPage = class LoginPage {
     this.loadingController = loadingController;
     this.toast = toast;
     this.router = router;
+    /*-----------------------------VARIABLES-----------------------------------------------*/
+
+    this.myToken = null;
     this.term_condition = false;
     this.password_input_type = 'password';
   }
@@ -128,8 +131,9 @@ let LoginPage = class LoginPage {
         email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.email]],
         password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6)]]
       });
+      localStorage.getItem('token') != null ? _this.myToken = localStorage.getItem('token') : console.log("aucun token trouve");
 
-      if (JSON.parse(localStorage.getItem('mydata')).name) {
+      if (_this.myToken) {
         console.log('user present');
         const token = localStorage.getItem('token');
 
@@ -167,7 +171,7 @@ let LoginPage = class LoginPage {
           console.log(data);
           localStorage.setItem('token', data.token);
           localStorage.setItem('mydata', JSON.stringify(data.user));
-          console.log(JSON.parse(localStorage.getItem('mydata')).name);
+          _this2.myToken = localStorage.getItem('token');
           loading.dismiss(); //on affiche un message de success
 
           const toast = _this2.toast.create({
@@ -177,11 +181,9 @@ let LoginPage = class LoginPage {
             color: "success"
           });
 
-          (yield toast).present();
+          _this2.ngOnInit();
 
-          _this2.router.navigateByUrl('/menu/dons', {
-            replaceUrl: true
-          });
+          (yield toast).present(); // this.router.navigateByUrl('/menu/dons',{replaceUrl:true});
         });
 
         return function (_x) {
@@ -193,7 +195,7 @@ let LoginPage = class LoginPage {
           loading.dismiss();
 
           const toast = _this2.toast.create({
-            message: `${err.error.message}`,
+            message: `compte invalide / probleme de connexion`,
             icon: 'alert',
             duration: 1000,
             color: "danger"
@@ -207,10 +209,6 @@ let LoginPage = class LoginPage {
         };
       }());
     })();
-  }
-
-  validcondition() {
-    this.term_condition = !this.term_condition;
   }
 
   changePassInputType() {
@@ -254,7 +252,7 @@ LoginPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core_
   \*************************************************************/
 /***/ ((module) => {
 
-module.exports = "* {\n  font-family: \"Roboto Mono\", monospace;\n}\n\n.grid {\n  margin-top: 10%;\n}\n\n.hello-text {\n  font-weight: bolder;\n  text-align: center;\n}\n\n.input {\n  border: 0.5px solid rgb(206, 204, 204);\n  border-radius: 10px;\n}\n\n.google_elt {\n  margin-top: 2%;\n  align-self: center;\n  text-align: center;\n}\n\n.signup {\n  text-align: left;\n  text-decoration: underline;\n  -webkit-text-decoration-color: #eb445a;\n          text-decoration-color: #eb445a;\n}\n\n.rowSignup {\n  width: 100%;\n  text-align: right;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFDQUFBO0FBQ0o7O0FBQ0E7RUFDSSxlQUFBO0FBRUo7O0FBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0FBR0E7O0FBREE7RUFDSSxzQ0FBQTtFQUNBLG1CQUFBO0FBSUo7O0FBRkE7RUFDSSxjQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtBQUtKOztBQURBO0VBQ0ksZ0JBQUE7RUFDQSwwQkFBQTtFQUNBLHNDQUFBO1VBQUEsOEJBQUE7QUFJSjs7QUFGQTtFQUNJLFdBQUE7RUFDQSxpQkFBQTtBQUtKIiwiZmlsZSI6ImxvZ2luLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIip7XG4gICAgZm9udC1mYW1pbHk6ICdSb2JvdG8gTW9ubycsIG1vbm9zcGFjZTtcbn1cbi5ncmlke1xuICAgIG1hcmdpbi10b3A6MTAlO1xufVxuLmhlbGxvLXRleHR7XG5mb250LXdlaWdodDpib2xkZXI7XG50ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4uaW5wdXR7XG4gICAgYm9yZGVyOiAwLjVweCBzb2xpZCByZ2IoMjA2LCAyMDQsIDIwNCk7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbn1cbi5nb29nbGVfZWx0e1xuICAgIG1hcmdpbi10b3A6MiU7XG4gICAgYWxpZ24tc2VsZjogY2VudGVyO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbi5zaWdudXBNZXNzYWdle1xufVxuLnNpZ251cHtcbiAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgIHRleHQtZGVjb3JhdGlvbjogdW5kZXJsaW5lO1xuICAgIHRleHQtZGVjb3JhdGlvbi1jb2xvcjogI2ViNDQ1YTtcbn1cbi5yb3dTaWdudXB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgdGV4dC1hbGlnbjogcmlnaHQ7XG59Il19 */";
+module.exports = ".grid {\n  margin-top: 10%;\n}\n\n.hello-text {\n  font-weight: bolder;\n  text-align: center;\n}\n\n.input {\n  border: 0.5px solid rgb(206, 204, 204);\n  border-radius: 10px;\n}\n\n.google_elt {\n  margin-top: 2%;\n  align-self: center;\n  text-align: center;\n}\n\n.signup {\n  text-align: left;\n  text-decoration: underline;\n  -webkit-text-decoration-color: #eb445a;\n          text-decoration-color: #eb445a;\n}\n\n.rowSignup {\n  width: 100%;\n  text-align: right;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQUNJLGVBQUE7QUFBSjs7QUFFQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUFDQTs7QUFDQTtFQUNJLHNDQUFBO0VBQ0EsbUJBQUE7QUFFSjs7QUFBQTtFQUNJLGNBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0FBR0o7O0FBQ0E7RUFDSSxnQkFBQTtFQUNBLDBCQUFBO0VBQ0Esc0NBQUE7VUFBQSw4QkFBQTtBQUVKOztBQUFBO0VBQ0ksV0FBQTtFQUNBLGlCQUFBO0FBR0oiLCJmaWxlIjoibG9naW4ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4uZ3JpZHtcbiAgICBtYXJnaW4tdG9wOjEwJTtcbn1cbi5oZWxsby10ZXh0e1xuZm9udC13ZWlnaHQ6Ym9sZGVyO1xudGV4dC1hbGlnbjogY2VudGVyO1xufVxuLmlucHV0e1xuICAgIGJvcmRlcjogMC41cHggc29saWQgcmdiKDIwNiwgMjA0LCAyMDQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XG59XG4uZ29vZ2xlX2VsdHtcbiAgICBtYXJnaW4tdG9wOjIlO1xuICAgIGFsaWduLXNlbGY6IGNlbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4uc2lnbnVwTWVzc2FnZXtcbn1cbi5zaWdudXB7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcbiAgICB0ZXh0LWRlY29yYXRpb24tY29sb3I6ICNlYjQ0NWE7XG59XG4ucm93U2lnbnVwe1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xufSJdfQ== */";
 
 /***/ }),
 
@@ -264,7 +262,7 @@ module.exports = "* {\n  font-family: \"Roboto Mono\", monospace;\n}\n\n.grid {\
   \*************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n<ion-grid class=\"grid\">\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-img src=\"../../../../assets/images/undraw_Access_account_re_8spm.png\"></ion-img>\n    </ion-col>\n  </ion-row>\n  <form [formGroup]=\"credential\" (ngSubmit)=\"signIN()\">\n  <ion-row>\n    <ion-col size=\"12\" class=\"hello-text\">\n      <h1>Welcome back ! </h1>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"email\" placeholder=\"Enter email\" formControlName=\"email\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(email.dirty||email.touched)&& email.errors\">invalid email</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input [type]=\"password_input_type\" placeholder=\"password\" formControlName=\"password\"></ion-input>\n        <ion-icon name=\"eye-off-outline\" *ngIf=\"password_input_type=='password'\" (click)=\"changePassInputType()\"></ion-icon>\n      <ion-icon name=\"eye-outline\" *ngIf=\"password_input_type=='text'\" (click)=\"changePassInputType()\"></ion-icon>\n        <ion-note slot=\"error\" *ngIf=\"(password.dirty||password.touched)&& password.errors\">invalid password</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row class=\"ion-margin-top\" style=\"margin-left:15px\">\n    <ion-checkbox color=\"danger\" (click)=\"validcondition()\"></ion-checkbox>\n    <ion-label class=\"ion-margin-horizontal\">acccept term and condition</ion-label>\n</ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n     <ion-button [disabled]=\"!credential.valid || !term_condition\" type=\"submit\" color=\"success\"  type=\"submit\" expand=\"block\" color=\"danger\">Enroll now !</ion-button>\n    </ion-col>\n  </ion-row>\n</form>\n  <ion-row>\n    <ion-col>\n      <ion-item-divider></ion-item-divider>\n    </ion-col>\n    <ion-col class=\"google_elt\">\n      <ion-chip>\n        <ion-avatar>\n          <img src=\"../../../../assets/images/google.png\">\n        </ion-avatar>\n        <ion-label>Google</ion-label>\n      </ion-chip> \n    </ion-col>\n    <ion-col><ion-item-divider></ion-item-divider></ion-col>\n  </ion-row>\n  <ion-row class=\"rowSignup\">\n    <ion-col class=\"signupMessage\" style=\"text-align: center;\" size=\"9\">\n     <ion-text>You don't have account ? </ion-text>\n    </ion-col>\n      <ion-col class='signup' size=\"3\" routerLink=\"/register\">\n         <ion-text color=\"danger\">Sign Up</ion-text>\n      </ion-col>\n  </ion-row>\n</ion-grid>\n</ion-content>\n";
+module.exports = "\n<ion-content>\n<ion-grid class=\"grid\">\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-img src=\"../../../../assets/images/undraw_Access_account_re_8spm.png\"></ion-img>\n    </ion-col>\n  </ion-row>\n  <form [formGroup]=\"credential\" (ngSubmit)=\"signIN()\">\n  <ion-row>\n    <ion-col size=\"12\" class=\"hello-text\">\n      <h1>Bienvenue ! </h1>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"email\" placeholder=\"Entrez votre email\" formControlName=\"email\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(email.dirty||email.touched)&& email.errors\">invalid email</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input [type]=\"password_input_type\" placeholder=\"Entrez votre mot de passe\" formControlName=\"password\"></ion-input>\n        <ion-icon name=\"eye-off-outline\" *ngIf=\"password_input_type=='password'\" (click)=\"changePassInputType()\"></ion-icon>\n      <ion-icon name=\"eye-outline\" *ngIf=\"password_input_type=='text'\" (click)=\"changePassInputType()\"></ion-icon>\n        <ion-note slot=\"error\" *ngIf=\"(password.dirty||password.touched)&& password.errors\">invalid password</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  \n  <ion-row>\n    <ion-col size=\"12\">\n     <ion-button [disabled]=\"!credential.valid\" type=\"submit\" color=\"success\"  type=\"submit\" expand=\"block\" color=\"danger\">Connexion !</ion-button>\n    </ion-col>\n  </ion-row>\n</form>\n  <ion-row>\n    <ion-col>\n      <ion-item-divider></ion-item-divider>\n    </ion-col>\n    <ion-col class=\"google_elt\">\n      <ion-chip>\n        <ion-avatar>\n          <img src=\"../../../../assets/images/google.png\">\n        </ion-avatar>\n        <ion-label>Google</ion-label>\n      </ion-chip> \n    </ion-col>\n    <ion-col><ion-item-divider></ion-item-divider></ion-col>\n  </ion-row>\n  <ion-row class=\"rowSignup\">\n    <ion-col class=\"signupMessage\" style=\"text-align: center;padding-right:0\" size=\"8\">\n     <ion-text>Vous n'avez pas de compte ? </ion-text>\n    </ion-col>\n      <ion-col style=\"margin-left:0\" class='signup' size=\"4\" routerLink=\"/register\">\n         <ion-text color=\"danger\">Inscrivez-vous </ion-text>\n      </ion-col>\n  </ion-row>\n</ion-grid>\n</ion-content>\n";
 
 /***/ })
 

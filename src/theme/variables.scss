@@ -3,8 +3,10 @@
 
 /** Ionic CSS Variables **/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 :root {
-  --ion-font-family:'Montserrat Alternates', sans-serif;
+  --ion-font-family:'Josefin Sans', sans-serif;
+  --ion-font-weight:bold;
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;

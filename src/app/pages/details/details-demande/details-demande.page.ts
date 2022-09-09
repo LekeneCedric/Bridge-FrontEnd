@@ -4,7 +4,7 @@ import { NavController } from '@ionic/angular';
 import { IDemande } from 'src/app/models/demande.model';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/fr'
+import fr from 'javascript-time-ago/locale/fr'
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-details-demande',
@@ -23,8 +23,7 @@ export class DetailsDemandePage implements OnInit {
     this.manageDataService.getOneDemande(this.detail_id).toPromise().then(
       data=>{
         this.demande = data;
-        console.log(data.donateur.media[0].filePath);
-        TimeAgo.addDefaultLocale(en);
+        TimeAgo.addDefaultLocale(fr);
         const timeAgo = new TimeAgo('fr-EU');
         this.elapsedTime = timeAgo.format(new Date(Date.parse(data.created_at)))
       }

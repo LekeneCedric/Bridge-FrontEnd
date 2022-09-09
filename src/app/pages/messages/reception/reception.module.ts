@@ -11,8 +11,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    CommonModule,
     FormsModule,
     IonicModule,
     ReceptionPageRoutingModule

@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["default-src_app_services_creation_creation_service_ts-src_app_services_medias_medias_service_-32c9eb"],{
+(self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["default-src_app_services_creation_creation_service_ts-src_app_services_medias_medias_service_-73ec77"],{
 
 /***/ 9444:
 /*!*******************************************************!*\
@@ -63,151 +63,81 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MediasService": () => (/* binding */ MediasService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
 
 
 
 
 let MediasService = class MediasService {
-    constructor(http) {
-        this.http = http;
-    }
-    uploadImage(token, credential) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/medias';
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        });
-        return this.http.post(api, credential, { headers: headers });
-    }
-};
-MediasService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
-];
-MediasService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
-        providedIn: 'root'
-    })
-], MediasService);
+  constructor(http) {
+    this.http = http;
+  }
 
+  uploadImage(token, credential) {
+    var _this = this;
 
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          credential.files.forEach( /*#__PURE__*/function () {
+            var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+              const res = yield fetch(file.data);
+              const blob = yield res.blob();
+              const formData = new FormData();
+              formData.append('file', blob, file.path);
+              formData.append('don_id', credential.don_id);
+              let cd = {
+                file: blob,
+                don_id: credential.don_id
+              };
+              setTimeout(() => {
+                _this.uploadData(formData, token);
+              }, 500);
+            });
 
-/***/ }),
+            return function (_x) {
+              return _ref.apply(this, arguments);
+            };
+          }());
+          resolve('success');
+        } catch (err) {
+          reject(err);
+        }
+      }, 300);
+    });
+  }
 
-/***/ 88:
-/*!*************************************************!*\
-  !*** ./src/app/services/photo/photo.service.ts ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+  uploadData(formData, token) {
+    var _this2 = this;
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PhotoService": () => (/* binding */ PhotoService)
-/* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @capacitor/camera */ 4241);
-
-
-
-
-let PhotoService = class PhotoService {
-  constructor() {}
-
-  getPicture() {
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const capturePhoto = yield _capacitor_camera__WEBPACK_IMPORTED_MODULE_1__.Camera.getPhoto({
-        resultType: _capacitor_camera__WEBPACK_IMPORTED_MODULE_1__.CameraResultType.Base64,
-        source: _capacitor_camera__WEBPACK_IMPORTED_MODULE_1__.CameraSource.Camera,
-        quality: 100
+      const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiURL + '/medias';
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       });
-      return capturePhoto;
+
+      _this2.http.post(api, formData).pipe().subscribe(data => {
+        console.log(data);
+      });
     })();
   }
 
 };
 
-PhotoService.ctorParameters = () => [];
+MediasService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
+}];
 
-PhotoService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+MediasService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Injectable)({
   providedIn: 'root'
-})], PhotoService);
-
-
-/***/ }),
-
-/***/ 4830:
-/*!****************************************************************!*\
-  !*** ./node_modules/@capacitor/camera/dist/esm/definitions.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CameraDirection": () => (/* binding */ CameraDirection),
-/* harmony export */   "CameraResultType": () => (/* binding */ CameraResultType),
-/* harmony export */   "CameraSource": () => (/* binding */ CameraSource)
-/* harmony export */ });
-var CameraSource;
-
-(function (CameraSource) {
-  /**
-   * Prompts the user to select either the photo album or take a photo.
-   */
-  CameraSource["Prompt"] = "PROMPT";
-  /**
-   * Take a new photo using the camera.
-   */
-
-  CameraSource["Camera"] = "CAMERA";
-  /**
-   * Pick an existing photo from the gallery or photo album.
-   */
-
-  CameraSource["Photos"] = "PHOTOS";
-})(CameraSource || (CameraSource = {}));
-
-var CameraDirection;
-
-(function (CameraDirection) {
-  CameraDirection["Rear"] = "REAR";
-  CameraDirection["Front"] = "FRONT";
-})(CameraDirection || (CameraDirection = {}));
-
-var CameraResultType;
-
-(function (CameraResultType) {
-  CameraResultType["Uri"] = "uri";
-  CameraResultType["Base64"] = "base64";
-  CameraResultType["DataUrl"] = "dataUrl";
-})(CameraResultType || (CameraResultType = {}));
-
-/***/ }),
-
-/***/ 4241:
-/*!**********************************************************!*\
-  !*** ./node_modules/@capacitor/camera/dist/esm/index.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Camera": () => (/* binding */ Camera),
-/* harmony export */   "CameraDirection": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.CameraDirection),
-/* harmony export */   "CameraResultType": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.CameraResultType),
-/* harmony export */   "CameraSource": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.CameraSource)
-/* harmony export */ });
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 5099);
-/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 4830);
-
-const Camera = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Camera', {
-  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_camera_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 1327)).then(m => new m.CameraWeb())
-});
-
+})], MediasService);
 
 
 /***/ }),
@@ -784,4 +714,4 @@ const Geolocation = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlug
 /***/ })
 
 }]);
-//# sourceMappingURL=default-src_app_services_creation_creation_service_ts-src_app_services_medias_medias_service_-32c9eb.js.map
+//# sourceMappingURL=default-src_app_services_creation_creation_service_ts-src_app_services_medias_medias_service_-73ec77.js.map

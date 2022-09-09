@@ -22,10 +22,10 @@ const routes: Routes = [
     },
     {
       path:'messages',
-      loadChildren:()=> import('../../pages/messages/reception/reception-routing.module').then(m => m.ReceptionPageRoutingModule)
+      loadChildren:()=> import('../../pages/messages/receptions/receptions.module').then(m => m.ReceptionsPageModule)
     },
     {
-      path:'settings/:id',
+      path:'settings',
       loadChildren:()=> import('../../pages/settings/settings.module').then(m => m.SettingsPageModule)
     }
   ]

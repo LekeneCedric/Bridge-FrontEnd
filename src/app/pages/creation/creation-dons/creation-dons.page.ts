@@ -22,7 +22,7 @@ export class CreationDonsPage implements OnInit {
   constructor(private creationService:CreationService,private mediaService:MediasService,
     private navCtrl:NavController,private actionSheetController:ActionSheetController,
     private nativGeocoder:NativeGeocoder,private platform:Platform,
-    private loadingController:LoadingController, 
+    private loadingController:LoadingController,
     private http:HttpClient, private toast:ToastController,private router:Router) { }
   
   async ngOnInit() {
@@ -115,13 +115,18 @@ export class CreationDonsPage implements OnInit {
       description:this.selectedDescription,
       longitude:11,
       latitude:3,
-      adresse:'this.myAdress'
+      adresse:'cameroun,yaounde'
     }
    
     this.creationService.createDon(donation,token).toPromise()
     .then(data=>{
-      this.navBack();
-     this.upload_image(data,loading);
+      this.upload_image(data,loading);
+     setTimeout(()=>{
+      this.router.navigateByUrl('/menu/dons').then(()=>{
+        window.location.reload();
+      })
+     },5000) 
+     
     })
     .catch(
       async err=>{
@@ -152,7 +157,11 @@ export class CreationDonsPage implements OnInit {
     this.mediaService.uploadImage(token,fd).then(async data=>{
       console.log('etape2');
       // upload images
-      loading.dismiss();
+      
+      setTimeout(()=>{
+        loading.dismiss();
+      },4000) 
+      
     //on affiche un message de success
     const toast = this.toast.create({
       message:`don creer avec success`,

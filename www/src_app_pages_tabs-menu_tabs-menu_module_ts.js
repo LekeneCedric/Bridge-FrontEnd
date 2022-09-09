@@ -26,7 +26,7 @@ const routes = [
         children: [
             {
                 path: 'dons',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts-src_app_services_manage-data_man-6e95de"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 4984)).then(m => m.DonsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts-src_app_services_manage-data_man-6e95de"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 4984)).then(m => m.DonsPageModule)
             },
             {
                 path: 'demandes',
@@ -38,10 +38,10 @@ const routes = [
             },
             {
                 path: 'messages',
-                loadChildren: () => __webpack_require__.e(/*! import() */ "common").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/reception/reception-routing.module */ 6939)).then(m => m.ReceptionPageRoutingModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-salon_modal-salon_page_ts"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
             },
             {
-                path: 'settings/:id',
+                path: 'settings',
                 loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_settings_settings_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
             }
         ]
@@ -159,7 +159,7 @@ module.exports = "ion-tab-button {\n  font-size: 10px;\n  --background-focused: 
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-tabs>\n\n  <ion-tab-bar id=\"app-tab-bar\" slot=\"bottom\">\n    <ion-tab-button tab=\"dons\">\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      <ion-text>Dons</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"demandes\">\n      <ion-icon name=\"hand-left-outline\" size=\"large\"></ion-icon>\n      <ion-text>Demandes</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"annonces\">\n      <ion-icon name=\"megaphone-outline\" size=\"large\"></ion-icon>\n      <ion-text>Annonces</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"messages\">\n      <ion-icon name=\"chatbox-outline\" size=\"large\"></ion-icon>\n      <ion-text>Messages</ion-text>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n";
+module.exports = "<ion-tabs>\n\n  <ion-tab-bar id=\"app-tab-bar\" slot=\"bottom\">\n    <ion-tab-button tab=\"dons\">\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Dons</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"demandes\">\n      <ion-icon name=\"hand-left-outline\"size=\"large\" ></ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Demandes</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"annonces\">\n      <ion-icon name=\"megaphone-outline\" size=\"large\"> </ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Annonces</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"messages\">\n      <ion-icon name=\"chatbox-outline\" size=\"large\"></ion-icon>\n      <ion-text style=\"font-weight:bold;margin-top:5px\">Messages</ion-text>\n    </ion-tab-button>\n    <ion-tab-button tab=\"settings\">\n      <ion-icon name=\"settings-outline\" size=\"large\"></ion-icon>\n      <ion-text style=\"font-weight:bold;margin-top:5px\">parametres</ion-text>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n";
 
 /***/ })
 

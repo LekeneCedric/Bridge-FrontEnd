@@ -1,17 +1,18 @@
-
 .logo{
+    & .title{
     margin-left: 2%;
     text-align: left;
     color: #eb445a;
-    font-family: 'Rubik Glitch', cursive;
-    font-size: 3em;
-    margin-bottom: 2%;
+    font-family:'Rubik Glitch';
+    font-size: 2em;
+    margin-bottom: 2%;}
 }
+
 .title{
     padding: 0;
     margin: 0;
     font-size: 0.7em;
 }
-.chip{
+ion-chip{
     border-radius: 10px;
 }

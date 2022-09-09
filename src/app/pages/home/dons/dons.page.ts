@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { IDon } from 'src/app/models/don.model';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
-
+import fr from 'javascript-time-ago/locale/fr'
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { ModalCategoryPage } from 'src/app/modals/modal-category/modal-category.page';
 import { ModalEtatPage } from 'src/app/modals/modal-etat/modal-etat.page';
+import TimeAgo from 'javascript-time-ago';
 @Component({
   selector: 'app-dons',
   templateUrl: './dons.page.html',
@@ -17,6 +18,8 @@ export class DonsPage implements OnInit {
     private nativGeocoder:NativeGeocoder,private modalCtrl:ModalController) { }
 
   ngOnInit() {
+    this.myData = JSON.parse(localStorage.getItem('mydata'));
+    console.log(this.myData);
     this.current_page = 1;
     this.next_page = 2;
     this.dons = [];
@@ -26,6 +29,8 @@ export class DonsPage implements OnInit {
       const tabBar = document.getElementById('app-tab-bar');
       tabBar.style.display = 'flex';
     },100)
+    TimeAgo.addDefaultLocale(fr);
+    
   }
   /*-----------------------------VARIABLES-----------------------------*/
   private myid :number = null;
@@ -37,7 +42,13 @@ export class DonsPage implements OnInit {
   public current_page :number = 1;
   public next_page : number = 1;
   public last_page :number = null;
+  public myData:any = {};
   /*-----------------------------FUNCTIONS-----------------------------*/
+  public timeAgo(created_at:any):string{
+    const timeAgo = new TimeAgo('fr-EU');
+    const elapsedTime = timeAgo.format(new Date(Date.parse(created_at)-60*1000));
+    return elapsedTime
+  }
   get id ():number{return this.myid}
   public async openModal(){
     const modal = await this.modalCtrl.create({
@@ -80,16 +91,16 @@ export class DonsPage implements OnInit {
   }
   image(don:any):any{
     let url = '';
-    don.media.length>0?url= `${this.storage+don.media[0].filePath.toString()}`: url='../../../../../../assets/images/empty.webp'
+    don.media.length>0?url= `${this.storage+don.media[0].filePath}`: url='../../../../../../assets/images/empty.webp'
    
-    return `url(${url})`;
+    return url;
   }
   getDons(){
     this.manageDataService.getDons(this.current_page).toPromise().then(
       data=>{
         this.last_page = data.last_page;
         data.data.forEach((don)=>{
-          this.dons.push(don);
+          this.dons.unshift(don);
         })
       },
     ).catch(err=>{

@@ -82,16 +82,13 @@ export class LoginPage implements OnInit {
       console.log(err)
         loading.dismiss();
         const toast = this.toast.create({
-          message:`compte invalide / probleme de connexion`,
+          message:`${err.message}`,
           icon: 'alert',
           duration:1000,
           color:"danger"
         });
         (await (toast)).present();  
     })
-  }
-  public validcondition(){
-    this.term_condition = !this.term_condition;
   }
   public changePassInputType(){
     this.password_input_type == 'password'?this.password_input_type='text':this.password_input_type="password"

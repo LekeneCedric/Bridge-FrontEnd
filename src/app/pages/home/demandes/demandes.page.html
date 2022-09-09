@@ -1,21 +1,18 @@
 <ion-header class="ion-no-border">
   <ion-row style="width: 100%;">
-    <ion-col class="logo" size="6">
+    <ion-col class="logo" size="5">
       <ion-title class="title">BRIDGE</ion-title>
       <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>
     </ion-col>
     <ion-col>
-      <ion-row style="width: 100%;">
-        <ion-col size="4">
-          <ion-icon [routerLink]="['/menu/settings',id]" name="settings"  size="large" color="danger"></ion-icon>
+      <ion-row>
+        <ion-col size="4" style="text-align:center">
+          <ion-icon name="notifications" size="large" color="warning" ></ion-icon>
         </ion-col>
-      <ion-col style="text-align: right" size="4">
-        <ion-icon name="notifications" size="large" color="warning"></ion-icon>
-        <ion-badge color="danger">1</ion-badge>
-      </ion-col>
-      <ion-col style="text-align: right" size="4">
-        <ion-icon name="person-circle-outline" size="large" color="danger" [routerLink]="['/profil-donateur',id]"></ion-icon>
-      </ion-col>
+        <ion-col size="8" [routerLink]="['/profil-donateur',id]" style="display:flex;flex-direction: row">
+          <ion-icon name="person-circle-outline" size="large" color="danger" ></ion-icon>
+          <ion-text style="margin-top:8px;margin-left:10px;font-weight: bold;">{{myData.name}}{{myData.surname |slice:0:1}}.</ion-text>
+        </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>
@@ -51,11 +48,11 @@
   <ion-row>
     <div *ngFor="let demand of demandes" style="width: 95%">
       <ion-card *ngIf="selectedCategory.indexOf(demand.category)!=-1 || selectedCategory.length<1" style="width: 100%;" [routerLink]="['details',demand.id]">
-        <ion-item style="width:100%;" lines="none">
-          <ion-thumbnail class="ion-margin-start" slot="start" >
-            <img style="border-radius:10px" [src]="storage+demand.donateur.media[0].filePath" />
+        <ion-row style="width: 100%;margin-top:5%">
+          <ion-thumbnail class="ion-margin-start">
+            <img style="border-radius:10px;margin-right:5%" [src]="demand.donateur.media.length>0?storage+demand.donateur.media[0].filePath:'../../../../assets/images/full-moon.png'" />
           </ion-thumbnail>
-          <ion-col style="text-align: left">
+          <ion-col style="text-align: left;margin-left:5%">
             <ion-row>
              <ion-text style="font-weight: bold">{{demand.donateur.name}}  {{demand.donateur.surname | slice:0:8 }}</ion-text>
             </ion-row>
@@ -63,17 +60,18 @@
               <ion-text style="color:gray"> donateur/necessiteux</ion-text>
             </ion-row>
           </ion-col>
-        </ion-item>
+        </ion-row>
+         
         <ion-item style="width:100%;">
-          <ion-text style="color:gray" slot="start">Besoin</ion-text>
+          <ion-text style="color:gray" slot="start">Besoin:</ion-text>
           <ion-text> {{demand.title}}</ion-text>
         </ion-item>
         <ion-item style="width:100%;">
-          <ion-text style="color:gray" slot="start">Heure</ion-text>
+          <ion-text style="color:gray" slot="start">Date:</ion-text>
           <ion-text> {{demand.created_at | date:'medium'}}</ion-text>
         </ion-item>
         <ion-item style="width:100%;">
-          <ion-text style="color:gray" slot="start">Adresse</ion-text>
+          <ion-text style="color:gray" slot="start">Adresse:</ion-text>
           <ion-text  style="vertical-align: middle;justify-self: center;"> {{demand.adresse}} </ion-text>
         </ion-item>
       <ion-row>

@@ -1,7 +1,7 @@
 
 <ion-content>
   <ion-icon (click)="navBack()" name="chevron-back-outline" size="large" color="danger"></ion-icon>
-     <ion-grid *ngIf="this.demande!=null">
+     <ion-grid *ngIf="this.demande!=null" style="padding-top:0">
         <ion-item lines="none">
           <ion-text style="font-weight: bold;font-size:1.3em">{{demande.title}}</ion-text>
           <ion-icon name="create-outline" color="danger" size="large" slot="end" *ngIf="myid==demande.donateur.id"></ion-icon>
@@ -11,24 +11,24 @@
         </ion-item>
         
         <ion-item lines="none">
-          <img src="../../../../assets/images/information.png" alt="">
-          <ion-title>Informations</ion-title>
+          <ion-title style="font-weight: bold;padding-left: 0;">Informations</ion-title>
         </ion-item>
         <ion-item lines="none">
         <ion-col size="8">
-         <ion-row><ion-text>Categorie</ion-text></ion-row>
-         <ion-text style="color:gray;margin-top:10px ;">{{demande.category}}</ion-text>
+         <ion-row><ion-text  style="font-weight:bold">Categorie</ion-text></ion-row>
+         <ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{demande.category}}</ion-text>
         </ion-col>
         </ion-item>
         <ion-item lines="none">
           <ion-col size="7">
-           <ion-row><ion-text>Lieu</ion-text></ion-row>
+           <ion-row><ion-text   style="font-weight:bold">Lieu</ion-text></ion-row>
            <ion-text style="color:gray;margin-top:10px">{{demande.adresse}}</ion-text>
           </ion-col>
           </ion-item>
           <ion-item lines="none">
             <ion-col size="5">
-              <ion-row><ion-text>Disponibilite</ion-text></ion-row>
+              <ion-row>
+                <ion-text  style="font-weight:bold;padding-left:0">Disponibilite</ion-text></ion-row>
              <ion-text style="color:gray;margin-top:10px ;">Flexible</ion-text>
             </ion-col>
           </ion-item>
@@ -36,14 +36,14 @@
           <ion-item-divider></ion-item-divider>
           <ion-item lines="none">
             <ion-col size="12">
-             <ion-row><ion-text>Description</ion-text></ion-row>
-            <ion-text style="color:gray;margin-top:10px ;">{{demande.contenu}}</ion-text>
+             <ion-row><ion-text  style="font-weight:bold;padding-left: 0;">Description</ion-text></ion-row>
+            <ion-text style="color:gray;margin-top:25px ;">{{demande.contenu}}</ion-text>
             </ion-col>
           </ion-item>
           <ion-item-divider></ion-item-divider>
           <ion-item style="width:100%;" lines="none" [routerLink]="['/profil-donateur',myid]">
             <ion-thumbnail slot="start" >
-              <img style="border-radius:10px" [src]="demande.donateur.media.length>0?storage+demande.donateur.media[0].filePath:'../../../../assets/media/full-moon.png'" />
+              <img style="border-radius:10px" [src]="demande.donateur.media.length>0?storage+demande.donateur.media[0].filePath:'../../../../assets/images/full-moon.png'" />
             </ion-thumbnail>
             <ion-col style="text-align: left">
               <ion-row>
@@ -56,15 +56,15 @@
             <ion-icon name="chevron-forward-outline" size="large" slot="end"></ion-icon>
           </ion-item>
           <ion-item-divider></ion-item-divider>
-          <ion-item lines="none">
-          <ion-text style="font-weight: bold">Partager cette annonce</ion-text>
+          <ion-item lines="none" style="text-align:left">
+            <ion-title style="font-weight: bold;padding-left: 0;">Partager cette annonce</ion-title>
           </ion-item>
           <ion-item lines="none">
-            <ion-icon name="logo-whatsapp" color="success"></ion-icon>
-            <ion-icon name="ellipsis-horizontal-outline" color="dark" style="margin-left:10px"></ion-icon>
+            <ion-icon name="logo-whatsapp" color="success" size="large"></ion-icon>
+            <ion-icon name="ellipsis-horizontal-circle-sharp" color="dark" size="large" style="margin-left:10px"></ion-icon>
           </ion-item>
           <ion-item lines="none">
-            <ion-text>Localisation</ion-text>
+            <ion-text style="font-weight: bold;padding-left: 0;" >Localisation</ion-text>
           </ion-item>
           <ion-item lines="none">
             <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d63693.27239988237!2d11.5080475!3d3.8467449!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2scm!4v1661874465059!5m2!1sfr!2scm" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -76,7 +76,7 @@
   <ion-row>
     <ion-col size="2">
       <ion-thumbnail>
-      <img style="border-radius:10px" [src]="demande.donateur.media.length>0?storage+demande.donateur.media[0].filePath:'../../../../assets/media/full-moon.png'" />
+      <img style="border-radius:10px" [src]="demande.donateur.media.length>0?storage+demande.donateur.media[0].filePath:'../../../../assets/images/full-moon.png'" />
       </ion-thumbnail>
     </ion-col>
     <ion-col size="5"class="ion-margin-top">

@@ -1,6 +1,12 @@
 <ion-header>
+  <ion-toolbar>
+    <ion-title style="font-weight: bold">Messages</ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
   <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
     <ion-segment-button value="dons">
       <ion-label>Dons</ion-label>
@@ -9,27 +15,48 @@
       <ion-label>Receptions</ion-label>
     </ion-segment-button>
   </ion-segment>
-  <ion-list  *ngif="selectedSegment=='dons'">
-    <ion-item *ngfor="let salon of salons" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
-      <ion-thumbnail slot="start">
-        <img alt="" style="border-radius:10px">
-      </ion-thumbnail>
-      <ion-col>
-        <ion-row style="width:100%">
-        <ion-text>
-          {{salon.data.titre}}
-        </ion-text>
-        </ion-row>
-        <ion-row style="margin-top:10px">
+  <ion-list  *ngIf="selectedSegment=='dons'">
+    <div *ngFor="let salon of salons" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
+      <ion-item *ngIf="salon.id_don!=null" lines="none">
+        <ion-thumbnail slot="start">
+          <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <ion-row style="width:100%">
           <ion-text>
-           {{salon.data.adresse}} 
+            {{salon.data.titre}}
           </ion-text>
-        </ion-row>
-      </ion-col>
-    </ion-item>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text>
+             {{salon.data.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+    </div>
   </ion-list>
-  <ion-list *ngif="selectedSegment=='reception'">
-
+  <ion-list *ngIf="selectedSegment=='reception'">
+    <div *ngFor="let salon of salons" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don!=null?salon.id_don:0]">
+      <ion-item *ngIf="salon.id_demande!=null"> 
+        <ion-thumbnail slot="start">
+          <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/ask.png'" style="border-radius:10px">
+        </ion-thumbnail>
+        <ion-col>
+          <img  alt="">
+          <ion-row style="width:100%">
+          <ion-text>
+            {{salon.data.titre}}
+          </ion-text>
+          </ion-row>
+          <ion-row style="margin-top:10px">
+            <ion-text>
+             {{salon.data.adresse}} 
+            </ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-item>
+    </div>
   </ion-list>
 </ion-content>
 
