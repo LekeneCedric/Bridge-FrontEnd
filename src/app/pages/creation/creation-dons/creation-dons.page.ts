@@ -78,17 +78,9 @@ export class CreationDonsPage implements OnInit {
     this.selectedImages.unshift(img)}), 500
   }
   public async readAsBase64(photo:any){
-    if(this.platform.is('hybrid')){
-      const file = await Filesystem.readFile({
-        path: photo.path,
-      })
-      return file;
-    }
-    else{
       const res = await fetch(photo.webPath);
       const blob = await res.blob();
       return await this.convertBlobToBase64(blob) as string;
-    }
   }
   public convertBlobToBase64 = (blob:Blob)=>new Promise((resolve, reject)=>{
     const reader = new FileReader;
@@ -115,7 +107,7 @@ export class CreationDonsPage implements OnInit {
       description:this.selectedDescription,
       longitude:11,
       latitude:3,
-      adresse:'cameroun,yaounde'
+      adresse:'this.myAdress'
     }
    
     this.creationService.createDon(donation,token).toPromise()
@@ -208,7 +200,7 @@ export class CreationDonsPage implements OnInit {
           this.nativGeocoder.reverseGeocode(this.selectedLatitude, this.selectedLongitude,this.GeocoderOption).then(
             (result:NativeGeocoderResult[])=>{
               this.MyGeocoder=result[0];
-              this.myAdress = this.MyGeocoder.subLocality+","+this.MyGeocoder.locality+","+this.MyGeocoder.administrativeArea+","+this.MyGeocoder.postalCode+","+this.MyGeocoder.countryName;
+              this.myAdress = this.MyGeocoder.subLocality+"."+this.MyGeocoder.locality+"."+this.MyGeocoder.administrativeArea+"."+this.MyGeocoder.countryName;
               console.log(JSON.stringify(result[0]));
             }
           ).catch(async err=>{

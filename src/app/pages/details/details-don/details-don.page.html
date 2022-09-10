@@ -111,7 +111,7 @@
           </ion-item>
           <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
             <div *ngFor="let Don of donsSimilaires" style="width:50%">
-              <ion-card  [routerLink]="['details',don.id]"style="width:90%;position: relative;" >
+              <ion-card  [routerLink]="['/menu/dons/details',don.id]"style="width:90%;position: relative;" >
                 <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
                 <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
                 </div>

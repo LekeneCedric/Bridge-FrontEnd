@@ -82,7 +82,7 @@ export class LoginPage implements OnInit {
       console.log(err)
         loading.dismiss();
         const toast = this.toast.create({
-          message:`${err.message.message}`,
+          message:`Compte invalide / probleme connexion`,
           icon: 'alert',
           duration:1000,
           color:"danger"

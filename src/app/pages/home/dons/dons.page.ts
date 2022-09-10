@@ -27,7 +27,6 @@ export class DonsPage implements OnInit {
     this.myData = JSON.parse(localStorage.getItem('mydata'));
     console.log(this.myData);
     this.current_page = 1;
-    this.next_page = 2;
     this.dons = [];
     this.getDons();
     this.myid = JSON.parse(localStorage.getItem('mydata')).id;
@@ -46,7 +45,7 @@ export class DonsPage implements OnInit {
   public selectedEtat:string[]=[];
   public storage = 'http://127.0.0.1:8000/storage/';
   public current_page :number = 1;
-  public next_page : number = 1;
+  public next_page : number = this.current_page;
   public last_page :number = null;
   public myData:any = {};
   /*-----------------------------FUNCTIONS-----------------------------*/
@@ -98,27 +97,29 @@ export class DonsPage implements OnInit {
   image(don:any):any{
     let url = '';
     don.media.length>0?url= `${this.storage+don.media[0].filePath}`: url='../../../../../../assets/images/empty.webp'
-   
     return url;
   }
   getDons(){
+    
     this.manageDataService.getDons(this.current_page).toPromise().then(
       data=>{
         this.last_page = data.last_page;
+        console.log(this.last_page)
         data.data.forEach((don)=>{
-          this.dons.unshift(don);
+          this.dons.push(don);
         })
       },
     ).catch(err=>{
 
+    }).finally(()=>{
+      this.current_page+=1;
     })
   }
   public loadData(event:any){
     setTimeout(()=>{
-      this.current_page < this.last_page ?this.current_page = this.next_page:this.current_page;
-      this.next_page < this.last_page ? this.next_page+=1:this.next_page;
-      this.current_page < this.last_page ? this.getDons() : event.target.disabled=true;
-      event.target.complete();
+      console.log(this.current_page,this.last_page)
+      this.current_page <= this.last_page ? this.getDons():this.current_page;  
+      event.target.complete();    
     },500)
     
   }

@@ -24,7 +24,7 @@ let ManageDataService = class ManageDataService {
         this.http = http;
     }
     getDons(page) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/dons' + `?page=${page}`;
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dons?page=${page}`;
         return this.http.get(api, { headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',

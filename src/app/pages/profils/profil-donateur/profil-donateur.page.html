@@ -44,19 +44,19 @@
     </ion-col>
   </ion-item>
   <ion-item style="width:100%;margin:0;padding:0" lines="none">
-  <img src="../../../../assets/images/donation.png" style="margin-right:15px" alt="" >
+    <ion-icon name="gift" size="large" style="margin-right:15px" color="danger"></ion-icon>
   <ion-text style="font-weight:bold">{{userInfo.dons}}</ion-text>
   <ion-text style="margin-left:5px">dons</ion-text>
   <ion-text style="font-weight:bold;margin-left:5px">, 0</ion-text>
   <ion-text style="margin-left:5px">receptions</ion-text>
   </ion-item>
   <ion-item style="width:100%;margin:0;padding:0" lines="none">
-    <img src="../../../../assets/images/demande.png" style="margin-right:15px" alt="" >
+    <ion-icon name="hand-right" size="large" style="margin-right:15px" color="danger"></ion-icon>
     <ion-text style="font-weight:bold">{{userInfo.nbdemandes}}</ion-text>
     <ion-text style="margin-left:5px">demandes</ion-text>
   </ion-item>
   <ion-item style="width:100%;margin:0;padding:0" lines="none">
-    <img src="../../../../assets/images/group.png" style="margin-right:15px" alt="" >
+    <ion-icon name="people" size="large" style="margin-right:15px" color="danger"></ion-icon>
     <ion-text style="margin-left:5px">appartient a</ion-text>
     <ion-text style="font-weight:bold;margin-left:5px">{{userInfo.nbassociations}}</ion-text>
     <ion-text style="margin-left:5px">associations</ion-text>
@@ -66,7 +66,7 @@
     <ion-text style="font-weight:bold;color: gray;">Activites</ion-text>
   </ion-item>
   <ion-item style="width:100%;margin:0" lines="none">
-    <img src="../../../../assets/images/placard.png" style="margin-right:15px" alt="" >
+    <ion-icon name="calendar-number-outline" size="large" style="margin-right:15px" color="danger"></ion-icon>
     <ion-text style="font-weight:bold">{{userInfo.nbmouvements}}</ion-text>
     <ion-text style="margin-left:5px">evenements participes</ion-text>
   </ion-item>
@@ -106,7 +106,7 @@
        </ion-grid>
      <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
             <div *ngFor="let don of userInfo.don" style="width:50%">
-              <ion-card  [routerLink]="['details',don.id]"style="width:90%;position: relative;" >
+              <ion-card  [routerLink]="['/menu/dons/details',don.id]"style="width:90%;position: relative;" >
                 <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
                 <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
                 </div>
@@ -118,7 +118,7 @@
                       {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
                   </ion-row>
                   <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%"color="medium">
-                    {{don.adresse | slice:0:18}}{{don.adresse.length>18?'...':''}}</ion-text>
+                    {{don.adresse | slice:0:12}}{{don.adresse.length>12?'...':''}}</ion-text>
                   <ion-row style="margin-top:10px;padding:0;width:100%;display: flex;">
                     <ion-col size="2" style="padding-right:0;text-align: right;"><ion-icon name="timer-outline" color="dark"style="font-weight:bold" size="medium" style="padding-right:0"></ion-icon></ion-col>
                     <ion-col style="padding-left:0"> <ion-text style="margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;" color="dark">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> 

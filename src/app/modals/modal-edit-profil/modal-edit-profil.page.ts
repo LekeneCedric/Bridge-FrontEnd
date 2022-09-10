@@ -59,17 +59,11 @@ export class ModalEditProfilPage implements OnInit {
     this.updateImage=img}), 500
   }
   public async readAsBase64(photo:any){
-    if(this.platform.is('hybrid')){
-      const file = await Filesystem.readFile({
-        path: photo.path,
-      })
-      return file;
-    }
-    else{
+    
       const res = await fetch(photo.webPath);
       const blob = await res.blob();
       return await this.convertBlobToBase64(blob) as string;
-    }
+    
   }
   public convertBlobToBase64 = (blob:Blob)=>new Promise((resolve, reject)=>{
     const reader = new FileReader;

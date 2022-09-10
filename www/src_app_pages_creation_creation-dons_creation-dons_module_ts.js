@@ -94,21 +94,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CreationDonsPage": () => (/* binding */ CreationDonsPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _creation_dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-dons.page.html?ngResource */ 7495);
 /* harmony import */ var _creation_dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./creation-dons.page.scss?ngResource */ 7957);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/creation/creation.service */ 9444);
 /* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 8549);
 /* harmony import */ var _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @capacitor/geolocation */ 7621);
 /* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/environments/environment */ 2340);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @capacitor/camera */ 4241);
-/* harmony import */ var _capacitor_filesystem__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @capacitor/filesystem */ 1662);
-
 
 
 
@@ -225,16 +223,9 @@ let CreationDonsPage = class CreationDonsPage {
     var _this4 = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      if (_this4.platform.is('hybrid')) {
-        const file = yield _capacitor_filesystem__WEBPACK_IMPORTED_MODULE_9__.Filesystem.readFile({
-          path: photo.path
-        });
-        return file;
-      } else {
-        const res = yield fetch(photo.webPath);
-        const blob = yield res.blob();
-        return yield _this4.convertBlobToBase64(blob);
-      }
+      const res = yield fetch(photo.webPath);
+      const blob = yield res.blob();
+      return yield _this4.convertBlobToBase64(blob);
     })();
   }
 
@@ -260,7 +251,7 @@ let CreationDonsPage = class CreationDonsPage {
         description: _this5.selectedDescription,
         longitude: 11,
         latitude: 3,
-        adresse: 'cameroun,yaounde'
+        adresse: 'this.myAdress'
       };
 
       _this5.creationService.createDon(donation, token).toPromise().then(data => {
@@ -298,7 +289,7 @@ let CreationDonsPage = class CreationDonsPage {
     //creation don 
     const token = localStorage.getItem('token');
     const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_7__.environment.apiURL + '/medias';
-    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_10__.HttpHeaders({
+    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
@@ -377,7 +368,7 @@ let CreationDonsPage = class CreationDonsPage {
 
             _this7.nativGeocoder.reverseGeocode(_this7.selectedLatitude, _this7.selectedLongitude, _this7.GeocoderOption).then(result => {
               _this7.MyGeocoder = result[0];
-              _this7.myAdress = _this7.MyGeocoder.subLocality + "," + _this7.MyGeocoder.locality + "," + _this7.MyGeocoder.administrativeArea + "," + _this7.MyGeocoder.postalCode + "," + _this7.MyGeocoder.countryName;
+              _this7.myAdress = _this7.MyGeocoder.subLocality + "." + _this7.MyGeocoder.locality + "." + _this7.MyGeocoder.administrativeArea + "." + _this7.MyGeocoder.countryName;
               console.log(JSON.stringify(result[0]));
             }).catch( /*#__PURE__*/function () {
               var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
@@ -814,255 +805,28 @@ CreationDonsPage.ctorParameters = () => [{
 }, {
   type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_4__.MediasService
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.NavController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.NavController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.ActionSheetController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.ActionSheetController
 }, {
   type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_6__.NativeGeocoder
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.Platform
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.Platform
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.LoadingController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.LoadingController
 }, {
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_10__.HttpClient
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClient
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.ToastController
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_12__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_11__.Router
 }];
 
-CreationDonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_13__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_14__.Component)({
+CreationDonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_12__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_13__.Component)({
   selector: 'app-creation-dons',
   template: _creation_dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_creation_dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], CreationDonsPage);
-
-
-/***/ }),
-
-/***/ 4830:
-/*!****************************************************************!*\
-  !*** ./node_modules/@capacitor/camera/dist/esm/definitions.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CameraDirection": () => (/* binding */ CameraDirection),
-/* harmony export */   "CameraResultType": () => (/* binding */ CameraResultType),
-/* harmony export */   "CameraSource": () => (/* binding */ CameraSource)
-/* harmony export */ });
-var CameraSource;
-
-(function (CameraSource) {
-  /**
-   * Prompts the user to select either the photo album or take a photo.
-   */
-  CameraSource["Prompt"] = "PROMPT";
-  /**
-   * Take a new photo using the camera.
-   */
-
-  CameraSource["Camera"] = "CAMERA";
-  /**
-   * Pick an existing photo from the gallery or photo album.
-   */
-
-  CameraSource["Photos"] = "PHOTOS";
-})(CameraSource || (CameraSource = {}));
-
-var CameraDirection;
-
-(function (CameraDirection) {
-  CameraDirection["Rear"] = "REAR";
-  CameraDirection["Front"] = "FRONT";
-})(CameraDirection || (CameraDirection = {}));
-
-var CameraResultType;
-
-(function (CameraResultType) {
-  CameraResultType["Uri"] = "uri";
-  CameraResultType["Base64"] = "base64";
-  CameraResultType["DataUrl"] = "dataUrl";
-})(CameraResultType || (CameraResultType = {}));
-
-/***/ }),
-
-/***/ 4241:
-/*!**********************************************************!*\
-  !*** ./node_modules/@capacitor/camera/dist/esm/index.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Camera": () => (/* binding */ Camera),
-/* harmony export */   "CameraDirection": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.CameraDirection),
-/* harmony export */   "CameraResultType": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.CameraResultType),
-/* harmony export */   "CameraSource": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.CameraSource)
-/* harmony export */ });
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 5099);
-/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 4830);
-
-const Camera = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Camera', {
-  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_camera_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 1327)).then(m => new m.CameraWeb())
-});
-
-
-
-/***/ }),
-
-/***/ 3568:
-/*!********************************************************************!*\
-  !*** ./node_modules/@capacitor/filesystem/dist/esm/definitions.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Directory": () => (/* binding */ Directory),
-/* harmony export */   "Encoding": () => (/* binding */ Encoding),
-/* harmony export */   "FilesystemDirectory": () => (/* binding */ FilesystemDirectory),
-/* harmony export */   "FilesystemEncoding": () => (/* binding */ FilesystemEncoding)
-/* harmony export */ });
-var Directory;
-
-(function (Directory) {
-  /**
-   * The Documents directory
-   * On iOS it's the app's documents directory.
-   * Use this directory to store user-generated content.
-   * On Android it's the Public Documents folder, so it's accessible from other apps.
-   * It's not accesible on Android 10 unless the app enables legacy External Storage
-   * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
-   * in the `AndroidManifest.xml`.
-   * It's not accesible on Android 11 or newer.
-   *
-   * @since 1.0.0
-   */
-  Directory["Documents"] = "DOCUMENTS";
-  /**
-   * The Data directory
-   * On iOS it will use the Documents directory.
-   * On Android it's the directory holding application files.
-   * Files will be deleted when the application is uninstalled.
-   *
-   * @since 1.0.0
-   */
-
-  Directory["Data"] = "DATA";
-  /**
-   * The Library directory
-   * On iOS it will use the Library directory.
-   * On Android it's the directory holding application files.
-   * Files will be deleted when the application is uninstalled.
-   *
-   * @since 1.1.0
-   */
-
-  Directory["Library"] = "LIBRARY";
-  /**
-   * The Cache directory
-   * Can be deleted in cases of low memory, so use this directory to write app-specific files
-   * that your app can re-create easily.
-   *
-   * @since 1.0.0
-   */
-
-  Directory["Cache"] = "CACHE";
-  /**
-   * The external directory
-   * On iOS it will use the Documents directory
-   * On Android it's the directory on the primary shared/external
-   * storage device where the application can place persistent files it owns.
-   * These files are internal to the applications, and not typically visible
-   * to the user as media.
-   * Files will be deleted when the application is uninstalled.
-   *
-   * @since 1.0.0
-   */
-
-  Directory["External"] = "EXTERNAL";
-  /**
-   * The external storage directory
-   * On iOS it will use the Documents directory
-   * On Android it's the primary shared/external storage directory.
-   * It's not accesible on Android 10 unless the app enables legacy External Storage
-   * by adding `android:requestLegacyExternalStorage="true"` in the `application` tag
-   * in the `AndroidManifest.xml`.
-   * It's not accesible on Android 11 or newer.
-   *
-   * @since 1.0.0
-   */
-
-  Directory["ExternalStorage"] = "EXTERNAL_STORAGE";
-})(Directory || (Directory = {}));
-
-var Encoding;
-
-(function (Encoding) {
-  /**
-   * Eight-bit UCS Transformation Format
-   *
-   * @since 1.0.0
-   */
-  Encoding["UTF8"] = "utf8";
-  /**
-   * Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the Basic Latin block of the
-   * Unicode character set
-   * This encoding is only supported on Android.
-   *
-   * @since 1.0.0
-   */
-
-  Encoding["ASCII"] = "ascii";
-  /**
-   * Sixteen-bit UCS Transformation Format, byte order identified by an
-   * optional byte-order mark
-   * This encoding is only supported on Android.
-   *
-   * @since 1.0.0
-   */
-
-  Encoding["UTF16"] = "utf16";
-})(Encoding || (Encoding = {}));
-/**
- * @deprecated Use `Directory`.
- * @since 1.0.0
- */
-
-
-const FilesystemDirectory = Directory;
-/**
- * @deprecated Use `Encoding`.
- * @since 1.0.0
- */
-
-const FilesystemEncoding = Encoding;
-
-/***/ }),
-
-/***/ 1662:
-/*!**************************************************************!*\
-  !*** ./node_modules/@capacitor/filesystem/dist/esm/index.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Directory": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.Directory),
-/* harmony export */   "Encoding": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.Encoding),
-/* harmony export */   "Filesystem": () => (/* binding */ Filesystem),
-/* harmony export */   "FilesystemDirectory": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.FilesystemDirectory),
-/* harmony export */   "FilesystemEncoding": () => (/* reexport safe */ _definitions__WEBPACK_IMPORTED_MODULE_1__.FilesystemEncoding)
-/* harmony export */ });
-/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 5099);
-/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 3568);
-
-const Filesystem = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Filesystem', {
-  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_filesystem_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 4046)).then(m => new m.FilesystemWeb())
-});
-
 
 
 /***/ }),

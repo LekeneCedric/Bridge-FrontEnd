@@ -11,7 +11,7 @@ export class ManageDataService {
   constructor(private http:HttpClient) { }
 
   public getDons(page:number):Observable<any>{
-    const api = environment.apiURL+'/dons'+`?page=${page}`;
+    const api = environment.apiURL+`/dons?page=${page}`;
     return this.http.get<any>(api,{headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json',

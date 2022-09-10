@@ -48,7 +48,7 @@ const routes = [
     },
     {
         path: 'profil-donateur/:id',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-edit-profil_modal-edit-profil_page_ts"), __webpack_require__.e("src_app_pages_profils_profil-donateur_profil-donateur_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/profils/profil-donateur/profil-donateur.module */ 8813)).then(m => m.ProfilDonateurPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_profils_profil-donateur_profil-donateur_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/profils/profil-donateur/profil-donateur.module */ 8813)).then(m => m.ProfilDonateurPageModule)
     },
     {
         path: 'profil-association/:id',
@@ -84,7 +84,7 @@ const routes = [
     },
     {
         path: 'modal-edit-profil',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_modals_modal-edit-profil_modal-edit-profil_page_ts"), __webpack_require__.e("src_app_modals_modal-edit-profil_modal-edit-profil_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-edit-profil/modal-edit-profil.module */ 8371)).then(m => m.ModalEditProfilPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-edit-profil_modal-edit-profil_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-edit-profil/modal-edit-profil.module */ 8371)).then(m => m.ModalEditProfilPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
