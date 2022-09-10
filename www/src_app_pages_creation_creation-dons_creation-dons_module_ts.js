@@ -306,7 +306,7 @@ let CreationDonsPage = class CreationDonsPage {
       don_id: data.Don.id,
       files: this.selectedImages
     };
-    this.mediaService.uploadImage(token, fd).then( /*#__PURE__*/function () {
+    this.mediaService.uploadImageDon(token, fd).then( /*#__PURE__*/function () {
       var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
         console.log('etape2'); // upload images
 

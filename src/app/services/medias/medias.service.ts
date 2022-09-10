@@ -10,7 +10,7 @@ export class MediasService {
 
   constructor(private http:HttpClient) { }
 
-  public uploadImage(token:string,credential:any): Promise<any>{
+  public uploadImageDon(token:string,credential:any): Promise<any>{
    
     console.log(credential.files)
     return new Promise<any>((resolve, reject) => {
@@ -23,10 +23,6 @@ export class MediasService {
 
               formData.append('file',blob, file.path);
               formData.append('don_id',credential.don_id);
-              let cd={
-                file:blob,
-                don_id:credential.don_id,
-              }
               setTimeout(()=>{
                 this.uploadData(formData,token);
               },500)
@@ -36,6 +32,26 @@ export class MediasService {
         }catch(err){
           reject(err);
         }
+      },300)
+    });
+  }
+  public uploadImageProfil(token:string,credential:any): Promise<any>{
+   
+    console.log(credential.files)
+    return new Promise<any>((resolve, reject) => {
+      setTimeout(async ()=>{
+              const res = await fetch(credential.files.data);
+              const blob = await res.blob();
+              const formData = new FormData();
+         console.log('this is credential');
+         console.log(credential.files.path)
+         console.log(credential.donateur_id)
+              formData.append('file',blob, credential.files.path);
+              formData.append('donateur_id',credential.donateur_id);
+              setTimeout(()=>{
+                this.uploadData(formData,token);
+              },500)
+          resolve('success')
       },300)
     });
   }

@@ -2,18 +2,16 @@
   <ion-row style="width: 100%;">
     <ion-col class="logo" size="5">
       <ion-title class="title">BRIDGE</ion-title>
-      <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>
     </ion-col>
-    <ion-col>
-      <ion-row>
-        <ion-col size="4" style="text-align:center">
-          <ion-icon name="notifications" size="large" color="warning" ></ion-icon>
+    <ion-col style="margin-left:30%">
+        <ion-col size="3" style="text-align:center" style="position:relative">
+          
+          <ion-icon name="notifications" size="large" color="warning"></ion-icon>
+          <ion-badge style="position:absolute;top:0;right:0" color="danger">2</ion-badge>
         </ion-col>
-        <ion-col size="8" [routerLink]="['/profil-donateur',id]" style="display:flex;flex-direction: row">
+        <ion-col size="4" [routerLink]="['/profil-donateur',id]" style="text-align:right;margin-left:16px">
           <ion-icon name="person-circle-outline" size="large" color="danger" ></ion-icon>
-          <ion-text style="margin-top:8px;margin-left:10px;font-weight: bold;">{{myData.name}}{{myData.surname |slice:0:1}}.</ion-text>
         </ion-col>
-      </ion-row>
     </ion-col>
   </ion-row>
   <ion-row>
@@ -66,7 +64,7 @@
 <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
   
   <div *ngFor="let don of dons" style="width:50%">
-  <ion-card  [routerLink]="['details',don.id]"style="width:90%;position: relative;">
+  <ion-card  [routerLink]="['details',don.id]"style="width:90%;position: relative;" >
     <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
     <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
     </div>
@@ -74,11 +72,11 @@
     background-image: url({{image(don)}});">   
     </div>
       <ion-row style="margin-top:2%">
-        <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;padding:2%"color="dark">
+        <ion-text style="font-weight: bolder;font-size:1.3em;margin-left:2%;width:100%;padding:2%"color="dark">
           {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
       </ion-row>
-      <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;padding:2%"color="medium">
-        {{don.adresse | slice:0:12}}{{don.adresse.length>12?'...':''}}</ion-text>
+      <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%"color="medium">
+        {{don.adresse | slice:0:18}}{{don.adresse.length>18?'...':''}}</ion-text>
       <ion-row style="margin-top:10px;padding:0;width:100%;display: flex;">
         <ion-col size="2" style="padding-right:0;text-align: right;"><ion-icon name="timer-outline" color="dark"style="font-weight:bold" size="medium" style="padding-right:0"></ion-icon></ion-col>
         <ion-col style="padding-left:0"> <ion-text style="margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;" color="dark">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> 

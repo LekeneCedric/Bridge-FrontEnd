@@ -132,6 +132,7 @@ async openModalMesdonsFinalises(salon:any){
   }
 }
 filtration(){
+  this.selectedSegment = 'attente';
   this.filterDonAttente = [];
   this.filterDonFinalise = [];
   this.filterDonReserve = [];
@@ -399,7 +400,7 @@ public segmentChanged(event:any)
     data.forEach(data=>{
      this.manageDataService.getOneDon(data.id_don).toPromise().then(
         don=>{
-          if(data.reserver>0){
+          if(data.reserver>0&&don.disponible<1){
          data.id_donateur==this.id?this.mesdonsReserves.push({
             id_createur:data.id_donateur,
              id_don:data.id_don,
@@ -424,7 +425,7 @@ public segmentChanged(event:any)
              }
           })
         }
-          else if(data.disponible!=0){
+          else if(data.disponible>0 && data.reserver>0){
             data.id_donateur==this.id?this.mesdonsFinalise.push({
               id_createur:data.id_donateur,
                id_don:data.id_don,

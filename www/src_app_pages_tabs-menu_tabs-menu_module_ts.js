@@ -26,11 +26,11 @@ const routes = [
         children: [
             {
                 path: 'dons',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts-src_app_services_manage-data_man-6e95de"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 4984)).then(m => m.DonsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 4984)).then(m => m.DonsPageModule)
             },
             {
                 path: 'demandes',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts-src_app_services_manage-data_man-6e95de"), __webpack_require__.e("src_app_pages_home_demandes_demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/demandes/demandes.module */ 4314)).then(m => m.DemandesPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("src_app_pages_home_demandes_demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/demandes/demandes.module */ 4314)).then(m => m.DemandesPageModule)
             },
             {
                 path: 'annonces',
@@ -38,11 +38,11 @@ const routes = [
             },
             {
                 path: 'messages',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-salon_modal-salon_page_ts"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
             },
             {
                 path: 'settings',
-                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_settings_settings_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("src_app_pages_settings_settings_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
             }
         ]
     },

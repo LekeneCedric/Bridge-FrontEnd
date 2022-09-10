@@ -1,30 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Discussions</ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-item lines="none" class="search-item">
+    <ion-icon name="search-outline" size="large" color="dark"></ion-icon>
+    <ion-input placeholder="Recherche dans les messages" [(ngModel)]="search" ></ion-input>
+    <ion-chip style="padding:0" *ngIf="search.length>1" (click)="search=''">
+      <ion-icon name="close-outline" style="margin-right:30%" color="dark"></ion-icon>
+    </ion-chip>
+  </ion-item>
 </ion-header>
-
 <ion-content>
 <ion-list  *ngIf="load==false">
-  <div *ngFor="let room of rooms">
-    <ion-item lines="none" *ngIf="room.id_don==selectedRoom.id_don" 
+  <div *ngFor="let room of rooms;let i = index">
+    <ion-item lines="none" *ngIf="room.id_don==selectedRoom.id_don && room.reic_name.toLowerCase().includes(search) || search=='' "
     [routerLink]="['/salon',room.id_donateur,room.id_receiver,0,room.id_don]" (click)="cancel()">
       <ion-thumbnail slot="start">
         <img [src]="room.reic_img" style="border-radius:10px">
       </ion-thumbnail>
-      <ion-col>
+      <ion-col size="12">
         <ion-row style="width:100%">
-        <ion-text style="font-weight:bold">
+        <ion-text style="font-weight:bold;width:50%;text-align:left">
          {{room.reic_name}}
+        </ion-text>
+        <ion-text style="text-align:right;width:50%;color:gray">
+         {{temp_room[i].date | date:'h:mm'}}
         </ion-text>
         </ion-row>
         <ion-row style="margin-top:10px">
           <ion-text color="medium">
-           {{room.reic_contact}}
+          {{temp_room[i].message}}
           </ion-text>
         </ion-row>
       </ion-col>
-      <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+      <ion-col>
+
+      </ion-col>
     </ion-item>
   </div>
   

@@ -1,48 +1,36 @@
 <ion-header class="ion-no-border">
- <ion-item lines="none" class="search-item">
-  <ion-icon name="menu-outline" slot="start"></ion-icon>
-  <ion-input placeholder="Recherche dans les messages"></ion-input>
- </ion-item>
+ 
   <ion-segment scrollable style="margin-bottom:0;padding-bottom:0">
-    <ion-chip id="category_select">
-      <ion-text>{{category}}</ion-text>
-      <ion-icon name="chevron-down-outline"></ion-icon>
-    </ion-chip>
+    <ion-row>
+      <ion-col >
+        <img src="assets/images/filter.png" alt="" style="margin-top:5%">
+      </ion-col>
+      <ion-col>
+        <ion-chip id="category_select">
+          <ion-text>{{category}}</ion-text>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </ion-chip>
+      </ion-col>
+      
+     
+    </ion-row>
+    
     <ion-popover trigger="category_select" [dismissOnSelect]="true">
       <ng-template>
         <ion-content>
           <ion-list>
-            <ion-item [button]="true" [detail]="false" id="dons_list">Dons..</ion-item>
-            <ion-item [button]="true" [detail]="false" id="demandes_list">Demandes..</ion-item>
-    
-            <ion-popover trigger="dons_list" [dismissOnSelect]="true" side="end">
-              <ng-template>
-                <ion-content>
-                  <ion-list>
-                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('mesdons')">Mes dons</ion-item>
-                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('donsdesires')">Dons desires</ion-item>
-                  </ion-list>
-                </ion-content>
-              </ng-template>
-            </ion-popover>
-            <ion-popover trigger="demandes_list" [dismissOnSelect]="true" side="end">
-              <ng-template>
-                <ion-content>
-                  <ion-list>
-                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('mesdemandes')">Mes demandes</ion-item>
-                    <ion-item [button]="true" [detail]="false" (click)="changeCategory('demandesrepondus')">Demandes repondus</ion-item>
-                  </ion-list>
-                </ion-content>
-              </ng-template>
-            </ion-popover>
+            <ion-item [button]="false" [detail]="false" id="dons_list" disabled><ion-text style="font-weight:bold">Dons</ion-text></ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="changeCategory('mesdons')" lines="none"><ion-text>Mes Dons</ion-text></ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="changeCategory('donsdesires')"><ion-text>Dons Desires</ion-text></ion-item>
+            <ion-item [button]="true" [detail]="false" id="demandes_list" lines="none" disabled><ion-text style="font-weight:bold">Demandes</ion-text></ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="changeCategory('mesdemandes')"><ion-text>Mes demandes</ion-text></ion-item>
+              <ion-item [button]="true" [detail]="false" (click)="changeCategory('demandesrepondus')"><ion-text>Demandes contactes</ion-text></ion-item>
+
           </ion-list>
         </ion-content>
       </ng-template>
     </ion-popover>
-    <ion-chip>
-      <ion-text>Periode</ion-text>
-      <ion-icon name="chevron-down-outline"></ion-icon>
-    </ion-chip>
+   
   </ion-segment>
 </ion-header>
 <ion-content>
@@ -160,18 +148,11 @@
     </div>
   </ion-list>
 
-
-
-
-
-
-
-
   <ion-list *ngIf=" selectedSegment=='attente'&& filterDonAttente.length>0 && category=='donsdesires'">
     <div *ngFor="let salon of filterDonAttente" lines="none">
       <ion-item lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,0,salon.id_don]">
         <ion-thumbnail slot="start">
-          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
         </ion-thumbnail>
         <ion-col>
           <ion-row style="width:100%">
@@ -185,7 +166,6 @@
             </ion-text>
           </ion-row>
         </ion-col>
-        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
       </ion-item>
     </div>
   </ion-list>
@@ -193,7 +173,7 @@
     <div *ngFor="let salon of filterDonReserve" lines="none">
       <ion-item lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,0,salon.id_don]">
         <ion-thumbnail slot="start">
-          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
         </ion-thumbnail>
         <ion-col>
           <ion-row style="width:100%">
@@ -214,8 +194,10 @@
   <ion-list *ngIf=" selectedSegment=='finalise'&& filterDonFinalise.length>0 && category=='donsdesires'">
     <div *ngFor="let salon of filterDonFinalise" lines="none">
       <ion-item lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,0,salon.id_don]">
-        <ion-thumbnail slot="start">
-          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        <ion-thumbnail slot="start"style="opacity:0.5">
+          <ion-img [src]="salon.media.length>0?storage+salon.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
+            
+          </ion-img>
         </ion-thumbnail>
         <ion-col>
           <ion-row style="width:100%">
@@ -229,20 +211,14 @@
             </ion-text>
           </ion-row>
         </ion-col>
-        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
+        <ion-col size="2">
+          <ion-row>
+            <img src="assets/images/archive.png"  alt="">
+          </ion-row>
+        </ion-col>
       </ion-item>
     </div>
   </ion-list>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -250,7 +226,7 @@
     <div *ngFor="let salon of filterDonAttente" lines="none">
       <ion-item lines="none" (click)="openModalMesdonsAttentes(salon)">
         <ion-thumbnail slot="start">
-          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
         </ion-thumbnail>
         <ion-col>
           <ion-row style="width:100%">
@@ -272,8 +248,8 @@
   <ion-list *ngIf=" selectedSegment=='reserve'&& filterDonReserve.length>0 && category=='mesdons'">
     <div *ngFor="let salon of filterDonReserve" lines="none" (click)="openModalMesdonsReserves(salon)">
       <ion-item lines="none">
-        <ion-thumbnail slot="start">
-          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        <ion-thumbnail slot="start" >
+          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
         </ion-thumbnail>
         <ion-col>
           <ion-row style="width:100%">
@@ -287,15 +263,16 @@
             </ion-text>
           </ion-row>
         </ion-col>
+        <ion-icon name="chevron-forward-outline" size="large" slot="end" color="dark"></ion-icon>
       </ion-item>
     </div>
   
   </ion-list>
   <ion-list *ngIf=" selectedSegment=='finalise'&& filterDonFinalise.length>0 && category=='mesdons'">
-    <div *ngFor="let salon of filterDonFinalise" lines="none">
+    <div *ngFor="let salon of filterDonFinalise" lines="none" >
       <ion-item lines="none">
-        <ion-thumbnail slot="start">
-          <img [src]="salon.media.length>0?storage+salon.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+        <ion-thumbnail slot="start" style="opacity:0.5">
+          <img  [src]="salon.media.length>0?storage+salon.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
         </ion-thumbnail>
         <ion-col>
           <ion-row style="width:100%">
@@ -354,7 +331,7 @@
       <div *ngFor="let salon of mesdonsContactes" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
         <ion-item *ngIf="salon.id_createur==id" lines="none">
           <ion-thumbnail slot="start">
-            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
           </ion-thumbnail>
           <ion-col>
             <ion-row style="width:100%">
@@ -382,7 +359,7 @@
       <div *ngFor="let salon of mesdonsReserves" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
         <ion-item *ngIf="salon.id_createur==id" lines="none">
           <ion-thumbnail slot="start">
-            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
           </ion-thumbnail>
           <ion-col>
             <ion-row style="width:100%">
@@ -409,7 +386,7 @@
       <div *ngFor="let salon of mesdonsFinalise" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
         <ion-item *ngIf="salon.id_createur==id" lines="none">
           <ion-thumbnail slot="start">
-            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+            <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
           </ion-thumbnail>
           <ion-col>
             <ion-row style="width:100%">
@@ -432,7 +409,7 @@
     <div *ngFor="let salon of salonsDons" lines="none" [routerLink]="['/salon',salon.id_donateur,salon.id_receiver,salon.id_demande==null?0:salon.id_demande,salon.id_don]">
       <ion-item *ngIf="salon.id_createur!=id" lines="none">
         <ion-thumbnail slot="start">
-          <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'../../../../assets/images/full-moon.png'" style="border-radius:10px">
+          <img [src]="salon.data.media.length>0?storage+salon.data.media[0].filePath:'assets/images/user.png'" style="border-radius:10px">
         </ion-thumbnail>
         <ion-col>
           <ion-row style="width:100%">

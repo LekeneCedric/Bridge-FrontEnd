@@ -154,7 +154,7 @@ export class CreationDonsPage implements OnInit {
     don_id:data.Don.id,
     files:this.selectedImages
   }
-    this.mediaService.uploadImage(token,fd).then(async data=>{
+    this.mediaService.uploadImageDon(token,fd).then(async data=>{
       console.log('etape2');
       // upload images
       

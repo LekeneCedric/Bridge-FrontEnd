@@ -94,6 +94,18 @@ export class ManageDataService {
           'X-Requested-With': 'XMLHttpRequest'
         }})
   }
+  public receptionner(id:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/dons/${id}?_method=PUT`;
+    return this.http.post(api,{
+      disponible:1
+    },{headers:headers});
+  }
   /*-------------------------DEMANDES---------------------------*/
   public getDemandes():Observable<any>{
     const api = environment.apiURL+'/demandes';
@@ -111,6 +123,16 @@ export class ManageDataService {
       'X-Requested-With': 'XMLHttpRequest'
     }});
   }
+  public finishDemande(id:number,data:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/demandes/${id}?_method=PUT`;
+    return this.http.post(api,data,{headers:headers});
+  }
 
   /*-------------------------DONATEUR-----------------------------*/
   public getDonateur(id:number):Observable<any>{
@@ -121,7 +143,37 @@ export class ManageDataService {
       'X-Requested-With': 'XMLHttpRequest'
     }});
   }
+  public updateProfil(id:number,data:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/donateurs/${id}?_method=PUT`;
+    return this.http.post(api,data,{headers:headers});
+  }
   /*-------------------------CONVERSATIONS-------------------------*/
+  public getLastMessage(id_donateur:number,id_receiver:number,id_don:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+'/lastMessage/'+`${id_donateur}-${id_receiver}-${id_don}`;
+    return this.http.get<any>(api,{headers:headers});
+  }
+  public deleteMessage(id:number){
+   const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+  'Authorization': `Bearer ${localStorage.getItem('token')}`,
+  'Accept': 'application/json, text/plain, */*',
+  'X-Requested-With': 'XMLHttpRequest'
+  });
+  const api = environment.apiURL+'/messages/'+`${id}`;
+  return this.http.delete(api,{headers:headers});
+  }
   public addMessageDon(don_id:number,donateur_id:number,receiver_id:number,contenu:string,vu:number,sender:number,receiver:number):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

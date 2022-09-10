@@ -23,7 +23,7 @@ export class RegisterPage implements OnInit {
       birthday:[''],
       gender:['',[Validators.required]],
       codeCountry:['',[Validators.required]],
-      contact:['',[Validators.required,Validators.minLength(6)]],
+      contact:['',[Validators.required,Validators.minLength(6),Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       country:['',[Validators.required,Validators.minLength(3)]],
       city:['',[Validators.required,Validators.minLength(3)]],
       password:['',[Validators.required,Validators.minLength(6)]],

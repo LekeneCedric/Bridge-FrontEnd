@@ -1,16 +1,18 @@
-<ion-header >
+<ion-header>
   <ion-item>
     <ion-icon name="chevron-back-outline" size="large" color="dark" (click)="back()"></ion-icon>
-    <ion-item *ngIf="isdon && don!=null " style="width:100%">
+    <ion-item *ngIf="isdon && don!=null " style="width:100%" [routerLink]="['/menu/dons/details',don.id]">
       <ion-thumbnail>
-        <img style="border-radius:10px;opacity: {{don.nombre_reserve>0?0.5:1}};" [src]="don.media.length>0?storage+don.media[0].filePath:'../../../../assets/images/full-moon.png'" alt="">
+        <img style="border-radius:10px;opacity: {{don.nombre_reserve>0?0.5:1}};" [src]="don.media.length>0?storage+don.media[0].filePath:'assets/images/user.png'" alt="">
       </ion-thumbnail>
       <ion-col size="9">
         <ion-row>
           <ion-text style="font-weight:bold;margin-left:5%">{{don.titre|slice:0:12}}</ion-text>
         </ion-row>
         <ion-row style="margin-top:10px;width:100%">
-          <ion-text style="width:100%;font-weight:bold;margin-left:5%" [color]="don.nombre_reserve==0?'success':'danger'">Don {{don.nombre_reserve==0?"Disponible":"Reserve"}}</ion-text>
+          <ion-text style="width:100%;font-weight:bold;margin-left:5%" [color]="don.nombre_reserve==0?'success':'danger'">
+             {{don.nombre_reserve==0?"Don Disponible":isReserv?id==donat_id?"lui est Reserver":"vous est Reserver":"Don Reserver"}}
+          </ion-text>
         </ion-row>
       </ion-col>
     </ion-item>
@@ -19,11 +21,11 @@
         <img style="border-radius:10px" src="../../../../assets/images/ask.png" alt="">
       </ion-thumbnail>
       <ion-col size="9">
-        <ion-row>
-          <ion-text style="font-weight:bold;margin-left:5%">Besoin {{demande.title|slice:0:12}}</ion-text>
+        <ion-row style="overflow-x:scroll">
+          <ion-text style="font-weight:bold;margin-left:5%">{{demande.title|slice:0:12}}</ion-text>
         </ion-row>
         <ion-row style="margin-top:10px;width:100%">
-          <ion-text style="width:100%;font-weight:bold;margin-left:5%;color:gray">{{demande.resolu==0?"Disponible":"Reserve"}}</ion-text>
+          <ion-text style="width:100%;font-weight:bold;margin-left:5%;color:gray">{{demande.resolu==0?"En cours":"Resolu"}}</ion-text>
         </ion-row>
       </ion-col>
     </ion-item>
@@ -32,8 +34,8 @@
   
   <ion-item lines="none" *ngIf="donateur!=null && receiver!=null" [routerLink]="['/profil-donateur',id!=donat_id?donateur.id:receiver.id]" >
     <ion-thumbnail >
-      <img style="border-radius:10px" *ngIf="id!=donat_id" [src]="donateur.media.length>0?storage+donateur.media[0].filePath:'../../../../assets/images/full-moon.png'" >
-      <img style="border-radius:10px" *ngIf="id==donat_id" [src]="receiver.media.length>0?storage+receiver.media[0].filePath:'../../../../assets/images/full-moon.png'" >
+      <img style="border-radius:10px" *ngIf="id!=donat_id" [src]="donateur.media.length>0?storage+donateur.media[0].filePath:'assets/images/user.png'" >
+      <img style="border-radius:10px" *ngIf="id==donat_id" [src]="receiver.media.length>0?storage+receiver.media[0].filePath:'assets/images/user.png'" >
     </ion-thumbnail>
     <ion-col>
       <ion-row>
@@ -54,15 +56,57 @@
         <ion-icon name="close-outline" size="large"></ion-icon>
       </ion-button>
     </ion-col>
-    <ion-col size="{{isdon&&!isReserv?12:6}}" style="text-align:center" *ngIf="isdon && !isReserv">
+    <ion-col size="{{isdon&&!isReserv?12:6}}" style="text-align:center" *ngIf="isdon && !isReserv&&don.nombre_reserve<1">
       <ion-button color="danger" (click)="reserveDon()">
         <ion-text>Reserver</ion-text>
         <ion-icon name="receipt-outline" size="large"></ion-icon>
       </ion-button>
     </ion-col>
   </ion-row>
+  <ion-row style=" padding:0;width:100%;border-bottom:0.5px solid rgb(190, 190, 190)" *ngIf="id!=createur" class="ion-padding-vertical">
+    <ion-col size="{{isdon&&isReserv?12:6}}" style="text-align:center" *ngIf="isdon && isReserv&&don.disponible<1">
+      <ion-button color="success" (click)="receptionnerDon()">
+        <ion-text>Valider la reception</ion-text>
+        <ion-icon name="thumbs-up-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="{{isdon&&isReserv?12:6}}" style="text-align:center" *ngIf="isdon && isReserv&&don.disponible>0">
+      <ion-button color="success" (click)="receptionnerDon()" disabled>
+        <ion-text>Vous avez recu ce don</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="!isdon && demande!=null ">
+    <ion-col size="{{!isdon?12:6}}" style="text-align:center" *ngIf="!isdon && id==createur &&demande.resolu<1">
+      <ion-button color="success" (click)="demanderesolu()">
+        <ion-text>Ce donateur a resoud mon besoin</ion-text>
+        <ion-icon name="checkmark-done-outline" size="large"></ion-icon>
+
+      </ion-button>
+    </ion-col>
+    <ion-col size="{{!isdon?12:6}}" style="text-align:center" *ngIf="!isdon && demande.resolu>0">
+      <ion-button color="danger"  fill="outline" disabled>
+        <ion-text>Demande archive</ion-text>
+        <ion-icon name="checkmark-done-outline" size="large"></ion-icon>
+
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-header>
 <ion-content style="margin:0;padding:0;border:0">
+        
+  <ion-popover trigger="actionMessage" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false" lines="none" (click)="presentPopover($event)">
+            <ion-text slot="start">Supprime</ion-text>
+            <ion-icon name="trash-outline" size="large" color="danger" slot="end"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
     <ion-refresher-content color="danger"></ion-refresher-content>
   </ion-refresher>
@@ -116,13 +160,15 @@
   <div *ngIf="don!=null">
     <div style="width:100%;" *ngFor="let message of conversation">
       <div  class="my-card" *ngIf="message.sender==id">
-          <div class="ion-padding my-message-card">
+          <div class="ion-padding my-message-card"  (click)="MessageId(message.id);presentPopover($event)">
             <ion-row>
               <ion-text class="content" >{{message.contenu}}</ion-text>
             </ion-row>
             </div>
           <ion-text class="date-message">{{message.created_at | date:'hh:mm - dd MMM'}}</ion-text>
       </div> 
+
+
       <div class="her-card" *ngIf="message.sender!=id">
         <div class="ion-padding her-message-card">
           <ion-row>
@@ -136,7 +182,7 @@
   <div *ngIf="don==null">
     <div style="width:100%;" *ngFor="let message of conversation">
       <div  class="my-card" *ngIf="message.sender==id">
-          <div class="ion-padding my-message-card">
+          <div class="ion-padding my-message-card"  (click)="MessageId(message.id);presentPopover($event)">
             <ion-row>
               <ion-text class="content" >{{message.contenu}}</ion-text>
             </ion-row>

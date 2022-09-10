@@ -1,21 +1,19 @@
 <ion-header class="ion-no-border">
-  <ion-row style="width: 100%;">
-    <ion-col class="logo" size="5">
-      <ion-title class="title">BRIDGE</ion-title>
-      <ion-card-subtitle>Cameroun,yaounde</ion-card-subtitle>
-    </ion-col>
-    <ion-col>
-      <ion-row>
-        <ion-col size="4" style="text-align:center">
-          <ion-icon name="notifications" size="large" color="warning" ></ion-icon>
-        </ion-col>
-        <ion-col size="8" [routerLink]="['/profil-donateur',id]" style="display:flex;flex-direction: row">
-          <ion-icon name="person-circle-outline" size="large" color="danger" ></ion-icon>
-          <ion-text style="margin-top:8px;margin-left:10px;font-weight: bold;">{{myData.name}}{{myData.surname |slice:0:1}}.</ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-col>
-  </ion-row>
+  <ion-row>
+  <ion-col class="logo" size="5">
+    <ion-title class="title">BRIDGE</ion-title>
+  </ion-col>
+  <ion-col style="margin-left:30%">
+      <ion-col size="3" style="text-align:center" style="position:relative">
+        
+        <ion-icon name="notifications" size="large" color="warning"></ion-icon>
+        <ion-badge style="position:absolute;top:0;right:0" color="danger">2</ion-badge>
+      </ion-col>
+      <ion-col size="4" [routerLink]="['/profil-donateur',id]" style="text-align:right;margin-left:16px">
+        <ion-icon name="person-circle-outline" size="large" color="danger" ></ion-icon>
+      </ion-col>
+  </ion-col>
+</ion-row>
   <ion-row>
     <ion-col size="12">
       <ion-segment scrollable>
@@ -47,10 +45,10 @@
   </ion-grid>
   <ion-row>
     <div *ngFor="let demand of demandes" style="width: 95%">
-      <ion-card *ngIf="selectedCategory.indexOf(demand.category)!=-1 || selectedCategory.length<1" style="width: 100%;" [routerLink]="['details',demand.id]">
+      <ion-card *ngIf="selectedCategory.indexOf(demand.category)!=-1 || selectedCategory.length<1 " style="width: 100%;" [routerLink]="['details',demand.id]">
         <ion-row style="width: 100%;margin-top:5%">
           <ion-thumbnail class="ion-margin-start">
-            <img style="border-radius:10px;margin-right:5%" [src]="demand.donateur.media.length>0?storage+demand.donateur.media[0].filePath:'../../../../assets/images/full-moon.png'" />
+            <img style="border-radius:10px;margin-right:5%" [src]="demand.donateur.media.length>0?storage+demand.donateur.media[0].filePath:'assets/images/user.png'" />
           </ion-thumbnail>
           <ion-col style="text-align: left;margin-left:5%">
             <ion-row>
@@ -74,11 +72,6 @@
           <ion-text style="color:gray" slot="start">Adresse:</ion-text>
           <ion-text  style="vertical-align: middle;justify-self: center;"> {{demand.adresse}} </ion-text>
         </ion-item>
-      <ion-row>
-        <ion-col size="12">
-          <ion-button expand="block" color="danger" [routerLink]="['details',demand.id]" style="font-weight:bold">Consulter</ion-button>
-        </ion-col>
-      </ion-row>
     </ion-card> 
     </div>
    

@@ -90,14 +90,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ProfilDonateurPage": () => (/* binding */ ProfilDonateurPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _profil_donateur_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./profil-donateur.page.html?ngResource */ 9755);
-/* harmony import */ var _profil_donateur_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profil-donateur.page.scss?ngResource */ 8605);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _profil_donateur_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profil-donateur.page.html?ngResource */ 9755);
+/* harmony import */ var _profil_donateur_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profil-donateur.page.scss?ngResource */ 8605);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var javascript_time_ago__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! javascript-time-ago */ 488);
+/* harmony import */ var javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! javascript-time-ago/locale/fr */ 8996);
+/* harmony import */ var src_app_modals_modal_edit_profil_modal_edit_profil_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/modals/modal-edit-profil/modal-edit-profil.page */ 284);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
+
+
 
 
 
@@ -107,272 +115,111 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ProfilDonateurPage = class ProfilDonateurPage {
-    constructor(navCtrl, route, manageDataService) {
-        this.navCtrl = navCtrl;
-        this.route = route;
-        this.manageDataService = manageDataService;
-        /*------------------------------VARIABLES---------------------*/
-        this.selectedSegment = 'dons';
-        this.userInfo = null;
-        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.storage;
-    }
-    ngOnInit() {
-        this.user_id = this.route.snapshot.params.id;
-        this.manageDataService.getDonateur(this.user_id).toPromise().then(data => {
-            console.log(data);
-            this.userInfo = data;
-        }).catch(err => {
-            console.log(err);
-        });
-    }
-    /*------------------------------FUNCTIONS---------------------*/
-    image(don) {
-        let url = '';
-        don.media.length > 1 ? url = `${this.storage + don.media[0].filePath.toString()}` : url = '../../../../../../assets/images/empty.webp';
-        return `url(${url})`;
-    }
-    segmentChanged(event) {
-        this.selectedSegment = event.target.value;
-    }
-    navBack() {
-        this.navCtrl.back();
-    }
+  constructor(navCtrl, route, manageDataService, modalCtrl) {
+    this.navCtrl = navCtrl;
+    this.route = route;
+    this.manageDataService = manageDataService;
+    this.modalCtrl = modalCtrl;
+    /*------------------------------VARIABLES---------------------*/
+
+    this.myId = null;
+    this.selectedSegment = 'dons';
+    this.userInfo = null;
+    this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__.environment.storage;
+  }
+
+  ngOnInit() {
+    javascript_time_ago__WEBPACK_IMPORTED_MODULE_6__["default"].addDefaultLocale(javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_7__["default"]);
+    this.myId = JSON.parse(localStorage.getItem('mydata')).id;
+    this.user_id = this.route.snapshot.params.id;
+    this.manageDataService.getDonateur(this.user_id).toPromise().then(data => {
+      console.log(data);
+      this.userInfo = data;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+  /*------------------------------FUNCTIONS---------------------*/
+
+
+  timeAgo(created_at) {
+    const timeAgo = new javascript_time_ago__WEBPACK_IMPORTED_MODULE_6__["default"]('fr-EU');
+    const elapsedTime = timeAgo.format(new Date(Date.parse(created_at) - 60 * 1000));
+    return elapsedTime;
+  }
+
+  image(don) {
+    let url = '';
+    don.media.length > 0 ? url = `${this.storage + don.media[0].filePath}` : url = '../../../../../../assets/images/empty.webp';
+    return url;
+  }
+
+  refresh() {
+    this.ngOnInit();
+  }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.refresh();
+      event.target.complete();
+    }, 500);
+  }
+
+  edit() {
+    var _this = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const modal = yield _this.modalCtrl.create({
+        component: src_app_modals_modal_edit_profil_modal_edit_profil_page__WEBPACK_IMPORTED_MODULE_3__.ModalEditProfilPage,
+        componentProps: {
+          user: _this.userInfo
+        },
+        breakpoints: [0, 1],
+        initialBreakpoint: 0.65,
+        animated: true,
+        handle: true
+      });
+      modal.present();
+      const {
+        data,
+        role
+      } = yield modal.onWillDismiss();
+
+      if (role === 'confirm') {
+        setTimeout(() => {
+          console.log('exit');
+
+          _this.refresh();
+        }, 200);
+      }
+    })();
+  }
+
+  segmentChanged(event) {
+    this.selectedSegment = event.target.value;
+  }
+
+  navBack() {
+    this.navCtrl.back();
+  }
+
 };
-ProfilDonateurPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.ActivatedRoute },
-    { type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__.ManageDataService }
-];
-ProfilDonateurPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
-        selector: 'app-profil-donateur',
-        template: _profil_donateur_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
-        styles: [_profil_donateur_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
-    })
-], ProfilDonateurPage);
 
+ProfilDonateurPage.ctorParameters = () => [{
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.NavController
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.ActivatedRoute
+}, {
+  type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_4__.ManageDataService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ModalController
+}];
 
-
-/***/ }),
-
-/***/ 8027:
-/*!*************************************************************!*\
-  !*** ./src/app/services/manage-data/manage-data.service.ts ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ManageDataService": () => (/* binding */ ManageDataService)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
-
-
-
-
-let ManageDataService = class ManageDataService {
-    constructor(http) {
-        this.http = http;
-    }
-    getDons(page) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/dons' + `?page=${page}`;
-        return this.http.get(api, { headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            } });
-    }
-    getOneDon(id) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/dons/' + `${id}`;
-        return this.http.get(api, { headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            } });
-    }
-    getDonSimilaires(id, category) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/donsSimilaires/' + `${id}/` + `${category}`;
-        return this.http.get(api, { headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            } });
-    }
-    nbreInteressesDon(id) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/interessesDon/' + `${id}`;
-        return this.http.get(api, { headers: headers });
-    }
-    isReserv(id_don, idUser) {
-        console.log(idUser);
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/isreserv/' + `${id_don}-${idUser}`;
-        return this.http.get(api, { headers: headers });
-    }
-    reserverDon(don_id, donateur_id) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const data = {
-            don_id: don_id,
-            donateur_id: donateur_id
-        };
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/reserverDon';
-        return this.http.post(api, data, { headers: headers });
-    }
-    annulerReservation(don_id, donateur_id) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const data = {
-            don_id: don_id,
-            donateur_id: donateur_id
-        };
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annulerReservation';
-        return this.http.post(api, data, { headers: headers });
-    }
-    nbreservations(don_id) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/nbreservations/' + `${don_id}`;
-        return this.http.get(api, { headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            } });
-    }
-    /*-------------------------DEMANDES---------------------------*/
-    getDemandes() {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/demandes';
-        return this.http.get(api, { headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            } });
-    }
-    getOneDemande(id) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/demandes' + `/${id}`;
-        return this.http.get(api, { headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            } });
-    }
-    /*-------------------------DONATEUR-----------------------------*/
-    getDonateur(id) {
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/donateurs' + `/${id}`;
-        return this.http.get(api, { headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            } });
-    }
-    /*-------------------------CONVERSATIONS-------------------------*/
-    addMessageDon(don_id, donateur_id, receiver_id, contenu, vu, sender, receiver) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages';
-        const message = {
-            don_id: don_id,
-            donateur_id: donateur_id,
-            receiver_id: receiver_id,
-            sender: sender,
-            receiver: receiver,
-            contenu: contenu,
-            vu: vu
-        };
-        return this.http.post(api, message, { headers: headers });
-    }
-    addMessageDemande(demande_id, donateur_id, receiver_id, contenu, vu, sender, receiver) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages';
-        const message = {
-            demande_id: demande_id,
-            donateur_id: donateur_id,
-            receiver_id: receiver_id,
-            sender: sender,
-            receiver: receiver,
-            contenu: contenu,
-            vu: vu
-        };
-        return this.http.post(api, message, { headers: headers });
-    }
-    getConversationsDon(id_donateur, id_receiver, id_don) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/conversationDon' + `/${id_donateur}-${id_receiver}-${id_don}`;
-        return this.http.get(api, { headers: headers });
-    }
-    getConversationsDemande(id_donateur, id_receiver, id_demande) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/conversationDemande' + `/${id_donateur}-${id_receiver}-${id_demande}`;
-        return this.http.get(api, { headers: headers });
-    }
-    getSalonsDons(mon_id) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/salonsDiscussionsDon/' + `${mon_id}`;
-        return this.http.get(api, { headers: headers });
-    }
-    getSalonsDemandes(mon_id) {
-        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Accept': 'application/json, text/plain, */*',
-            'X-Requested-With': 'XMLHttpRequest'
-        });
-        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/salonsDiscussionsDemande/' + `${mon_id}`;
-        return this.http.get(api, { headers: headers });
-    }
-};
-ManageDataService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
-];
-ManageDataService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
-        providedIn: 'root'
-    })
-], ManageDataService);
-
+ProfilDonateurPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
+  selector: 'app-profil-donateur',
+  template: _profil_donateur_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_profil_donateur_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], ProfilDonateurPage);
 
 
 /***/ }),
@@ -393,7 +240,7 @@ module.exports = ".profil {\n  min-width: 5rem;\n  min-height: 5rem;\n}\n.profil
   \************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-row style=\"width:100%\">\n      <ion-item style=\"width:100%\" lines=\"none\">\n        <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"danger\" slot=\"start\"(click)=\"navBack()\"></ion-icon>\n        <ion-icon name=\"ellipsis-vertical\" size=\"large\" color=\"danger\" slot=\"end\"></ion-icon>\n      </ion-item> \n    </ion-row>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid *ngIf=\"userInfo!=null\">\n  <ion-item style=\"width:100%;\" lines=\"none\">\n    <ion-thumbnail class=\"ion-margin-start\" slot=\"start\" class=\"profil\">\n      <img style=\"border-radius:10px\" src=\"{{userInfo.media.length>0 ? storage+userInfo.media[0].filePath:'../../../../assets/images/full-moon.png'}}\" />\n    </ion-thumbnail>\n    <ion-col style=\"text-align: left\">\n      <ion-row>\n       <ion-text style=\"font-weight: bold;font-size:large\">{{userInfo.name}} {{userInfo.surname}}</ion-text>\n      </ion-row>\n      <ion-row style=\"margin-top:10px\">\n        <ion-text style=\"color:gray\">Membre depuis le {{userInfo.created_at|date:'dd/mm/yyyy'}}</ion-text>\n      </ion-row>\n    </ion-col>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0;padding:0\" lines=\"none\">\n  <img src=\"../../../../assets/images/donation.png\" style=\"margin-right:15px\" alt=\"\" >\n  <ion-text style=\"font-weight:bold\">{{userInfo.dons}}</ion-text>\n  <ion-text style=\"margin-left:5px\">dons</ion-text>\n  <ion-text style=\"font-weight:bold;margin-left:5px\">, 0</ion-text>\n  <ion-text style=\"margin-left:5px\">receptions</ion-text>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0;padding:0\" lines=\"none\">\n    <img src=\"../../../../assets/images/demande.png\" style=\"margin-right:15px\" alt=\"\" >\n    <ion-text style=\"font-weight:bold\">{{userInfo.nbdemandes}}</ion-text>\n    <ion-text style=\"margin-left:5px\">demandes</ion-text>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0;padding:0\" lines=\"none\">\n    <img src=\"../../../../assets/images/group.png\" style=\"margin-right:15px\" alt=\"\" >\n    <ion-text style=\"margin-left:5px\">appartient a</ion-text>\n    <ion-text style=\"font-weight:bold;margin-left:5px\">{{userInfo.nbassociations}}</ion-text>\n    <ion-text style=\"margin-left:5px\">associations</ion-text>\n  </ion-item>\n  <ion-item-divider></ion-item-divider>\n  <ion-item lines=\"none\">\n    <ion-text style=\"font-weight:bold;color: gray;\">Activites</ion-text>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0\" lines=\"none\">\n    <img src=\"../../../../assets/images/placard.png\" style=\"margin-right:15px\" alt=\"\" >\n    <ion-text style=\"font-weight:bold\">{{userInfo.nbmouvements}}</ion-text>\n    <ion-text style=\"margin-left:5px\">evenements participes</ion-text>\n  </ion-item>\n  <ion-item-divider></ion-item-divider>\n  <ion-item lines=\"none\">\n    <ion-text style=\"font-weight:bold;color: gray;\">Niveau</ion-text>\n  </ion-item>\n  <ion-row>\n    <ion-col size=\"3\" style=\"text-align:center;align-items: center;\">\n        <ion-img style=\"border-radius:10px\" style=\"width:60%;margin-left: 10px;\" src=\"../../../../assets/images/stars.png\"></ion-img>\n    </ion-col>\n    <ion-col size=\"8\">\n      <ion-row>\n        <ion-text style=\"font-weight: bold;font-size:medium\">{{userInfo.statut}}</ion-text>\n       </ion-row>\n       <ion-row style=\"margin-top:10px\">\n         <ion-text style=\"color:gray\">Niveau {{userInfo.niveau}}</ion-text>\n       </ion-row>\n    </ion-col>\n  </ion-row>\n  <ion-segment (ionChange)=\"segmentChanged($event)\" [value]=\"selectedSegment\" color=\"danger\">\n    <ion-segment-button value=\"dons\">\n      <ion-label>Dons</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value=\"demandes\">\n      <ion-label>Demandes</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n  \n  <div style=\"height:250px;overflow-y: scroll;\" >\n    <ion-list *ngIf=\"selectedSegment=='dons'\">\n      <ion-grid style=\"text-align:center\" *ngIf=\"userInfo.don.length<1\">\n        <img src=\"../../../../assets/images/no-results.png\" class=\"ion-margin-vertical\">\n        <ion-item lines=\"none\"style=\"text-align:center;width: 100%;\">\n          <ion-text style=\"color:rgb(64, 64, 64);width: 100%\" color=\"danger\">Aucun don disponible realise</ion-text>\n        </ion-item>\n       </ion-grid>\n     <ion-grid style=\"display: flex; flex-wrap:wrap;justify-content: space-between;\">\n            <div *ngFor=\"let don of userInfo.don\" style=\"width:50%\">\n            <ion-card  [routerLink]=\"['/menu/dons/details',don.id]\"style=\"width:90%\">\n              <div style=\"width:100%;height:150px;margin:0;padding:0;background-size:cover;\"\n              [style.background-image]=\"image(don)\"\n              >\n                \n              </div>\n                <ion-item>\n                  <ion-text style=\"font-weight: bold\">{{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>\n                </ion-item>\n            <ion-item>\n              <ion-icon name=\"location-outline\" color=\"danger\"></ion-icon>\n              <ion-label>{{don.adresse}}</ion-label>\n          </ion-item>\n            </ion-card>\n          </div>\n          </ion-grid>\n    </ion-list>\n    <ion-list *ngIf=\"selectedSegment=='demandes'\">\n      \n      <ion-grid style=\"display: flex; flex-wrap:wrap;justify-content: space-between;\">\n        <ion-card *ngFor=\"let demand of userInfo.demande\" style=\"width: 100%;\">\n          <ion-item style=\"width:100%;\">\n            <ion-text style=\"color:gray\" slot=\"start\">Besoin</ion-text>\n            <ion-text> {{demand.title}}</ion-text>\n          </ion-item>\n          <ion-item style=\"width:100%;\">\n            <ion-text style=\"color:gray\" slot=\"start\">Heure</ion-text>\n            <ion-text> {{demand.created_at | date:'medium'}}</ion-text>\n          </ion-item>\n          <ion-item style=\"width:100%;\">\n            <ion-text style=\"color:gray\" slot=\"start\">Adresse</ion-text>\n            <ion-text  style=\"vertical-align: middle;justify-self: center;\"> {{demand.adresse}} </ion-text>\n          </ion-item>\n        <ion-row>\n          <ion-col size=\"12\">\n            <ion-button expand=\"block\" color=\"danger\" [routerLink]=\"['/menu/demandes/details',demand.id]\">Consulter</ion-button>\n          </ion-col>\n        </ion-row>\n      </ion-card>\n      </ion-grid>\n    </ion-list>\n  </div>\n  </ion-grid>\n</ion-content>\n";
+module.exports = "<ion-header class=\"ion-no-border\">\n  <ion-popover trigger=\"profilOption\" [dismissOnSelect]=\"true\" *ngIf=\"userInfo!=null\">\n  <ng-template>\n    <ion-content>\n      <ion-list>\n        <ion-item [button]=\"true\" [detail]=\"false\" *ngIf=\"myId==userInfo.id\" lines=\"none\" (click)=\"edit()\">\n          <ion-text color=\"dark\">Modifier</ion-text>\n          <ion-icon name=\"pencil-outline\" slot=\"end\" color=\"warning\"></ion-icon>\n        </ion-item>\n        <ion-item [button]=\"true\" [detail]=\"false\"  *ngIf=\"myId!=userInfo.id\" lines=\"none\">\n          <ion-text color=\"danger\">signaler</ion-text>\n          <ion-icon name=\"receipt-outline\" slot=\"end\" color=\"danger\"></ion-icon>\n        </ion-item>\n      </ion-list>\n    </ion-content>\n  </ng-template>\n</ion-popover>\n  <ion-toolbar>\n    <ion-row style=\"width:100%\" >\n      <ion-item style=\"width:100%\" lines=\"none\">\n        <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"danger\" slot=\"start\"(click)=\"navBack()\"></ion-icon>\n        <ion-icon id=\"profilOption\" name=\"ellipsis-vertical\" size=\"large\" color=\"danger\" slot=\"end\"></ion-icon>\n      </ion-item> \n    </ion-row>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\" class=\"red\">\n    <ion-refresher-content color=\"danger\"></ion-refresher-content>\n  </ion-refresher>\n  <ion-grid *ngIf=\"userInfo!=null\">\n  <ion-item style=\"width:100%;\" lines=\"none\">\n    <ion-thumbnail class=\"ion-margin-start\" slot=\"start\" class=\"profil\">\n      <img style=\"border-radius:10px\" src=\"{{userInfo.media.length>0 ? storage+userInfo.media[0].filePath:'assets/images/user.png'}}\" />\n    </ion-thumbnail>\n    <ion-col style=\"text-align: left\">\n      <ion-row>\n       <ion-text style=\"font-weight: bold;font-size:large\">{{userInfo.name}} {{userInfo.surname}}</ion-text>\n      </ion-row>\n      <ion-row style=\"margin-top:10px\">\n        <ion-text style=\"color:gray\">Membre depuis le {{userInfo.created_at|date:'dd/mm/yyyy'}}</ion-text>\n      </ion-row>\n    </ion-col>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0;padding:0\" lines=\"none\">\n  <img src=\"../../../../assets/images/donation.png\" style=\"margin-right:15px\" alt=\"\" >\n  <ion-text style=\"font-weight:bold\">{{userInfo.dons}}</ion-text>\n  <ion-text style=\"margin-left:5px\">dons</ion-text>\n  <ion-text style=\"font-weight:bold;margin-left:5px\">, 0</ion-text>\n  <ion-text style=\"margin-left:5px\">receptions</ion-text>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0;padding:0\" lines=\"none\">\n    <img src=\"../../../../assets/images/demande.png\" style=\"margin-right:15px\" alt=\"\" >\n    <ion-text style=\"font-weight:bold\">{{userInfo.nbdemandes}}</ion-text>\n    <ion-text style=\"margin-left:5px\">demandes</ion-text>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0;padding:0\" lines=\"none\">\n    <img src=\"../../../../assets/images/group.png\" style=\"margin-right:15px\" alt=\"\" >\n    <ion-text style=\"margin-left:5px\">appartient a</ion-text>\n    <ion-text style=\"font-weight:bold;margin-left:5px\">{{userInfo.nbassociations}}</ion-text>\n    <ion-text style=\"margin-left:5px\">associations</ion-text>\n  </ion-item>\n  <ion-item-divider></ion-item-divider>\n  <ion-item lines=\"none\">\n    <ion-text style=\"font-weight:bold;color: gray;\">Activites</ion-text>\n  </ion-item>\n  <ion-item style=\"width:100%;margin:0\" lines=\"none\">\n    <img src=\"../../../../assets/images/placard.png\" style=\"margin-right:15px\" alt=\"\" >\n    <ion-text style=\"font-weight:bold\">{{userInfo.nbmouvements}}</ion-text>\n    <ion-text style=\"margin-left:5px\">evenements participes</ion-text>\n  </ion-item>\n  <ion-item-divider></ion-item-divider>\n  <ion-item lines=\"none\">\n    <ion-text style=\"font-weight:bold;color: gray;\">Niveau</ion-text>\n  </ion-item>\n  <ion-row>\n    <ion-col size=\"3\" style=\"text-align:center;align-items: center;\">\n        <ion-img style=\"border-radius:10px\" style=\"width:60%;margin-left: 10px;\" src=\"../../../../assets/images/stars.png\"></ion-img>\n    </ion-col>\n    <ion-col size=\"8\">\n      <ion-row>\n        <ion-text style=\"font-weight: bold;font-size:medium\">{{userInfo.statut}}</ion-text>\n       </ion-row>\n       <ion-row style=\"margin-top:10px\">\n         <ion-text style=\"color:gray\">Niveau {{userInfo.niveau}}</ion-text>\n       </ion-row>\n    </ion-col>\n  </ion-row>\n  <ion-segment (ionChange)=\"segmentChanged($event)\" [value]=\"selectedSegment\" color=\"danger\">\n    <ion-segment-button value=\"dons\">\n      <ion-label>Dons</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value=\"demandes\">\n      <ion-label>Demandes</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n  \n  <div style=\"height:250px;overflow-y: scroll;\" >\n    <ion-list *ngIf=\"selectedSegment=='dons'\">\n      <ion-grid style=\"text-align:center\" *ngIf=\"userInfo.don.length<1\">\n        <img src=\"../../../../assets/images/no-results.png\" class=\"ion-margin-vertical\">\n        <ion-item lines=\"none\"style=\"text-align:center;width: 100%;\">\n          <ion-text style=\"color:rgb(64, 64, 64);width: 100%\" color=\"danger\">Aucun don disponible realise</ion-text>\n        </ion-item>\n       </ion-grid>\n     <ion-grid style=\"display: flex; flex-wrap:wrap;justify-content: space-between;\">\n            <div *ngFor=\"let don of userInfo.don\" style=\"width:50%\">\n              <ion-card  [routerLink]=\"['details',don.id]\"style=\"width:90%;position: relative;\" >\n                <div *ngIf=\"don.nombre_reserve>0\" style=\"position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a\">\n                <ion-text style=\"font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;\">Reserve</ion-text>\n                </div>\n                <div style=\"width:100%;height:150px;margin:0;padding:0;background-size:cover; opacity: {{don.nombre_reserve>0?0.5:1}};\n                background-image: url({{image(don)}});\">   \n                </div>\n                  <ion-row style=\"margin-top:2%\">\n                    <ion-text style=\"font-weight: bolder;font-size:1.3em;margin-left:2%;width:100%;padding:2%\"color=\"dark\">\n                      {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>\n                  </ion-row>\n                  <ion-text style=\"font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%\"color=\"medium\">\n                    {{don.adresse | slice:0:18}}{{don.adresse.length>18?'...':''}}</ion-text>\n                  <ion-row style=\"margin-top:10px;padding:0;width:100%;display: flex;\">\n                    <ion-col size=\"2\" style=\"padding-right:0;text-align: right;\"><ion-icon name=\"timer-outline\" color=\"dark\"style=\"font-weight:bold\" size=\"medium\" style=\"padding-right:0\"></ion-icon></ion-col>\n                    <ion-col style=\"padding-left:0\"> <ion-text style=\"margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;\" color=\"dark\">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> \n                </ion-row>\n                    \n              </ion-card>\n          </div>\n          </ion-grid>\n    </ion-list>\n    <ion-list *ngIf=\"selectedSegment=='demandes'\">\n      \n      <ion-grid style=\"display: flex; flex-wrap:wrap;justify-content: space-between;\">\n        <ion-card *ngFor=\"let demand of userInfo.demande\" style=\"width: 100%;\">\n          <ion-item style=\"width:100%;\">\n            <ion-text style=\"color:gray\" slot=\"start\">Besoin</ion-text>\n            <ion-text> {{demand.title}}</ion-text>\n          </ion-item>\n          <ion-item style=\"width:100%;\">\n            <ion-text style=\"color:gray\" slot=\"start\">Heure</ion-text>\n            <ion-text> {{demand.created_at | date:'medium'}}</ion-text>\n          </ion-item>\n          <ion-item style=\"width:100%;\">\n            <ion-text style=\"color:gray\" slot=\"start\">Adresse</ion-text>\n            <ion-text  style=\"vertical-align: middle;justify-self: center;\"> {{demand.adresse}} </ion-text>\n          </ion-item>\n        <ion-row>\n          <ion-col size=\"12\">\n            <ion-button expand=\"block\" color=\"danger\" [routerLink]=\"['/menu/demandes/details',demand.id]\">Consulter</ion-button>\n          </ion-col>\n        </ion-row>\n      </ion-card>\n      </ion-grid>\n    </ion-list>\n  </div>\n  </ion-grid>\n</ion-content>\n";
 
 /***/ })
 

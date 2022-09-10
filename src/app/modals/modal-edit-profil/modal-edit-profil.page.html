@@ -1,0 +1,29 @@
+<ion-content>
+<ion-grid>
+  <ion-list>
+    <div style="width:100%;text-align: center;">
+      <img (click)="getPicture()" style="border-radius:50%;width: 150px;height:150px" src="{{updateImage!=null?updateImage.data:user.media.length>0 ? storage+user.media[0].filePath:'assets/images/user.png'}}" />
+    </div>
+    <ion-item class="input ion-margin-vertical">
+      <ion-label style="font-weight:bold">Nom : </ion-label>
+      <ion-input type="email" [value]="user.name" [(ngModel)]="name"  maxlength="45"></ion-input>
+    </ion-item>
+    <ion-item class="input ion-margin-vertical">
+      <ion-label style="font-weight:bold">Prenom : </ion-label>
+      <ion-input type="email" [value]="user.surname" [(ngModel)]="surname" maxlength="45"></ion-input>
+    </ion-item>
+    <ion-item class="input ion-margin-vertical">
+      <ion-label style="font-weight:bold">Date naissance : </ion-label>
+      <ion-input type="email" [value]="user.date_naissance"[(ngModel)]="date_naissance"  maxlength="45"></ion-input>
+    </ion-item>
+    <ion-item class="input ion-margin-vertical">
+      <ion-label style="font-weight:bold">Contact : </ion-label>
+      <ion-input placeholder="Votre contact" [(ngModel)]="contact" [value]="user.contact"></ion-input>
+    </ion-item>
+    <ion-button class="ion-margin-top" expand="block" (click)="updateProfil()" *ngIf="user.name!=name || user.surname!=surname || user.date_naissance!= date_naissance || user.contact != contact || updateImage!=null">
+      <ion-text style="font-weight:bold;color:white">Modifier Profil</ion-text>
+    </ion-button>
+  </ion-list>
+</ion-grid>
+</ion-content>
+

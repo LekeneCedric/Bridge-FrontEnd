@@ -62,6 +62,14 @@ const routes: Routes = [
     path: 'modal-salon',
     loadChildren: () => import('./modals/modal-salon/modal-salon.module').then( m => m.ModalSalonPageModule)
   },
+  {
+    path: 'modal-popover',
+    loadChildren: () => import('./modals/modal-popover/modal-popover.module').then( m => m.ModalPopoverPageModule)
+  },
+  {
+    path: 'modal-edit-profil',
+    loadChildren: () => import('./modals/modal-edit-profil/modal-edit-profil.module').then( m => m.ModalEditProfilPageModule)
+  },
 ];
 @NgModule({
   imports: [

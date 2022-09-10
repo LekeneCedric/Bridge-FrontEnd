@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavController, ToastController } from '@ionic/angular';
+import { AlertController, NavController, PopoverController, ToastController } from '@ionic/angular';
+import { ModalPopoverPage } from 'src/app/modals/modal-popover/modal-popover.page';
 import { IDemande } from 'src/app/models/demande.model';
 import { IDon } from 'src/app/models/don.model';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
@@ -14,7 +15,12 @@ import { environment } from 'src/environments/environment';
 export class SalonPage implements OnInit {
 
   constructor(private route:ActivatedRoute,private manageDataService:ManageDataService,
-    private router:NavController,private toast:ToastController) { }
+    private popoverController:PopoverController, private router:NavController,
+    private toast:ToastController,private alertController:AlertController) {
+      setInterval(()=>{
+        this.ngOnInit();
+      },10000)
+     }
 
   ngOnInit() {
     this.convers = [];
@@ -33,7 +39,7 @@ export class SalonPage implements OnInit {
       this.isdon?console.log(this.don):console.log(this.demande);
       console.log(this.donateur);
       console.log(this.receiver);
-    },2000)
+    },2000);
     setTimeout(()=>{      
       this.manageDataService.isReserv(this.id_don,this.id_reicv).toPromise().then(
         data=>{
@@ -41,9 +47,24 @@ export class SalonPage implements OnInit {
           data.message == 'oui'?this.isReserv = true:this.isReserv=false;
         }
       )
-    },500)
+    },500);
     }
   /*-------------------------------------------VARIABLES------------------------------------*/
+  async presentPopover(e:Event){
+    const popover = await this.popoverController.create({
+      component: ModalPopoverPage,
+      componentProps: {
+        delMessageId: this.delMessageId
+      },
+      event:e,
+    })
+    await popover.present();
+    const {data,role} = await popover.onWillDismiss();
+  if(role ==='confirm'){
+    console.log('restart')
+    this.ngOnInit();
+  }
+  }
   public isReserv:boolean = false;
   private id_donateur:number=null;
   private id_reicv:number=null;
@@ -60,7 +81,76 @@ export class SalonPage implements OnInit {
   public new_message:string="";
   public nbreserv:number=null;
   public createur:number=null;
+  public delMessageId:number=0;
   /*-------------------------------------------FUNCTIONS-------------------------------------------*/
+  public demanderesolu(){
+    this.manageDataService.finishDemande(this.demand_id,{resolu:1}).toPromise().then(
+      async (data)=>{
+        const toast = this.toast.create({
+          message:`Demande archive avec succes`,
+          icon: 'information-circle',
+          duration:500,
+          color:"success"
+        });
+        this.ngOnInit();
+        (await (toast)).present();  
+      }
+    ).catch(async ()=>{
+      const toast = this.toast.create({
+        message:`erreur / reessayez `,
+        icon: 'information-circle',
+        duration:500,
+        color:"warning"
+      });
+      this.ngOnInit();
+      (await (toast)).present();  
+    })
+  }
+  public async receptionnerDon(){
+    const alert = await this.alertController.create({
+      cssClass:'deconnexion-alert',
+      header: 'Validez vous reellement la reception de ce don ? cette operation peux s\'averrer irreversible',
+      buttons: [
+        {
+          text: 'annuler',
+          role: 'cancel',
+          cssClass : 'color:gray',
+          handler: () => {
+          },
+        },
+        {
+          text: 'Valider',
+          role: 'confirm',
+          handler: () => {
+           this.manageDataService.receptionner(this.id_don).toPromise().then(async (data)=>{
+            const toast = this.toast.create({
+              message:`reception valide`,
+              icon: 'information-circle',
+              duration:500,
+              color:"danger"
+            });
+            this.ngOnInit();
+            (await (toast)).present();  
+           }).catch(async (err)=>{
+            const toast = this.toast.create({
+              message:`erreur survenue ....`,
+              icon: 'information-circle',
+              duration:500,
+              color:"warning"
+            });
+            this.ngOnInit();
+            (await (toast)).present();  
+           })
+          },
+        },
+      ],
+    });
+    await alert.present();
+   
+  }
+  MessageId(id:number){
+    this.delMessageId = id;
+  }
   public reserveDon(){
    let don_id = this.don_id;
    let donateur_id = this.id_reicv;
@@ -104,6 +194,50 @@ export class SalonPage implements OnInit {
      this.ngOnInit(); 
      event.target.complete();
     },500)
+   }
+   public test(e:any){
+    console.log('suppression du message'+`${e.id}`)
+   }
+   public async deleteMessage(){
+      const alert = await this.alertController.create({
+        cssClass:'deconnexion-alert',
+        header: 'supprimer ce message ?',
+        buttons: [
+          {
+            text: 'annuler',
+            role: 'cancel',
+            cssClass : 'color:gray',
+            handler: () => {
+            },
+          },
+          {
+            text: 'supprimer',
+            role: 'confirm',
+            handler: () => {
+             this.manageDataService.deleteMessage(this.delMessageId).toPromise().then(async (data)=>{
+              const toast = this.toast.create({
+                message:`message supprime avec success`,
+                icon: 'information-circle',
+                duration:500,
+                color:"danger"
+              });
+              this.ngOnInit();
+              (await (toast)).present();  
+             }).catch(async (err)=>{
+              const toast = this.toast.create({
+                message:`erreur survenue ....`,
+                icon: 'information-circle',
+                duration:500,
+                color:"warning"
+              });
+              this.ngOnInit();
+              (await (toast)).present();  
+             })
+            },
+          },
+        ],
+      });
+      await alert.present();
    }
   public get id():number { return this.myId;};
   public get donat_id():number{return this.id_donateur;}

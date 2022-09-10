@@ -17,6 +17,7 @@ export class DetailsDonPage implements OnInit {
     private manageDataService:ManageDataService) { }
 
   ngOnInit() {
+    TimeAgo.addDefaultLocale(fr);
   this.id = JSON.parse(localStorage.getItem('mydata')).id as number;
   this.donsSimilaires = [];
   this.detail_id = this.route.snapshot.params.id;
@@ -48,14 +49,19 @@ export class DetailsDonPage implements OnInit {
     }
   }
   /*--------------------------------FUNCTIONS--------------------------------*/
-  get myId():number{
-   return this.id;
+  public timeAgo(created_at:any):string{
+    const timeAgo = new TimeAgo('fr-EU');
+    const elapsedTime = timeAgo.format(new Date(Date.parse(created_at)-60*1000));
+    return elapsedTime
   }
   image(don:any):any{
     let url = '';
-    don.media.length>1?url= `${this.storage+don.media[0].filePath.toString()}`: url='../../../../../../assets/images/empty.webp'
+    don.media.length>0?url= `${this.storage+don.media[0].filePath}`: url='../../../../../../assets/images/empty.webp'
    
-    return `url(${url})`;
+    return url;
+  }
+  get myId():number{
+   return this.id;
   }
   
   navBack(){

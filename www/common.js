@@ -77,6 +77,299 @@ ModalEtatPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
+/***/ 5780:
+/*!************************************************************!*\
+  !*** ./src/app/modals/modal-popover/modal-popover.page.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ModalPopoverPage": () => (/* binding */ ModalPopoverPage)
+/* harmony export */ });
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _modal_popover_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-popover.page.html?ngResource */ 8683);
+/* harmony import */ var _modal_popover_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-popover.page.scss?ngResource */ 6607);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+
+
+
+
+
+
+
+
+let ModalPopoverPage = class ModalPopoverPage {
+  constructor(http, popover, alertController, toast, manageDataService) {
+    this.http = http;
+    this.popover = popover;
+    this.alertController = alertController;
+    this.toast = toast;
+    this.manageDataService = manageDataService;
+  }
+
+  ngOnInit() {}
+
+  deleteMessage() {
+    var _this = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const alert = yield _this.alertController.create({
+        cssClass: 'deconnexion-alert',
+        header: 'supprimer ce message ?',
+        buttons: [{
+          text: 'annuler',
+          role: 'cancel',
+          cssClass: 'color:gray',
+          handler: () => {}
+        }, {
+          text: 'supprimer',
+          role: 'confirm',
+          handler: () => {
+            _this.manageDataService.deleteMessage(_this.delMessageId).toPromise().then( /*#__PURE__*/function () {
+              var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
+                const toast = _this.toast.create({
+                  message: `message supprime avec success`,
+                  icon: 'information-circle',
+                  duration: 500,
+                  color: "danger"
+                });
+
+                (yield toast).present();
+
+                _this.cancel();
+              });
+
+              return function (_x) {
+                return _ref.apply(this, arguments);
+              };
+            }()).catch( /*#__PURE__*/function () {
+              var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+                const toast = _this.toast.create({
+                  message: `erreur survenue ....`,
+                  icon: 'information-circle',
+                  duration: 500,
+                  color: "warning"
+                });
+
+                _this.ngOnInit();
+
+                (yield toast).present();
+              });
+
+              return function (_x2) {
+                return _ref2.apply(this, arguments);
+              };
+            }());
+          }
+        }]
+      });
+      yield alert.present();
+    })();
+  }
+
+  cancel() {
+    return this.popover.dismiss(null, 'confirm');
+  }
+
+};
+
+ModalPopoverPage.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpClient
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.PopoverController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.AlertController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController
+}, {
+  type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__.ManageDataService
+}];
+
+ModalPopoverPage.propDecorators = {
+  delMessageId: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_6__.Input
+  }]
+};
+ModalPopoverPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+  selector: 'app-modal-popover',
+  template: _modal_popover_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_modal_popover_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], ModalPopoverPage);
+
+
+/***/ }),
+
+/***/ 3378:
+/*!********************************************************!*\
+  !*** ./src/app/modals/modal-salon/modal-salon.page.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ModalSalonPage": () => (/* binding */ ModalSalonPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _modal_salon_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-salon.page.html?ngResource */ 6520);
+/* harmony import */ var _modal_salon_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-salon.page.scss?ngResource */ 2415);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+
+
+
+
+
+
+let ModalSalonPage = class ModalSalonPage {
+    constructor(manageDataService, modalCtrl) {
+        this.manageDataService = manageDataService;
+        this.modalCtrl = modalCtrl;
+        this.rooms = [];
+        this.load = true;
+        this.temp_room = [];
+        this.search = '';
+    }
+    ngOnInit() {
+        this.allRoom.forEach(room => {
+            this.manageDataService.getLastMessage(room.id_donateur, room.id_receiver, room.id_don).toPromise().then(data => {
+                this.temp_room.push({
+                    message: data.contenu,
+                    date: data.created_at
+                });
+            }).catch(err => {
+                console.log(err);
+            });
+        });
+        this.allRoom.forEach(room => {
+            this.manageDataService.getDonateur(room.id_receiver).toPromise().then(data => {
+                this.rooms.push({
+                    id_donateur: room.id_donateur,
+                    id_receiver: room.id_receiver,
+                    id_don: room.id_don,
+                    reic_img: data.media.lenght > 0 ? data.media : 'assets/images/user.png',
+                    reic_name: data.name,
+                    reic_contact: data.contact
+                });
+            });
+        });
+        setTimeout(() => {
+            this.load = false;
+        }, 500);
+    }
+    cancel() {
+        return this.modalCtrl.dismiss(null, 'cancel');
+    }
+};
+ModalSalonPage.ctorParameters = () => [
+    { type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__.ManageDataService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ModalController }
+];
+ModalSalonPage.propDecorators = {
+    selectedRoom: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.Input }],
+    allRoom: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__.Input }]
+};
+ModalSalonPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+        selector: 'app-modal-salon',
+        template: _modal_salon_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_modal_salon_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], ModalSalonPage);
+
+
+
+/***/ }),
+
+/***/ 9444:
+/*!*******************************************************!*\
+  !*** ./src/app/services/creation/creation.service.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CreationService": () => (/* binding */ CreationService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
+
+
+let CreationService = class CreationService {
+    constructor(http) {
+        this.http = http;
+    }
+    createDon(credential, token) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/dons';
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        return this.http.post(api, credential, { headers: headers });
+    }
+    createDemande(credential, token) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/demandes';
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        return this.http.post(api, credential, { headers: headers });
+    }
+};
+CreationService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+CreationService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], CreationService);
+
+
+
+/***/ }),
+
+/***/ 591:
+/*!*********************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/definitions.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+
+
+/***/ }),
+
+/***/ 7621:
+/*!***************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/index.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Geolocation": () => (/* binding */ Geolocation)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 5099);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 591);
+
+const Geolocation = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Geolocation', {
+  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_geolocation_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 8391)).then(m => new m.GeolocationWeb())
+});
+
+
+
+/***/ }),
+
 /***/ 2483:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-4975dbd0.js ***!
@@ -1405,6 +1698,26 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
+/***/ 6607:
+/*!*************************************************************************!*\
+  !*** ./src/app/modals/modal-popover/modal-popover.page.scss?ngResource ***!
+  \*************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtb2RhbC1wb3BvdmVyLnBhZ2Uuc2NzcyJ9 */";
+
+/***/ }),
+
+/***/ 2415:
+/*!*********************************************************************!*\
+  !*** ./src/app/modals/modal-salon/modal-salon.page.scss?ngResource ***!
+  \*********************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtb2RhbC1zYWxvbi5wYWdlLnNjc3MifQ== */";
+
+/***/ }),
+
 /***/ 7099:
 /*!*******************************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.html?ngResource ***!
@@ -1412,6 +1725,26 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /***/ ((module) => {
 
 module.exports = "\n<ion-content>\n  <ion-list class=\"ion-justify-content-between\">\n    <ion-item (click)=\"choose_neuf()\">\n      <ion-icon name=\"ribbon-outline\" slot=\"start\"></ion-icon>\n      <ion-text>Comme neuf</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('Neuf')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\" ></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('Neuf')\" name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n    </ion-item>\n    <ion-item (click)=\"choose_bon_etat()\">\n      <ion-icon name=\"checkmark-done-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text>Bon etat</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('Bon etat')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\"></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('Bon etat')\"name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n\n    </ion-item>\n    <ion-item (click)=\"choose_etat_moyen()\">\n      <ion-icon name=\"checkmark-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text>Etat moyen</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('Etat-moyen')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\"></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('Etat-moyen')\"name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n\n    </ion-item>\n    <ion-item (click)=\"choose_a_bricoler()\">\n      <ion-icon name=\"bed-outline\" slot=\"start\"></ion-icon>\n      <ion-text>A bricoler</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('A bricoler')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\"></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('A bricoler')\"name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n\n    </ion-item>\n  </ion-list>\n  <ion-button color=\"danger\" expand=\"block\" class=\"ion-margin-horizontal\"(click)='confirm()'>Valider</ion-button>\n</ion-content>\n";
+
+/***/ }),
+
+/***/ 8683:
+/*!*************************************************************************!*\
+  !*** ./src/app/modals/modal-popover/modal-popover.page.html?ngResource ***!
+  \*************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n<ion-content>\n  <ion-item [button]=\"true\" [detail]=\"false\" lines=\"none\" (click)=\"deleteMessage()\">\n    <ion-text slot=\"start\">Supprime</ion-text>\n    <ion-icon name=\"trash-outline\" size=\"large\" color=\"danger\" slot=\"end\"></ion-icon>\n  </ion-item>\n</ion-content>\n";
+
+/***/ }),
+
+/***/ 6520:
+/*!*********************************************************************!*\
+  !*** ./src/app/modals/modal-salon/modal-salon.page.html?ngResource ***!
+  \*********************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header class=\"ion-no-border\">\n  <ion-item lines=\"none\" class=\"search-item\">\n    <ion-icon name=\"search-outline\" size=\"large\" color=\"dark\"></ion-icon>\n    <ion-input placeholder=\"Recherche dans les messages\" [(ngModel)]=\"search\" ></ion-input>\n    <ion-chip style=\"padding:0\" *ngIf=\"search.length>1\" (click)=\"search=''\">\n      <ion-icon name=\"close-outline\" style=\"margin-right:30%\" color=\"dark\"></ion-icon>\n    </ion-chip>\n  </ion-item>\n</ion-header>\n<ion-content>\n<ion-list  *ngIf=\"load==false\">\n  <div *ngFor=\"let room of rooms;let i = index\">\n    <ion-item lines=\"none\" *ngIf=\"room.id_don==selectedRoom.id_don && room.reic_name.toLowerCase().includes(search) || search=='' \"\n    [routerLink]=\"['/salon',room.id_donateur,room.id_receiver,0,room.id_don]\" (click)=\"cancel()\">\n      <ion-thumbnail slot=\"start\">\n        <img [src]=\"room.reic_img\" style=\"border-radius:10px\">\n      </ion-thumbnail>\n      <ion-col size=\"12\">\n        <ion-row style=\"width:100%\">\n        <ion-text style=\"font-weight:bold;width:50%;text-align:left\">\n         {{room.reic_name}}\n        </ion-text>\n        <ion-text style=\"text-align:right;width:50%;color:gray\">\n         {{temp_room[i].date | date:'h:mm'}}\n        </ion-text>\n        </ion-row>\n        <ion-row style=\"margin-top:10px\">\n          <ion-text color=\"medium\">\n          {{temp_room[i].message}}\n          </ion-text>\n        </ion-row>\n      </ion-col>\n      <ion-col>\n\n      </ion-col>\n    </ion-item>\n  </div>\n  \n</ion-list>\n</ion-content>\n";
 
 /***/ })
 

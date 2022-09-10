@@ -40,15 +40,15 @@ const routes = [
     },
     {
         path: 'creation-dons',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_services_creation_creation_service_ts-src_app_services_medias_medias_service_-73ec77"), __webpack_require__.e("src_app_pages_creation_creation-dons_creation-dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-dons/creation-dons.module */ 4533)).then(m => m.CreationDonsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_creation_creation-dons_creation-dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-dons/creation-dons.module */ 4533)).then(m => m.CreationDonsPageModule)
     },
     {
         path: 'creation-demandes',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_services_creation_creation_service_ts-src_app_services_medias_medias_service_-73ec77"), __webpack_require__.e("src_app_pages_creation_creation-demandes_creation-demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-demandes/creation-demandes.module */ 8619)).then(m => m.CreationDemandesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_creation_creation-demandes_creation-demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-demandes/creation-demandes.module */ 8619)).then(m => m.CreationDemandesPageModule)
     },
     {
         path: 'profil-donateur/:id',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_profils_profil-donateur_profil-donateur_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/profils/profil-donateur/profil-donateur.module */ 8813)).then(m => m.ProfilDonateurPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-edit-profil_modal-edit-profil_page_ts"), __webpack_require__.e("src_app_pages_profils_profil-donateur_profil-donateur_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/profils/profil-donateur/profil-donateur.module */ 8813)).then(m => m.ProfilDonateurPageModule)
     },
     {
         path: 'profil-association/:id',
@@ -56,7 +56,7 @@ const routes = [
     },
     {
         path: 'reception',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_messages_reception_reception_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/reception/reception.module */ 4432)).then(m => m.ReceptionPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("src_app_pages_messages_reception_reception_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/reception/reception.module */ 4432)).then(m => m.ReceptionPageModule)
     },
     {
         path: 'modal-etat',
@@ -64,19 +64,27 @@ const routes = [
     },
     {
         path: 'settings/:id',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_settings_settings_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("src_app_pages_settings_settings_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
     },
     {
         path: 'salon/:id_donateur/:id_receiver/:id_demande/:id_don',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_messages_salon_salon_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/salon/salon.module */ 4392)).then(m => m.SalonPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_salon_salon_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/salon/salon.module */ 4392)).then(m => m.SalonPageModule)
     },
     {
         path: 'receptions',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-salon_modal-salon_page_ts"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
     },
     {
         path: 'modal-salon',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-salon_modal-salon_page_ts"), __webpack_require__.e("src_app_modals_modal-salon_modal-salon_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-salon/modal-salon.module */ 4009)).then(m => m.ModalSalonPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-salon_modal-salon_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-salon/modal-salon.module */ 4009)).then(m => m.ModalSalonPageModule)
+    },
+    {
+        path: 'modal-popover',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-popover_modal-popover_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-popover/modal-popover.module */ 4322)).then(m => m.ModalPopoverPageModule)
+    },
+    {
+        path: 'modal-edit-profil',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_modals_modal-edit-profil_modal-edit-profil_page_ts"), __webpack_require__.e("src_app_modals_modal-edit-profil_modal-edit-profil_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-edit-profil/modal-edit-profil.module */ 8371)).then(m => m.ModalEditProfilPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -249,6 +257,7 @@ let AuthService = class AuthService {
 
   validToken(token) {
     const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+      'X-XSRF-TOKEN': token,
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
       'Accept': 'application/json, text/plain, */*',
