@@ -50,6 +50,19 @@
     </ion-item>
     <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%">reessayer</ion-button>
   </ion-grid>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="danger">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button color="danger" routerLink="/creation-dons">
+        <ion-icon name="gift-outline" size="large"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" routerLink="/creation-demandes">
+        <ion-icon name="hand-left-outline" size="large" color="danger"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
   <ion-row>
     <div *ngFor="let demand of demandes" style="width: 95%">
       <ion-card *ngIf="selectedCategory.indexOf(demand.category)!=-1 || selectedCategory.length<1 " style="width: 100%;" [routerLink]="['details',demand.id]">

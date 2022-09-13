@@ -9,6 +9,7 @@ export interface IDon{
  etat:string,
  adresse:string,
  description:string,
+ disponibilite:string,
  longitude:number,
  latitude:number,
  nombre_reserve?:number,

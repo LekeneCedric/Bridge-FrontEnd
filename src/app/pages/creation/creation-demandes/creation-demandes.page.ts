@@ -6,6 +6,7 @@ import { CreationService } from 'src/app/services/creation/creation.service';
 import { MediasService } from 'src/app/services/medias/medias.service';
 import { PhotoService } from 'src/app/services/photo/photo.service';
 import { Geolocation } from '@capacitor/geolocation';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-creation-demandes',
   templateUrl: './creation-demandes.page.html',
@@ -16,7 +17,7 @@ export class CreationDemandesPage implements OnInit {
   constructor(private creationService:CreationService,private mediaService:MediasService,
     private navCtrl:NavController,private actionSheetController:ActionSheetController,
     private photoService:PhotoService,private nativGeocoder:NativeGeocoder,
-    private loadingController:LoadingController, private toast:ToastController) { }
+    private loadingController:LoadingController, private toast:ToastController,private router:Router) { }
   
   async ngOnInit() {
     await Geolocation.watchPosition({
@@ -67,7 +68,9 @@ export class CreationDemandesPage implements OnInit {
     this.creationService.createDemande(demande,token).toPromise()
     .then(async data=>{
       loading.dismiss();
-      this.navBack();
+      this.router.navigateByUrl('/menu/demandes').then(()=>{
+        window.location.reload();
+      })
       const toast = this.toast.create({
         message:'demande publie',
         icon: 'checkmark-done-outline',

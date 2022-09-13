@@ -22,7 +22,7 @@
     <div *ngIf="reserve" style="position: absolute;margin-top:25%;background-color:#ec566a;padding:10%;opacity:0.5">
       <ion-text style="font-weight:bold;color:white;font-size: 1.5rem;">Reserve</ion-text>
       </div>
-    <ion-slides pager="true" [options]="slideOpts" *ngIf="don!=null" style="height:35%;position:relative;opacity: {{reserve?0.5:1}}">
+    <ion-slides pager="true" [options]="slideOpts" *ngIf="don!=null" style="height:25%;position:relative;opacity: {{reserve?0.5:1}}">
       
       <ion-slide *ngFor="let img of don.media" >
         <ion-img
@@ -73,7 +73,7 @@
           <ion-item lines="none" style="text-align:left;margin-bottom:5%">
             <ion-col size="12" style="margin-left:0;padding-left:0">
               <ion-row><ion-title style="font-weight: bold;padding-left: 0;">Diponibilite</ion-title></ion-row>
-             <ion-text style="color:rgb(0, 0, 0);margin-top:25px;margin-left:2%">Le week-end </ion-text>
+             <ion-text style="color:rgb(0, 0, 0);margin-top:100px;margin-left:2%">{{don.disponibilite}}</ion-text>
              </ion-col>
           </ion-item>
           
@@ -99,17 +99,20 @@
             <ion-icon name="logo-whatsapp" color="success" size="large"></ion-icon>
             <ion-icon name="ellipsis-horizontal-circle-sharp" color="dark" size="large" style="margin-left:10px"></ion-icon>
           </ion-item>
-          <ion-item lines="none" style="text-align:left">
+          <ion-item lines="none" style="text-align:left" [routerLink]="['/map','dons',don.id]">
+            <ion-icon name="location-outline" size="large" slot="start" color="danger"></ion-icon>
             <ion-title style="font-weight: bold;padding-left: 0;">Localisation</ion-title>
-          </ion-item>
-          <ion-item lines="none">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d63693.27239988237!2d11.5080475!3d3.8467449!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2scm!4v1661874465059!5m2!1sfr!2scm" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <ion-icon name="chevron-forward-outline" size="large" slot="end" color="danger"></ion-icon>
           </ion-item>
 
           <ion-item lines="none" style="text-align:left">
             <ion-title style="font-weight: bold;padding-left: 0;">Annonces Similaires</ion-title>
           </ion-item>
           <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
+            <ion-grid style="text-align:center" *ngIf="donsSimilaires.length<1">
+              <img src="../../../../assets/images/no-results.png" class="ion-margin-vertical">
+            </ion-grid>
+
             <div *ngFor="let Don of donsSimilaires" style="width:50%">
               <ion-card  [routerLink]="['/menu/dons/details',Don.id]"style="width:90%;position: relative;" >
                 <div *ngIf="Don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">

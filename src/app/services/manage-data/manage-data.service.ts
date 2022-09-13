@@ -117,6 +117,16 @@ export class ManageDataService {
     const api = environment.apiURL+`/dons/${id}`;
     return this.http.delete(api,{headers:headers});
   }
+  public updateDon(id:number,data:any):Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/dons/${id}?_method=PUT`;
+    return this.http.post(api,data,{headers:headers});
+  }
   /*-------------------------DEMANDES---------------------------*/
   public getDemandes():Observable<any>{
     const api = environment.apiURL+'/demandes';

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutoCompleteModule } from 'ionic4-auto-complete';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
     HttpClientModule,
     AutoCompleteModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},CallNumber],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},CallNumber,NativeGeocoder],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

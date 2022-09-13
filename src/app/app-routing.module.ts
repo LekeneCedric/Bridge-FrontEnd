@@ -70,6 +70,14 @@ const routes: Routes = [
     path: 'modal-edit-profil',
     loadChildren: () => import('./modals/modal-edit-profil/modal-edit-profil.module').then( m => m.ModalEditProfilPageModule)
   },
+  {
+    path: 'modal-edit-dons',
+    loadChildren: () => import('./modals/modal-edit-dons/modal-edit-dons.module').then( m => m.ModalEditDonsPageModule)
+  },
+  {
+    path: 'map/:category/:id',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
+  },
 ];
 @NgModule({
   imports: [

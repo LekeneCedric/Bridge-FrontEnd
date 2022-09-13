@@ -45,8 +45,8 @@ export class CreationDonsPage implements OnInit {
   selectedTitle:string='';
   selectedDescription:string='';
   selectedImages:any[] = [];
-  selectedLatitude:number = null;
-  selectedLongitude:number = null;
+  selectedLatitude:number = 11;
+  selectedLongitude:number = 7;
   selectedCategory:string = '';
   //Modals
   iscategoriesModalOpen:boolean = false;
@@ -69,16 +69,16 @@ export class CreationDonsPage implements OnInit {
   }
   public async saveImage(image:Photo){
   const base64data = await this.readAsBase64(image);
+  console.log(base64data)
   const filename = new Date().getTime()+'.jpeg';
   const img = {
     path:filename,
     data:base64data
   }
   setTimeout(() => {
-    console.log(img)
-    this.selectedImages.unshift(img)}), 500
+    this.selectedImages.unshift(img)},500)
   }
-  public async readAsBase64(photo:any){
+  public async readAsBase64(photo:Photo){
       const res = await fetch(photo.webPath);
       const blob = await res.blob();
       return await this.convertBlobToBase64(blob) as string;
@@ -101,6 +101,7 @@ export class CreationDonsPage implements OnInit {
     const token = localStorage.getItem('token');
     const donation = {
       donateur_id:uid,
+      disponibilite:this.selectedDisponibility,
       contenu:this.selectedDescription,
       titre:this.selectedTitle,
       category:this.selectedCategory,
@@ -114,11 +115,7 @@ export class CreationDonsPage implements OnInit {
     this.creationService.createDon(donation,token).toPromise()
     .then(data=>{
       this.upload_image(data,loading);
-     setTimeout(()=>{
-      this.router.navigateByUrl('/menu/dons').then(()=>{
-        window.location.reload();
-      })
-     },1000) 
+    
      
     })
     .catch(
@@ -138,23 +135,14 @@ export class CreationDonsPage implements OnInit {
   public upload_image(data:any,loading){
     //creation don 
     const token = localStorage.getItem('token');
-  const api = environment.apiURL+'/medias';
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
-  })
+  
   let fd = {
     don_id:data.Don.id,
     files:this.selectedImages
   }
     this.mediaService.uploadImageDon(token,fd).then(async data=>{
-      console.log('etape2');
-      // upload images
-      
-      setTimeout(()=>{
-        loading.dismiss();
-      },500) 
-      
+    loading.dismiss();
+    this.router.navigateByUrl('/menu/dons');
     //on affiche un message de success
     const toast = this.toast.create({
       message:`don creer avec success`,

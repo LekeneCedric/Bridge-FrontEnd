@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { ModalEditDonsPage } from 'src/app/modals/modal-edit-dons/modal-edit-dons.page';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +14,7 @@ import { environment } from 'src/environments/environment';
 export class SettingsPage implements OnInit {
 
   constructor(private route:ActivatedRoute,private manageDataService:ManageDataService,
-    private alertController:AlertController,private authService:AuthService) { }
+    private alertController:AlertController,private authService:AuthService,private modalCtrl:ModalController) { }
 
   ngOnInit() {
     setTimeout(()=>{
@@ -36,6 +37,7 @@ export class SettingsPage implements OnInit {
    private mesInfo:any = null;
    private storage = environment.storage;
   /*------------------------------FUNCTIONS------------------------------*/
+  
    public async deconnexion():Promise<void>{
     const alert = await this.alertController.create({
       cssClass:'deconnexion-alert',

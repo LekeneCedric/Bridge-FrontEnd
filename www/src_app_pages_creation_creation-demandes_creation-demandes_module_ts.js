@@ -94,16 +94,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CreationDemandesPage": () => (/* binding */ CreationDemandesPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _creation_demandes_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-demandes.page.html?ngResource */ 8911);
 /* harmony import */ var _creation_demandes_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./creation-demandes.page.scss?ngResource */ 7871);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/creation/creation.service */ 9444);
 /* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 8549);
 /* harmony import */ var src_app_services_photo_photo_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/photo/photo.service */ 88);
 /* harmony import */ var _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @capacitor/geolocation */ 7621);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 124);
+
 
 
 
@@ -116,7 +118,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CreationDemandesPage = class CreationDemandesPage {
-  constructor(creationService, mediaService, navCtrl, actionSheetController, photoService, nativGeocoder, loadingController, toast) {
+  constructor(creationService, mediaService, navCtrl, actionSheetController, photoService, nativGeocoder, loadingController, toast, router) {
     this.creationService = creationService;
     this.mediaService = mediaService;
     this.navCtrl = navCtrl;
@@ -125,6 +127,7 @@ let CreationDemandesPage = class CreationDemandesPage {
     this.nativGeocoder = nativGeocoder;
     this.loadingController = loadingController;
     this.toast = toast;
+    this.router = router;
     this.GeocoderOption = {
       useLocale: true,
       maxResults: 5
@@ -190,7 +193,9 @@ let CreationDemandesPage = class CreationDemandesPage {
         var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
           loading.dismiss();
 
-          _this2.navBack();
+          _this2.router.navigateByUrl('/menu/demandes').then(() => {
+            window.location.reload();
+          });
 
           const toast = _this2.toast.create({
             message: 'demande publie',
@@ -641,13 +646,124 @@ CreationDemandesPage.ctorParameters = () => [{
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.LoadingController
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ToastController
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router
 }];
 
-CreationDemandesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
+CreationDemandesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
   selector: 'app-creation-demandes',
   template: _creation_demandes_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_creation_demandes_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], CreationDemandesPage);
+
+
+/***/ }),
+
+/***/ 8549:
+/*!***************************************************!*\
+  !*** ./src/app/services/medias/medias.service.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MediasService": () => (/* binding */ MediasService)
+/* harmony export */ });
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
+
+
+
+let MediasService = class MediasService {
+  constructor(http) {
+    this.http = http;
+  }
+
+  uploadImageDon(token, credential) {
+    var _this = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('don_id', credential.don_id);
+            setTimeout(() => {
+              _this.uploadData(formData, token);
+            }, 150);
+          });
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }());
+        resolve('success');
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadImageProfil(token, credential) {
+    var _this2 = this;
+
+    console.log(credential.files);
+    return new Promise( /*#__PURE__*/function () {
+      var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resolve, reject) {
+        const res = yield fetch(credential.files.data);
+        const blob = yield res.blob();
+        const formData = new FormData();
+        console.log('this is credential');
+        console.log(credential.files.path);
+        console.log(credential.donateur_id);
+        formData.append('file', blob, credential.files.path);
+        formData.append('donateur_id', credential.donateur_id);
+
+        _this2.uploadData(formData, token);
+
+        resolve('success');
+      });
+
+      return function (_x2, _x3) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+  }
+
+  uploadData(formData, token) {
+    var _this3 = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiURL + '/medias';
+      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      });
+
+      _this3.http.post(api, formData).pipe().subscribe(data => {
+        console.log(data);
+      });
+    })();
+  }
+
+};
+
+MediasService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
+}];
+
+MediasService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Injectable)({
+  providedIn: 'root'
+})], MediasService);
 
 
 /***/ }),
@@ -675,6 +791,38 @@ PhotoService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
         providedIn: 'root'
     })
 ], PhotoService);
+
+
+
+/***/ }),
+
+/***/ 591:
+/*!*********************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/definitions.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+
+
+/***/ }),
+
+/***/ 7621:
+/*!***************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/index.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Geolocation": () => (/* binding */ Geolocation)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 5099);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 591);
+
+const Geolocation = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Geolocation', {
+  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_geolocation_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 8391)).then(m => new m.GeolocationWeb())
+});
 
 
 

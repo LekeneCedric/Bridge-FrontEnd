@@ -28,10 +28,12 @@ export class DetailsDonPage implements OnInit {
     const tabBar = document.getElementById('app-tab-bar');
   if (tabBar !== null) {
     tabBar.style.display = 'none';
-  }}
+  }
+}
 
   /*--------------------------------VARIABLES--------------------------------*/
   public id:number = null;
+  localisationLink :string = null;
   public elapsedTime:any;
   public detail_id: number=null;
   public don:IDon = null;

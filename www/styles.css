@@ -1500,9 +1500,6 @@ ion-auto-complete .selected-items {
 .modal-wrapper {
   background: transparent !important;
 }
-ion-modal {
-  --border-radius: 2%!important;
-}
 .red.refresher-native ion-spinner {
   color: #ec566a !important;
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController, NavController, ToastController } from '@ionic/angular';
+import { AlertController, ModalController, NavController, ToastController } from '@ionic/angular';
 import TimeAgo from 'javascript-time-ago';
 import fr from 'javascript-time-ago/locale/fr'
+import { ModalEditDonsPage } from 'src/app/modals/modal-edit-dons/modal-edit-dons.page';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import { environment } from 'src/environments/environment';
 @Component({
@@ -14,7 +15,7 @@ export class AnnoncesPage implements OnInit {
 
   constructor(private route:ActivatedRoute,private manageDataService:ManageDataService,
     private navController:NavController,private toast:ToastController,
-    private alertController:AlertController) { }
+    private alertController:AlertController,private modalCtrl:ModalController) { }
 
   ngOnInit() {
 
@@ -36,6 +37,24 @@ export class AnnoncesPage implements OnInit {
   public selectedSegment='dons';
   public storage = environment.storage;
   /*--------------------------------FUNCTIONS----------------------------------------------------*/
+  public async openModalModif(don:any){
+    console.log(don)
+    const modal = await this.modalCtrl.create({
+      component:ModalEditDonsPage,
+      componentProps:{
+        don : don
+      },
+      breakpoints:[0,1],
+      initialBreakpoint:1,
+      animated:true,
+      handle:true
+    });
+    modal.present();
+    const {data,role } = await modal.onWillDismiss();
+    if(role ==='confirm'){
+      this.ngOnInit();
+    }
+  }
   public async deleteDon(don:any){
     const alert = await this.alertController.create({
       cssClass:'deconnexion-alert',

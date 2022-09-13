@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-icon slot="start" name="chevron-back-outline" size="large" (click)="navBack()"></ion-icon>
-    <ion-text style="font-size:1.2em;"> Mes annnonces</ion-text>
+    <ion-icon slot="start" name="chevron-back-outline" size="large" (click)="navBack()" color="danger"></ion-icon>
+    <ion-text style="font-size:1.2em;" color="danger"> Mes annnonces</ion-text>
   </ion-toolbar>
   <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
     <ion-segment-button value="dons">
@@ -31,9 +31,9 @@
                 <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
                 <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
                 </div>
-                <ion-fab style="position:absolute;top:3%;left:0">
+                <ion-fab style="position:absolute;top:3%;left:0" (click)="openModalModif(don)">
                   <ion-fab-button color="warning">
-                    <ion-icon name="pencil-outline"></ion-icon>
+                    <ion-icon name="pencil-outline" color="light"></ion-icon>
                   </ion-fab-button>
                 </ion-fab>
                 <ion-fab style="position:absolute;top:3%;right:0">

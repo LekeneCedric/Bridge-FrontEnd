@@ -10,6 +10,7 @@ import TimeAgo from 'javascript-time-ago';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-dons',
   templateUrl: './dons.page.html',
@@ -41,7 +42,7 @@ export class DonsPage implements OnInit {
   GeocoderOption:any={useLocale: true,maxResults: 5};
   public selectedCategory : string[]=[];
   public selectedEtat:string[]=[];
-  public storage = 'http://127.0.0.1:8000/storage/';
+  public storage = environment.storage;
   public current_page :number = 1;
   public next_page : number = this.current_page;
   public last_page :number = null;
@@ -92,7 +93,7 @@ export class DonsPage implements OnInit {
     this.selectedCategory = [];
     this.selectedEtat = [];
   }
-  image(don:any):any{
+  image(don:any):any{     
     let url = '';
     don.media.length>0?url= `${this.storage+don.media[0].filePath}`: url='../../../../../../assets/images/empty.webp'
     return url;

@@ -14,7 +14,6 @@ export class MediasService {
    
     console.log(credential.files)
     return new Promise<any>((resolve, reject) => {
-      setTimeout(()=>{
         try{
           credential.files.forEach(async file=>{
               const res = await fetch(file.data);
@@ -25,21 +24,19 @@ export class MediasService {
               formData.append('don_id',credential.don_id);
               setTimeout(()=>{
                 this.uploadData(formData,token);
-              },500)
+              },150)
             }
           );
           resolve('success')
         }catch(err){
           reject(err);
         }
-      },300)
     });
   }
   public uploadImageProfil(token:string,credential:any): Promise<any>{
    
     console.log(credential.files)
-    return new Promise<any>((resolve, reject) => {
-      setTimeout(async ()=>{
+    return new Promise<any>(async (resolve, reject) => {
               const res = await fetch(credential.files.data);
               const blob = await res.blob();
               const formData = new FormData();
@@ -48,11 +45,8 @@ export class MediasService {
          console.log(credential.donateur_id)
               formData.append('file',blob, credential.files.path);
               formData.append('donateur_id',credential.donateur_id);
-              setTimeout(()=>{
-                this.uploadData(formData,token);
-              },500)
+              this.uploadData(formData,token);
           resolve('success')
-      },300)
     });
   }
   async uploadData(formData,token){
