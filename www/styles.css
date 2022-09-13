@@ -1432,6 +1432,61 @@ sub {
 .ion-align-items-baseline {
   align-items: baseline !important;
 }
+ion-auto-complete {
+  overflow: hidden !important;
+  width: 90vw;
+  display: inline-block;
+}
+ion-auto-complete ion-searchbar {
+  padding: 1px !important;
+}
+ion-auto-complete .disabled input.searchbar-input {
+  pointer-events: none;
+  cursor: default;
+}
+ion-auto-complete ul {
+  position: absolute;
+  width: 90vw;
+  margin-top: 0;
+  background: #FFF;
+  list-style-type: none;
+  padding: 0;
+  left: 16px;
+  z-index: 999;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+ion-auto-complete ul li {
+  padding: 15px;
+  border-bottom: 1px solid #c1c1c1;
+}
+ion-auto-complete ul li span {
+  pointer-events: none;
+}
+ion-auto-complete ul ion-auto-complete-item {
+  height: 40px;
+  width: 100%;
+}
+ion-auto-complete ul li:last-child {
+  border: none;
+}
+ion-auto-complete ul li:focus,
+ion-auto-complete ul li.focus {
+  cursor: pointer;
+  background: #f1f1f1;
+}
+ion-auto-complete .hidden {
+  display: none;
+}
+ion-auto-complete .loading input.searchbar-input {
+  background: white url(/assets/loading.gif) no-repeat right 4px center;
+  background-size: 25px 25px;
+}
+ion-auto-complete .searchbar-clear-button.sc-ion-searchbar-md {
+  right: 34px;
+}
+ion-auto-complete .selected-items {
+  float: left;
+}
 /* Fonts-importation */
 * {
   transition: 0.4s;

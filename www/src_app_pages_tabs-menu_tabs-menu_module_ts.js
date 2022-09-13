@@ -26,11 +26,11 @@ const routes = [
         children: [
             {
                 path: 'dons',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 4984)).then(m => m.DonsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 4984)).then(m => m.DonsPageModule)
             },
             {
                 path: 'demandes',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("src_app_pages_home_demandes_demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/demandes/demandes.module */ 4314)).then(m => m.DemandesPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("src_app_pages_home_demandes_demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/demandes/demandes.module */ 4314)).then(m => m.DemandesPageModule)
             },
             {
                 path: 'annonces',
@@ -38,11 +38,11 @@ const routes = [
             },
             {
                 path: 'messages',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
             },
             {
                 path: 'settings',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("src_app_pages_settings_settings_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_settings_settings_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
             }
         ]
     },
@@ -117,22 +117,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TabsMenuPage": () => (/* binding */ TabsMenuPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _tabs_menu_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs-menu.page.html?ngResource */ 5575);
 /* harmony import */ var _tabs_menu_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs-menu.page.scss?ngResource */ 9919);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth/auth.service */ 1228);
+
+
 
 
 
 
 let TabsMenuPage = class TabsMenuPage {
-    constructor() { }
+    constructor(authService, router) {
+        this.authService = authService;
+        this.router = router;
+    }
     ngOnInit() {
     }
 };
-TabsMenuPage.ctorParameters = () => [];
-TabsMenuPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+TabsMenuPage.ctorParameters = () => [
+    { type: src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router }
+];
+TabsMenuPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-tabs-menu',
         template: _tabs_menu_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_tabs_menu_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]

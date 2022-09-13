@@ -36,14 +36,14 @@ export class RegisterPage implements OnInit {
     })
     
     this.credential = this.fb.group({
-      name:['',[Validators.required,Validators.minLength(6)]],
-      surname:['',[Validators.required,Validators.minLength(6)]],
+      name:['',[Validators.required,Validators.minLength(5)]],
+      surname:['',[Validators.required,Validators.minLength(4)]],
       email:['',[Validators.required,Validators.email]],
       birthday:['',[Validators.pattern("")]],
       gender:['',[Validators.required]],
-      contact:['',[Validators.required,Validators.minLength(6),Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")]],
-      country:['',[Validators.required,Validators.minLength(3)]],
-      city:['',[Validators.required,Validators.minLength(3)]],
+      contact:['',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")]],
+      country:['',[Validators.required]],
+      city:['',[Validators.required]],
       password:['',[Validators.required,Validators.minLength(6)]],
       confirmPassword:['',[Validators.required,Validators.minLength(6)]],
     })

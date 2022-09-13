@@ -98,18 +98,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DonsPage": () => (/* binding */ DonsPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dons.page.html?ngResource */ 7145);
 /* harmony import */ var _dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dons.page.scss?ngResource */ 474);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! javascript-time-ago/locale/fr */ 8996);
+/* harmony import */ var javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! javascript-time-ago/locale/fr */ 8996);
 /* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
 /* harmony import */ var src_app_modals_modal_category_modal_category_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/modals/modal-category/modal-category.page */ 4098);
 /* harmony import */ var src_app_modals_modal_etat_modal_etat_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/modals/modal-etat/modal-etat.page */ 192);
-/* harmony import */ var javascript_time_ago__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! javascript-time-ago */ 488);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var javascript_time_ago__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! javascript-time-ago */ 488);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/auth/auth.service */ 1228);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/router */ 124);
+
+
 
 
 
@@ -124,11 +128,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let DonsPage = class DonsPage {
-  constructor(manageDataService, nativGeocoder, modalCtrl, http) {
+  constructor(manageDataService, nativGeocoder, modalCtrl, authService, http, router) {
     this.manageDataService = manageDataService;
     this.nativGeocoder = nativGeocoder;
     this.modalCtrl = modalCtrl;
+    this.authService = authService;
     this.http = http;
+    this.router = router;
     /*-----------------------------VARIABLES-----------------------------*/
 
     this.myid = null;
@@ -147,9 +153,6 @@ let DonsPage = class DonsPage {
   }
 
   ngOnInit() {
-    this.http.get('assets/country_dial_info.json').toPromise().then(data => {
-      console.log(data);
-    });
     this.myData = JSON.parse(localStorage.getItem('mydata'));
     console.log(this.myData);
     this.current_page = 1;
@@ -160,13 +163,13 @@ let DonsPage = class DonsPage {
       const tabBar = document.getElementById('app-tab-bar');
       tabBar.style.display = 'flex';
     }, 100);
-    javascript_time_ago__WEBPACK_IMPORTED_MODULE_7__["default"].addDefaultLocale(javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_8__["default"]);
+    javascript_time_ago__WEBPACK_IMPORTED_MODULE_8__["default"].addDefaultLocale(javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_9__["default"]);
   }
   /*-----------------------------FUNCTIONS-----------------------------*/
 
 
   timeAgo(created_at) {
-    const timeAgo = new javascript_time_ago__WEBPACK_IMPORTED_MODULE_7__["default"]('fr-EU');
+    const timeAgo = new javascript_time_ago__WEBPACK_IMPORTED_MODULE_8__["default"]('fr-EU');
     const elapsedTime = timeAgo.format(new Date(Date.parse(created_at) - 60 * 1000));
     return elapsedTime;
   }
@@ -285,12 +288,16 @@ DonsPage.ctorParameters = () => [{
 }, {
   type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__.NativeGeocoder
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.ModalController
 }, {
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_10__.HttpClient
+  type: src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_7__.AuthService
+}, {
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_11__.HttpClient
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_12__.Router
 }];
 
-DonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_12__.Component)({
+DonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_13__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_14__.Component)({
   selector: 'app-dons',
   template: _dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -315,7 +322,7 @@ module.exports = ".logo .title {\n  margin-left: 2%;\n  text-align: left;\n  col
   \***********************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-row style=\"width: 100%;\">\n    <ion-col class=\"logo\" size=\"7\">\n      <ion-title class=\"title\">BRIDGE</ion-title>\n    </ion-col>\n    <ion-col style=\"margin-left:5%\" >\n        <ion-col size=\"3\" style=\"text-align:center\" style=\"position:relative\">\n          \n          <ion-icon name=\"notifications\" size=\"large\" color=\"warning\"></ion-icon>\n          <ion-badge style=\"position:absolute;top:0;right:0\" color=\"danger\">2</ion-badge>\n        </ion-col>\n        <ion-col size=\"4\" [routerLink]=\"['/profil-donateur',id]\" style=\"text-align:right;margin-left:16px\">\n          <ion-icon name=\"person-circle-outline\" size=\"large\" color=\"danger\" ></ion-icon>\n        </ion-col>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-segment scrollable>\n       <ion-chip style=\"padding:0;border-radius:20%\" color=\"danger\">\n        <ion-icon name=\"options-outline\" color=\"danger\" size=\"large\" style=\"text-align:center;margin-right:5px\"></ion-icon>\n       </ion-chip>\n       <ion-chip (click)=\"openModal()\">\n       <ion-text>Category</ion-text>\n       <ion-badge color=\"danger\" style=\"margin-left:2px\">{{selectedCategory.length}}</ion-badge>\n       <ion-icon name=\"chevron-down-outline\"></ion-icon>\n      </ion-chip>\n       <ion-chip (click)=\"openModalEtat()\">\n        <ion-text>Etat</ion-text>\n        <ion-badge color=\"danger\" style=\"margin-left:2px\">{{selectedEtat.length}}</ion-badge>\n        <ion-icon name=\"chevron-down-outline\"></ion-icon>\n       </ion-chip>\n       <ion-chip class=\"chip\" color=\"success\" (click)=\"refreshFilter()\"  style=\"padding:0;border-radius:100%\">\n        <ion-icon name=\"refresh-outline\" size=\"large\" style=\"margin-left:5px\"></ion-icon>\n        </ion-chip>\n      </ion-segment>\n    </ion-col>\n  </ion-row>\n</ion-header>\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\" class=\"red\">\n    <ion-refresher-content color=\"danger\"></ion-refresher-content>\n  </ion-refresher>\n  <ion-grid style=\"text-align:center;margin-top:15%\" *ngIf=\"dons.length<1\">\n      <img src=\"../../../../assets/images/no-results.png\" class=\"ion-margin-vertical\">\n      <ion-item lines=\"none\"style=\"text-align:center;width: 100%;\" class=\"ion-margin-vertical\">\n        <ion-text style=\"color:rgb(64, 64, 64)\">Aucun don disponible dans cette categorie</ion-text>\n      </ion-item>\n      <ion-button (click)=\"refresh()\" expand=\"block\" class=\"ion-margin-horizontal\" color=\"danger\" class=\"ion-margin-vertical\" style=\"font-weight:bold;margin-left: 20%;margin-right:20%\">raffraichir la page</ion-button>\n  </ion-grid>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"danger\">\n      <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n    <ion-fab-list side=\"start\">\n      <ion-fab-button color=\"danger\" routerLink=\"/creation-dons\">\n        <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" routerLink=\"/creation-demandes\">\n        <ion-icon name=\"hand-left-outline\" size=\"large\" color=\"danger\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab-list>\n  </ion-fab>\n<ion-grid style=\"display: flex; flex-wrap:wrap;justify-content: space-between;width: 100%;height:100%\">\n  \n  <div *ngFor=\"let don of dons\" style=\"width:50%\">\n    <ion-card  [routerLink]=\"['details',don.id]\"style=\"width:90%;position: relative;\" >\n      <div *ngIf=\"don.nombre_reserve>0\" style=\"position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a\">\n      <ion-text style=\"font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;\">Reserve</ion-text>\n      </div>\n      <div style=\"width:100%;height:150px;margin:0;padding:0;background-size:cover; opacity: {{don.nombre_reserve>0?0.5:1}};\n      background-image: url({{image(don)}});\">   \n      </div>\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"font-weight: bolder;font-size:1.3em;margin-left:2%;width:100%;padding:2%\"color=\"dark\">\n            {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>\n        </ion-row>\n        <ion-text style=\"font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%\"color=\"medium\">\n          {{don.adresse | slice:0:12}}{{don.adresse.length>12?'...':''}}</ion-text>\n        <ion-row style=\"margin-top:10px;padding:0;width:100%;display: flex;\">\n          <ion-col size=\"2\" style=\"padding-right:0;text-align: right;\"><ion-icon name=\"timer-outline\" color=\"dark\"style=\"font-weight:bold\" size=\"medium\" style=\"padding-right:0\"></ion-icon></ion-col>\n          <ion-col style=\"padding-left:0\"> <ion-text style=\"margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;\" color=\"dark\">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> \n      </ion-row>\n          \n    </ion-card>\n</div>\n<ion-infinite-scroll class=\"scroll-content\" threshold=\"100px\" id=\"infinite-scroll\" (ionInfinite)=\"loadData($event)\" >\n  <ion-infinite-scroll-content\n    loadingSpinner=\"bubbles\"\n    loadingText=\"Chargement de dons...\">\n  </ion-infinite-scroll-content>\n</ion-infinite-scroll>\n\n</ion-grid>\n</ion-content>\n";
+module.exports = "<ion-header>\n  <ion-row style=\"width: 100%;\">\n    <ion-col class=\"logo\" size=\"10\">\n      <ion-text class=\"title\">BRIDGE</ion-text>\n      \n    </ion-col>\n    <ion-col>\n      <ion-col size=\"2\" style=\"text-align:center;margin-left:5%\"> \n        <ion-icon name=\"notifications\" size=\"large\" color=\"warning\"></ion-icon>\n        <ion-badge style=\"position:absolute;top:0;right:0\" color=\"danger\">2</ion-badge>\n      </ion-col>\n    </ion-col>\n    <!-- <ion-col>\n      <ion-row style=\"width:100%\">\n        <ion-col size=\"3\" [routerLink]=\"['/profil-donateur',id]\" style=\"text-align:left;height: 100%;\">\n          <ion-icon name=\"person-circle-outline\" size=\"large\" color=\"danger\" ></ion-icon>\n        </ion-col>\n        <ion-col size=\"8\">\n          <ion-text style=\"color:gray;font-weight: bold;position:absolute;top:30%;\">{{myData.name | slice:0:15}}&ensp;{{myData.surname | slice:0:10}}</ion-text>\n        </ion-col>\n      </ion-row>\n    </ion-col> -->\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-segment scrollable>\n       <ion-chip style=\"padding:0;border-radius:20%\" color=\"danger\">\n        <ion-icon name=\"options-outline\" color=\"danger\" size=\"large\" style=\"text-align:center;margin-right:5px\"></ion-icon>\n       </ion-chip>\n       <ion-chip (click)=\"openModal()\">\n       <ion-text>Category</ion-text>\n       <ion-badge color=\"danger\" style=\"margin-left:2px\">{{selectedCategory.length}}</ion-badge>\n       <ion-icon name=\"chevron-down-outline\"></ion-icon>\n      </ion-chip>\n       <ion-chip (click)=\"openModalEtat()\">\n        <ion-text>Etat</ion-text>\n        <ion-badge color=\"danger\" style=\"margin-left:2px\">{{selectedEtat.length}}</ion-badge>\n        <ion-icon name=\"chevron-down-outline\"></ion-icon>\n       </ion-chip>\n       <ion-chip class=\"chip\" color=\"success\" (click)=\"refreshFilter()\"  style=\"padding:0;border-radius:100%\">\n        <ion-icon name=\"refresh-outline\" size=\"large\" style=\"margin-left:5px\"></ion-icon>\n        </ion-chip>\n      </ion-segment>\n    </ion-col>\n  </ion-row>\n</ion-header>\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\" class=\"red\">\n    <ion-refresher-content color=\"danger\"></ion-refresher-content>\n  </ion-refresher>\n  <ion-grid style=\"text-align:center;margin-top:15%\" *ngIf=\"dons.length<1\">\n      <img src=\"../../../../assets/images/no-results.png\" class=\"ion-margin-vertical\">\n      <ion-item lines=\"none\"style=\"text-align:center;width: 100%;\" class=\"ion-margin-vertical\">\n        <ion-text style=\"color:rgb(64, 64, 64)\">Aucun don disponible dans cette categorie</ion-text>\n      </ion-item>\n      <ion-button (click)=\"refresh()\" expand=\"block\" class=\"ion-margin-horizontal\" color=\"danger\" class=\"ion-margin-vertical\" style=\"font-weight:bold;margin-left: 20%;margin-right:20%\">raffraichir la page</ion-button>\n  </ion-grid>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"danger\">\n      <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n    <ion-fab-list side=\"start\">\n      <ion-fab-button color=\"danger\" routerLink=\"/creation-dons\">\n        <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" routerLink=\"/creation-demandes\">\n        <ion-icon name=\"hand-left-outline\" size=\"large\" color=\"danger\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab-list>\n  </ion-fab>\n<ion-grid style=\"display: flex; flex-wrap:wrap;justify-content: space-between;width: 100%;height:100%\">\n  \n  <div *ngFor=\"let don of dons\" style=\"width:50%\">\n    <ion-card  [routerLink]=\"['details',don.id]\"style=\"width:90%;position: relative;\" >\n      <div *ngIf=\"don.nombre_reserve>0\" style=\"position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a\">\n      <ion-text style=\"font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;\">Reserve</ion-text>\n      </div>\n      <div style=\"width:100%;height:150px;margin:0;padding:0;background-size:cover; opacity: {{don.nombre_reserve>0?0.5:1}};\n      background-image: url({{image(don)}});\">   \n      </div>\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"font-weight: bolder;font-size:1.3em;margin-left:2%;width:100%;padding:2%\"color=\"dark\">\n            {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>\n        </ion-row>\n        <ion-text style=\"font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%\"color=\"medium\">\n          {{don.adresse | slice:0:12}}{{don.adresse.length>12?'...':''}}</ion-text>\n        <ion-row style=\"margin-top:10px;padding:0;width:100%;display: flex;\">\n          <ion-col size=\"2\" style=\"padding-right:0;text-align: right;\"><ion-icon name=\"timer-outline\" color=\"dark\"style=\"font-weight:bold\" size=\"medium\" style=\"padding-right:0\"></ion-icon></ion-col>\n          <ion-col style=\"padding-left:0\"> <ion-text style=\"margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;\" color=\"dark\">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> \n      </ion-row>\n          \n    </ion-card>\n</div>\n<ion-infinite-scroll class=\"scroll-content\" threshold=\"100px\" id=\"infinite-scroll\" (ionInfinite)=\"loadData($event)\" >\n  <ion-infinite-scroll-content\n    loadingSpinner=\"bubbles\"\n    loadingText=\"Chargement de dons...\">\n  </ion-infinite-scroll-content>\n</ion-infinite-scroll>\n\n</ion-grid>\n</ion-content>\n";
 
 /***/ })
 

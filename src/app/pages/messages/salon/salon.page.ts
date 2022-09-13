@@ -6,7 +6,7 @@ import { IDemande } from 'src/app/models/demande.model';
 import { IDon } from 'src/app/models/don.model';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import { environment } from 'src/environments/environment';
-
+import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 @Component({
   selector: 'app-salon',
   templateUrl: './salon.page.html',
@@ -16,10 +16,8 @@ export class SalonPage implements OnInit {
 
   constructor(private route:ActivatedRoute,private manageDataService:ManageDataService,
     private popoverController:PopoverController, private router:NavController,
-    private toast:ToastController,private alertController:AlertController) {
-      setInterval(()=>{
-        this.ngOnInit();
-      },10000)
+    private toast:ToastController,private alertController:AlertController,private callNumb: CallNumber) {
+  
      }
 
   ngOnInit() {
@@ -35,11 +33,6 @@ export class SalonPage implements OnInit {
     this.getnbreservations();
     this.isdon?this.getDon():this.getDemande();
     this.isdon?this.getConversDons():this.getConversDemande();
-    setTimeout(()=>{
-      this.isdon?console.log(this.don):console.log(this.demande);
-      console.log(this.donateur);
-      console.log(this.receiver);
-    },2000);
     setTimeout(()=>{      
       this.manageDataService.isReserv(this.id_don,this.id_reicv).toPromise().then(
         data=>{
@@ -48,8 +41,16 @@ export class SalonPage implements OnInit {
         }
       )
     },500);
+    setTimeout(()=>{
+      this.whatsappPhone = this.id==this.donat_id?this.donateur.contact:this.receiver.contact;
+      this.whatsappLink = `https://wa.me/${this.whatsappPhone}?text=Hello%20World`
+    },600)
+    
     }
   /*-------------------------------------------VARIABLES------------------------------------*/
+  public callNumber(number:any){
+    this.callNumb.callNumber(`${number}`,true);
+  }
   async presentPopover(e:Event){
     const popover = await this.popoverController.create({
       component: ModalPopoverPage,
@@ -65,6 +66,8 @@ export class SalonPage implements OnInit {
     this.ngOnInit();
   }
   }
+  public whatsappLink:string;
+  public whatsappPhone:string
   public isReserv:boolean = false;
   private id_donateur:number=null;
   private id_reicv:number=null;

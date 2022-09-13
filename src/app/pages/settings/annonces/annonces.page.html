@@ -14,6 +14,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
   <div style="height:100%;overflow-y: scroll;" *ngIf="userInfo!=null">
     <ion-list *ngIf="selectedSegment=='dons'">
       <ion-grid style="text-align:center" *ngIf="userInfo.don.length<1">

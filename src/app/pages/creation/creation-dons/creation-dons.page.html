@@ -75,8 +75,11 @@
   <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedImages.length>=1"></ion-icon>
   <ion-row><ion-text>Image(s): </ion-text></ion-row>
 </ion-item>
-<ion-item>
-  <ion-thumbnail slot="start" *ngFor="let image of selectedImages">
+<ion-item lines="none">
+  <ion-thumbnail slot="start" *ngFor="let image of selectedImages;let i = index" style="position:relative">
+    <ion-fab-button color="danger" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-fab-button>
     <img [src]="image.data" />
   </ion-thumbnail>
   

@@ -48,7 +48,7 @@ const routes = [
     },
     {
         path: 'profil-donateur/:id',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_profils_profil-donateur_profil-donateur_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/profils/profil-donateur/profil-donateur.module */ 8813)).then(m => m.ProfilDonateurPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_profils_profil-donateur_profil-donateur_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/profils/profil-donateur/profil-donateur.module */ 8813)).then(m => m.ProfilDonateurPageModule)
     },
     {
         path: 'profil-association/:id',
@@ -56,7 +56,7 @@ const routes = [
     },
     {
         path: 'reception',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("src_app_pages_messages_reception_reception_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/reception/reception.module */ 4432)).then(m => m.ReceptionPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_messages_reception_reception_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/reception/reception.module */ 4432)).then(m => m.ReceptionPageModule)
     },
     {
         path: 'modal-etat',
@@ -64,27 +64,27 @@ const routes = [
     },
     {
         path: 'settings/:id',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("src_app_pages_settings_settings_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_settings_settings_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/settings/settings.module */ 7850)).then(m => m.SettingsPageModule)
     },
     {
         path: 'salon/:id_donateur/:id_receiver/:id_demande/:id_don',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_salon_salon_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/salon/salon.module */ 4392)).then(m => m.SalonPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_salon_salon_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/salon/salon.module */ 4392)).then(m => m.SalonPageModule)
     },
     {
         path: 'receptions',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
     },
     {
         path: 'modal-salon',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-salon_modal-salon_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-salon/modal-salon.module */ 4009)).then(m => m.ModalSalonPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-salon_modal-salon_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-salon/modal-salon.module */ 4009)).then(m => m.ModalSalonPageModule)
     },
     {
         path: 'modal-popover',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-popover_modal-popover_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-popover/modal-popover.module */ 4322)).then(m => m.ModalPopoverPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-popover_modal-popover_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-popover/modal-popover.module */ 4322)).then(m => m.ModalPopoverPageModule)
     },
     {
         path: 'modal-edit-profil',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_manage-data_manage-data_service_ts"), __webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-edit-profil_modal-edit-profil_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-edit-profil/modal-edit-profil.module */ 8371)).then(m => m.ModalEditProfilPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_services_medias_medias_service_ts-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-edit-profil_modal-edit-profil_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-edit-profil/modal-edit-profil.module */ 8371)).then(m => m.ModalEditProfilPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -114,12 +114,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.component.html?ngResource */ 3383);
 /* harmony import */ var _app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.scss?ngResource */ 9259);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/auth/auth.service */ 1228);
+/* harmony import */ var _services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/manage-data/manage-data.service */ 8027);
+
 
 
 
@@ -127,11 +129,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AppComponent = class AppComponent {
-    constructor(authService, router) {
+    constructor(authService, router, manageDataService) {
         this.authService = authService;
         this.router = router;
+        this.manageDataService = manageDataService;
     }
     ngOnInit() {
+        // let token  = localStorage.getItem('token') as string;
+        // setInterval(()=>{
+        //   this.authService.validToken(token).toPromise().then(
+        //     data=>{
+        //       console.log('validToken')
+        //     }
+        //   ).catch(err=>{
+        //     console.log('invalidToken')
+        //     localStorage.removeItem('token')
+        //     this.router.navigateByUrl('/login',{replaceUrl:true});
+        //   });
+        // },5000) 
         // if(JSON.parse(localStorage.getItem('mydata')).name)
         // {
         //   this.router.navigate(['/login']);
@@ -143,10 +158,11 @@ let AppComponent = class AppComponent {
 };
 AppComponent.ctorParameters = () => [
     { type: _services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__.AuthService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__.Router }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: _services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__.ManageDataService }
 ];
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
         selector: 'app-root',
         template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_app_component_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -168,16 +184,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppModule": () => (/* binding */ AppModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ 4497);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ 4497);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 4666);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-routing.module */ 158);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 5041);
+/* harmony import */ var ionic4_auto_complete__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ionic4-auto-complete */ 6629);
+/* harmony import */ var _awesome_cordova_plugins_call_number_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/call-number/ngx */ 8221);
+
+
 
 
 
@@ -190,11 +210,19 @@ __webpack_require__.r(__webpack_exports__);
 
 let AppModule = class AppModule {
 };
-AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__.BrowserModule, _angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.ReactiveFormsModule, _angular_forms__WEBPACK_IMPORTED_MODULE_7__.FormsModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_8__.HttpClientModule],
-        providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_9__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicRouteStrategy }],
+        imports: [
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__.BrowserModule, _angular_common__WEBPACK_IMPORTED_MODULE_6__.CommonModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule.forRoot(),
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutingModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_8__.ReactiveFormsModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_8__.FormsModule,
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClientModule,
+            ionic4_auto_complete__WEBPACK_IMPORTED_MODULE_10__.AutoCompleteModule,
+        ],
+        providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_11__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicRouteStrategy }, _awesome_cordova_plugins_call_number_ngx__WEBPACK_IMPORTED_MODULE_2__.CallNumber],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
     })
 ], AppModule);
@@ -340,6 +368,291 @@ AuthService.ctorParameters = () => [{
 AuthService = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Injectable)({
   providedIn: 'root'
 })], AuthService);
+
+
+/***/ }),
+
+/***/ 8027:
+/*!*************************************************************!*\
+  !*** ./src/app/services/manage-data/manage-data.service.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ManageDataService": () => (/* binding */ ManageDataService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
+
+
+let ManageDataService = class ManageDataService {
+    constructor(http) {
+        this.http = http;
+    }
+    getDons(page) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dons?page=${page}`;
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
+    }
+    getOneDon(id) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/dons/' + `${id}`;
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
+    }
+    getDonSimilaires(id, category) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/donsSimilaires/' + `${id}/` + `${category}`;
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
+    }
+    nbreInteressesDon(id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/interessesDon/' + `${id}`;
+        return this.http.get(api, { headers: headers });
+    }
+    isReserv(id_don, idUser) {
+        console.log(idUser);
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/isreserv/' + `${id_don}-${idUser}`;
+        return this.http.get(api, { headers: headers });
+    }
+    reserverDon(don_id, donateur_id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const data = {
+            don_id: don_id,
+            donateur_id: donateur_id
+        };
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/reserverDon';
+        return this.http.post(api, data, { headers: headers });
+    }
+    annulerReservation(don_id, donateur_id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const data = {
+            don_id: don_id,
+            donateur_id: donateur_id
+        };
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annulerReservation';
+        return this.http.post(api, data, { headers: headers });
+    }
+    nbreservations(don_id) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/nbreservations/' + `${don_id}`;
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
+    }
+    receptionner(id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dons/${id}?_method=PUT`;
+        return this.http.post(api, {
+            disponible: 1
+        }, { headers: headers });
+    }
+    deleteDon(id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dons/${id}`;
+        return this.http.delete(api, { headers: headers });
+    }
+    /*-------------------------DEMANDES---------------------------*/
+    getDemandes() {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/demandes';
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
+    }
+    getOneDemande(id) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/demandes' + `/${id}`;
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
+    }
+    finishDemande(id, data) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/demandes/${id}?_method=PUT`;
+        return this.http.post(api, data, { headers: headers });
+    }
+    /*-------------------------DONATEUR-----------------------------*/
+    getDonateur(id) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/donateurs' + `/${id}`;
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
+    }
+    updateProfil(id, data) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/donateurs/${id}?_method=PUT`;
+        return this.http.post(api, data, { headers: headers });
+    }
+    /*-------------------------CONVERSATIONS-------------------------*/
+    getLastMessage(id_donateur, id_receiver, id_don) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/lastMessage/' + `${id_donateur}-${id_receiver}-${id_don}`;
+        return this.http.get(api, { headers: headers });
+    }
+    deleteMessage(id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages/' + `${id}`;
+        return this.http.delete(api, { headers: headers });
+    }
+    addMessageDon(don_id, donateur_id, receiver_id, contenu, vu, sender, receiver) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages';
+        const message = {
+            don_id: don_id,
+            donateur_id: donateur_id,
+            receiver_id: receiver_id,
+            sender: sender,
+            receiver: receiver,
+            contenu: contenu,
+            vu: vu
+        };
+        return this.http.post(api, message, { headers: headers });
+    }
+    addMessageDemande(demande_id, donateur_id, receiver_id, contenu, vu, sender, receiver) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages';
+        const message = {
+            demande_id: demande_id,
+            donateur_id: donateur_id,
+            receiver_id: receiver_id,
+            sender: sender,
+            receiver: receiver,
+            contenu: contenu,
+            vu: vu
+        };
+        return this.http.post(api, message, { headers: headers });
+    }
+    getConversationsDon(id_donateur, id_receiver, id_don) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/conversationDon' + `/${id_donateur}-${id_receiver}-${id_don}`;
+        return this.http.get(api, { headers: headers });
+    }
+    getConversationsDemande(id_donateur, id_receiver, id_demande) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/conversationDemande' + `/${id_donateur}-${id_receiver}-${id_demande}`;
+        return this.http.get(api, { headers: headers });
+    }
+    getSalonsDons(mon_id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/salonsDiscussionsDon/' + `${mon_id}`;
+        return this.http.get(api, { headers: headers });
+    }
+    getSalonsDemandes(mon_id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/salonsDiscussionsDemande/' + `${mon_id}`;
+        return this.http.get(api, { headers: headers });
+    }
+};
+ManageDataService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
+];
+ManageDataService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Injectable)({
+        providedIn: 'root'
+    })
+], ManageDataService);
+
 
 
 /***/ }),

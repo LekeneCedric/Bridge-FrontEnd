@@ -69,6 +69,8 @@ export class AnnoncesPage implements OnInit {
                 color:"warning"
               });
               (await (toast)).present();
+            }).finally(()=>{
+              this.ngOnInit();
             })
           },
         },

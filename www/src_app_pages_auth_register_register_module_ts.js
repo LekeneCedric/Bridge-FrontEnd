@@ -92,12 +92,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RegisterPage": () => (/* binding */ RegisterPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _register_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./register.page.html?ngResource */ 5250);
 /* harmony import */ var _register_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./register.page.scss?ngResource */ 4390);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth/auth.service */ 1228);
 
@@ -109,35 +110,71 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let RegisterPage = class RegisterPage {
-  constructor(fb, authService, loadingController, toast, router) {
+  constructor(fb, authService, loadingController, toast, http, router) {
     this.fb = fb;
     this.authService = authService;
     this.loadingController = loadingController;
     this.toast = toast;
+    this.http = http;
     this.router = router;
     this.term_condition = false;
     this.password_input_type = 'password';
     this.password_confirm_input_type = 'password';
+    this.pays = [];
+    this.pays_temp = [];
+    this.ville = [];
+    this.ville_temp = [];
+    this.code = '';
   }
 
   ngOnInit() {
+    this.http.get('assets/country_dial_info.json').toPromise().then(res => {
+      this.pays = res;
+      this.pays_temp = this.pays;
+      console.log(this.pays);
+    }).finally(() => {
+      this.http.get('assets/country_city.json').toPromise().then(res => {
+        this.ville = res;
+        console.log(this.ville);
+      });
+    });
     this.credential = this.fb.group({
-      name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6)]],
-      surname: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6)]],
+      name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(5)]],
+      surname: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(4)]],
       email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.email]],
-      birthday: [''],
+      birthday: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.pattern("")]],
       gender: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]],
-      codeCountry: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]],
-      contact: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-      country: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(3)]],
-      city: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(3)]],
+      contact: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")]],
+      country: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]],
+      city: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required]],
       password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6)]],
       confirmPassword: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.Validators.minLength(6)]]
     });
   }
   /*-----------------------------------------_FUNCTIONS------------------------------------ */
 
+
+  filterPays(event) {
+    this.pays = this.pays_temp;
+    let keyword = event.target.value;
+
+    if (!keyword) {
+      return false;
+    }
+
+    this.pays = this.pays.filter(value => {
+      return value.name === keyword;
+    });
+    this.code = this.pays[0].dial_code;
+    this.filterVille(keyword);
+  }
+
+  filterVille(country) {
+    this.ville_temp = this.ville[`${country}`];
+    console.log(this.ville_temp);
+  }
 
   signUP() {
     var _this = this;
@@ -156,7 +193,7 @@ let RegisterPage = class RegisterPage {
         email: _this.email.value,
         date_naissance: !isNaN(Date.parse(_this.birthday.value)) ? _this.birthday.value : null,
         sexe: _this.gender.value,
-        contact: Number(_this.codeCountry.value + _this.contact.value),
+        contact: Number(_this.code + _this.contact.value),
         pays: _this.country.value,
         ville: _this.city.value,
         password: _this.password.value,
@@ -230,7 +267,6 @@ let RegisterPage = class RegisterPage {
   }
 
   get isDate() {
-    console.log(!isNaN(Date.parse(this.birthday.value)));
     return !isNaN(Date.parse(this.birthday.value));
   }
 
@@ -252,10 +288,6 @@ let RegisterPage = class RegisterPage {
 
   get gender() {
     return this.credential.get('gender');
-  }
-
-  get codeCountry() {
-    return this.credential.get('codeCountry');
   }
 
   get contact() {
@@ -289,10 +321,12 @@ RegisterPage.ctorParameters = () => [{
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__.HttpClient
+}, {
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router
 }];
 
-RegisterPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+RegisterPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
   selector: 'app-register',
   template: _register_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_register_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -317,7 +351,7 @@ module.exports = ".hello-text {\n  font-weight: bolder;\n  text-align: center;\n
   \*******************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  \n<ion-grid>\n  <ion-row>\n    <ion-col size=\"12\" class=\"hello-text\">\n      <h1>Bienvenue a bord ! </h1>\n    </ion-col>\n  </ion-row>\n  <ion-row style=\"text-align:center\">\n    <ion-card-subtitle color=\"dark\">\n      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard\n    </ion-card-subtitle>\n  </ion-row>\n  <form [formGroup]=\"credential\" (ngSubmit)=\"signUP()\">\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"text\" placeholder=\"Entrez votre nom\" formControlName=\"name\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(name.dirty||name.touched)&& name.errors\">min 6 characters</ion-note>    \n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"text\" placeholder=\"Entrez votre prenom\" formControlName=\"surname\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(surname.dirty||surname.touched)&& surname.errors\">min 6 characters</ion-note>    \n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"email\" placeholder=\"Entrez votre email\" formControlName=\"email\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(email.dirty||email.touched)&& email.errors\">invalid email</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\" id=\"birthday\">\n        <ion-input placeholder=\"Date de naissance : 1998-09-30\" formControlName=\"birthday\" maxlength=\"10\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"isDate==false\">invalid date</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row><ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"De quel sexe etes vous ? \" formControlName=\"gender\">\n          <ion-select-option value=\"Masculin\">Masculin</ion-select-option>\n          <ion-select-option value=\"Feminin\">Feminin</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(gender.dirty||gender.touched)&& gender.errors\">invalid gender</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row><ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Code\" value=\"237\" slot=\"start\" formControlName=\"codeCountry\">\n          \n          <ion-select-option value=\"237\"> 🇨🇲 +237</ion-select-option>\n          <ion-select-option value=\"33\"> 🇫🇷 +33</ion-select-option>\n          <ion-select-option value=\"1\"> 🇺🇸 +1</ion-select-option>\n        </ion-select>\n        <ion-input placeholder=\"Votre contact\" formControlName=\"contact\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(codeCountry.dirty||codeCountry.touched)&& codeCountry.errors || (contact.dirty||contact.touched)&& contact.errors\">invalid contact</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row><ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre pays\" formControlName=\"country\">\n          <ion-select-option value=\"cameroon\">cameroon</ion-select-option>\n          <ion-select-option value=\"United State\">United State</ion-select-option>\n          <ion-select-option value=\"Russian\">Russian</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(country.dirty||country.touched)&& country.errors\">invalid country</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row><ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre ville\" formControlName=\"city\">\n          <ion-select-option value=\"Yaounde\">Yaounde</ion-select-option>\n          <ion-select-option value=\"Douala\">Douala</ion-select-option>\n          <ion-select-option value=\"Texas\">Texas</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(city.dirty||city.touched)&& city.errors\">invalid city</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input [type]=\"password_input_type\" placeholder=\"Entrez votre mot de passe\" formControlName=\"password\"></ion-input>\n        <ion-icon name=\"eye-off-outline\" *ngIf=\"password_input_type=='password'\" (click)=\"changePassInputType()\"></ion-icon>\n      <ion-icon name=\"eye-outline\" *ngIf=\"password_input_type=='text'\" (click)=\"changePassInputType()\"></ion-icon>\n        <ion-note slot=\"error\" *ngIf=\"(password.dirty||password.touched)&& password.errors\">invalid password</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row><ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Confirmez votre mot de passe\" formControlName=\"confirmPassword\"></ion-input>\n        <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n        <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row class=\"ion-margin-top\" style=\"margin-left:15px\">\n    <ion-checkbox color=\"danger\" (click)=\"validcondition()\"></ion-checkbox>\n    <ion-label class=\"ion-margin-horizontal\">accepter les termes et conditions</ion-label>\n</ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n     <ion-button [disabled]=\"!credential.valid || !passwordMatching() || !term_condition\" type=\"submit\" color=\"success\"  type=\"submit\" expand=\"block\" color=\"danger\">Enroll now !</ion-button>\n    </ion-col>\n  </ion-row>\n</form>\n  \n  <ion-row class=\"rowSignup\">\n    <ion-col class=\"signupMessage\" style=\"text-align: center;\" size=\"7\">\n     <ion-text>Vous avez deja un compte ? </ion-text>\n    </ion-col>\n      <ion-col class='signup' size=\"5\" routerLink=\"/login\">\n         <ion-text color=\"danger\" style=\"font-weight: bold;\">Connectez vous</ion-text>\n      </ion-col>\n  </ion-row>\n</ion-grid>\n</ion-content>\n";
+module.exports = "\n<ion-content>\n  \n<ion-grid>\n  <ion-row>\n    <ion-col size=\"12\" class=\"hello-text\">\n      <h1>Bienvenue a bord ! </h1>\n    </ion-col>\n  </ion-row>\n  <ion-row style=\"text-align:center\">\n    <ion-card-subtitle color=\"dark\">\n      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard\n    </ion-card-subtitle>\n  </ion-row>\n  <form [formGroup]=\"credential\" (ngSubmit)=\"signUP()\">\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"text\" placeholder=\"Entrez votre nom\" formControlName=\"name\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(name.dirty||name.touched)&& name.errors\">min 6 characters</ion-note>    \n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"text\" placeholder=\"Entrez votre prenom\" formControlName=\"surname\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(surname.dirty||surname.touched)&& surname.errors\">min 6 characters</ion-note>    \n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input type=\"email\" placeholder=\"Entrez votre email\" formControlName=\"email\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(email.dirty||email.touched)&& email.errors\">invalid email</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\" id=\"birthday\">\n        <ion-input placeholder=\"Date de naissance : 1998-09-30 ( optionel ) \" formControlName=\"birthday\" maxlength=\"10\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"isDate==false\">invalid date</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row><ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"De quel sexe etes vous ? \" formControlName=\"gender\">\n          <ion-select-option value=\"Masculin\">Masculin</ion-select-option>\n          <ion-select-option value=\"Feminin\">Feminin</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(gender.dirty||gender.touched)&& gender.errors\">invalid gender</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input ion-form-group\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre pays\" formControlName=\"country\" (ionChange)=\"filterPays($event)\">\n          <ion-select-option [value]=\"country.name\" *ngFor=\"let country of pays_temp\" > {{country.flag}}{{country.name}}</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(country.dirty||country.touched)&& country.errors\">invalid country</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre ville\" formControlName=\"city\">\n          <ion-select-option *ngFor=\"let city of ville_temp\" [value]=\"city\">{{city}}</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(city.dirty||city.touched)&& city.errors\">invalid city</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-text>\n          {{code}}\n        </ion-text>\n        <ion-input placeholder=\"Votre contact\" formControlName=\"contact\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(contact.dirty||contact.touched)&& contact.errors\">invalid contact</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input [type]=\"password_input_type\" placeholder=\"Entrez votre mot de passe\" formControlName=\"password\"></ion-input>\n        <ion-icon name=\"eye-off-outline\" *ngIf=\"password_input_type=='password'\" (click)=\"changePassInputType()\"></ion-icon>\n      <ion-icon name=\"eye-outline\" *ngIf=\"password_input_type=='text'\" (click)=\"changePassInputType()\"></ion-icon>\n        <ion-note slot=\"error\" *ngIf=\"(password.dirty||password.touched)&& password.errors\">invalid password</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row><ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Confirmez votre mot de passe\" formControlName=\"confirmPassword\"></ion-input>\n        <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n        <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-row class=\"ion-margin-top\" style=\"margin-left:15px\">\n    <ion-checkbox color=\"danger\" (click)=\"validcondition()\"></ion-checkbox>\n    <ion-label class=\"ion-margin-horizontal\">accepter les termes et conditions</ion-label>\n</ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n     <ion-button [disabled]=\"!credential.valid || !passwordMatching() || !term_condition\" type=\"submit\" color=\"success\"  type=\"submit\" expand=\"block\" color=\"danger\">Enroll now !</ion-button>\n    </ion-col>\n  </ion-row>\n</form>\n  \n  <ion-row class=\"rowSignup\">\n    <ion-col class=\"signupMessage\" style=\"text-align: center;\" size=\"7\">\n     <ion-text>Vous avez deja un compte ? </ion-text>\n    </ion-col>\n      <ion-col class='signup' size=\"5\" routerLink=\"/login\">\n         <ion-text color=\"danger\" style=\"font-weight: bold;\">Connectez vous</ion-text>\n      </ion-col>\n  </ion-row>\n</ion-grid>\n</ion-content>\n";
 
 /***/ })
 

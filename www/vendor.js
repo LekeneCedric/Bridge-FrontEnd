@@ -1,6 +1,1101 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["vendor"],{
 
+/***/ 8221:
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/call-number/__ivy_ngcc__/ngx/index.js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CallNumber": () => (/* binding */ CallNumber)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @awesome-cordova-plugins/core */ 4624);
+
+
+
+
+
+var CallNumber =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(CallNumber, _super);
+
+  function CallNumber() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  CallNumber.prototype.callNumber = function (numberToCall, bypassAppChooser) {
+    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "callNumber", {
+      "callbackOrder": "reverse"
+    }, arguments);
+  };
+
+  CallNumber.prototype.isCallSupported = function () {
+    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isCallSupported", {}, arguments);
+  };
+
+  CallNumber.pluginName = "CallNumber";
+  CallNumber.plugin = "call-number";
+  CallNumber.pluginRef = "plugins.CallNumber";
+  CallNumber.repo = "https://github.com/Rohfosho/CordovaCallNumberPlugin";
+  CallNumber.platforms = ["Android", "iOS"];
+
+  CallNumber.ɵfac = /*@__PURE__*/function () {
+    var ɵCallNumber_BaseFactory;
+    return function CallNumber_Factory(t) {
+      return (ɵCallNumber_BaseFactory || (ɵCallNumber_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetInheritedFactory"](CallNumber)))(t || CallNumber);
+    };
+  }();
+
+  CallNumber.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+    token: CallNumber,
+    factory: function (t) {
+      return CallNumber.ɵfac(t);
+    }
+  });
+
+  (function () {
+    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](CallNumber, [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable
+    }], null, null);
+  })();
+
+  return CallNumber;
+}(_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.AwesomeCordovaNativePlugin);
+
+
+
+/***/ }),
+
+/***/ 5400:
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/awesome-cordova-plugin.js ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AwesomeCordovaNativePlugin": () => (/* binding */ AwesomeCordovaNativePlugin)
+/* harmony export */ });
+/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./decorators/common */ 2474);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ 8219);
+
+
+
+var AwesomeCordovaNativePlugin =
+/** @class */
+function () {
+  function AwesomeCordovaNativePlugin() {}
+  /**
+   * Returns a boolean that indicates whether the plugin is installed
+   *
+   * @returns {boolean}
+   */
+
+
+  AwesomeCordovaNativePlugin.installed = function () {
+    var isAvailable = (0,_decorators_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(this.pluginRef) === true;
+    return isAvailable;
+  };
+  /**
+   * Returns the original plugin object
+   */
+
+
+  AwesomeCordovaNativePlugin.getPlugin = function () {
+    if (typeof window !== 'undefined') {
+      return (0,_util__WEBPACK_IMPORTED_MODULE_1__.get)(window, this.pluginRef);
+    }
+
+    return null;
+  };
+  /**
+   * Returns the plugin's name
+   */
+
+
+  AwesomeCordovaNativePlugin.getPluginName = function () {
+    var pluginName = this.pluginName;
+    return pluginName;
+  };
+  /**
+   * Returns the plugin's reference
+   */
+
+
+  AwesomeCordovaNativePlugin.getPluginRef = function () {
+    var pluginRef = this.pluginRef;
+    return pluginRef;
+  };
+  /**
+   * Returns the plugin's install name
+   */
+
+
+  AwesomeCordovaNativePlugin.getPluginInstallName = function () {
+    var plugin = this.plugin;
+    return plugin;
+  };
+  /**
+   * Returns the plugin's supported platforms
+   */
+
+
+  AwesomeCordovaNativePlugin.getSupportedPlatforms = function () {
+    var platform = this.platforms;
+    return platform;
+  };
+
+  AwesomeCordovaNativePlugin.pluginName = '';
+  AwesomeCordovaNativePlugin.pluginRef = '';
+  AwesomeCordovaNativePlugin.plugin = '';
+  AwesomeCordovaNativePlugin.repo = '';
+  AwesomeCordovaNativePlugin.platforms = [];
+  AwesomeCordovaNativePlugin.install = '';
+  return AwesomeCordovaNativePlugin;
+}();
+
+
+
+/***/ }),
+
+/***/ 3512:
+/*!******************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/bootstrap.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkReady": () => (/* binding */ checkReady)
+/* harmony export */ });
+/**
+ *
+ */
+function checkReady() {
+  if (typeof process === 'undefined') {
+    var win_1 = typeof window !== 'undefined' ? window : {};
+    var DEVICE_READY_TIMEOUT_1 = 5000; // To help developers using cordova, we listen for the device ready event and
+    // log an error if it didn't fire in a reasonable amount of time. Generally,
+    // when this happens, developers should remove and reinstall plugins, since
+    // an inconsistent plugin is often the culprit.
+
+    var before_1 = Date.now();
+    var didFireReady_1 = false;
+    win_1.document.addEventListener('deviceready', function () {
+      console.log("Ionic Native: deviceready event fired after " + (Date.now() - before_1) + " ms");
+      didFireReady_1 = true;
+    });
+    setTimeout(function () {
+      if (!didFireReady_1 && win_1.cordova) {
+        console.warn("Ionic Native: deviceready did not fire within " + DEVICE_READY_TIMEOUT_1 + "ms. This can happen when plugins are in an inconsistent state. Try removing plugins from plugins/ and reinstalling them.");
+      }
+    }, DEVICE_READY_TIMEOUT_1);
+  }
+}
+
+/***/ }),
+
+/***/ 2474:
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/common.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ERR_CORDOVA_NOT_AVAILABLE": () => (/* binding */ ERR_CORDOVA_NOT_AVAILABLE),
+/* harmony export */   "ERR_PLUGIN_NOT_INSTALLED": () => (/* binding */ ERR_PLUGIN_NOT_INSTALLED),
+/* harmony export */   "callCordovaPlugin": () => (/* binding */ callCordovaPlugin),
+/* harmony export */   "callInstance": () => (/* binding */ callInstance),
+/* harmony export */   "checkAvailability": () => (/* binding */ checkAvailability),
+/* harmony export */   "cordovaWarn": () => (/* binding */ cordovaWarn),
+/* harmony export */   "get": () => (/* binding */ get),
+/* harmony export */   "getPlugin": () => (/* binding */ getPlugin),
+/* harmony export */   "getPromise": () => (/* binding */ getPromise),
+/* harmony export */   "instanceAvailability": () => (/* binding */ instanceAvailability),
+/* harmony export */   "pluginWarn": () => (/* binding */ pluginWarn),
+/* harmony export */   "setIndex": () => (/* binding */ setIndex),
+/* harmony export */   "wrap": () => (/* binding */ wrap),
+/* harmony export */   "wrapInstance": () => (/* binding */ wrapInstance),
+/* harmony export */   "wrapPromise": () => (/* binding */ wrapPromise)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ 2378);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 6312);
+
+var ERR_CORDOVA_NOT_AVAILABLE = {
+  error: 'cordova_not_available'
+};
+var ERR_PLUGIN_NOT_INSTALLED = {
+  error: 'plugin_not_installed'
+};
+/**
+ * @param callback
+ */
+
+function getPromise(callback) {
+  var tryNativePromise = function () {
+    if (Promise) {
+      return new Promise(function (resolve, reject) {
+        callback(resolve, reject);
+      });
+    } else {
+      console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular or on a recent browser.');
+    }
+  };
+
+  if (typeof window !== 'undefined' && window.angular) {
+    var doc = window.document;
+    var injector = window.angular.element(doc.querySelector('[ng-app]') || doc.body).injector();
+
+    if (injector) {
+      var $q = injector.get('$q');
+      return $q(function (resolve, reject) {
+        callback(resolve, reject);
+      });
+    }
+
+    console.warn("Angular 1 was detected but $q couldn't be retrieved. This is usually when the app is not bootstrapped on the html or body tag. Falling back to native promises which won't trigger an automatic digest when promises resolve.");
+  }
+
+  return tryNativePromise();
+}
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ */
+
+function wrapPromise(pluginObj, methodName, args, opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+
+  var pluginResult, rej;
+  var p = getPromise(function (resolve, reject) {
+    if (opts.destruct) {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function () {
+        var args = [];
+
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+
+        return resolve(args);
+      }, function () {
+        var args = [];
+
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+
+        return reject(args);
+      });
+    } else {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject);
+    }
+
+    rej = reject;
+  }); // Angular throws an error on unhandled rejection, but in this case we have already printed
+  // a warning that Cordova is undefined or the plugin is uninstalled, so there is no reason
+  // to error
+
+  if (pluginResult && pluginResult.error) {
+    p.catch(function () {});
+    typeof rej === 'function' && rej(pluginResult.error);
+  }
+
+  return p;
+}
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ */
+
+function wrapOtherPromise(pluginObj, methodName, args, opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+
+  return getPromise(function (resolve, reject) {
+    var pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts);
+
+    if (pluginResult) {
+      if (pluginResult.error) {
+        reject(pluginResult.error);
+      } else if (pluginResult.then) {
+        pluginResult.then(resolve).catch(reject);
+      }
+    } else {
+      reject({
+        error: 'unexpected_error'
+      });
+    }
+  });
+}
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ */
+
+
+function wrapObservable(pluginObj, methodName, args, opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+
+  return new rxjs__WEBPACK_IMPORTED_MODULE_0__.Observable(function (observer) {
+    var pluginResult;
+
+    if (opts.destruct) {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, function () {
+        var args = [];
+
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+
+        return observer.next(args);
+      }, function () {
+        var args = [];
+
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+
+        return observer.error(args);
+      });
+    } else {
+      pluginResult = callCordovaPlugin(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+    }
+
+    if (pluginResult && pluginResult.error) {
+      observer.error(pluginResult.error);
+      observer.complete();
+    }
+
+    return function () {
+      try {
+        if (opts.clearFunction) {
+          if (opts.clearWithArgs) {
+            return callCordovaPlugin(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+          }
+
+          return callCordovaPlugin(pluginObj, opts.clearFunction, []);
+        }
+      } catch (e) {
+        console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
+        console.warn(e);
+      }
+    };
+  });
+}
+/**
+ * Wrap the event with an observable
+ *
+ * @private
+ * @param event event name
+ * @param element The element to attach the event listener to
+ * @returns {Observable}
+ */
+
+
+function wrapEventObservable(event, element) {
+  element = typeof window !== 'undefined' && element ? get(window, element) : element || (typeof window !== 'undefined' ? window : {});
+  return (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(element, event);
+}
+/**
+ * @param plugin
+ * @param methodName
+ * @param pluginName
+ */
+
+
+function checkAvailability(plugin, methodName, pluginName) {
+  var pluginRef, pluginPackage;
+
+  if (typeof plugin === 'string') {
+    pluginRef = plugin;
+  } else {
+    pluginRef = plugin.constructor.getPluginRef();
+    pluginName = plugin.constructor.getPluginName();
+    pluginPackage = plugin.constructor.getPluginInstallName();
+  }
+
+  var pluginInstance = getPlugin(pluginRef);
+
+  if (!pluginInstance || !!methodName && typeof pluginInstance[methodName] === 'undefined') {
+    if (typeof window === 'undefined' || !window.cordova) {
+      cordovaWarn(pluginName, methodName);
+      return ERR_CORDOVA_NOT_AVAILABLE;
+    }
+
+    pluginWarn(pluginName, pluginPackage, methodName);
+    return ERR_PLUGIN_NOT_INSTALLED;
+  }
+
+  return true;
+}
+/**
+ * Checks if _objectInstance exists and has the method/property
+ *
+ * @param pluginObj
+ * @param methodName
+ * @private
+ */
+
+function instanceAvailability(pluginObj, methodName) {
+  return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
+}
+/**
+ * @param args
+ * @param opts
+ * @param resolve
+ * @param reject
+ */
+
+function setIndex(args, opts, resolve, reject) {
+  if (opts === void 0) {
+    opts = {};
+  } // ignore resolve and reject in case sync
+
+
+  if (opts.sync) {
+    return args;
+  } // If the plugin method expects myMethod(success, err, options)
+
+
+  if (opts.callbackOrder === 'reverse') {
+    // Get those arguments in the order [resolve, reject, ...restOfArgs]
+    args.unshift(reject);
+    args.unshift(resolve);
+  } else if (opts.callbackStyle === 'node') {
+    args.push(function (err, result) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  } else if (opts.callbackStyle === 'object' && opts.successName && opts.errorName) {
+    var obj = {};
+    obj[opts.successName] = resolve;
+    obj[opts.errorName] = reject;
+    args.push(obj);
+  } else if (typeof opts.successIndex !== 'undefined' || typeof opts.errorIndex !== 'undefined') {
+    var setSuccessIndex = function () {
+      // If we've specified a success/error index
+      if (opts.successIndex > args.length) {
+        args[opts.successIndex] = resolve;
+      } else {
+        args.splice(opts.successIndex, 0, resolve);
+      }
+    };
+
+    var setErrorIndex = function () {
+      // We don't want that the reject cb gets spliced into the position of an optional argument that has not been
+      // defined and thus causing non expected behavior.
+      if (opts.errorIndex > args.length) {
+        args[opts.errorIndex] = reject; // insert the reject fn at the correct specific index
+      } else {
+        args.splice(opts.errorIndex, 0, reject); // otherwise just splice it into the array
+      }
+    };
+
+    if (opts.successIndex > opts.errorIndex) {
+      setErrorIndex();
+      setSuccessIndex();
+    } else {
+      setSuccessIndex();
+      setErrorIndex();
+    }
+  } else {
+    // Otherwise, let's tack them on to the end of the argument list
+    // which is 90% of cases
+    args.push(resolve);
+    args.push(reject);
+  }
+
+  return args;
+}
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ * @param resolve
+ * @param reject
+ */
+
+function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
+  if (opts === void 0) {
+    opts = {};
+  } // Try to figure out where the success/error callbacks need to be bound
+  // to our promise resolve/reject handlers.
+
+
+  args = setIndex(args, opts, resolve, reject);
+  var availabilityCheck = checkAvailability(pluginObj, methodName);
+
+  if (availabilityCheck === true) {
+    var pluginInstance = getPlugin(pluginObj.constructor.getPluginRef()); // eslint-disable-next-line prefer-spread
+
+    return pluginInstance[methodName].apply(pluginInstance, args);
+  } else {
+    return availabilityCheck;
+  }
+}
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ * @param opts
+ * @param resolve
+ * @param reject
+ */
+
+function callInstance(pluginObj, methodName, args, opts, resolve, reject) {
+  if (opts === void 0) {
+    opts = {};
+  }
+
+  args = setIndex(args, opts, resolve, reject);
+
+  if (instanceAvailability(pluginObj, methodName)) {
+    // eslint-disable-next-line prefer-spread
+    return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
+  }
+}
+/**
+ * @param pluginRef
+ */
+
+function getPlugin(pluginRef) {
+  if (typeof window !== 'undefined') {
+    return get(window, pluginRef);
+  }
+
+  return null;
+}
+/**
+ * @param element
+ * @param path
+ */
+
+function get(element, path) {
+  var paths = path.split('.');
+  var obj = element;
+
+  for (var i = 0; i < paths.length; i++) {
+    if (!obj) {
+      return null;
+    }
+
+    obj = obj[paths[i]];
+  }
+
+  return obj;
+}
+/**
+ * @param pluginName
+ * @param plugin
+ * @param method
+ */
+
+function pluginWarn(pluginName, plugin, method) {
+  if (method) {
+    console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
+  } else {
+    console.warn("Native: tried accessing the " + pluginName + " plugin but it's not installed.");
+  }
+
+  if (plugin) {
+    console.warn("Install the " + pluginName + " plugin: 'ionic cordova plugin add " + plugin + "'");
+  }
+}
+/**
+ * @private
+ * @param pluginName
+ * @param method
+ */
+
+function cordovaWarn(pluginName, method) {
+  if (typeof process === 'undefined') {
+    if (method) {
+      console.warn('Native: tried calling ' + pluginName + '.' + method + ', but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+    } else {
+      console.warn('Native: tried accessing the ' + pluginName + ' plugin but Cordova is not available. Make sure to include cordova.js or run in a device/simulator');
+    }
+  }
+}
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param opts
+ * @private
+ */
+
+var wrap = function (pluginObj, methodName, opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+
+  return function () {
+    var args = [];
+
+    for (var _i = 0; _i < arguments.length; _i++) {
+      args[_i] = arguments[_i];
+    }
+
+    if (opts.sync) {
+      // Sync doesn't wrap the plugin with a promise or observable, it returns the result as-is
+      return callCordovaPlugin(pluginObj, methodName, args, opts);
+    } else if (opts.observable) {
+      return wrapObservable(pluginObj, methodName, args, opts);
+    } else if (opts.eventObservable && opts.event) {
+      return wrapEventObservable(opts.event, opts.element);
+    } else if (opts.otherPromise) {
+      return wrapOtherPromise(pluginObj, methodName, args, opts);
+    } else {
+      return wrapPromise(pluginObj, methodName, args, opts);
+    }
+  };
+};
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param opts
+ * @private
+ */
+
+function wrapInstance(pluginObj, methodName, opts) {
+  if (opts === void 0) {
+    opts = {};
+  }
+
+  return function () {
+    var args = [];
+
+    for (var _i = 0; _i < arguments.length; _i++) {
+      args[_i] = arguments[_i];
+    }
+
+    if (opts.sync) {
+      return callInstance(pluginObj, methodName, args, opts);
+    } else if (opts.observable) {
+      return new rxjs__WEBPACK_IMPORTED_MODULE_0__.Observable(function (observer) {
+        var pluginResult;
+
+        if (opts.destruct) {
+          pluginResult = callInstance(pluginObj, methodName, args, opts, function () {
+            var args = [];
+
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+
+            return observer.next(args);
+          }, function () {
+            var args = [];
+
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+
+            return observer.error(args);
+          });
+        } else {
+          pluginResult = callInstance(pluginObj, methodName, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+        }
+
+        if (pluginResult && pluginResult.error) {
+          observer.error(pluginResult.error);
+        }
+
+        return function () {
+          try {
+            if (opts.clearWithArgs) {
+              return callInstance(pluginObj, opts.clearFunction, args, opts, observer.next.bind(observer), observer.error.bind(observer));
+            }
+
+            return callInstance(pluginObj, opts.clearFunction, []);
+          } catch (e) {
+            console.warn('Unable to clear the previous observable watch for', pluginObj.constructor.getPluginName(), methodName);
+            console.warn(e);
+          }
+        };
+      });
+    } else if (opts.otherPromise) {
+      return getPromise(function (resolve, reject) {
+        var result;
+
+        if (opts.destruct) {
+          result = callInstance(pluginObj, methodName, args, opts, function () {
+            var args = [];
+
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+
+            return resolve(args);
+          }, function () {
+            var args = [];
+
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+
+            return reject(args);
+          });
+        } else {
+          result = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+        }
+
+        if (result && result.then) {
+          result.then(resolve, reject);
+        } else {
+          reject();
+        }
+      });
+    } else {
+      var pluginResult_1, rej_1;
+      var p = getPromise(function (resolve, reject) {
+        if (opts.destruct) {
+          pluginResult_1 = callInstance(pluginObj, methodName, args, opts, function () {
+            var args = [];
+
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+
+            return resolve(args);
+          }, function () {
+            var args = [];
+
+            for (var _i = 0; _i < arguments.length; _i++) {
+              args[_i] = arguments[_i];
+            }
+
+            return reject(args);
+          });
+        } else {
+          pluginResult_1 = callInstance(pluginObj, methodName, args, opts, resolve, reject);
+        }
+
+        rej_1 = reject;
+      }); // Angular throws an error on unhandled rejection, but in this case we have already printed
+      // a warning that Cordova is undefined or the plugin is uninstalled, so there is no reason
+      // to error
+
+      if (pluginResult_1 && pluginResult_1.error) {
+        p.catch(function () {});
+        typeof rej_1 === 'function' && rej_1(pluginResult_1.error);
+      }
+
+      return p;
+    }
+  };
+}
+
+/***/ }),
+
+/***/ 1485:
+/*!*********************************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova-function-override.js ***!
+  \*********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cordovaFunctionOverride": () => (/* binding */ cordovaFunctionOverride)
+/* harmony export */ });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 2378);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
+
+
+/**
+ * @param pluginObj
+ * @param methodName
+ */
+
+function overrideFunction(pluginObj, methodName) {
+  return new rxjs__WEBPACK_IMPORTED_MODULE_1__.Observable(function (observer) {
+    var availabilityCheck = (0,_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(pluginObj, methodName);
+
+    if (availabilityCheck === true) {
+      var pluginInstance_1 = (0,_common__WEBPACK_IMPORTED_MODULE_0__.getPlugin)(pluginObj.constructor.getPluginRef());
+      pluginInstance_1[methodName] = observer.next.bind(observer);
+      return function () {
+        return pluginInstance_1[methodName] = function () {};
+      };
+    } else {
+      observer.error(availabilityCheck);
+      observer.complete();
+    }
+  });
+}
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param args
+ */
+
+
+function cordovaFunctionOverride(pluginObj, methodName, args) {
+  if (args === void 0) {
+    args = [];
+  }
+
+  return overrideFunction(pluginObj, methodName);
+}
+
+/***/ }),
+
+/***/ 5084:
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova-instance.js ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cordovaInstance": () => (/* binding */ cordovaInstance)
+/* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
+
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param config
+ * @param args
+ */
+
+function cordovaInstance(pluginObj, methodName, config, args) {
+  args = Array.from(args);
+  return (0,_common__WEBPACK_IMPORTED_MODULE_0__.wrapInstance)(pluginObj, methodName, config).apply(this, args);
+}
+
+/***/ }),
+
+/***/ 1830:
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova-property.js ***!
+  \************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cordovaPropertyGet": () => (/* binding */ cordovaPropertyGet),
+/* harmony export */   "cordovaPropertySet": () => (/* binding */ cordovaPropertySet)
+/* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
+
+/**
+ * @param pluginObj
+ * @param key
+ */
+
+function cordovaPropertyGet(pluginObj, key) {
+  if ((0,_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(pluginObj, key) === true) {
+    return (0,_common__WEBPACK_IMPORTED_MODULE_0__.getPlugin)(pluginObj.constructor.getPluginRef())[key];
+  }
+
+  return null;
+}
+/**
+ * @param pluginObj
+ * @param key
+ * @param value
+ */
+
+function cordovaPropertySet(pluginObj, key, value) {
+  if ((0,_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(pluginObj, key) === true) {
+    (0,_common__WEBPACK_IMPORTED_MODULE_0__.getPlugin)(pluginObj.constructor.getPluginRef())[key] = value;
+  }
+}
+
+/***/ }),
+
+/***/ 4461:
+/*!***************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova.js ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "cordova": () => (/* binding */ cordova)
+/* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
+
+/**
+ * @param pluginObj
+ * @param methodName
+ * @param config
+ * @param args
+ */
+
+function cordova(pluginObj, methodName, config, args) {
+  return (0,_common__WEBPACK_IMPORTED_MODULE_0__.wrap)(pluginObj, methodName, config).apply(this, args);
+}
+
+/***/ }),
+
+/***/ 6936:
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/instance-property.js ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "instancePropertyGet": () => (/* binding */ instancePropertyGet),
+/* harmony export */   "instancePropertySet": () => (/* binding */ instancePropertySet)
+/* harmony export */ });
+/**
+ * @param pluginObj
+ * @param key
+ */
+function instancePropertyGet(pluginObj, key) {
+  if (pluginObj._objectInstance && pluginObj._objectInstance[key]) {
+    return pluginObj._objectInstance[key];
+  }
+
+  return null;
+}
+/**
+ * @param pluginObj
+ * @param key
+ * @param value
+ */
+
+function instancePropertySet(pluginObj, key, value) {
+  if (pluginObj._objectInstance) {
+    pluginObj._objectInstance[key] = value;
+  }
+}
+
+/***/ }),
+
+/***/ 3142:
+/*!******************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/interfaces.js ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+
+
+/***/ }),
+
+/***/ 4624:
+/*!**************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/index.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AwesomeCordovaNativePlugin": () => (/* reexport safe */ _awesome_cordova_plugin__WEBPACK_IMPORTED_MODULE_1__.AwesomeCordovaNativePlugin),
+/* harmony export */   "checkAvailability": () => (/* reexport safe */ _decorators_common__WEBPACK_IMPORTED_MODULE_2__.checkAvailability),
+/* harmony export */   "cordova": () => (/* reexport safe */ _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__.cordova),
+/* harmony export */   "cordovaFunctionOverride": () => (/* reexport safe */ _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__.cordovaFunctionOverride),
+/* harmony export */   "cordovaInstance": () => (/* reexport safe */ _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__.cordovaInstance),
+/* harmony export */   "cordovaPropertyGet": () => (/* reexport safe */ _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__.cordovaPropertyGet),
+/* harmony export */   "cordovaPropertySet": () => (/* reexport safe */ _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__.cordovaPropertySet),
+/* harmony export */   "getPromise": () => (/* reexport safe */ _decorators_common__WEBPACK_IMPORTED_MODULE_2__.getPromise),
+/* harmony export */   "instanceAvailability": () => (/* reexport safe */ _decorators_common__WEBPACK_IMPORTED_MODULE_2__.instanceAvailability),
+/* harmony export */   "instancePropertyGet": () => (/* reexport safe */ _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__.instancePropertyGet),
+/* harmony export */   "instancePropertySet": () => (/* reexport safe */ _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__.instancePropertySet),
+/* harmony export */   "wrap": () => (/* reexport safe */ _decorators_common__WEBPACK_IMPORTED_MODULE_2__.wrap)
+/* harmony export */ });
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ 3512);
+/* harmony import */ var _awesome_cordova_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./awesome-cordova-plugin */ 5400);
+/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./decorators/common */ 2474);
+/* harmony import */ var _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./decorators/cordova */ 4461);
+/* harmony import */ var _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./decorators/cordova-function-override */ 1485);
+/* harmony import */ var _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./decorators/cordova-instance */ 5084);
+/* harmony import */ var _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./decorators/cordova-property */ 1830);
+/* harmony import */ var _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./decorators/instance-property */ 6936);
+/* harmony import */ var _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./decorators/interfaces */ 3142);
+
+ // Decorators
+
+
+
+
+
+
+
+
+(0,_bootstrap__WEBPACK_IMPORTED_MODULE_0__.checkReady)();
+
+/***/ }),
+
+/***/ 8219:
+/*!*************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/util.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "get": () => (/* binding */ get),
+/* harmony export */   "getPromise": () => (/* binding */ getPromise)
+/* harmony export */ });
+/**
+ * @param element
+ * @param path
+ * @private
+ */
+function get(element, path) {
+  var paths = path.split('.');
+  var obj = element;
+
+  for (var i = 0; i < paths.length; i++) {
+    if (!obj) {
+      return null;
+    }
+
+    obj = obj[paths[i]];
+  }
+
+  return obj;
+}
+/**
+ * @param callback
+ * @private
+ */
+
+function getPromise(callback) {
+  if (callback === void 0) {
+    callback = function () {};
+  }
+
+  var tryNativePromise = function () {
+    if (typeof Promise === 'function' || typeof window !== 'undefined' && window.Promise) {
+      return new Promise(function (resolve, reject) {
+        callback(resolve, reject);
+      });
+    } else {
+      console.error('No Promise support or polyfill found. To enable Ionic Native support, please add the es6-promise polyfill before this script, or run with a library like Angular or on a recent browser.');
+    }
+  };
+
+  return tryNativePromise();
+}
+
+/***/ }),
+
 /***/ 3819:
 /*!***************************************************************!*\
   !*** ./node_modules/@ionic/angular/fesm2015/ionic-angular.js ***!
@@ -17382,6 +18477,1770 @@ __webpack_require__.r(__webpack_exports__);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
+
+
+
+/***/ }),
+
+/***/ 6629:
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/ionic4-auto-complete/__ivy_ngcc__/fesm2015/ionic4-auto-complete.js ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AutoCompleteComponent": () => (/* binding */ AutoCompleteComponent),
+/* harmony export */   "AutoCompleteModule": () => (/* binding */ AutoCompleteModule),
+/* harmony export */   "AutoCompleteOptions": () => (/* binding */ AutoCompleteOptions),
+/* harmony export */   "AutoCompleteStyles": () => (/* binding */ AutoCompleteStyles),
+/* harmony export */   "BoldPrefix": () => (/* binding */ BoldPrefix)
+/* harmony export */ });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 2218);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 4383);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ 2378);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ 4661);
+
+
+
+
+
+
+
+
+
+
+const _c0 = ["searchbarElem"];
+const _c1 = ["inputElem"];
+const _c2 = ["itemList"];
+
+function AutoCompleteComponent_ng_template_0_ion_icon_1_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "ion-icon", 15);
+  }
+
+  if (rf & 2) {
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("name", ctx_r14.frontIcon)("slot", "start");
+  }
+}
+
+function AutoCompleteComponent_ng_template_0_ion_icon_4_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "ion-icon", 16);
+  }
+
+  if (rf & 2) {
+    const attrs_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().attrs;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("name", attrs_r13.removeButtonIcon)("slot", attrs_r13.removeButtonSlot);
+  }
+}
+
+function AutoCompleteComponent_ng_template_0_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ion-chip", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AutoCompleteComponent_ng_template_0_ion_icon_1_Template, 1, 2, "ion-icon", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ion-label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AutoCompleteComponent_ng_template_0_ion_icon_4_Template, 1, 2, "ion-icon", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const attrs_r13 = ctx.attrs;
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMap"](attrs_r13.removeButtonClasses);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", attrs_r13.removeButtonColor)("outline", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.frontIcon);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](attrs_r13.label);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", attrs_r13.removeButtonIcon);
+  }
+}
+
+function AutoCompleteComponent_div_2_div_1_ng_template_1_Template(rf, ctx) {}
+
+const _c3 = function (a0, a1, a2, a3, a4, a5) {
+  return {
+    data: a0,
+    label: a1,
+    removeButtonClasses: a2,
+    removeButtonColor: a3,
+    removeButtonIcon: a4,
+    removeButtonSlot: a5
+  };
+};
+
+const _c4 = function (a0) {
+  return {
+    attrs: a0
+  };
+};
+
+function AutoCompleteComponent_div_2_div_1_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AutoCompleteComponent_div_2_div_1_Template_div_click_0_listener() {
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21);
+      const item_r18 = restoredCtx.$implicit;
+      const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresetView"](ctx_r20.removeItem(item_r18));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AutoCompleteComponent_div_2_div_1_ng_template_1_Template, 0, 0, "ng-template", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const item_r18 = ctx.$implicit;
+    const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+    const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](1);
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx_r17.selectionTemplate || _r0)("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](9, _c4, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction6"](2, _c3, item_r18, ctx_r17.getLabel(item_r18), ctx_r17.removeButtonClasses, ctx_r17.removeButtonColor, ctx_r17.removeButtonIcon, ctx_r17.removeButtonSlot)));
+  }
+}
+
+function AutoCompleteComponent_div_2_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AutoCompleteComponent_div_2_div_1_Template, 2, 11, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r2.selected);
+  }
+}
+
+function AutoCompleteComponent_ion_label_3_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ion-label", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("position", ctx_r3.labelPosition);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.label);
+  }
+}
+
+function AutoCompleteComponent_ng_template_8_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "span", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "boldprefix");
+  }
+
+  if (rf & 2) {
+    const attrs_r22 = ctx.attrs;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("innerHTML", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](1, 1, attrs_r22.label, attrs_r22.keyword), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeHtml"]);
+  }
+}
+
+function AutoCompleteComponent_ng_template_10_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](0);
+  }
+
+  if (rf & 2) {
+    const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r9.autocompleteOptions.noItems, "\n");
+  }
+}
+
+function AutoCompleteComponent_ng_template_12_Template(rf, ctx) {}
+
+function AutoCompleteComponent_ng_template_13_ul_0_li_2_ng_template_1_Template(rf, ctx) {}
+
+const _c5 = function (a0) {
+  return {
+    "focus": a0
+  };
+};
+
+const _c6 = function (a0, a1, a2, a3, a4, a5) {
+  return {
+    data: a0,
+    label: a1,
+    keyword: a2,
+    formValue: a3,
+    labelAttribute: a4,
+    formValueAttribute: a5
+  };
+};
+
+function AutoCompleteComponent_ng_template_13_ul_0_li_2_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mouseenter", function AutoCompleteComponent_ng_template_13_ul_0_li_2_Template_li_mouseenter_0_listener() {
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33);
+      const index_r30 = restoredCtx.index;
+      const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresetView"](ctx_r32.focusedOption = index_r30);
+    })("click", function AutoCompleteComponent_ng_template_13_ul_0_li_2_Template_li_click_0_listener($event) {
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33);
+      const suggestion_r29 = restoredCtx.$implicit;
+      const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresetView"](ctx_r34.handleSelectTap($event, suggestion_r29));
+    })("tap", function AutoCompleteComponent_ng_template_13_ul_0_li_2_Template_li_tap_0_listener($event) {
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33);
+      const suggestion_r29 = restoredCtx.$implicit;
+      const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresetView"](ctx_r35.handleSelectTap($event, suggestion_r29));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AutoCompleteComponent_ng_template_13_ul_0_li_2_ng_template_1_Template, 0, 0, "ng-template", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const suggestion_r29 = ctx.$implicit;
+    const index_r30 = ctx.index;
+    const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
+
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](9);
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c5, ctx_r28.focusedOption === index_r30))("ngStyle", ctx_r28.styles.listItem);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx_r28.template || _r6)("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](13, _c4, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction6"](6, _c6, suggestion_r29, ctx_r28.getLabel(suggestion_r29), ctx_r28.keyword, ctx_r28.getFormValue(suggestion_r29), ctx_r28.getLabel(suggestion_r29), ctx_r28.getFormValue(suggestion_r29))));
+  }
+}
+
+function AutoCompleteComponent_ng_template_13_ul_0_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ul", 22, 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AutoCompleteComponent_ng_template_13_ul_0_li_2_Template, 2, 15, "li", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "slice");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+  }
+
+  if (rf & 2) {
+    const attrs_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().attrs;
+    const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", ctx_r25.listStyles());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind3"](3, 2, attrs_r24.data, 0, attrs_r24.maxResults));
+  }
+}
+
+function AutoCompleteComponent_ng_template_13_ul_1_ng_template_2_Template(rf, ctx) {}
+
+const _c7 = function (a0) {
+  return {
+    keyword: a0
+  };
+};
+
+function AutoCompleteComponent_ng_template_13_ul_1_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ul", 22)(1, "li", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AutoCompleteComponent_ng_template_13_ul_1_ng_template_2_Template, 0, 0, "ng-template", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+  }
+
+  if (rf & 2) {
+    const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](11);
+
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", ctx_r26.listStyles());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", ctx_r26.styles.listItem);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx_r26.emptyTemplate || _r8)("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](6, _c4, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c7, ctx_r26.keyword)));
+  }
+}
+
+function AutoCompleteComponent_ng_template_13_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, AutoCompleteComponent_ng_template_13_ul_0_Template, 4, 6, "ul", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, AutoCompleteComponent_ng_template_13_ul_1_Template, 3, 8, "ul", 21);
+  }
+
+  if (rf & 2) {
+    const attrs_r24 = ctx.attrs;
+    const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !(ctx_r12.disabled || attrs_r24.maxSelected !== null && attrs_r24.selected.length >= attrs_r24.maxSelected) && attrs_r24.data.length > 0 && attrs_r24.showSuggestions);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r12.isLoading && ctx_r12.suggestions.length === 0 && ctx_r12.showSuggestions);
+  }
+}
+
+const _c8 = function (a0, a1) {
+  return {
+    "hidden": a0,
+    "loading": a1
+  };
+};
+
+const _c9 = function (a0, a1, a2) {
+  return {
+    "hidden": a0,
+    "loading": a1,
+    "disabled": a2
+  };
+};
+
+const _c10 = function (a0, a1, a2, a3, a4, a5) {
+  return {
+    data: a0,
+    keyword: a1,
+    maxResults: a2,
+    maxSelected: a3,
+    selected: a4,
+    showSuggestions: a5
+  };
+};
+
+class AutoCompleteOptions {
+  constructor() {
+    this.animated = false;
+    this.color = null;
+    this.autocomplete = 'off';
+    this.autocorrect = 'off';
+    this.cancelButtonIcon = 'arrow-round-back';
+    this.cancelButtonText = 'Cancel';
+    this.clearIcon = 'close-circle';
+    this.clearInput = false;
+    this.clearOnEdit = false;
+    this.debounce = 250;
+    this.mode = 'md';
+    this.noItems = 'No items found.';
+    this.placeholder = 'Search';
+    this.searchIcon = 'search';
+    this.showCancelButton = false;
+    this.spellcheck = 'off';
+    this.type = 'search';
+  }
+
+}
+
+class AutoCompleteStyles {
+  constructor() {
+    this.list = {};
+    this.listItem = {};
+    this.searchbar = {};
+  }
+
+}
+
+class AutoCompleteComponent {
+  /**
+   * Create a new instance
+   */
+  constructor() {
+    this.autocompleteOptions = new AutoCompleteOptions();
+    this.hasFocus = false;
+    this.isLoading = false;
+    this.focusedOption = -1;
+    this.showSuggestions = false;
+    this.onTouchedCallback = false;
+    this.onChangeCallback = false;
+    this.showListChanged = false;
+    this.alwaysShowList = false;
+    this.autoFocusSuggestion = true;
+    this.clearInvalidInput = true;
+    this.disabled = false;
+    this.exclude = [];
+    this.frontIcon = false;
+    this.hideListOnSelection = true;
+    this.label = '';
+    this.labelPosition = 'fixed';
+    this.location = 'auto';
+    this.maxResults = 8;
+    this.maxSelected = null;
+    this.multi = false;
+    this.name = '';
+    this.removeButtonClasses = '';
+    this.removeButtonColor = 'primary';
+    this.removeButtonIcon = 'close-circle';
+    this.removeButtonSlot = 'end';
+    this.removeDuplicateSuggestions = true;
+    this.selectOnTabOut = true;
+    this.styles = new AutoCompleteStyles();
+    this.useIonInput = false;
+    this.autoBlur = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.autoFocus = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.blur = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.focus = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.ionAutoInput = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.itemsChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.itemsCleared = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.itemsHidden = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.itemRemoved = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.itemSelected = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.itemsShown = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.modelChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
+    this.keyword = '';
+    this.suggestions = [];
+  }
+
+  set dataProvider(provider) {
+    if (typeof provider !== 'undefined') {
+      this.provider = provider;
+
+      if (typeof this.selected !== 'undefined') {
+        this.keyword = this.getLabel(this.selected);
+      }
+    }
+  }
+
+  set eager(eager) {
+    if (eager) {
+      this.getItems(null, false);
+    }
+  }
+
+  set options(options) {
+    this.autocompleteOptions = new AutoCompleteOptions();
+    const keys = Object.keys(options);
+    const keysLength = keys.length;
+
+    for (let i = 0; i < keysLength; i++) {
+      const key = keys[i];
+
+      if (typeof options[key] !== 'undefined') {
+        this.autocompleteOptions[key] = options[key];
+      }
+    }
+
+    if (typeof this.selected === 'undefined') {
+      if (typeof this.autocompleteOptions.value !== 'undefined') {
+        this.selected = this.autocompleteOptions.value;
+      } else {
+        if (this.multi) {
+          this.selected = [];
+        } else {
+          this.selected = null;
+        }
+      }
+
+      this.keyword = this.getLabel(this.selected);
+    }
+
+    if (this.autocompleteOptions.autocomplete) {
+      this.autocomplete = this.autocompleteOptions.autocomplete;
+    } else {
+      this.autocomplete = 'off';
+    }
+  }
+
+  get model() {
+    let model = this.selected;
+
+    if (!this.multi && typeof this.selected.length !== 'undefined') {
+      if (this.selected.length === 0) {
+        model = null;
+      } else {
+        model = this.selected[0];
+      }
+    }
+
+    return model;
+  }
+
+  set model(selected) {
+    this.selected = selected;
+  }
+
+  get showList() {
+    return this.showSuggestions;
+  }
+
+  set showList(value) {
+    if (typeof value === 'undefined') {
+      return;
+    }
+
+    if (this.showSuggestions === value) {
+      return;
+    }
+
+    this.showSuggestions = value === true;
+    this.showListChanged = true;
+  }
+  /**
+   * Handle document click
+   *
+   * @param event
+   *
+   * @private
+   */
+
+
+  documentClickHandler(event) {
+    if (this.isEventWithinElement(this.searchbarElem, event) || this.isEventWithinElement(this.inputElem, event) || this.isEventWithinElement(this.itemList, event)) {
+      this.setSuggestions(this.suggestions);
+    } else {
+      this.hideItemList();
+    }
+  }
+
+  ngAfterViewChecked() {
+    if (this.showListChanged) {
+      this.showListChanged = false;
+      this.showSuggestions ? this.itemsShown.emit() : this.itemsHidden.emit();
+    }
+  }
+
+  ngDoCheck() {
+    if (!this.hasFocus) {
+      if (this.clearInvalidInput && (this.selected === null || this.multi)) {
+        if (this.keyword !== '') {
+          this.keyword = '';
+        }
+
+        if (this.inputElem && this.inputElem.nativeElement) {
+          if (this.inputElem.nativeElement.children && this.inputElem.nativeElement.children.length !== 0) {
+            if (this.inputElem.nativeElement.children[0].children && this.inputElem.nativeElement.children[0].children.length !== 0) {
+              if (this.inputElem.nativeElement.children[0].children[0].value) {
+                this.inputElem.nativeElement.children[0].children[0].value = '';
+              }
+            }
+          }
+        }
+
+        if (this.searchbarElem && this.searchbarElem.nativeElement) {
+          if (this.searchbarElem.nativeElement.children && this.searchbarElem.nativeElement.children.length !== 0) {
+            if (this.searchbarElem.nativeElement.children[0].children) {
+              if (this.searchbarElem.nativeElement.children[0].children.length !== 0) {
+                if (this.searchbarElem.nativeElement.children[0].children[0].value) {
+                  this.searchbarElem.nativeElement.children[0].children[0].value = '';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  /**
+   * Get element's position on screen
+   *
+   * @param el
+   *
+   * @private
+   */
+
+
+  _getPosition(el) {
+    let xPos = 0;
+    let yPos = 0;
+
+    while (el) {
+      if (el.tagName === 'BODY') {
+        const xScroll = el.scrollLeft || document.documentElement.scrollLeft;
+        const yScroll = el.scrollTop || document.documentElement.scrollTop;
+        xPos += el.offsetLeft - xScroll + el.clientLeft;
+        yPos += el.offsetTop - yScroll + el.clientTop;
+      } else {
+        xPos += el.offsetLeft - el.scrollLeft + el.clientLeft;
+        yPos += el.offsetTop - el.scrollTop + el.clientTop;
+      }
+
+      el = el.offsetParent;
+    }
+
+    return {
+      x: xPos,
+      y: yPos
+    };
+  }
+
+  isEventWithinElement(elementOrTemplate, event) {
+    if (typeof elementOrTemplate === 'undefined') {
+      return false;
+    }
+
+    let element;
+
+    if (elementOrTemplate instanceof _angular_core__WEBPACK_IMPORTED_MODULE_0__.TemplateRef) {
+      element = elementOrTemplate.elementRef;
+    } else if (elementOrTemplate instanceof _angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewContainerRef) {
+      element = elementOrTemplate.element.nativeElement;
+    } else {
+      element = elementOrTemplate;
+    }
+
+    return element && element.nativeElement && element.nativeElement.contains(event.target);
+  }
+  /**
+   * Get value from form
+   *
+   * @param selection
+   *
+   * @private
+   */
+
+
+  getFormValue(selection) {
+    if (typeof this.provider === 'undefined') {
+      return null;
+    }
+
+    if (selection == null || typeof this.provider === 'function') {
+      return null;
+    }
+
+    let attr = this.provider.formValueAttribute == null ? this.provider.labelAttribute : this.provider.formValueAttribute;
+
+    if (typeof selection === 'object' && attr) {
+      return selection[attr];
+    }
+
+    return selection;
+  }
+
+  clickClear() {
+    this.clearValue();
+    this.hideItemList();
+    this.itemsCleared.emit(true);
+  }
+  /**
+   * Clear current input value
+   */
+
+
+  clearValue() {
+    this.keyword = '';
+    this.selection = null;
+    this.formValue = null;
+
+    if (this.focusedOption > 0) {
+      this.focusedOption = this.focusedOption - 1;
+    }
+
+    return;
+  }
+  /**
+   * Get items for auto-complete
+   *
+   * @param event
+   * @param show
+   */
+
+
+  getItems(event, show) {
+    this.isLoading = true;
+
+    if (this.promise) {
+      clearTimeout(this.promise);
+    }
+
+    this.promise = setTimeout(() => {
+      if (event) {
+        this.keyword = event.detail.target.value;
+      }
+
+      let result;
+
+      if (this.showResultsFirst && this.keyword.trim() === '') {
+        this.keyword = '';
+      }
+
+      if (typeof this.provider === 'function') {
+        result = this.provider(this.keyword);
+        this.setSuggestions(result, show);
+        this.isLoading = false;
+      } else {
+        result = this.provider.getResults(this.keyword);
+
+        if (result instanceof rxjs__WEBPACK_IMPORTED_MODULE_1__.Subject) {
+          result = result.asObservable();
+        } else if (result instanceof Promise) {
+          result = (0,rxjs__WEBPACK_IMPORTED_MODULE_2__.from)(result);
+        }
+
+        if (result instanceof rxjs__WEBPACK_IMPORTED_MODULE_3__.Observable) {
+          result.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_4__.finalize)(() => {
+            this.isLoading = false;
+          })).subscribe(results => {
+            this.setSuggestions(results, show);
+          }, error => console.error(error));
+        } else {
+          this.setSuggestions(result, show);
+          this.isLoading = false;
+        }
+      }
+
+      this.ionAutoInput.emit(this.keyword);
+    }, this.autocompleteOptions.debounce);
+  }
+  /**
+   * Get an item's label
+   *
+   * @param selection
+   */
+
+
+  getLabel(selection) {
+    if (typeof this.provider === 'undefined') {
+      return '';
+    }
+
+    if (selection == null || typeof this.provider === 'function') {
+      return '';
+    }
+
+    let attr = this.provider.formValueAttribute == null ? this.provider.labelAttribute : this.provider.formValueAttribute;
+    let value = selection;
+
+    if (this.provider.getItemLabel) {
+      value = this.provider.getItemLabel(value);
+    }
+
+    if (!this.multi && typeof value !== 'undefined' && Object.prototype.toString.call(value) === '[object Array]') {
+      if (value.length === 0) {
+        return '';
+      } else {
+        value = value[0];
+      }
+    }
+
+    if (typeof value === 'object' && attr) {
+      return value[attr] || '';
+    }
+
+    return value || '';
+  }
+  /**
+   * Get menu style
+   */
+
+
+  listStyles() {
+    const listLocationStyles = this.listLocationStyles();
+    return Object.assign(Object.assign({}, listLocationStyles), this.styles.list);
+  }
+
+  listLocationStyles() {
+    let location = this.location;
+
+    if (this.location === 'auto') {
+      const elementY = this._getPosition(this.searchbarElem.nativeElement).y;
+
+      const windowY = window.innerHeight;
+
+      if (elementY > windowY - elementY) {
+        location = 'top';
+      } else {
+        location = 'bottom';
+      }
+    }
+
+    if (location === 'bottom') {
+      return {};
+    } else {
+      return {
+        'bottom': '37px'
+      };
+    }
+  }
+  /**
+   * Handles tab key press.
+   * If `selectOnTabOut` is `true`, will select currently focused item
+   *
+   * @param event
+   */
+
+
+  handleTabOut(event) {
+    if (this.selectOnTabOut && this.suggestions.length !== 0) {
+      if (this.focusedOption !== -1) {
+        this.selectItem(this.suggestions[this.focusedOption]);
+      } else {
+        this.hideItemList();
+      }
+    } else {
+      this.hideItemList();
+    }
+
+    this.onBlur(event);
+  }
+  /**
+   * Handle tap
+   *
+   * @param event
+   */
+
+
+  handleTap(event) {
+    if (this.showResultsFirst || this.keyword.length > 0) {
+      this.getItems();
+    }
+  }
+  /**
+   * Handle tap when selecting an item
+   *
+   * @param $event
+   * @param suggestion
+   */
+
+
+  handleSelectTap($event, suggestion) {
+    if (typeof suggestion !== 'undefined') {
+      this.selectItem(suggestion);
+
+      if ($event.srcEvent) {
+        if ($event.srcEvent.stopPropagation) {
+          $event.srcEvent.stopPropagation();
+        }
+
+        if ($event.srcEvent.preventDefault) {
+          $event.srcEvent.preventDefault();
+        }
+      } else if ($event.preventDefault) {
+        $event.preventDefault();
+      }
+    }
+
+    return false;
+  }
+  /**
+   * Hide item list
+   */
+
+
+  hideItemList() {
+    if (this.showSuggestions === false && this.alwaysShowList === false) {
+      this.showListChanged = true;
+    }
+
+    this.showSuggestions = this.alwaysShowList;
+    this.focusedOption = -1;
+  }
+
+  highlightItem(direction) {
+    if (this.showSuggestions === false) {
+      this.showItemList();
+    }
+
+    let max = this.suggestions.length - 1;
+
+    if (max > this.maxResults) {
+      max = this.maxResults - 1;
+    }
+
+    if (direction < 0) {
+      if (this.focusedOption === -1 || this.focusedOption === max) {
+        this.focusedOption = 0;
+      } else {
+        this.focusedOption++;
+      }
+    } else if (direction > 0) {
+      if (this.focusedOption === -1 || this.focusedOption === 0) {
+        this.focusedOption = max;
+      } else {
+        this.focusedOption--;
+      }
+    }
+  }
+  /**
+   * Fired when the input focused
+   */
+
+
+  onFocus(event) {
+    this.hasFocus = true;
+    this.getItems();
+    event = this._reflectName(event);
+    this.autoFocus.emit(event);
+    this.focus.emit(event);
+  }
+  /**
+   * Fired when the input focused
+   */
+
+
+  onBlur(event) {
+    this.hasFocus = false;
+    event = this._reflectName(event);
+    this.autoBlur.emit(event);
+    this.blur.emit(event);
+  }
+
+  _reflectName(event) {
+    if (typeof event.srcElement.attributes['ng-reflect-name'] === 'object') {
+      event.srcElement.name = event.srcElement.attributes['ng-reflect-name'].value;
+    }
+
+    return event;
+  }
+  /**
+   * Register onChangeCallback
+   *
+   * @param fn
+   */
+
+
+  registerOnChange(fn) {
+    this.onChangeCallback = fn;
+  }
+  /**
+   * Register onTouchedCallback
+   *
+   * @param fn
+   */
+
+
+  registerOnTouched(fn) {
+    this.onTouchedCallback = fn;
+  }
+  /**
+   * Remove already selected suggestions
+   *
+   * @param suggestions
+   */
+
+
+  removeDuplicates(suggestions) {
+    const selectedCount = this.selected ? this.selected.length : 0;
+    const suggestionCount = suggestions.length;
+
+    for (let i = 0; i < selectedCount; i++) {
+      const selectedLabel = this.getLabel(this.selected[i]);
+
+      for (let j = 0; j < suggestionCount; j++) {
+        const suggestedLabel = this.getLabel(suggestions[j]);
+
+        if (selectedLabel === suggestedLabel) {
+          suggestions.splice(j, 1);
+        }
+      }
+    }
+
+    return suggestions;
+  }
+
+  removeExcluded(suggestions) {
+    const excludedCount = this.exclude.length;
+
+    for (let i = 0; i < excludedCount; i++) {
+      let excludeLabel = this.exclude[i];
+
+      if (typeof excludeLabel === 'object') {
+        excludeLabel = this.getLabel(excludeLabel);
+      }
+
+      const suggestionCount = suggestions.length;
+
+      for (let j = 0; j < suggestionCount; j++) {
+        const suggestedLabel = this.getLabel(suggestions[j]);
+
+        if (excludeLabel === suggestedLabel) {
+          suggestions.splice(j, 1);
+          break;
+        }
+      }
+    }
+
+    return suggestions;
+  }
+  /**
+   * Remove item from selected
+   *
+   * @param selection
+   * @param notify?
+   */
+
+
+  removeItem(selection, notify) {
+    const count = this.selected ? this.selected.length : 0;
+
+    for (let i = 0; i < count; i++) {
+      const item = this.selected[i];
+      const selectedLabel = this.getLabel(selection);
+      const itemLabel = this.getLabel(item);
+
+      if (selectedLabel === itemLabel) {
+        this.selected.splice(i, 1);
+      }
+    }
+
+    notify = typeof notify === 'undefined' ? true : notify;
+
+    if (notify) {
+      this.itemRemoved.emit(selection);
+      this.itemsChange.emit(this.selected);
+    }
+
+    this.modelChange.emit(this.selected);
+  }
+  /**
+   * Select item from list
+   *
+   * @param selection
+   **/
+
+
+  selectItem(selection) {
+    this.keyword = this.getLabel(selection);
+    this.formValue = this.getFormValue(selection);
+    this.updateModel(this.formValue);
+
+    if (this.hideListOnSelection) {
+      this.hideItemList();
+    }
+
+    if (this.multi) {
+      if (this.maxSelected === null || this.selected.length <= this.maxSelected) {
+        this.clearValue();
+        this.selected.push(selection);
+        this.itemsChange.emit(this.selected);
+      } else {
+        return;
+      }
+    } else {
+      this.selection = selection;
+      this.selected = [selection];
+      this.itemsChange.emit(selection);
+    }
+
+    this.itemSelected.emit(selection);
+    this.modelChange.emit(this.selected);
+  }
+  /**
+   * Set focus of searchbar
+   */
+
+
+  setFocus() {
+    if (this.useIonInput && this.inputElem) {
+      this.inputElem.nativeElement.setFocus();
+    } else if (this.searchbarElem) {
+      this.searchbarElem.nativeElement.setFocus();
+    }
+  }
+  /**
+   * Set suggestions
+   *
+   * @param suggestions
+   * @param show
+   */
+
+
+  setSuggestions(suggestions, show) {
+    if (this.removeDuplicateSuggestions) {
+      suggestions = this.removeDuplicates(suggestions);
+      suggestions = this.removeExcluded(suggestions);
+    }
+
+    this.suggestions = suggestions;
+
+    if (show || typeof show === 'undefined') {
+      this.showItemList();
+    }
+
+    if (this.autoFocusSuggestion) {
+      if (this.suggestions.length !== 0) {
+        this.focusedOption = 0;
+      }
+    }
+  }
+  /**
+   * Set current input value
+   *
+   * Used externally (ie don't delete)
+   *
+   * @param selection
+   */
+
+
+  setValue(selection) {
+    this.formValue = this.getFormValue(selection);
+    this.keyword = this.getLabel(selection);
+    return;
+  }
+  /**
+   * Show item list
+   */
+
+
+  showItemList() {
+    if (this.showSuggestions === false) {
+      this.showListChanged = true;
+    }
+
+    this.showSuggestions = true;
+  }
+  /**
+   * Update the model
+   */
+
+
+  updateModel(enteredText) {
+    if (enteredText !== this.formValue) {
+      this.formValue = enteredText;
+
+      if (!this.multi) {
+        this.selected = null;
+      }
+    }
+
+    if (this.onChangeCallback) {
+      this.onChangeCallback(this.formValue);
+    }
+
+    this.modelChange.emit(this.selected);
+  }
+  /**
+   * Write value
+   *
+   * @param value
+   */
+
+
+  writeValue(value) {
+    if (value !== this.selection) {
+      this.selection = value || null;
+      this.formValue = this.getFormValue(this.selection);
+      this.keyword = this.getLabel(this.selection);
+    }
+  }
+
+}
+
+AutoCompleteComponent.ɵfac = function AutoCompleteComponent_Factory(t) {
+  return new (t || AutoCompleteComponent)();
+};
+
+AutoCompleteComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+  type: AutoCompleteComponent,
+  selectors: [["ion-auto-complete"]],
+  viewQuery: function AutoCompleteComponent_Query(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c0, 5, _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c1, 5, _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c2, 5, _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef);
+    }
+
+    if (rf & 2) {
+      let _t;
+
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.searchbarElem = _t.first);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.inputElem = _t.first);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.itemList = _t.first);
+    }
+  },
+  hostBindings: function AutoCompleteComponent_HostBindings(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AutoCompleteComponent_click_HostBindingHandler($event) {
+        return ctx.documentClickHandler($event);
+      }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveDocument"]);
+    }
+  },
+  inputs: {
+    alwaysShowList: "alwaysShowList",
+    autoFocusSuggestion: "autoFocusSuggestion",
+    clearInvalidInput: "clearInvalidInput",
+    disabled: "disabled",
+    exclude: "exclude",
+    frontIcon: "frontIcon",
+    hideListOnSelection: "hideListOnSelection",
+    label: "label",
+    labelPosition: "labelPosition",
+    location: "location",
+    maxResults: "maxResults",
+    maxSelected: "maxSelected",
+    multi: "multi",
+    name: "name",
+    removeButtonClasses: "removeButtonClasses",
+    removeButtonColor: "removeButtonColor",
+    removeButtonIcon: "removeButtonIcon",
+    removeButtonSlot: "removeButtonSlot",
+    removeDuplicateSuggestions: "removeDuplicateSuggestions",
+    selectOnTabOut: "selectOnTabOut",
+    styles: "styles",
+    useIonInput: "useIonInput",
+    keyword: "keyword",
+    dataProvider: "dataProvider",
+    provider: "provider",
+    eager: "eager",
+    options: "options",
+    autocomplete: "autocomplete",
+    model: "model",
+    showList: "showList",
+    emptyTemplate: "emptyTemplate",
+    listTemplate: "listTemplate",
+    selectionTemplate: "selectionTemplate",
+    showResultsFirst: "showResultsFirst",
+    template: "template"
+  },
+  outputs: {
+    autoBlur: "autoBlur",
+    autoFocus: "autoFocus",
+    blur: "blur",
+    focus: "focus",
+    ionAutoInput: "ionAutoInput",
+    itemsChange: "itemsChange",
+    itemsCleared: "itemsCleared",
+    itemsHidden: "itemsHidden",
+    itemRemoved: "itemRemoved",
+    itemSelected: "itemSelected",
+    itemsShown: "itemsShown",
+    modelChange: "modelChange"
+  },
+  features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{
+    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NG_VALUE_ACCESSOR,
+    useExisting: AutoCompleteComponent,
+    multi: true
+  }])],
+  decls: 15,
+  vars: 50,
+  consts: [["defaultSelection", ""], [4, "ngIf"], [3, "position", 4, "ngIf"], [3, "autocomplete", "name", "ngModel", "placeholder", "type", "clearOnEdit", "clearInput", "color", "mode", "disabled", "ngClass", "ngStyle", "ionInput", "tap", "ngModelChange", "keydown.tab", "keydown.shift.tab", "keyup.arrowDown", "keyup.arrowUp", "keyup.enter", "keyup.escape", "ionFocus", "ionBlur"], ["inputElem", ""], [3, "autocomplete", "name", "animated", "ngModel", "cancelButtonIcon", "cancelButtonText", "clearIcon", "color", "showCancelButton", "debounce", "placeholder", "autocorrect", "mode", "searchIcon", "spellcheck", "type", "ngClass", "ngStyle", "ionInput", "tap", "ngModelChange", "keydown.tab", "keydown.shift.tab", "keyup.arrowDown", "keyup.arrowUp", "keyup.enter", "keyup.escape", "ionClear", "ionFocus", "ionBlur"], ["searchbarElem", ""], ["defaultTemplate", ""], ["class", "ion-text-center"], ["defaultEmptyTemplate", ""], [3, "ngTemplateOutlet", "ngTemplateOutletContext"], ["defaultList", ""], [3, "color", "outline"], ["color", "primary", 3, "name", "slot", 4, "ngIf"], [3, "name", "slot", 4, "ngIf"], ["color", "primary", 3, "name", "slot"], [3, "name", "slot"], ["class", "selected-items", 3, "click", 4, "ngFor", "ngForOf"], [1, "selected-items", 3, "click"], [3, "position"], [3, "innerHTML"], [3, "ngStyle", 4, "ngIf"], [3, "ngStyle"], ["itemList", ""], [3, "ngClass", "ngStyle", "mouseenter", "click", "tap", 4, "ngFor", "ngForOf"], [3, "ngClass", "ngStyle", "mouseenter", "click", "tap"]],
+  template: function AutoCompleteComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, AutoCompleteComponent_ng_template_0_Template, 5, 8, "ng-template", null, 0, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AutoCompleteComponent_div_2_Template, 2, 1, "div", 1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AutoCompleteComponent_ion_label_3_Template, 2, 2, "ion-label", 2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "ion-input", 3, 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ionInput", function AutoCompleteComponent_Template_ion_input_ionInput_4_listener($event) {
+        return ctx.getItems($event);
+      })("tap", function AutoCompleteComponent_Template_ion_input_tap_4_listener($event) {
+        return ctx.handleTap($event);
+      })("ngModelChange", function AutoCompleteComponent_Template_ion_input_ngModelChange_4_listener($event) {
+        return ctx.keyword = $event;
+      })("ngModelChange", function AutoCompleteComponent_Template_ion_input_ngModelChange_4_listener($event) {
+        return ctx.updateModel($event);
+      })("keydown.tab", function AutoCompleteComponent_Template_ion_input_keydown_tab_4_listener($event) {
+        return ctx.handleTabOut($event);
+      })("keydown.shift.tab", function AutoCompleteComponent_Template_ion_input_keydown_shift_tab_4_listener() {
+        return ctx.hideItemList();
+      })("keyup.arrowDown", function AutoCompleteComponent_Template_ion_input_keyup_arrowDown_4_listener() {
+        return ctx.highlightItem(-1);
+      })("keyup.arrowUp", function AutoCompleteComponent_Template_ion_input_keyup_arrowUp_4_listener() {
+        return ctx.highlightItem(1);
+      })("keyup.enter", function AutoCompleteComponent_Template_ion_input_keyup_enter_4_listener($event) {
+        return ctx.handleSelectTap($event, ctx.suggestions[ctx.focusedOption]);
+      })("keyup.escape", function AutoCompleteComponent_Template_ion_input_keyup_escape_4_listener() {
+        return ctx.hideItemList();
+      })("ionFocus", function AutoCompleteComponent_Template_ion_input_ionFocus_4_listener($event) {
+        return ctx.onFocus($event);
+      })("ionBlur", function AutoCompleteComponent_Template_ion_input_ionBlur_4_listener($event) {
+        return ctx.onBlur($event);
+      });
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "ion-searchbar", 5, 6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ionInput", function AutoCompleteComponent_Template_ion_searchbar_ionInput_6_listener($event) {
+        return ctx.getItems($event);
+      })("tap", function AutoCompleteComponent_Template_ion_searchbar_tap_6_listener($event) {
+        return ctx.handleTap($event);
+      })("ngModelChange", function AutoCompleteComponent_Template_ion_searchbar_ngModelChange_6_listener($event) {
+        return ctx.keyword = $event;
+      })("ngModelChange", function AutoCompleteComponent_Template_ion_searchbar_ngModelChange_6_listener($event) {
+        return ctx.updateModel($event);
+      })("keydown.tab", function AutoCompleteComponent_Template_ion_searchbar_keydown_tab_6_listener($event) {
+        return ctx.handleTabOut($event);
+      })("keydown.shift.tab", function AutoCompleteComponent_Template_ion_searchbar_keydown_shift_tab_6_listener() {
+        return ctx.hideItemList();
+      })("keyup.arrowDown", function AutoCompleteComponent_Template_ion_searchbar_keyup_arrowDown_6_listener() {
+        return ctx.highlightItem(-1);
+      })("keyup.arrowUp", function AutoCompleteComponent_Template_ion_searchbar_keyup_arrowUp_6_listener() {
+        return ctx.highlightItem(1);
+      })("keyup.enter", function AutoCompleteComponent_Template_ion_searchbar_keyup_enter_6_listener($event) {
+        return ctx.handleSelectTap($event, ctx.suggestions[ctx.focusedOption]);
+      })("keyup.escape", function AutoCompleteComponent_Template_ion_searchbar_keyup_escape_6_listener() {
+        return ctx.hideItemList();
+      })("ionClear", function AutoCompleteComponent_Template_ion_searchbar_ionClear_6_listener() {
+        return ctx.clickClear();
+      })("ionFocus", function AutoCompleteComponent_Template_ion_searchbar_ionFocus_6_listener($event) {
+        return ctx.onFocus($event);
+      })("ionBlur", function AutoCompleteComponent_Template_ion_searchbar_ionBlur_6_listener($event) {
+        return ctx.onBlur($event);
+      });
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, AutoCompleteComponent_ng_template_8_Template, 2, 4, "ng-template", null, 7, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, AutoCompleteComponent_ng_template_10_Template, 1, 1, "ng-template", 8, 9, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, AutoCompleteComponent_ng_template_12_Template, 0, 0, "ng-template", 10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, AutoCompleteComponent_ng_template_13_Template, 2, 2, "ng-template", null, 11, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+    }
+
+    if (rf & 2) {
+      const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](14);
+
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.multi);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.label.length !== 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("autocomplete", ctx.autocomplete)("name", ctx.name)("ngModel", ctx.keyword)("placeholder", ctx.autocompleteOptions.placeholder == null ? ctx.defaultOpts.placeholder : ctx.autocompleteOptions.placeholder)("type", ctx.autocompleteOptions.type == null ? ctx.defaultOpts.type : ctx.autocompleteOptions.type)("clearOnEdit", ctx.autocompleteOptions.clearOnEdit == null ? ctx.defaultOpts.clearOnEdit : ctx.autocompleteOptions.clearOnEdit)("clearInput", ctx.autocompleteOptions.clearInput == null ? ctx.defaultOpts.clearInput : ctx.autocompleteOptions.clearInput)("color", ctx.autocompleteOptions.color == null ? null : ctx.autocompleteOptions.color)("mode", ctx.autocompleteOptions.mode == null ? ctx.defaultOpts.mode : ctx.autocompleteOptions.mode)("disabled", ctx.disabled || ctx.maxSelected !== null && ctx.selected.length >= ctx.maxSelected)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](34, _c8, !ctx.useIonInput, ctx.isLoading))("ngStyle", ctx.styles.searchbar);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("autocomplete", ctx.autocomplete)("name", ctx.name)("animated", ctx.autocompleteOptions.animated == null ? ctx.defaultOpts.animated : ctx.autocompleteOptions.animated)("ngModel", ctx.keyword)("cancelButtonIcon", ctx.autocompleteOptions.cancelButtonIcon == null ? ctx.defaultOpts.cancelButtonIcon : ctx.autocompleteOptions.cancelButtonIcon)("cancelButtonText", ctx.autocompleteOptions.cancelButtonText == null ? ctx.defaultOpts.cancelButtonText : ctx.autocompleteOptions.cancelButtonText)("clearIcon", ctx.autocompleteOptions.clearIcon == null ? ctx.defaultOpts.clearIcon : ctx.autocompleteOptions.clearIcon)("color", ctx.autocompleteOptions.color == null ? null : ctx.autocompleteOptions.color)("showCancelButton", ctx.autocompleteOptions.showCancelButton == null ? ctx.defaultOpts.showCancelButton ? "always" : "never" : ctx.autocompleteOptions.showCancelButton ? "always" : "never")("debounce", ctx.autocompleteOptions.debounce == null ? ctx.defaultOpts.debounce : ctx.autocompleteOptions.debounce)("placeholder", ctx.autocompleteOptions.placeholder == null ? ctx.defaultOpts.placeholder : ctx.autocompleteOptions.placeholder)("autocorrect", ctx.autocompleteOptions.autocorrect == null ? ctx.defaultOpts.autocorrect : ctx.autocompleteOptions.autocorrect)("mode", ctx.autocompleteOptions.mode == null ? ctx.defaultOpts.mode : ctx.autocompleteOptions.mode)("searchIcon", ctx.autocompleteOptions.searchIcon == null ? ctx.defaultOpts.searchIcon : ctx.autocompleteOptions.searchIcon)("spellcheck", ctx.autocompleteOptions.spellcheck == null ? ctx.defaultOpts.spellcheck : ctx.autocompleteOptions.spellcheck)("type", ctx.autocompleteOptions.type == null ? ctx.defaultOpts.type : ctx.autocompleteOptions.type)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction3"](37, _c9, ctx.useIonInput, ctx.isLoading, ctx.disabled || ctx.maxSelected !== null && ctx.selected.length >= ctx.maxSelected))("ngStyle", ctx.styles.searchbar);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngTemplateOutlet", ctx.listTemplate || _r11)("ngTemplateOutletContext", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](48, _c4, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction6"](41, _c10, ctx.suggestions, ctx.keyword, ctx.maxResults, ctx.maxSelected, ctx.selected, ctx.showSuggestions)));
+    }
+  },
+  dependencies: function () {
+    return [_angular_common__WEBPACK_IMPORTED_MODULE_6__.NgClass, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgForOf, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgTemplateOutlet, _angular_common__WEBPACK_IMPORTED_MODULE_6__.NgStyle, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgModel, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonChip, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonIcon, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonInput, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonLabel, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonSearchbar, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.TextValueAccessor, _angular_common__WEBPACK_IMPORTED_MODULE_6__.SlicePipe, BoldPrefix];
+  },
+  styles: ["ion-auto-complete[_ngcontent-%COMP%]{overflow:hidden!important;width:90vw;display:inline-block}ion-auto-complete[_ngcontent-%COMP%]   ion-searchbar[_ngcontent-%COMP%]{padding:1px!important}ion-auto-complete[_ngcontent-%COMP%]   .disabled[_ngcontent-%COMP%]   input.searchbar-input[_ngcontent-%COMP%]{pointer-events:none;cursor:default}ion-auto-complete[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]{position:absolute;width:90vw;margin-top:0;background:#fff;list-style-type:none;padding:0;left:16px;z-index:999;box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)}ion-auto-complete[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]{padding:15px;border-bottom:1px solid #c1c1c1}ion-auto-complete[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]{pointer-events:none}ion-auto-complete[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   ion-auto-complete-item[_ngcontent-%COMP%]{height:40px;width:100%}ion-auto-complete[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:last-child{border:none}ion-auto-complete[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li.focus[_ngcontent-%COMP%], ion-auto-complete[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:focus{cursor:pointer;background:#f1f1f1}ion-auto-complete[_ngcontent-%COMP%]   .hidden[_ngcontent-%COMP%]{display:none}ion-auto-complete[_ngcontent-%COMP%]   .loading[_ngcontent-%COMP%]   input.searchbar-input[_ngcontent-%COMP%]{background:#fff url(/assets/loading.gif) no-repeat right 4px center;background-size:25px 25px}ion-auto-complete[_ngcontent-%COMP%]   .searchbar-clear-button.sc-ion-searchbar-md[_ngcontent-%COMP%]{right:34px}ion-auto-complete[_ngcontent-%COMP%]   .selected-items[_ngcontent-%COMP%]{float:left}"]
+});
+
+AutoCompleteComponent.ctorParameters = () => [];
+
+AutoCompleteComponent.propDecorators = {
+  alwaysShowList: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  autocomplete: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  autoFocusSuggestion: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  clearInvalidInput: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  disabled: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  emptyTemplate: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  exclude: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  frontIcon: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  hideListOnSelection: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  keyword: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  label: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  labelPosition: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  listTemplate: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  location: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  maxResults: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  maxSelected: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  multi: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  name: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  provider: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  removeButtonClasses: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  removeButtonColor: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  removeButtonIcon: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  removeButtonSlot: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  removeDuplicateSuggestions: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  selectionTemplate: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  selectOnTabOut: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  showResultsFirst: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  styles: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  template: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  useIonInput: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  autoFocus: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  autoBlur: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  blur: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  focus: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  ionAutoInput: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  itemsChange: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  itemsCleared: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  itemsHidden: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  itemRemoved: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  itemSelected: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  itemsShown: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  modelChange: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+  }],
+  searchbarElem: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewChild,
+    args: ['searchbarElem', {
+      read: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef
+    }]
+  }],
+  inputElem: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewChild,
+    args: ['inputElem', {
+      read: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef
+    }]
+  }],
+  itemList: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewChild,
+    args: ['itemList', {
+      read: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef
+    }]
+  }],
+  dataProvider: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  eager: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  options: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  model: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  showList: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+  }],
+  documentClickHandler: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.HostListener,
+    args: ['document:click', ['$event']]
+  }]
+};
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AutoCompleteComponent, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Component,
+    args: [{
+      providers: [{
+        provide: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NG_VALUE_ACCESSOR,
+        useExisting: AutoCompleteComponent,
+        multi: true
+      }],
+      selector: 'ion-auto-complete',
+      template: "<ng-template #defaultSelection\n             let-attrs=\"attrs\">\n    <ion-chip class=\"{{ attrs.removeButtonClasses }}\"\n              [color]=\"attrs.removeButtonColor\"\n              [outline]=\"true\">\n        <ion-icon *ngIf=\"frontIcon\"\n                  [name]=\"frontIcon\"\n                  [slot]=\"'start'\"\n                  color=\"primary\"></ion-icon>\n\n        <ion-label>{{ attrs.label }}</ion-label>\n\n        <ion-icon *ngIf=\"attrs.removeButtonIcon\"\n                  [name]=\"attrs.removeButtonIcon\"\n                  [slot]=\"attrs.removeButtonSlot\"></ion-icon>\n    </ion-chip>\n</ng-template>\n\n<div *ngIf=\"multi\">\n    <div *ngFor=\"let item of selected\"\n         class=\"selected-items\"\n         (click)=\"removeItem(item)\">\n        <ng-template [ngTemplateOutlet]=\"selectionTemplate || defaultSelection\"\n                     [ngTemplateOutletContext]=\"{\n                            attrs: {\n                              data:                item,\n                              label:               getLabel(item),\n                              removeButtonClasses: removeButtonClasses,\n                              removeButtonColor:   removeButtonColor,\n                              removeButtonIcon:    removeButtonIcon,\n                              removeButtonSlot:    removeButtonSlot\n                            }\n                         }\"></ng-template>\n    </div>\n</div>\n\n<ion-label *ngIf=\"label.length !== 0\"\n           [position]=\"labelPosition\">{{ label }}</ion-label>\n\n<ion-input #inputElem\n           [autocomplete]=\"autocomplete\"\n           [name]=\"name\"\n           (ionInput)=\"getItems($event)\"\n           (tap)=\"handleTap($event)\"\n           [(ngModel)]=\"keyword\"\n           (ngModelChange)=\"updateModel($event)\"\n           [placeholder]=\"autocompleteOptions.placeholder == null ? defaultOpts.placeholder : autocompleteOptions.placeholder\"\n           [type]=\"autocompleteOptions.type == null ? defaultOpts.type : autocompleteOptions.type\"\n           [clearOnEdit]=\"autocompleteOptions.clearOnEdit == null ? defaultOpts.clearOnEdit : autocompleteOptions.clearOnEdit\"\n           [clearInput]=\"autocompleteOptions.clearInput == null ? defaultOpts.clearInput : autocompleteOptions.clearInput\"\n           [color]=\"autocompleteOptions.color == null ? null : autocompleteOptions.color\"\n           [mode]=\"autocompleteOptions.mode == null ? defaultOpts.mode : autocompleteOptions.mode\"\n           [disabled]=\"disabled || (this.maxSelected !== null && this.selected.length >= this.maxSelected)\"\n           [ngClass]=\"{ 'hidden': !useIonInput, 'loading': isLoading }\"\n           [ngStyle]=\"styles.searchbar\"\n           (keydown.tab)=\"handleTabOut($event)\"\n           (keydown.shift.tab)=\"hideItemList()\"\n           (keyup.arrowDown)=\"highlightItem(-1)\"\n           (keyup.arrowUp)=\"highlightItem(1)\"\n           (keyup.enter)=\"handleSelectTap($event, suggestions[focusedOption])\"\n           (keyup.escape)=\"hideItemList()\"\n           (ionFocus)=\"onFocus($event)\"\n           (ionBlur)=\"onBlur($event)\"></ion-input>\n\n<ion-searchbar #searchbarElem\n               [autocomplete]=\"autocomplete\"\n               [name]=\"name\"\n               [animated]=\"autocompleteOptions.animated == null ? defaultOpts.animated : autocompleteOptions.animated\"\n               (ionInput)=\"getItems($event)\"\n               (tap)=\"handleTap($event)\"\n               [(ngModel)]=\"keyword\"\n               (ngModelChange)=\"updateModel($event)\"\n               [cancelButtonIcon]=\"autocompleteOptions.cancelButtonIcon == null ? defaultOpts.cancelButtonIcon : autocompleteOptions.cancelButtonIcon\"\n               [cancelButtonText]=\"autocompleteOptions.cancelButtonText == null ? defaultOpts.cancelButtonText : autocompleteOptions.cancelButtonText\"\n               [clearIcon]=\"autocompleteOptions.clearIcon == null ? defaultOpts.clearIcon : autocompleteOptions.clearIcon\"\n               [color]=\"autocompleteOptions.color == null ? null : autocompleteOptions.color\"\n               [showCancelButton]=\"autocompleteOptions.showCancelButton == null ?\n                                        (defaultOpts.showCancelButton ? 'always' : 'never') :\n                                        (autocompleteOptions.showCancelButton ? 'always' : 'never')\"\n               [debounce]=\"autocompleteOptions.debounce == null ? defaultOpts.debounce : autocompleteOptions.debounce\"\n               [placeholder]=\"autocompleteOptions.placeholder == null ? defaultOpts.placeholder : autocompleteOptions.placeholder\"\n               [autocorrect]=\"autocompleteOptions.autocorrect == null ? defaultOpts.autocorrect : autocompleteOptions.autocorrect\"\n               [mode]=\"autocompleteOptions.mode == null ? defaultOpts.mode : autocompleteOptions.mode\"\n               [searchIcon]=\"autocompleteOptions.searchIcon == null ? defaultOpts.searchIcon : autocompleteOptions.searchIcon\"\n               [spellcheck]=\"autocompleteOptions.spellcheck == null ? defaultOpts.spellcheck : autocompleteOptions.spellcheck\"\n               [type]=\"autocompleteOptions.type == null ? defaultOpts.type : autocompleteOptions.type\"\n               [ngClass]=\"{ 'hidden': useIonInput, 'loading': isLoading, 'disabled': disabled || (this.maxSelected !== null && this.selected.length >= this.maxSelected) }\"\n               [ngStyle]=\"styles.searchbar\"\n               (keydown.tab)=\"handleTabOut($event)\"\n               (keydown.shift.tab)=\"hideItemList()\"\n               (keyup.arrowDown)=\"highlightItem(-1)\"\n               (keyup.arrowUp)=\"highlightItem(1)\"\n               (keyup.enter)=\"handleSelectTap($event, suggestions[focusedOption])\"\n               (keyup.escape)=\"hideItemList()\"\n               (ionClear)=\"clickClear()\"\n               (ionFocus)=\"onFocus($event)\"\n               (ionBlur)=\"onBlur($event)\"></ion-searchbar>\n\n<ng-template #defaultTemplate\n             let-attrs=\"attrs\">\n    <span [innerHTML]='attrs.label | boldprefix:attrs.keyword'></span>\n</ng-template>\n\n<ng-template #defaultEmptyTemplate\n             let-attrs=\"attrs\"\n             class=\"ion-text-center\">\n    {{ autocompleteOptions.noItems }}\n</ng-template>\n\n<ng-template [ngTemplateOutlet]=\"listTemplate || defaultList\"\n             [ngTemplateOutletContext]=\"{\n                        attrs: {\n                            data:            suggestions,\n                            keyword:         keyword,\n                            maxResults:      maxResults,\n                            maxSelected:     maxSelected,\n                            selected:        selected,\n                            showSuggestions: showSuggestions\n                          }\n                        }\"></ng-template>\n\n<ng-template #defaultList\n             let-attrs=\"attrs\">\n    <ul *ngIf=\"!(disabled || (attrs.maxSelected !== null && attrs.selected.length >= attrs.maxSelected)) && attrs.data.length > 0 && attrs.showSuggestions\"\n        #itemList\n        [ngStyle]=\"listStyles()\">\n        <li *ngFor=\"let suggestion of attrs.data| slice:0 : attrs.maxResults; let index = index\"\n            [ngClass]=\"{ 'focus': focusedOption === index }\"\n            [ngStyle]=\"styles.listItem\"\n            (mouseenter)=\"focusedOption = index\"\n            (click)=\"handleSelectTap($event, suggestion)\"\n            (tap)=\"handleSelectTap($event, suggestion)\">\n            <ng-template [ngTemplateOutlet]=\"template || defaultTemplate\"\n                         [ngTemplateOutletContext]=\"{\n                            attrs:{\n                              data:               suggestion,\n                              label:              getLabel(suggestion),\n                              keyword:            keyword,\n                              formValue:          getFormValue(suggestion),\n                              labelAttribute:     getLabel(suggestion),\n                              formValueAttribute: getFormValue(suggestion)\n                            }\n                         }\"></ng-template>\n        </li>\n    </ul>\n\n    <ul *ngIf=\"!isLoading && suggestions.length === 0 && showSuggestions\"\n        [ngStyle]=\"listStyles()\">\n        <li [ngStyle]=\"styles.listItem\">\n            <ng-template [ngTemplateOutlet]=\"emptyTemplate || defaultEmptyTemplate\"\n                         [ngTemplateOutletContext]=\"{\n                        attrs:{\n                          keyword: keyword\n                        }\n                     }\"></ng-template>\n        </li>\n    </ul>\n</ng-template>\n",
+      styles: ["ion-auto-complete{overflow:hidden!important;width:90vw;display:inline-block}ion-auto-complete ion-searchbar{padding:1px!important}ion-auto-complete .disabled input.searchbar-input{pointer-events:none;cursor:default}ion-auto-complete ul{position:absolute;width:90vw;margin-top:0;background:#fff;list-style-type:none;padding:0;left:16px;z-index:999;box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)}ion-auto-complete ul li{padding:15px;border-bottom:1px solid #c1c1c1}ion-auto-complete ul li span{pointer-events:none}ion-auto-complete ul ion-auto-complete-item{height:40px;width:100%}ion-auto-complete ul li:last-child{border:none}ion-auto-complete ul li.focus,ion-auto-complete ul li:focus{cursor:pointer;background:#f1f1f1}ion-auto-complete .hidden{display:none}ion-auto-complete .loading input.searchbar-input{background:#fff url(/assets/loading.gif) no-repeat right 4px center;background-size:25px 25px}ion-auto-complete .searchbar-clear-button.sc-ion-searchbar-md{right:34px}ion-auto-complete .selected-items{float:left}"]
+    }]
+  }], function () {
+    return [];
+  }, {
+    alwaysShowList: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    autoFocusSuggestion: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    clearInvalidInput: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    disabled: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    exclude: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    frontIcon: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    hideListOnSelection: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    label: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    labelPosition: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    location: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    maxResults: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    maxSelected: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    multi: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    name: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    removeButtonClasses: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    removeButtonColor: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    removeButtonIcon: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    removeButtonSlot: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    removeDuplicateSuggestions: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    selectOnTabOut: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    styles: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    useIonInput: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    autoBlur: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    autoFocus: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    blur: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    focus: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    ionAutoInput: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    itemsChange: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    itemsCleared: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    itemsHidden: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    itemRemoved: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    itemSelected: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    itemsShown: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    modelChange: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Output
+    }],
+    keyword: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    dataProvider: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    provider: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    eager: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    options: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    autocomplete: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    model: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    showList: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+
+    /**
+     * Handle document click
+     *
+     * @param event
+     *
+     * @private
+     */
+    documentClickHandler: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.HostListener,
+      args: ['document:click', ['$event']]
+    }],
+    emptyTemplate: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    listTemplate: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    selectionTemplate: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    showResultsFirst: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    template: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
+    }],
+    searchbarElem: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewChild,
+      args: ['searchbarElem', {
+        read: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef
+      }]
+    }],
+    inputElem: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewChild,
+      args: ['inputElem', {
+        read: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef
+      }]
+    }],
+    itemList: [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ViewChild,
+      args: ['itemList', {
+        read: _angular_core__WEBPACK_IMPORTED_MODULE_0__.ElementRef
+      }]
+    }]
+  });
+})();
+/**
+ * Bolds the beginning of the matching string in the item
+ */
+
+
+class BoldPrefix {
+  transform(value, keyword) {
+    if (!keyword) {
+      return value;
+    }
+
+    let escaped_keyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return value.replace(new RegExp(escaped_keyword, 'gi'), function (str) {
+      return str.bold();
+    });
+  }
+
+}
+
+BoldPrefix.ɵfac = function BoldPrefix_Factory(t) {
+  return new (t || BoldPrefix)();
+};
+
+BoldPrefix.ɵpipe = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
+  name: "boldprefix",
+  type: BoldPrefix,
+  pure: true
+});
+BoldPrefix.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+  token: BoldPrefix,
+  factory: BoldPrefix.ɵfac
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BoldPrefix, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Pipe,
+    args: [{
+      name: 'boldprefix'
+    }]
+  }, {
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable
+  }], null, null);
+})();
+
+class AutoCompleteModule {
+  static forRoot() {
+    return {
+      ngModule: AutoCompleteModule,
+      providers: []
+    };
+  }
+
+}
+
+AutoCompleteModule.ɵfac = function AutoCompleteModule_Factory(t) {
+  return new (t || AutoCompleteModule)();
+};
+
+AutoCompleteModule.ɵmod = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+  type: AutoCompleteModule
+});
+AutoCompleteModule.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+  imports: [_angular_common__WEBPACK_IMPORTED_MODULE_6__.CommonModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule]
+});
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AutoCompleteModule, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
+    args: [{
+      declarations: [AutoCompleteComponent, BoldPrefix],
+      exports: [AutoCompleteComponent, BoldPrefix],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_6__.CommonModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule]
+    }]
+  }], null, null);
+})();
+
+(function () {
+  (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](AutoCompleteModule, {
+    declarations: function () {
+      return [AutoCompleteComponent, BoldPrefix];
+    },
+    imports: function () {
+      return [_angular_common__WEBPACK_IMPORTED_MODULE_6__.CommonModule, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule];
+    },
+    exports: function () {
+      return [AutoCompleteComponent, BoldPrefix];
+    }
+  });
+})();
+/**
+ * Generated bundle index. Do not edit.
+ */
+
 
 
 

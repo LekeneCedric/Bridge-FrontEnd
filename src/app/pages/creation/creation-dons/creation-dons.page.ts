@@ -54,6 +54,9 @@ export class CreationDonsPage implements OnInit {
     this.iscategoriesModalOpen = isopen;
   }
   /**--------------------------------FUNCTIONS--------------------------------------------*/
+  public removeOnImagesList(i:number){
+   this.selectedImages.splice(i, 1)
+  }
   public async getPicture(){
     const image = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
