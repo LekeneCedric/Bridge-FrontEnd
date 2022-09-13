@@ -8,6 +8,8 @@ import { ModalCategoryPage } from 'src/app/modals/modal-category/modal-category.
 import { ModalEtatPage } from 'src/app/modals/modal-etat/modal-etat.page';
 import TimeAgo from 'javascript-time-ago';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dons',
   templateUrl: './dons.page.html',
@@ -16,14 +18,10 @@ import { HttpClient } from '@angular/common/http';
 export class DonsPage implements OnInit {
 
   constructor(private manageDataService:ManageDataService,
-    private nativGeocoder:NativeGeocoder,private modalCtrl:ModalController,private http:HttpClient) { }
+    private nativGeocoder:NativeGeocoder,private modalCtrl:ModalController,
+    private authService: AuthService,private http:HttpClient,private router:Router) { }
 
   ngOnInit() {
-    this.http.get<any>('assets/country_dial_info.json').toPromise().then(
-      data=>{
-        console.log(data);
-      }
-    )
     this.myData = JSON.parse(localStorage.getItem('mydata'));
     console.log(this.myData);
     this.current_page = 1;

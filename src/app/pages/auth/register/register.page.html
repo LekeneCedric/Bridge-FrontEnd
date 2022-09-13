@@ -40,7 +40,7 @@
   <ion-row>
     <ion-col size="12">
       <ion-item class="input" id="birthday">
-        <ion-input placeholder="Date de naissance : 1998-09-30" formControlName="birthday" maxlength="10"></ion-input>
+        <ion-input placeholder="Date de naissance : 1998-09-30 ( optionel ) " formControlName="birthday" maxlength="10"></ion-input>
         <ion-note slot="error" *ngIf="isDate==false">invalid date</ion-note>
       </ion-item>
     </ion-col>
@@ -54,42 +54,39 @@
         <ion-note slot="error" *ngIf="(gender.dirty||gender.touched)&& gender.errors">invalid gender</ion-note>
       </ion-item>
     </ion-col>
-  </ion-row><ion-row>
+  </ion-row>
+  <ion-row *ngIf="pays!=null">
     <ion-col size="12">
-      <ion-item class="input">
-        <ion-select interface="action-sheet" placeholder="Code" value="237" slot="start" formControlName="codeCountry">
-          
-          <ion-select-option value="237"> 🇨🇲 +237</ion-select-option>
-          <ion-select-option value="33"> 🇫🇷 +33</ion-select-option>
-          <ion-select-option value="1"> 🇺🇸 +1</ion-select-option>
-        </ion-select>
-        <ion-input placeholder="Votre contact" formControlName="contact"></ion-input>
-        <ion-note slot="error" *ngIf="(codeCountry.dirty||codeCountry.touched)&& codeCountry.errors || (contact.dirty||contact.touched)&& contact.errors">invalid contact</ion-note>
-      </ion-item>
-    </ion-col>
-  </ion-row><ion-row>
-    <ion-col size="12">
-      <ion-item class="input">
-        <ion-select interface="action-sheet" placeholder="Selectionnez votre pays" formControlName="country">
-          <ion-select-option value="cameroon">cameroon</ion-select-option>
-          <ion-select-option value="United State">United State</ion-select-option>
-          <ion-select-option value="Russian">Russian</ion-select-option>
+      <ion-item class="input ion-form-group">
+        <ion-select interface="action-sheet" placeholder="Selectionnez votre pays" formControlName="country" (ionChange)="filterPays($event)">
+          <ion-select-option [value]="country.name" *ngFor="let country of pays_temp" > {{country.flag}}{{country.name}}</ion-select-option>
         </ion-select>
         <ion-note slot="error" *ngIf="(country.dirty||country.touched)&& country.errors">invalid country</ion-note>
       </ion-item>
     </ion-col>
-  </ion-row><ion-row>
+  </ion-row>
+  <ion-row *ngIf="pays!=null">
     <ion-col size="12">
       <ion-item class="input">
         <ion-select interface="action-sheet" placeholder="Selectionnez votre ville" formControlName="city">
-          <ion-select-option value="Yaounde">Yaounde</ion-select-option>
-          <ion-select-option value="Douala">Douala</ion-select-option>
-          <ion-select-option value="Texas">Texas</ion-select-option>
+          <ion-select-option *ngFor="let city of ville_temp" [value]="city">{{city}}</ion-select-option>
         </ion-select>
         <ion-note slot="error" *ngIf="(city.dirty||city.touched)&& city.errors">invalid city</ion-note>
       </ion-item>
     </ion-col>
   </ion-row>
+  <ion-row *ngIf="pays!=null">
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-text>
+          {{code}}
+        </ion-text>
+        <ion-input placeholder="Votre contact" formControlName="contact"></ion-input>
+        <ion-note slot="error" *ngIf="(contact.dirty||contact.touched)&& contact.errors">invalid contact</ion-note>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+ 
   <ion-row>
     <ion-col size="12">
       <ion-item class="input">

@@ -45,6 +45,7 @@ export class LoginPage implements OnInit {
   credential:FormGroup;
   term_condition:boolean = false;
   password_input_type:string = 'password';
+  public switchToAssociation:boolean = false;
 
   /*-----------------------------FUNCTIONS-----------------------------------------------*/
   public async signIN(){

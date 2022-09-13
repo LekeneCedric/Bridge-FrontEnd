@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: SettingsPage
+  },
+  {
+    path: 'annonces/:id',
+    loadChildren: () => import('./annonces/annonces.module').then( m => m.AnnoncesPageModule)
   }
 ];
 

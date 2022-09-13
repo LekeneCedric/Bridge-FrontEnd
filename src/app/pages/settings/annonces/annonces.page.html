@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon slot="start" name="chevron-back-outline" size="large" (click)="navBack()"></ion-icon>
+    <ion-text style="font-size:1.2em;"> Mes annnonces</ion-text>
+  </ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
+    <ion-segment-button value="dons">
+      <ion-label>Dons</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="demandes">
+      <ion-label>Demandes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <div style="height:100%;overflow-y: scroll;" *ngIf="userInfo!=null">
+    <ion-list *ngIf="selectedSegment=='dons'">
+      <ion-grid style="text-align:center" *ngIf="userInfo.don.length<1">
+        <img src="../../../../assets/images/no-results.png" class="ion-margin-vertical">
+        <ion-item lines="none"style="text-align:center;width: 100%;">
+          <ion-text style="color:rgb(64, 64, 64);width: 100%" color="danger">Aucun don disponible realise</ion-text>
+        </ion-item>
+       </ion-grid>
+     <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
+            <div *ngFor="let don of userInfo.don" style="width:50%">
+              <ion-card  style="width:90%;position: relative;" >
+                <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
+                <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
+                </div>
+                <ion-fab style="position:absolute;top:3%;left:0">
+                  <ion-fab-button color="warning">
+                    <ion-icon name="pencil-outline"></ion-icon>
+                  </ion-fab-button>
+                </ion-fab>
+                <ion-fab style="position:absolute;top:3%;right:0">
+                  <ion-fab-button color="danger" (click)="deleteDon(don)">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </ion-fab-button>
+                </ion-fab>
+                <div style="width:100%;height:150px;margin:0;padding:0;background-size:cover; opacity: {{don.nombre_reserve>0?0.5:1}};
+                background-image: url({{image(don)}});">   
+                </div>
+                  <ion-row style="margin-top:2%" [routerLink]="['/menu/dons/details',don.id]">
+                    <ion-text style="font-weight: bolder;font-size:1.3em;margin-left:2%;width:100%;padding:2%"color="dark">
+                      {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
+                  </ion-row>
+                  <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%"color="medium" [routerLink]="['/menu/dons/details',don.id]">
+                    {{don.adresse | slice:0:12}}{{don.adresse.length>12?'...':''}}</ion-text>
+                  <ion-row style="margin-top:10px;padding:0;width:100%;display: flex;" [routerLink]="['/menu/dons/details',don.id]">
+                    <ion-col size="2" style="padding-right:0;text-align: right;"><ion-icon name="timer-outline" color="dark"style="font-weight:bold" size="medium" style="padding-right:0"></ion-icon></ion-col>
+                    <ion-col style="padding-left:0"> <ion-text style="margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;" color="dark">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> 
+                </ion-row>
+                    
+              </ion-card>
+          </div>
+          </ion-grid>
+    </ion-list>
+    <ion-list *ngIf="selectedSegment=='demandes'">
+      
+      <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
+        <ion-card *ngFor="let demand of userInfo.demande" style="width: 100%;">
+          <ion-item style="width:100%;">
+            <ion-text style="color:gray" slot="start">Besoin</ion-text>
+            <ion-text> {{demand.title}}</ion-text>
+          </ion-item>
+          <ion-item style="width:100%;">
+            <ion-text style="color:gray" slot="start">Heure</ion-text>
+            <ion-text> {{demand.created_at | date:'medium'}}</ion-text>
+          </ion-item>
+          <ion-item style="width:100%;">
+            <ion-text style="color:gray" slot="start">Adresse</ion-text>
+            <ion-text  style="vertical-align: middle;justify-self: center;"> {{demand.adresse}} </ion-text>
+          </ion-item>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button expand="block" color="danger" [routerLink]="['/menu/demandes/details',demand.id]">Consulter</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+      </ion-grid>
+    </ion-list>
+  </div>
+</ion-content>

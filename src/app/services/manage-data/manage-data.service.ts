@@ -106,6 +106,17 @@ export class ManageDataService {
       disponible:1
     },{headers:headers});
   }
+
+  public deleteDon(id:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/dons/${id}`;
+    return this.http.delete(api,{headers:headers});
+  }
   /*-------------------------DEMANDES---------------------------*/
   public getDemandes():Observable<any>{
     const api = environment.apiURL+'/demandes';

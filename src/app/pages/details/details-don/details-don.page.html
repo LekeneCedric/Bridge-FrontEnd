@@ -38,7 +38,7 @@
      <ion-grid *ngIf="don!=null" style="margin-top:0;padding-top:0">
         <ion-item lines="none">
           <ion-text style="font-weight: bold;font-size:1.3em">{{don.titre}}</ion-text>
-          <ion-icon name="create-outline" color="danger" size="large" slot="end" *ngIf="myId==don.donateur.id"></ion-icon>
+          <ion-icon name="create-outline" color="danger" size="large" slot="end" *ngIf="myId==don.donateur.id" [routerLink]="['/menu/settings/annonces/',myId]"></ion-icon>
         </ion-item>
         <ion-item lines="none"> 
           <ion-text style="font-weight: bold;color:gray"> publie <strong style="color:black">{{elapsedTime}}</strong></ion-text>
@@ -111,22 +111,22 @@
           </ion-item>
           <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
             <div *ngFor="let Don of donsSimilaires" style="width:50%">
-              <ion-card  [routerLink]="['/menu/dons/details',don.id]"style="width:90%;position: relative;" >
-                <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
+              <ion-card  [routerLink]="['/menu/dons/details',Don.id]"style="width:90%;position: relative;" >
+                <div *ngIf="Don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
                 <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
                 </div>
-                <div style="width:100%;height:150px;margin:0;padding:0;background-size:cover; opacity: {{don.nombre_reserve>0?0.5:1}};
-                background-image: url({{image(don)}});">   
+                <div style="width:100%;height:150px;margin:0;padding:0;background-size:cover; opacity: {{Don.nombre_reserve>0?0.5:1}};
+                background-image: url({{image(Don)}});">   
                 </div>
                   <ion-row style="margin-top:2%">
                     <ion-text style="font-weight: bolder;font-size:1.3em;margin-left:2%;width:100%;padding:2%"color="dark">
-                      {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
+                      {{Don.titre | slice:0:20}}{{Don.titre.length>20?'...':''}}</ion-text>
                   </ion-row>
                   <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%"color="medium">
-                    {{don.adresse | slice:0:18}}{{don.adresse.length>18?'...':''}}</ion-text>
+                    {{Don.adresse | slice:0:18}}{{Don.adresse.length>18?'...':''}}</ion-text>
                   <ion-row style="margin-top:10px;padding:0;width:100%;display: flex;">
                     <ion-col size="2" style="padding-right:0;text-align: right;"><ion-icon name="timer-outline" color="dark"style="font-weight:bold" size="medium" style="padding-right:0"></ion-icon></ion-col>
-                    <ion-col style="padding-left:0"> <ion-text style="margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;" color="dark">{{timeAgo(don.created_at) | slice:7}}</ion-text></ion-col> 
+                    <ion-col style="padding-left:0"> <ion-text style="margin-left:8px;font-size:1.1em;font-weight: bolder; padding:0;width:100%;" color="dark">{{timeAgo(Don.created_at) | slice:7}}</ion-text></ion-col> 
                 </ion-row>
                     
               </ion-card>

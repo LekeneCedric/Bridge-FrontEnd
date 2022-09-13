@@ -99,7 +99,7 @@ export class DetailsDonPage implements OnInit {
     this.manageDataService.getDonSimilaires(id,category).toPromise().then(
       (data)=>{
        data.forEach((don)=>{
-         this.donsSimilaires.unshift(don);
+         this.donsSimilaires.push(don);
        })
       }
     ).catch((err)=>{

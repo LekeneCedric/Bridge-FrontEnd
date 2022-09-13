@@ -1,6 +1,9 @@
 
 <ion-content>
-<ion-grid class="grid">
+  <ion-row class="ion-justify-content-center">
+    <ion-toggle [(ngModel)]="switchToAssociation" style="text-align:center" color="primary"></ion-toggle>
+  </ion-row>
+<ion-grid class="grid" *ngIf="!switchToAssociation">
   <ion-row>
     <ion-col size="12">
       <ion-img src="../../../../assets/images/undraw_Access_account_re_8spm.png"></ion-img>
@@ -60,4 +63,53 @@
       </ion-col>
   </ion-row>
 </ion-grid>
+
+<!-- -----------------------------------------------Association Panel ----------------------------------------------->
+<ion-grid class="grid" *ngIf="switchToAssociation">
+  <ion-row>
+    <ion-col size="12">
+      <ion-img src="assets/images/world-humanitarian-day.png" style="height:250px;"></ion-img>
+    </ion-col>
+  </ion-row>
+  <form [formGroup]="credential" (ngSubmit)="signIN()">
+  <ion-row>
+    <ion-col size="12" class="hello-text">
+      <h1>Mon Association ! </h1>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-input type="email" placeholder="Entrez votre email" formControlName="email" maxlength="45"></ion-input>
+        <ion-note slot="error" *ngIf="(email.dirty||email.touched)&& email.errors">invalid email</ion-note>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-input [type]="password_input_type" placeholder="Entrez votre mot de passe" formControlName="password"></ion-input>
+        <ion-icon name="eye-off-outline" *ngIf="password_input_type=='password'" (click)="changePassInputType()"></ion-icon>
+      <ion-icon name="eye-outline" *ngIf="password_input_type=='text'" (click)="changePassInputType()"></ion-icon>
+        <ion-note slot="error" *ngIf="(password.dirty||password.touched)&& password.errors">invalid password</ion-note>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col size="12">
+     <ion-button [disabled]="!credential.valid" type="submit"   type="submit" expand="block" color="primary">Connexion !</ion-button>
+    </ion-col>
+  </ion-row>
+</form>
+  <ion-row class="rowSignup">
+    <ion-col class="signupMessage" style="text-align: center;padding-right:0" size="6">
+     <ion-text>Creez une association ? </ion-text>
+    </ion-col>
+      <ion-col style="margin-left:0" class='signup' size="6" routerLink="/register">
+         <ion-text color="primary">Inscrivez-votre association </ion-text>
+      </ion-col>
+  </ion-row>
+</ion-grid>
+
 </ion-content>

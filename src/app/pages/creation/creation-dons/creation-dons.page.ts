@@ -26,9 +26,7 @@ export class CreationDonsPage implements OnInit {
     private http:HttpClient, private toast:ToastController,private router:Router) { }
   
   async ngOnInit() {
-       const coordinate = await Geolocation.getCurrentPosition()    
-       console.log(coordinate)
-       this.myCoordinate = coordinate;
+       this.myCoordinate = await Geolocation.getCurrentPosition();
      Geolocation.watchPosition({
       enableHighAccuracy:true,
       timeout:1000,
@@ -117,7 +115,7 @@ export class CreationDonsPage implements OnInit {
       this.router.navigateByUrl('/menu/dons').then(()=>{
         window.location.reload();
       })
-     },5000) 
+     },1000) 
      
     })
     .catch(
@@ -152,7 +150,7 @@ export class CreationDonsPage implements OnInit {
       
       setTimeout(()=>{
         loading.dismiss();
-      },4000) 
+      },500) 
       
     //on affiche un message de success
     const toast = this.toast.create({
