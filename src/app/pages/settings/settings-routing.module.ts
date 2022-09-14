@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'annonces/:id',
     loadChildren: () => import('./annonces/annonces.module').then( m => m.AnnoncesPageModule)
+  },
+  {
+    path: 'mes-associations/:id',
+    loadChildren: () => import('./mes-associations/mes-associations.module').then( m => m.MesAssociationsPageModule)
   }
 ];
 

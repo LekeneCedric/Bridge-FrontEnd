@@ -27,4 +27,13 @@ export class CreationService {
     })
     return this.http.post(api,credential,{headers:headers})
   }
+
+  public createAssociation(credential:any,token:string):Observable<any>{
+    const api = environment.apiURL+'/associations';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(api,credential,{headers:headers})
+  }
 }

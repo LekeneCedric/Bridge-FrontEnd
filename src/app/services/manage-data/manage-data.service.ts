@@ -128,6 +128,16 @@ export class ManageDataService {
     return this.http.post(api,data,{headers:headers});
   }
   /*-------------------------DEMANDES---------------------------*/
+  public deleteDemande(id:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/demandes/${id}`;
+    return this.http.delete(api,{headers:headers});
+  }
   public getDemandes():Observable<any>{
     const api = environment.apiURL+'/demandes';
     return this.http.get<any>(api,{headers: {

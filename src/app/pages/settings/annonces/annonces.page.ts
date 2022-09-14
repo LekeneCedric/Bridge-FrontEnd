@@ -37,6 +37,48 @@ export class AnnoncesPage implements OnInit {
   public selectedSegment='dons';
   public storage = environment.storage;
   /*--------------------------------FUNCTIONS----------------------------------------------------*/
+  public async deleteDemande(demande:any){
+    const alert = await this.alertController.create({
+      cssClass:'deconnexion-alert',
+      header: `voulez vous supprime votre demande  ${demande.title} ?`,
+      buttons: [
+        {
+          text: 'annuler',
+          role: 'cancel',
+          handler: () => {
+          },
+        },
+        {
+          text: 'oui',
+          role: 'confirm',
+          handler: () => {
+            this.manageDataService.deleteDemande(demande.id).toPromise().then(
+              async data=>{
+                const toast = this.toast.create({
+                  message:`Demande supprime avec success`,
+                  icon: 'information-circle',
+                  duration:1000,
+                  color:"danger"
+                });
+                (await (toast)).present(); 
+              }
+            ).catch(async err=>{
+              const toast = this.toast.create({
+                message:`Erreur lors de la supression de la demande`,
+                icon: 'information-circle',
+                duration:1000,
+                color:"warning"
+              });
+              (await (toast)).present();
+            }).finally(()=>{
+              this.ngOnInit();
+            })
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
   public async openModalModif(don:any){
     console.log(don)
     const modal = await this.modalCtrl.create({

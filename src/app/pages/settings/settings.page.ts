@@ -37,6 +37,13 @@ export class SettingsPage implements OnInit {
    private mesInfo:any = null;
    private storage = environment.storage;
   /*------------------------------FUNCTIONS------------------------------*/
+
+  removeTabs(){
+    const tabBar = document.getElementById('app-tab-bar');
+    if (tabBar !== null) {
+      tabBar.style.display = 'none';
+    }
+  }
   
    public async deconnexion():Promise<void>{
     const alert = await this.alertController.create({

@@ -17,8 +17,8 @@ const routes: Routes = [
       loadChildren:()=> import('../../pages/home/demandes/demandes.module').then(m => m.DemandesPageModule)
     },
     {
-      path:'annonces',
-      loadChildren:()=> import('../../pages/home/annonces/annonces.module').then(m => m.AnnoncesPageModule)
+      path:'associations',
+      loadChildren:()=> import('../../pages/home/associations/associations.module').then(m => m.AssociationsPageModule)
     },
     {
       path:'messages',

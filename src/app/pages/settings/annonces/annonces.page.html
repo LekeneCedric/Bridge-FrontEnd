@@ -28,15 +28,18 @@
      <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
             <div *ngFor="let don of userInfo.don" style="width:50%">
               <ion-card  style="width:90%;position: relative;" >
-                <div *ngIf="don.nombre_reserve>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
+                <div *ngIf="don.nombre_reserve>0 && don.disponible<1" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#ec566a">
                 <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Reserve</ion-text>
                 </div>
-                <ion-fab style="position:absolute;top:3%;left:0" (click)="openModalModif(don)">
+                <div *ngIf="don.nombre_reserve>0 && don.disponible>0" style="position: absolute;top:45%; height: 10%;width: 50%;background-color:#0c2913">
+                  <ion-text style="font-weight:bold;position:absolute;color:white;text-align:center;margin-top:5%;margin-left: 5%;">Don finalise</ion-text>
+                  </div>
+                <ion-fab style="position:absolute;top:3%;left:0" (click)="openModalModif(don)" *ngIf="don.disponible<1">
                   <ion-fab-button color="warning">
                     <ion-icon name="pencil-outline" color="light"></ion-icon>
                   </ion-fab-button>
                 </ion-fab>
-                <ion-fab style="position:absolute;top:3%;right:0">
+                <ion-fab style="position:absolute;top:3%;right:0" *ngIf="don.nombre_reserve<1 && don.disponible<1">
                   <ion-fab-button color="danger" (click)="deleteDon(don)">
                     <ion-icon name="trash-outline"></ion-icon>
                   </ion-fab-button>
@@ -60,12 +63,23 @@
           </ion-grid>
     </ion-list>
     <ion-list *ngIf="selectedSegment=='demandes'">
-      
+      <ion-grid style="text-align:center;margin-top:15%" *ngIf="userInfo.demande.length<1">
+        <img src="../../../../assets/images/emptydemande.png" class="ion-margin-vertical">
+        <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
+          <ion-text style="color:rgb(64, 64, 64);width:100%;">Aucune demande faires actuellement</ion-text>
+        </ion-item>
+    <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" 
+      class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%" routerLink="/creation-demandes"> 
+      Faire une demande
+    </ion-button>
+      </ion-grid>
       <ion-grid style="display: flex; flex-wrap:wrap;justify-content: space-between;">
         <ion-card *ngFor="let demand of userInfo.demande" style="width: 100%;">
           <ion-item style="width:100%;">
             <ion-text style="color:gray" slot="start">Besoin</ion-text>
             <ion-text> {{demand.title}}</ion-text>
+            <ion-icon name="trash-outline" size="large" slot="end" color="danger" (click)="deleteDemande(demand)" *ngIf="demand.resolu<1"></ion-icon>
+            <ion-icon name="checkmark-done-outline" size="large" color="success" *ngIf="demand.resolu>0"></ion-icon>
           </ion-item>
           <ion-item style="width:100%;">
             <ion-text style="color:gray" slot="start">Heure</ion-text>

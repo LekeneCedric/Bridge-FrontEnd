@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-annonces',
-  templateUrl: './annonces.page.html',
-  styleUrls: ['./annonces.page.scss'],
+  selector: 'app-associations',
+  templateUrl: './associations.page.html',
+  styleUrls: ['./associations.page.scss'],
 })
-export class AnnoncesPage implements OnInit {
+export class AssociationsPage implements OnInit {
 
   constructor() {
     this.id = JSON.parse(localStorage.getItem('mydata')).id;
