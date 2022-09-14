@@ -58,7 +58,7 @@ export class RegisterPage implements OnInit {
   ville:any[]=[];
   ville_temp:any[] = [];
   code:string = '';
-  
+
   /*-----------------------------------------_FUNCTIONS------------------------------------ */
   filterPays(event:any) {
     this.pays = this.pays_temp;

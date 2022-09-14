@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/creation/creation-demandes/creation-demandes.module').then( m => m.CreationDemandesPageModule)
   },
   {
+    path: 'creation-association',
+    loadChildren: () => import('./pages/creation/creation-association/creation-association.module').then( m => m.CreationAssociationPageModule)
+  },
+  {
     path: 'profil-donateur/:id',
     loadChildren: () => import('./pages/profils/profil-donateur/profil-donateur.module').then( m => m.ProfilDonateurPageModule)
   },
