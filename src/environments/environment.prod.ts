@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiURL:'http://192.168.8.105:8000/api',
-  storage :'http://192.168.8.105:8000/storage/',
+  apiURL:'http://bridge.fiacademy.org/api',
+  storage :'http://bridge.fiacademy.org/',
   map:'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
 };

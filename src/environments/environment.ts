@@ -4,12 +4,14 @@
 
 export const environment = {
   production: false,
-  apiURL:'http://192.168.8.105:8000/api',
+  apiURL:' http://192.168.8.105:8000/api',
   storage :'http://192.168.8.105:8000/storage/',
   map:'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
   // apiURL:'http://192.168.8.105:8000/api'
 };
-
+// apiURL:' http://bridge.fiacademy.org/api',
+// storage :'http://bridge.fiacademy.org/',
+// map:'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

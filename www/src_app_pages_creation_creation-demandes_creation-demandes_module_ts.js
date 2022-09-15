@@ -137,8 +137,8 @@ let CreationDemandesPage = class CreationDemandesPage {
     this.selectedTitle = '';
     this.selectedDescription = '';
     this.selectedImages = [];
-    this.selectedLatitude = null;
-    this.selectedLongitude = null;
+    this.selectedLatitude = 7;
+    this.selectedLongitude = 11;
     this.selectedCategory = ''; //Modals
 
     this.iscategoriesModalOpen = false;
@@ -697,9 +697,8 @@ let MediasService = class MediasService {
             const formData = new FormData();
             formData.append('file', blob, file.path);
             formData.append('don_id', credential.don_id);
-            setTimeout(() => {
-              _this.uploadData(formData, token);
-            }, 150);
+
+            _this.uploadData(formData, token);
           });
 
           return function (_x) {

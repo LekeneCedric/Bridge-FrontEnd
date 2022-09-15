@@ -37,8 +37,8 @@ export class CreationDemandesPage implements OnInit {
   selectedTitle:string='';
   selectedDescription:string='';
   selectedImages:any[] = [];
-  selectedLatitude:number = null;
-  selectedLongitude:number = null;
+  selectedLatitude:number = 7;
+  selectedLongitude:number = 11;
   selectedCategory:string = '';
   //Modals
   iscategoriesModalOpen:boolean = false;

@@ -324,6 +324,14 @@ let CreationService = class CreationService {
         });
         return this.http.post(api, credential, { headers: headers });
     }
+    createAssociation(credential, token) {
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/associations';
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
+        return this.http.post(api, credential, { headers: headers });
+    }
 };
 CreationService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }

@@ -115,8 +115,6 @@ export class CreationDonsPage implements OnInit {
     this.creationService.createDon(donation,token).toPromise()
     .then(data=>{
       this.upload_image(data,loading);
-    
-     
     })
     .catch(
       async err=>{
@@ -141,17 +139,22 @@ export class CreationDonsPage implements OnInit {
     files:this.selectedImages
   }
     this.mediaService.uploadImageDon(token,fd).then(async data=>{
-    loading.dismiss();
-    this.router.navigateByUrl('/menu/dons');
-    //on affiche un message de success
-    const toast = this.toast.create({
-      message:`don creer avec success`,
-      icon: 'information-circle',
-      duration:1000,
-      color:"success"
-    });
-    (await (toast)).present();  
-       
+      setTimeout(async ()=>{
+        loading.dismiss();
+        this.router.navigateByUrl('/menu/dons').then(()=>{
+          setTimeout(()=>{
+            window.location.reload();
+          },8000)
+        })
+        //on affiche un message de success
+        const toast = this.toast.create({
+          message:`don creer avec success`,
+          icon: 'information-circle',
+          duration:1000,
+          color:"success"
+        });
+        (await (toast)).present();  
+      })
     })
     .catch(async err=>{
       loading.dismiss();

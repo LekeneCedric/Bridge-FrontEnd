@@ -92,10 +92,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MapPage": () => (/* binding */ MapPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _map_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map.page.html?ngResource */ 512);
 /* harmony import */ var _map_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./map.page.scss?ngResource */ 9055);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
 /* harmony import */ var _capacitor_google_maps__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/google-maps */ 4822);
@@ -180,8 +180,8 @@ let MapPage = class MapPage {
         config: {
           width: 100,
           height: 100,
-          x: 0,
-          y: 0,
+          x: 100,
+          y: 100,
           center: {
             lat: _this2.don.coordinate.lat,
             lng: _this2.don.coordinate.lng
@@ -239,7 +239,15 @@ MapPage.ctorParameters = () => [{
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ToastController
 }];
 
-MapPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
+MapPage.propDecorators = {
+  mapView: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_9__.ViewChild,
+    args: ['map', {
+      static: false
+    }]
+  }]
+};
+MapPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
   selector: 'app-map',
   template: _map_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_map_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]

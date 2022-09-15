@@ -33,8 +33,8 @@ const routes = [
                 loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("src_app_pages_home_demandes_demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/demandes/demandes.module */ 4314)).then(m => m.DemandesPageModule)
             },
             {
-                path: 'annonces',
-                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_annonces_annonces_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/annonces/annonces.module */ 5034)).then(m => m.AnnoncesPageModule)
+                path: 'associations',
+                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_associations_associations_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/associations/associations.module */ 6359)).then(m => m.AssociationsPageModule)
             },
             {
                 path: 'messages',
@@ -169,7 +169,7 @@ module.exports = "ion-tab-button {\n  font-size: 10px;\n  --background-focused: 
   \****************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-tabs>\n\n  <ion-tab-bar id=\"app-tab-bar\" slot=\"bottom\">\n    <ion-tab-button tab=\"annonces\">\n      <ion-icon name=\"megaphone-outline\" size=\"large\"> </ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Annonces</ion-text>\n    </ion-tab-button>\n    \n    <ion-tab-button tab=\"dons\">\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Dons</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"demandes\">\n      <ion-icon name=\"hand-left-outline\"size=\"large\" ></ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Demandes</ion-text>\n    </ion-tab-button>\n\n    \n\n    <ion-tab-button tab=\"messages\">\n      <ion-icon name=\"chatbox-outline\" size=\"large\"></ion-icon>\n      <ion-text style=\"font-weight:bold;margin-top:5px\">Messages</ion-text>\n    </ion-tab-button>\n    <ion-tab-button tab=\"settings\">\n      <ion-icon name=\"settings-outline\" size=\"large\"></ion-icon>\n      <ion-text style=\"font-weight:bold;margin-top:5px\">parametres</ion-text>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n";
+module.exports = "<ion-tabs>\n\n  <ion-tab-bar id=\"app-tab-bar\" slot=\"bottom\">\n    <ion-tab-button tab=\"associations\">\n      <ion-icon name=\"body-outline\" size=\"large\"> </ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Associations</ion-text>\n    </ion-tab-button>\n    \n    <ion-tab-button tab=\"dons\">\n      <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Dons</ion-text>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"demandes\">\n      <ion-icon name=\"hand-left-outline\"size=\"large\" ></ion-icon>\n      <ion-text  style=\"font-weight:bold;margin-top:5px\">Demandes</ion-text>\n    </ion-tab-button>\n\n    \n\n    <ion-tab-button tab=\"messages\">\n      <ion-icon name=\"chatbox-outline\" size=\"large\"></ion-icon>\n      <ion-text style=\"font-weight:bold;margin-top:5px\">Messages</ion-text>\n    </ion-tab-button>\n    <ion-tab-button tab=\"settings\">\n      <ion-icon name=\"settings-outline\" size=\"large\"></ion-icon>\n      <ion-text style=\"font-weight:bold;margin-top:5px\">parametres</ion-text>\n    </ion-tab-button>\n  </ion-tab-bar>\n\n</ion-tabs>\n";
 
 /***/ })
 

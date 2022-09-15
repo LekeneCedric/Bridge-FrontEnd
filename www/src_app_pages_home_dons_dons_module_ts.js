@@ -240,7 +240,7 @@ let DonsPage = class DonsPage {
 
   image(don) {
     let url = '';
-    don.media.length > 0 ? url = `${this.storage + don.media[0].filePath}` : url = '../../../../../../assets/images/empty.webp';
+    don.media.length > 0 ? url = `${this.storage + don.media[0].filePath}` : url = 'assets/images/empty.webp';
     return url;
   }
 

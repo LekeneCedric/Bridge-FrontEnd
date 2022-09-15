@@ -288,26 +288,32 @@ let CreationDonsPage = class CreationDonsPage {
     };
     this.mediaService.uploadImageDon(token, fd).then( /*#__PURE__*/function () {
       var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
-        loading.dismiss();
+        setTimeout( /*#__PURE__*/(0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+          loading.dismiss();
 
-        _this6.router.navigateByUrl('/menu/dons'); //on affiche un message de success
+          _this6.router.navigateByUrl('/menu/dons').then(() => {
+            setTimeout(() => {
+              window.location.reload();
+            }, 8000);
+          }); //on affiche un message de success
 
 
-        const toast = _this6.toast.create({
-          message: `don creer avec success`,
-          icon: 'information-circle',
-          duration: 1000,
-          color: "success"
-        });
+          const toast = _this6.toast.create({
+            message: `don creer avec success`,
+            icon: 'information-circle',
+            duration: 1000,
+            color: "success"
+          });
 
-        (yield toast).present();
+          (yield toast).present();
+        }));
       });
 
       return function (_x2) {
         return _ref2.apply(this, arguments);
       };
     }()).catch( /*#__PURE__*/function () {
-      var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+      var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
         loading.dismiss(); //on affiche un message de success
 
         const toast = _this6.toast.create({
@@ -321,7 +327,7 @@ let CreationDonsPage = class CreationDonsPage {
       });
 
       return function (_x3) {
-        return _ref3.apply(this, arguments);
+        return _ref4.apply(this, arguments);
       };
     }());
   }
@@ -359,7 +365,7 @@ let CreationDonsPage = class CreationDonsPage {
               _this7.myAdress = _this7.MyGeocoder.subLocality + "." + _this7.MyGeocoder.locality + "." + _this7.MyGeocoder.administrativeArea + "." + _this7.MyGeocoder.countryName;
               console.log(JSON.stringify(result[0]));
             }).catch( /*#__PURE__*/function () {
-              var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+              var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
                 const toast = _this7.toast.create({
                   message: `${err}`,
                   icon: 'information-circle',
@@ -372,7 +378,7 @@ let CreationDonsPage = class CreationDonsPage {
               });
 
               return function (_x4) {
-                return _ref4.apply(this, arguments);
+                return _ref5.apply(this, arguments);
               };
             }());
 
@@ -857,9 +863,8 @@ let MediasService = class MediasService {
             const formData = new FormData();
             formData.append('file', blob, file.path);
             formData.append('don_id', credential.don_id);
-            setTimeout(() => {
-              _this.uploadData(formData, token);
-            }, 150);
+
+            _this.uploadData(formData, token);
           });
 
           return function (_x) {

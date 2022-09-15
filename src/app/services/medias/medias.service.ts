@@ -22,9 +22,7 @@ export class MediasService {
 
               formData.append('file',blob, file.path);
               formData.append('don_id',credential.don_id);
-              setTimeout(()=>{
                 this.uploadData(formData,token);
-              },150)
             }
           );
           resolve('success')
@@ -32,6 +30,17 @@ export class MediasService {
           reject(err);
         }
     });
+  }
+  
+  async uploadData(formData,token){
+    const api = environment.apiURL+'/medias';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+     this.http.post(api,formData).pipe().subscribe(data=>{
+      console.log(data);
+     })
   }
   public uploadImageProfil(token:string,credential:any): Promise<any>{
    
@@ -48,15 +57,5 @@ export class MediasService {
               this.uploadData(formData,token);
           resolve('success')
     });
-  }
-  async uploadData(formData,token){
-    const api = environment.apiURL+'/medias';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-     this.http.post(api,formData).pipe().subscribe(data=>{
-      console.log(data);
-     })
   }
 }

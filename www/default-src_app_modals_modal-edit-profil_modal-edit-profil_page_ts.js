@@ -242,9 +242,8 @@ let MediasService = class MediasService {
             const formData = new FormData();
             formData.append('file', blob, file.path);
             formData.append('don_id', credential.don_id);
-            setTimeout(() => {
-              _this.uploadData(formData, token);
-            }, 150);
+
+            _this.uploadData(formData, token);
           });
 
           return function (_x) {

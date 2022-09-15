@@ -15,6 +15,7 @@ export class MapPage implements OnInit {
   constructor(private manageDataService: ManageDataService,
     private route:ActivatedRoute,private router:NavController,
     private toast:ToastController,) { }
+    @ViewChild('map', { static: false })mapView!: ElementRef;
   don:Marker={
     coordinate:{lat:0, lng:0},title:'',snippet:''
   };
@@ -62,9 +63,9 @@ export class MapPage implements OnInit {
       element:this.mapRef,
       config:{
         width: 100,
-        height:100,
-        x:0,
-        y:0,
+        height: 100,
+        x: 100,
+        y: 100,
         center:{
           lat:this.don.coordinate.lat,
           lng:this.don.coordinate.lng

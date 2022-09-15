@@ -47,6 +47,10 @@ const routes = [
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_creation_creation-demandes_creation-demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-demandes/creation-demandes.module */ 8619)).then(m => m.CreationDemandesPageModule)
     },
     {
+        path: 'creation-association',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_creation_creation-association_creation-association_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-association/creation-association.module */ 4643)).then(m => m.CreationAssociationPageModule)
+    },
+    {
         path: 'profil-donateur/:id',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-edit-profil_modal-edit-profil_page_ts"), __webpack_require__.e("src_app_pages_profils_profil-donateur_profil-donateur_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/profils/profil-donateur/profil-donateur.module */ 8813)).then(m => m.ProfilDonateurPageModule)
     },
@@ -520,6 +524,16 @@ let ManageDataService = class ManageDataService {
         return this.http.post(api, data, { headers: headers });
     }
     /*-------------------------DEMANDES---------------------------*/
+    deleteDemande(id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/demandes/${id}`;
+        return this.http.delete(api, { headers: headers });
+    }
     getDemandes() {
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/demandes';
         return this.http.get(api, { headers: {
@@ -694,8 +708,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiURL: 'http://192.168.8.105:8000/api',
-    storage: 'http://192.168.8.105:8000/storage/',
+    apiURL: ' http://bridge.fiacademy.org/api',
+    storage: 'http://bridge.fiacademy.org/',
     map: 'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
     // apiURL:'http://192.168.8.105:8000/api'
 };
