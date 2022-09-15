@@ -16,12 +16,14 @@ export class MediasService {
     return new Promise<any>((resolve, reject) => {
         try{
           credential.files.forEach(async file=>{
+              
               const res = await fetch(file.data);
               const blob = await res.blob();
               const formData = new FormData();
-
+                 
               formData.append('file',blob, file.path);
               formData.append('don_id',credential.don_id);
+              console.log(formData.get('file'));
                 this.uploadData(formData,token);
             }
           );
