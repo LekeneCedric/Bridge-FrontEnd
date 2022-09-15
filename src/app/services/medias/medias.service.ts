@@ -15,6 +15,8 @@ export class MediasService {
     console.log(credential.files)
     return new Promise<any>((resolve, reject) => {
         try{
+          var i = 0 ;
+          var max = credential.files.length;
           credential.files.forEach(async file=>{
               
               const res = await fetch(file.data);
@@ -23,26 +25,32 @@ export class MediasService {
                  
               formData.append('file',blob, file.path);
               formData.append('don_id',credential.don_id);
-              console.log(formData.get('file'));
-                this.uploadData(formData,token);
+              setTimeout(()=>{
+                this.uploadData(formData,token).toPromise().then(
+                  data=>{
+                    i +=1;
+                    console.log(`image ${i} uploaded successfully`)
+                    i>=max?resolve('success'):null;
+                  }
+                );
+              },3000)
+                
             }
           );
-          resolve('success')
+          
         }catch(err){
           reject(err);
         }
     });
   }
   
-  async uploadData(formData,token){
+  uploadData(formData,token):Observable<any>{
     const api = environment.apiURL+'/medias';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
-     this.http.post(api,formData).pipe().subscribe(data=>{
-      console.log(data);
-     })
+     return this.http.post(api,formData)
   }
   public uploadImageProfil(token:string,credential:any): Promise<any>{
    

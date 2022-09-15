@@ -141,11 +141,7 @@ export class CreationDonsPage implements OnInit {
     this.mediaService.uploadImageDon(token,fd).then(async data=>{
       setTimeout(async ()=>{
         loading.dismiss();
-        this.router.navigateByUrl('/menu/dons').then(()=>{
-          setTimeout(()=>{
-            window.location.reload();
-          },8000)
-        })
+        this.router.navigateByUrl('/menu/dons')
         //on affiche un message de success
         const toast = this.toast.create({
           message:`don creer avec success`,

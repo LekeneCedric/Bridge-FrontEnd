@@ -27,6 +27,21 @@
   <ion-item class="input ion-margin-horizontal">
     <ion-row><ion-input [(ngModel)]="associationCreatorName" type="text" placeholder="Ex : John Doe .. " maxlength="45"></ion-input></ion-row>
   </ion-item>
+  <!-- ------------ -->
+  <ion-item lines="none">
+    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="typeAssociation==''"></ion-icon>
+    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="typeAssociation!=''"></ion-icon>
+    <ion-text>Type d'association </ion-text>
+  </ion-item>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-select interface="action-sheet" placeholder="Selectionnez le type de l'association" [(ngModel)]="villeAssociation">
+          <ion-select-option *ngFor="let type of typesAssociation" [value]="type">{{type}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
   <!-- ------------------------ -->
   <ion-item lines="none">
     <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="paysAssociation==''"></ion-icon>
@@ -42,6 +57,7 @@
       </ion-item>
     </ion-col>
   </ion-row>
+  <!-- ------------------- -->
   <ion-item lines="none">
     <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="villeAssociation==''"></ion-icon>
     <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="villeAssociation!=''"></ion-icon>

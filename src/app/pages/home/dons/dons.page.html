@@ -79,7 +79,7 @@
         </div>
           <ion-row style="margin-top:2%" >
             <ion-text style="font-weight: bolder;font-size:1.3em;margin-left:2%;width:100%;padding:2%"color="dark">
-              {{don.titre | slice:0:20}}{{don.titre.length>20?'...':''}}</ion-text>
+              {{don.titre | slice:0:12}}{{don.titre.length>12?'...':''}}</ion-text>
           </ion-row>
           <ion-text style="font-weight: bolder;font-size:1.3em;width:100%;margin-left:2%;padding:2%"color="medium" [routerLink]="['/menu/dons/details',don.id]">
             {{don.adresse | slice:0:12}}{{don.adresse.length>12?'...':''}}</ion-text>

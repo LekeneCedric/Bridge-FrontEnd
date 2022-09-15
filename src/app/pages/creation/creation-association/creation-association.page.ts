@@ -41,10 +41,12 @@ export class CreationAssociationPage implements OnInit {
   MyGeocoder:NativeGeocoderResult;
   GeocoderOption:any={useLocale: true,maxResults: 5};
   myCoordinate:GeolocationPosition;
+  typesAssociation:string[]=['Association déclarée','Association agréée','Association reconnue d\’utilité publique','Association culturelle','Association etrangere'];
   pays :any[] = [];
   pays_temp:any[] = [];
   ville:any[]=[];
   ville_temp:any[] = [];
+  typeAssociation:string='';
   associationName:string='';//name
   associationCreatorName:string='';//nom_responsable
   contactAssociation:string='';//contact
@@ -59,6 +61,7 @@ export class CreationAssociationPage implements OnInit {
   latitudeAssociation:number;//latitude
   password_input_type:string = 'password';
   password_confirm_input_type:string = 'password';
+  
 
   /*--------------------------FUCNTIONS--------------------------*/  
   public test(){
