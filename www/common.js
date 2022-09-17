@@ -1,6 +1,50 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
+/***/ 7087:
+/*!**************************************************************!*\
+  !*** ./src/app/modals/modal-annonces/modal-annonces.page.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ModalAnnoncesPage": () => (/* binding */ ModalAnnoncesPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _modal_annonces_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-annonces.page.html?ngResource */ 5868);
+/* harmony import */ var _modal_annonces_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-annonces.page.scss?ngResource */ 7852);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
+
+
+
+let ModalAnnoncesPage = class ModalAnnoncesPage {
+    constructor() {
+        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.storage;
+    }
+    ngOnInit() {
+        this.Annonces = this.annonces;
+    }
+};
+ModalAnnoncesPage.ctorParameters = () => [];
+ModalAnnoncesPage.propDecorators = {
+    annonces: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Input }]
+};
+ModalAnnoncesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+        selector: 'app-modal-annonces',
+        template: _modal_annonces_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_modal_annonces_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], ModalAnnoncesPage);
+
+
+
+/***/ }),
+
 /***/ 192:
 /*!******************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.ts ***!
@@ -72,6 +116,51 @@ ModalEtatPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
         styles: [_modal_etat_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], ModalEtatPage);
+
+
+
+/***/ }),
+
+/***/ 3951:
+/*!******************************************************************!*\
+  !*** ./src/app/modals/modal-mouvements/modal-mouvements.page.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ModalMouvementsPage": () => (/* binding */ ModalMouvementsPage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _modal_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-mouvements.page.html?ngResource */ 5952);
+/* harmony import */ var _modal_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-mouvements.page.scss?ngResource */ 9654);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
+
+
+
+let ModalMouvementsPage = class ModalMouvementsPage {
+    constructor() {
+        this.Mouvements = null;
+        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.storage;
+    }
+    ngOnInit() {
+        this.Mouvements = this.mouvements;
+    }
+};
+ModalMouvementsPage.ctorParameters = () => [];
+ModalMouvementsPage.propDecorators = {
+    mouvements: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Input }]
+};
+ModalMouvementsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+        selector: 'app-modal-mouvements',
+        template: _modal_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_modal_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], ModalMouvementsPage);
 
 
 
@@ -1664,6 +1753,16 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
 
 /***/ }),
 
+/***/ 7852:
+/*!***************************************************************************!*\
+  !*** ./src/app/modals/modal-annonces/modal-annonces.page.scss?ngResource ***!
+  \***************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtb2RhbC1hbm5vbmNlcy5wYWdlLnNjc3MifQ== */";
+
+/***/ }),
+
 /***/ 7587:
 /*!*******************************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.scss?ngResource ***!
@@ -1671,6 +1770,16 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
 /***/ ((module) => {
 
 module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtb2RhbC1ldGF0LnBhZ2Uuc2NzcyJ9 */";
+
+/***/ }),
+
+/***/ 9654:
+/*!*******************************************************************************!*\
+  !*** ./src/app/modals/modal-mouvements/modal-mouvements.page.scss?ngResource ***!
+  \*******************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtb2RhbC1tb3V2ZW1lbnRzLnBhZ2Uuc2NzcyJ9 */";
 
 /***/ }),
 
@@ -1694,6 +1803,16 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
+/***/ 5868:
+/*!***************************************************************************!*\
+  !*** ./src/app/modals/modal-annonces/modal-annonces.page.html?ngResource ***!
+  \***************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let annonce of Annonces\" [routerLink]=\"['detailsAnnonce',1]\">\n    <ion-img [src]=\"annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'\"></ion-img>\n    <ion-item style=\"width:100%;\" lines=\"none\" class=\"ion-no-padding ion-no-margin\">\n      <ion-thumbnail class=\"ion-margin-start\" slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row >\n         <ion-text style=\"font-weight: bold\">{{annonce.association.name}}</ion-text>\n        </ion-row >\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\">{{annonce.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-item style=\"width:100%\" lines=\"none\">\n      <ion-text style=\"font-weight:bold;text-align: center;\">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>\n    </ion-item>\n    <ion-item lines=\"none\">\n      <ion-text style=\"color:gray\">\n      {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}\n      </ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" style=\"width:100%;margin-top: 15px;margin-bottom:15px\">\n      <ion-icon name=\"heart-outline\" size=\"large\"></ion-icon>\n      <ion-chip slot=\"end\" color=\"warning\" style=\"padding: 20px;\">\n          <img src=\"../../../../assets/images/gift.png\">\n          <ion-text >Soutenir</ion-text>\n      </ion-chip>\n    </ion-item>\n  </ion-card>\n</ion-content>\n";
+
+/***/ }),
+
 /***/ 7099:
 /*!*******************************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.html?ngResource ***!
@@ -1701,6 +1820,16 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /***/ ((module) => {
 
 module.exports = "\n<ion-content>\n  <ion-list class=\"ion-justify-content-between\">\n    <ion-item (click)=\"choose_neuf()\">\n      <ion-icon name=\"ribbon-outline\" slot=\"start\"></ion-icon>\n      <ion-text>Comme neuf</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('Neuf')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\" ></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('Neuf')\" name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n    </ion-item>\n    <ion-item (click)=\"choose_bon_etat()\">\n      <ion-icon name=\"checkmark-done-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text>Bon etat</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('Bon etat')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\"></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('Bon etat')\"name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n\n    </ion-item>\n    <ion-item (click)=\"choose_etat_moyen()\">\n      <ion-icon name=\"checkmark-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text>Etat moyen</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('Etat-moyen')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\"></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('Etat-moyen')\"name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n\n    </ion-item>\n    <ion-item (click)=\"choose_a_bricoler()\">\n      <ion-icon name=\"bed-outline\" slot=\"start\"></ion-icon>\n      <ion-text>A bricoler</ion-text>\n      <ion-icon *ngIf=\"!selectedState.includes('A bricoler')\" name=\"ellipse-outline\" slot=\"end\" size=\"large\"></ion-icon>\n      <ion-icon *ngIf=\"selectedState.includes('A bricoler')\"name=\"checkmark-circle\" slot=\"end\" size=\"large\" color=\"danger\"></ion-icon>\n\n    </ion-item>\n  </ion-list>\n  <ion-button color=\"danger\" expand=\"block\" class=\"ion-margin-horizontal\"(click)='confirm()'>Valider</ion-button>\n</ion-content>\n";
+
+/***/ }),
+
+/***/ 5952:
+/*!*******************************************************************************!*\
+  !*** ./src/app/modals/modal-mouvements/modal-mouvements.page.html?ngResource ***!
+  \*******************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let event of Mouvements\" lines=\"none\" [routerLink]=\"['detailsEvenement',1]\">\n    <ion-img [src]=\"event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'\"></ion-img>\n    <ion-item style=\"width:100%;\" lines=\"none\">\n      <ion-thumbnail slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row>\n         <ion-text style=\"font-weight: bold\">{{event.association.name}}</ion-text>\n        </ion-row>\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\"> {{event.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-item style=\"width:100%\" lines=\"none\">\n      <ion-text style=\"font-weight:bold;text-align: center;\">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>\n    </ion-item>\n    <ion-item style=\"width:100%;\" lines=\"none\">\n      <ion-icon name=\"today-outline\" size=\"large\" slot=\"start\"></ion-icon>\n      <ion-text style=\"color:gray\">{{event.date_rencontre}} | </ion-text>\n      <ion-text style=\"color:gray\"> &ensp;{{event.heure_debut}} - {{event.heure_fin}}</ion-text>\n    </ion-item>\n    <ion-item style=\"width:100%;\" lines=\"none\"> \n      <img src=\"../../../../assets/images/location.png\" slot=\"start\">\n      <ion-text style=\"color:gray\">yaounde , bastos , marche central</ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" style=\"margin-top:10px\">\n      <ion-text style=\"color:gray\">\n      {{event.description| slice:0:200}}{{event.description.length > 200 ? '&hellip;':'' }}\n      </ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" style=\"width:100%;margin-top: 15px;margin-bottom:15px\">\n      <ion-button expand=\"block\" color=\"success\"> Participer</ion-button>\n      <ion-chip slot=\"end\" color=\"warning\" style=\"padding: 20px;\">\n          <img src=\"../../../../assets/images/gift.png\">\n          <ion-text>Soutenir</ion-text>\n      </ion-chip>\n    </ion-item>\n  </ion-card>\n</ion-content>\n";
 
 /***/ }),
 

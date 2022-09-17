@@ -1,0 +1,43 @@
+
+<ion-content>
+  <ion-card *ngFor="let event of Mouvements" lines="none" [routerLink]="['detailsEvenement',1]">
+    <ion-img [src]="event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'"></ion-img>
+    <ion-item style="width:100%;" lines="none">
+      <ion-thumbnail slot="start" >
+        <img style="border-radius:10px" [src]="event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'" />
+      </ion-thumbnail>
+      <ion-col style="text-align: left">
+        <ion-row>
+         <ion-text style="font-weight: bold">{{event.association.name}}</ion-text>
+        </ion-row>
+        <ion-row style="margin-top:2%">
+          <ion-text style="color:gray"> {{event.association.type}}</ion-text>
+        </ion-row>
+      </ion-col>
+    </ion-item>
+    <ion-item style="width:100%" lines="none">
+      <ion-text style="font-weight:bold;text-align: center;">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>
+    </ion-item>
+    <ion-item style="width:100%;" lines="none">
+      <ion-icon name="today-outline" size="large" slot="start"></ion-icon>
+      <ion-text style="color:gray">{{event.date_rencontre}} | </ion-text>
+      <ion-text style="color:gray"> &ensp;{{event.heure_debut}} - {{event.heure_fin}}</ion-text>
+    </ion-item>
+    <ion-item style="width:100%;" lines="none"> 
+      <img src="../../../../assets/images/location.png" slot="start">
+      <ion-text style="color:gray">yaounde , bastos , marche central</ion-text>
+    </ion-item>
+    <ion-item lines="none" style="margin-top:10px">
+      <ion-text style="color:gray">
+      {{event.description| slice:0:200}}{{event.description.length > 200 ? '&hellip;':'' }}
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none" style="width:100%;margin-top: 15px;margin-bottom:15px">
+      <ion-button expand="block" color="success"> Participer</ion-button>
+      <ion-chip slot="end" color="warning" style="padding: 20px;">
+          <img src="../../../../assets/images/gift.png">
+          <ion-text>Soutenir</ion-text>
+      </ion-chip>
+    </ion-item>
+  </ion-card>
+</ion-content>

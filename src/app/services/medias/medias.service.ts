@@ -43,7 +43,39 @@ export class MediasService {
         }
     });
   }
-  
+  public uploadImageAssociation(token:string,credential:any): Promise<any>{
+   
+    console.log(credential.files)
+    return new Promise<any>((resolve, reject) => {
+        try{
+          var i = 0 ;
+          var max = credential.files.length;
+          credential.files.forEach(async file=>{
+              
+              const res = await fetch(file.data);
+              const blob = await res.blob();
+              const formData = new FormData();
+                 
+              formData.append('file',blob, file.path);
+              formData.append('association_id',credential.association_id);
+              setTimeout(()=>{
+                this.uploadData(formData,token).toPromise().then(
+                  data=>{
+                    i +=1;
+                    console.log(`image ${i} uploaded successfully`)
+                    i>=max?resolve('success'):null;
+                  }
+                );
+              },3000)
+                
+            }
+          );
+          
+        }catch(err){
+          reject(err);
+        }
+    });
+  }
   uploadData(formData,token):Observable<any>{
     const api = environment.apiURL+'/medias';
     const headers = new HttpHeaders({

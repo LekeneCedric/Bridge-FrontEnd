@@ -8,6 +8,7 @@ import { CreationAssociationPageRoutingModule } from './creation-association-rou
 
 import { CreationAssociationPage } from './creation-association.page';
 
+import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +17,7 @@ import { CreationAssociationPage } from './creation-association.page';
     ReactiveFormsModule,
     CreationAssociationPageRoutingModule
   ],
-  declarations: [CreationAssociationPage]
+  declarations: [CreationAssociationPage],
+  providers:[ImagePicker]
 })
 export class CreationAssociationPageModule {}

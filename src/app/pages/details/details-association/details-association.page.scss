@@ -1,0 +1,17 @@
+.image{
+    min-width: 5rem;    
+    min-height: 5rem;
+    img {
+        max-width: 5rem;    
+        min-width: 5rem;
+    }
+}
+.iframe{
+    width: 100%;
+    height:230px
+}
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}

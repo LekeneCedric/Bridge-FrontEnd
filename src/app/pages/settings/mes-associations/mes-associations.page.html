@@ -1,17 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon name="chevron-back-outline" slot="start" size="large" color="danger" (click)="navBack()"></ion-icon>
+    <ion-icon name="chevron-back-outline" slot="start" size="large" color="primary" (click)="navBack()"></ion-icon>
     <ion-title>Mes Associations</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
- 
+<ion-content class="ion-padding-top">
+  <div *ngFor="let item of associations">
 
+  
+  <ion-item style="width:100%;margin-bottom:2%"lines="none" [routerLink]="['/details-association',item.id]">
+    <ion-thumbnail slot="start" >
+      <img style="border-radius:10px" [src]="item.media.length>0?storage+item.media[0].filePath:'../../../../assets/images/community.png'" />
+    </ion-thumbnail>
+    <ion-col style="text-align: left;margin:0;padding:0">
+      <ion-row style="display:flex">
+       <ion-text style="font-weight: bold">{{item.name}}</ion-text>
+       
+      </ion-row>
+      <ion-row style="margin-top:2%;font-weight: bold;">
+        <ion-text style="color:gray">{{item.type}}</ion-text>
+      </ion-row>
+      <ion-row style="margin-top:2%">
+        <ion-text style="color:gray">Creer depuis le {{item.created_at|date:'dd/mm/yyyy'}}</ion-text>
+      </ion-row>
+    </ion-col>
+      <ion-chip color="success" style="text-align:left;padding:0" class="ion-justify-content-center"> 
+        <ion-icon name="pulse-outline" style="margin-right:10px" *ngIf="item.attente.includes(Id)">
+        </ion-icon></ion-chip>
+        <ion-chip color="primary" style="text-align:left;padding:0" class="ion-justify-content-center"> 
+          <ion-icon name="people-outline" style="margin-right:10px" *ngIf="item.idDonateurs.includes(Id)">
+          </ion-icon></ion-chip>
+          <ion-chip color="success" style="text-align:left;padding:0" class="ion-justify-content-center"> 
+            <ion-icon name="person-add-outline" style="margin-right:10px" *ngIf="!item.idDonateurs.includes(Id)&&!item.attente.includes(Id)">
+            </ion-icon></ion-chip>
+  </ion-item>
+</div>
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/creation-association">
-    <ion-fab-button color="danger">
+    <ion-fab-button color="primary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

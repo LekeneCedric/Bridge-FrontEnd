@@ -48,7 +48,7 @@ const routes = [
     },
     {
         path: 'creation-association',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_creation_creation-association_creation-association_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-association/creation-association.module */ 4643)).then(m => m.CreationAssociationPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_creation_creation-association_creation-association_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-association/creation-association.module */ 4643)).then(m => m.CreationAssociationPageModule)
     },
     {
         path: 'profil-donateur/:id',
@@ -97,6 +97,18 @@ const routes = [
     {
         path: 'map/:category/:id',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("src_app_pages_map_map_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/map/map.module */ 6016)).then(m => m.MapPageModule)
+    },
+    {
+        path: 'details-association/:id',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_details_details-association_details-association_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/details/details-association/details-association.module */ 5241)).then(m => m.DetailsAssociationPageModule)
+    },
+    {
+        path: 'modal-mouvements',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-mouvements_modal-mouvements_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-mouvements/modal-mouvements.module */ 3665)).then(m => m.ModalMouvementsPageModule)
+    },
+    {
+        path: 'modal-annonces',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-annonces_modal-annonces_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-annonces/modal-annonces.module */ 5737)).then(m => m.ModalAnnoncesPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -678,6 +690,104 @@ let ManageDataService = class ManageDataService {
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/salonsDiscussionsDemande/' + `${mon_id}`;
         return this.http.get(api, { headers: headers });
     }
+    /*-----------------------------------ASSOCIATIONS-----------------------------------------------*/
+    getAssociations() {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/associations/';
+        return this.http.get(api, { headers: headers });
+    }
+    getOneAssociation(idassociation) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/associations/' + `${idassociation}`;
+        return this.http.get(api, { headers: headers });
+    }
+    becameAssociationMember(id_donateur, id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const data = {
+            association_id: id_association,
+            donateur_id: id_donateur,
+            valide: 0
+        };
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/appartenances/';
+        return this.http.post(api, data, { headers: headers });
+    }
+    /*---------------------------ANNONCES_ASSOCIATIONS---------------------------_*/
+    getAnnonces() {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annonces/';
+        return this.http.get(api, { headers: headers });
+    }
+    getOneAnnonce(idannonces) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annonces/' + `${idannonces}`;
+        return this.http.get(api, { headers: headers });
+    }
+    addAnnonce(credential) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annonces/';
+        return this.http.post(api, credential, { headers: headers });
+    }
+    /*---------------------------MOUVEMENTS_ASSOCIATIONS---------------------------_*/
+    getMouvements() {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvements/';
+        return this.http.get(api, { headers: headers });
+    }
+    getOneMouvement(idmouvement) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvements/' + `${idmouvement}`;
+        return this.http.get(api, { headers: headers });
+    }
+    addMouvement(credential) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvements/';
+        return this.http.post(api, credential, { headers: headers });
+    }
 };
 ManageDataService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
@@ -708,11 +818,17 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiURL: ' http://bridge.fiacademy.org/api',
-    storage: 'http://bridge.fiacademy.org/',
+    apiURL: ' http://127.0.0.1:8000/api',
+    storage: 'http://127.0.0.1:8000/storage/',
     map: 'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
     // apiURL:'http://192.168.8.105:8000/api'
 };
+// apiURL:' http://bridge.fiacademy.org/api',
+// storage :'http://bridge.fiacademy.org/',
+// map:'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
+// apiURL:' http://192.168.8.105:8000/api',
+// storage :'http://192.168.8.105:8000/storage/',
+// map:'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

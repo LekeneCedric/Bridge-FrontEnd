@@ -690,6 +690,8 @@ let MediasService = class MediasService {
     console.log(credential.files);
     return new Promise((resolve, reject) => {
       try {
+        var i = 0;
+        var max = credential.files.length;
         credential.files.forEach( /*#__PURE__*/function () {
           var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
             const res = yield fetch(file.data);
@@ -697,27 +699,74 @@ let MediasService = class MediasService {
             const formData = new FormData();
             formData.append('file', blob, file.path);
             formData.append('don_id', credential.don_id);
-
-            _this.uploadData(formData, token);
+            setTimeout(() => {
+              _this.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
           });
 
           return function (_x) {
             return _ref.apply(this, arguments);
           };
         }());
-        resolve('success');
       } catch (err) {
         reject(err);
       }
     });
   }
 
-  uploadImageProfil(token, credential) {
+  uploadImageAssociation(token, credential) {
     var _this2 = this;
 
     console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('association_id', credential.association_id);
+            setTimeout(() => {
+              _this2.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x2) {
+            return _ref2.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadData(formData, token) {
+    const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiURL + '/medias';
+    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(api, formData);
+  }
+
+  uploadImageProfil(token, credential) {
+    var _this3 = this;
+
+    console.log(credential.files);
     return new Promise( /*#__PURE__*/function () {
-      var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resolve, reject) {
+      var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resolve, reject) {
         const res = yield fetch(credential.files.data);
         const blob = yield res.blob();
         const formData = new FormData();
@@ -727,31 +776,15 @@ let MediasService = class MediasService {
         formData.append('file', blob, credential.files.path);
         formData.append('donateur_id', credential.donateur_id);
 
-        _this2.uploadData(formData, token);
+        _this3.uploadData(formData, token);
 
         resolve('success');
       });
 
-      return function (_x2, _x3) {
-        return _ref2.apply(this, arguments);
+      return function (_x3, _x4) {
+        return _ref3.apply(this, arguments);
       };
     }());
-  }
-
-  uploadData(formData, token) {
-    var _this3 = this;
-
-    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiURL + '/medias';
-      const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      });
-
-      _this3.http.post(api, formData).pipe().subscribe(data => {
-        console.log(data);
-      });
-    })();
   }
 
 };

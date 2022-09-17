@@ -82,6 +82,18 @@ const routes: Routes = [
     path: 'map/:category/:id',
     loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
   },
+  {
+    path: 'details-association/:id',
+    loadChildren: () => import('./pages/details/details-association/details-association.module').then( m => m.DetailsAssociationPageModule)
+  },
+  {
+    path: 'modal-mouvements',
+    loadChildren: () => import('./modals/modal-mouvements/modal-mouvements.module').then( m => m.ModalMouvementsPageModule)
+  },
+  {
+    path: 'modal-annonces',
+    loadChildren: () => import('./modals/modal-annonces/modal-annonces.module').then( m => m.ModalAnnoncesPageModule)
+  },
 ];
 @NgModule({
   imports: [

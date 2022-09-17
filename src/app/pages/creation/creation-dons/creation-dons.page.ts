@@ -26,13 +26,12 @@ export class CreationDonsPage implements OnInit {
     private http:HttpClient, private toast:ToastController,private router:Router) { }
   
   async ngOnInit() {
-       this.myCoordinate = await Geolocation.getCurrentPosition();
-     Geolocation.watchPosition({
+    Geolocation.watchPosition({
       enableHighAccuracy:true,
       timeout:1000,
       maximumAge:1000,
     },()=>{console.log('watchPosition updated')});
-  
+       this.myCoordinate = await Geolocation.getCurrentPosition();
   }
   /*-----------------------------VARIABLES------------------------------------------------*/
   MyGeocoder:NativeGeocoderResult;
@@ -64,6 +63,7 @@ export class CreationDonsPage implements OnInit {
       quality:100
     });
     if(image){
+      console.log(image)
       this.saveImage(image)
     }
   }

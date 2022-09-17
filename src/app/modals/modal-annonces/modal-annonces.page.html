@@ -1,0 +1,34 @@
+
+<ion-content>
+  <ion-card *ngFor="let annonce of Annonces" [routerLink]="['detailsAnnonce',1]">
+    <ion-img [src]="annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'"></ion-img>
+    <ion-item style="width:100%;" lines="none" class="ion-no-padding ion-no-margin">
+      <ion-thumbnail class="ion-margin-start" slot="start" >
+        <img style="border-radius:10px" [src]="annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'" />
+      </ion-thumbnail>
+      <ion-col style="text-align: left">
+        <ion-row >
+         <ion-text style="font-weight: bold">{{annonce.association.name}}</ion-text>
+        </ion-row >
+        <ion-row style="margin-top:2%">
+          <ion-text style="color:gray">{{annonce.association.type}}</ion-text>
+        </ion-row>
+      </ion-col>
+    </ion-item>
+    <ion-item style="width:100%" lines="none">
+      <ion-text style="font-weight:bold;text-align: center;">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-text style="color:gray">
+      {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}
+      </ion-text>
+    </ion-item>
+    <ion-item lines="none" style="width:100%;margin-top: 15px;margin-bottom:15px">
+      <ion-icon name="heart-outline" size="large"></ion-icon>
+      <ion-chip slot="end" color="warning" style="padding: 20px;">
+          <img src="../../../../assets/images/gift.png">
+          <ion-text >Soutenir</ion-text>
+      </ion-chip>
+    </ion-item>
+  </ion-card>
+</ion-content>

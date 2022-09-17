@@ -6,63 +6,60 @@
 </ion-header>
 
 <ion-content>
+
   <ion-item>
     <ion-icon name="checkmark-circle" slot="start" color="danger" size="large"></ion-icon>
     <ion-text>Creation : </ion-text><ion-text style="font-weight: bold">Association</ion-text>
   </ion-item>
   <ion-item lines="none">
-    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="associationName==''"></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="associationName!=''"></ion-icon>
-    <ion-row><ion-text>Nom de l'association: </ion-text></ion-row>
+    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedImages.length<1"></ion-icon>
+    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedImages.length>=1"></ion-icon>
+    <ion-row><ion-text>Image(s): </ion-text></ion-row>
   </ion-item>
-  <ion-item class="input ion-margin-horizontal">
-    <ion-row><ion-input [(ngModel)]="associationName" type="text" placeholder="Ex : Nom de l'association... " maxlength="45"></ion-input></ion-row>
-  </ion-item>
-  <!-- ------------------- -->
-  <ion-item lines="none">
-    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="associationCreatorName==''"></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="associationCreatorName!=''"></ion-icon>
-    <ion-text>Nom et prenom Createur : </ion-text>
-  </ion-item>
-  <ion-item class="input ion-margin-horizontal">
-    <ion-row><ion-input [(ngModel)]="associationCreatorName" type="text" placeholder="Ex : John Doe .. " maxlength="45"></ion-input></ion-row>
-  </ion-item>
-  <!-- ------------ -->
-  <ion-item lines="none">
-    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="typeAssociation==''"></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="typeAssociation!=''"></ion-icon>
-    <ion-text>Type d'association </ion-text>
-  </ion-item>
-  <ion-row>
-    <ion-col size="12">
-      <ion-item class="input">
-        <ion-select interface="action-sheet" placeholder="Selectionnez le type de l'association" [(ngModel)]="villeAssociation">
-          <ion-select-option *ngFor="let type of typesAssociation" [value]="type">{{type}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-col>
+  <ion-row style="width:100%" class="ion-margin-horizontal"> 
+    <ion-text color="medium">la premiere image constituera celle du profil de l'association et les autres ferons partis de la gallerie de votre association</ion-text>
   </ion-row>
-  <!-- ------------------------ -->
+  
   <ion-item lines="none">
-    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="paysAssociation==''"></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="paysAssociation!=''"></ion-icon>
-    <ion-text>Pays : </ion-text>
+    <ion-thumbnail slot="start" *ngFor="let image of selectedImages;let i = index" style="position:relative">
+      <ion-fab-button color="danger" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+      <img [src]="image.data" />
+    </ion-thumbnail>
+    
+    <div class="camera" (click)="getPicture()" *ngIf="selectedImages.length<5">
+      <ion-icon name="camera-outline" size="large" color="medium" ></ion-icon>
+    </div>
   </ion-item>
+  <ion-item lines="none">
+    <!-- <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedImages.length<1"></ion-icon>
+    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedImages.length>=1"></ion-icon> -->
+    <ion-row><ion-text>Joindre document(s) association: </ion-text></ion-row>
+  </ion-item>
+  <ion-item lines="none">
+    <!-- <ion-thumbnail slot="start" *ngFor="let image of selectedImages;let i = index" style="position:relative">
+      <ion-fab-button color="danger" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+      <img [src]="image.data" />
+    </ion-thumbnail> -->
+    <div class="camera" >
+      <ion-icon name="document-attach-outline" size="large" color="medium" ></ion-icon>
+    </div>
+  </ion-item>
+  <!--  -->
   <ion-row *ngIf="pays!=null">
     <ion-col size="12">
       <ion-item class="input ion-form-group">
-        <ion-select interface="action-sheet" placeholder="Selectionnez votre pays" [(ngModel)]="paysAssociation" (ionChange)="filterPays($event)">
+        <ion-select interface="action-sheet" placeholder="Selectionnez votre pays" (ionChange)="filterPays($event)" [(ngModel)]="paysAssociation">
           <ion-select-option [value]="country.name" *ngFor="let country of pays_temp" > {{country.flag}}{{country.name}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>
   </ion-row>
   <!-- ------------------- -->
-  <ion-item lines="none">
-    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="villeAssociation==''"></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="villeAssociation!=''"></ion-icon>
-    <ion-text>Ville : </ion-text>
-  </ion-item>
+  
   <ion-row *ngIf="pays!=null">
     <ion-col size="12">
       <ion-item class="input">
@@ -73,46 +70,70 @@
     </ion-col>
   </ion-row>
   <!-- ---------------------- -->
-  <ion-item lines="none">
-    <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="contactAssociation.length<1 ||  codeContactAssociation.length<1 "></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="contactAssociation.length>1 && codeContactAssociation.length>1 "></ion-icon>
-    <ion-text>Contact : </ion-text>
-  </ion-item>
+  
+  <form [formGroup]="credential">
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-input formControlName="name" type="text"  placeholder="Nom de l'association" maxlength="45"></ion-input>
+        <ion-note slot="error" *ngIf="(name.dirty||name.touched)&& name.errors">min 7 characteres</ion-note>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+ 
+  <!-- ------------------- -->
+ <ion-row>
+  <ion-col size="12">
+    <ion-item class="input">
+      <ion-input formControlName="nom_responsable" type="text" placeholder="Nom responsable association" maxlength="45"></ion-input>
+      <ion-note slot="error" *ngIf="(nom_responsable.dirty||nom_responsable.touched)&& nom_responsable.errors">min 7 characteres</ion-note>
+    </ion-item>
+  </ion-col>
+ </ion-row>
+ 
+  <!-- ------------ -->
+  
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-select interface="action-sheet" placeholder="Selectionnez le type de l'association" formControlName="type">
+          <ion-select-option *ngFor="let type of typesAssociation" [value]="type">{{type}}</ion-select-option>
+        </ion-select>
+        <ion-note slot="error" *ngIf="(type.dirty||type.touched)&& type.errors">selectionner le type de votre association</ion-note>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <!-- ------------------------ -->
+  
+  <ion-row>
+    <ion-col size="12">
+      <ion-item class="input">
+        <ion-select interface="action-sheet" placeholder="Secteur d'activite" formControlName="category">
+          <ion-select-option *ngFor="let categorie of categoriesAssociation" [value]="categorie">{{categorie}}</ion-select-option>
+          <ion-note slot="error" *ngIf="(category.dirty||category.touched)&& category.errors">selectionnez une categorie </ion-note>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <!-- ------------------------ -->
+  
   <ion-row>
     <ion-col size="12">
       <ion-item class="input">
         <ion-text style="font-weight:bold" slot="start">
           {{codeContactAssociation}}
         </ion-text>
-        <ion-input placeholder="Votre contact" type="number" [(ngModel)]='contactAssociation'></ion-input>
+        <ion-input placeholder="Votre contact" type="number" formControlName="contact"></ion-input>
+        <ion-note slot="error" *ngIf="(contact.dirty||contact.touched)&& contact.errors">contact invalide</ion-note>
       </ion-item>
     </ion-col>
   </ion-row>
 <!-- ---------------------- -->
 
-<!-- ------------------------------------ -->
-<ion-item lines="none">
-  <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="numeroContribuable ==''  ||  numeroContribuable=='' "></ion-icon>
-  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="numeroContribuable!='' && numeroContribuable!='' "></ion-icon>
-  <ion-text>Numero contribuable : </ion-text>
-</ion-item>
 <ion-row>
   <ion-col size="12">
     <ion-item class="input">
-      <ion-input placeholder="Numero contribuable" type="number" [(ngModel)]='numeroContribuable'></ion-input>
-    </ion-item>
-  </ion-col>
-</ion-row>
-<!-- ----------- -->
-<ion-item lines="none">
-  <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="numeroContribuable ==''  ||  numeroContribuable=='' "></ion-icon>
-  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="numeroContribuable!='' && numeroContribuable!='' "></ion-icon>
-  <ion-text slot="start">Code Secret : </ion-text>
-</ion-item>
-<ion-row>
-  <ion-col size="12">
-    <ion-item class="input">
-      <ion-input [type]="password_confirm_input_type" placeholder="Code Secret" [(ngModel)]="password"></ion-input>
+      <ion-input [type]="password_confirm_input_type" placeholder="Code Secret" formControlName="password"></ion-input>
       <ion-icon name="eye-off-outline" *ngIf="password_confirm_input_type=='password'" (click)="changePassConfirmInputType()"></ion-icon>
     <ion-icon name="eye-outline" *ngIf="password_confirm_input_type=='text'" (click)="changePassConfirmInputType()"></ion-icon>
       <!-- <ion-note slot="error" *ngIf="(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors">invalid confirmPassword</ion-note> -->
@@ -122,7 +143,7 @@
 <ion-row>
   <ion-col size="12">
     <ion-item class="input">
-      <ion-input [type]="password_confirm_input_type" placeholder="Confirmez Code secret" [(ngModel)]="passwordConfirmation"></ion-input>
+      <ion-input [type]="password_confirm_input_type" placeholder="Confirmez Code secret" formControlName="password_confirmation"></ion-input>
       <ion-icon name="eye-off-outline" *ngIf="password_confirm_input_type=='password'" (click)="changePassConfirmInputType()"></ion-icon>
     <ion-icon name="eye-outline" *ngIf="password_confirm_input_type=='text'" (click)="changePassConfirmInputType()"></ion-icon>
       <!-- <ion-note slot="error" *ngIf="(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors">invalid confirmPassword</ion-note> -->
@@ -138,13 +159,13 @@
   <ion-icon name="chevron-forward-outline"  color="medium" slot="end"></ion-icon>
 </ion-item>
 <!-- ------------ -->
-
+</form>
 </ion-content>
 <ion-footer>
   <ion-card-subtitle style="color:grey" class="ion-margin">
-    Votre adresse restera confidentielle et ne sera jamais affiche publiquement , elle nous permet d'afficher un point aleatoire dans un rayoun de 600 m dee vous 
+    Une fois le processus de creation termine , l'association ne sera valide qu'apres un controle des documents faits par les administrateurs de la plateforme.Ce processud de verification peux prendre 1 semaine apres quoi votre association sera disponible suir la plateforme
     </ion-card-subtitle>
     <ion-card style="width:100%;margin:0">
-    <ion-button expand="block" color="danger"  class="ion-margin"[disabled]="!validationDonation" >Creer Association </ion-button>
+    <ion-button expand="block" color="danger" (click)="createAssociation()"  class="ion-margin" >Creer Association </ion-button>
     </ion-card>
 </ion-footer>

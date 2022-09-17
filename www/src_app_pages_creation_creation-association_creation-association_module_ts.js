@@ -48,13 +48,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CreationAssociationPageModule": () => (/* binding */ CreationAssociationPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _creation_association_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./creation-association-routing.module */ 4755);
 /* harmony import */ var _creation_association_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-association.page */ 2442);
+/* harmony import */ var _awesome_cordova_plugins_image_picker_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/image-picker/ngx */ 2153);
+
 
 
 
@@ -64,16 +66,17 @@ __webpack_require__.r(__webpack_exports__);
 
 let CreationAssociationPageModule = class CreationAssociationPageModule {
 };
-CreationAssociationPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+CreationAssociationPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
         imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.ReactiveFormsModule,
+            _angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormsModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_6__.ReactiveFormsModule,
             _creation_association_routing_module__WEBPACK_IMPORTED_MODULE_0__.CreationAssociationPageRoutingModule
         ],
-        declarations: [_creation_association_page__WEBPACK_IMPORTED_MODULE_1__.CreationAssociationPage]
+        declarations: [_creation_association_page__WEBPACK_IMPORTED_MODULE_1__.CreationAssociationPage],
+        providers: [_awesome_cordova_plugins_image_picker_ngx__WEBPACK_IMPORTED_MODULE_2__.ImagePicker]
     })
 ], CreationAssociationPageModule);
 
@@ -92,14 +95,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CreationAssociationPage": () => (/* binding */ CreationAssociationPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _creation_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-association.page.html?ngResource */ 6841);
 /* harmony import */ var _creation_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./creation-association.page.scss?ngResource */ 2905);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/creation/creation.service */ 9444);
+/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 8549);
+/* harmony import */ var _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @capacitor/geolocation */ 7621);
+/* harmony import */ var _awesome_cordova_plugins_image_picker_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @awesome-cordova-plugins/image-picker/ngx */ 2153);
+
+
+
+
+
 
 
 
@@ -110,36 +123,73 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CreationAssociationPage = class CreationAssociationPage {
-  constructor(route, router, http, actionSheetController, nativGeocoder, toast) {
+  constructor(route, router, http, actionSheetController, nativGeocoder, toast, fb, createService, mediaService, loadingController, imagePicker) {
     this.route = route;
     this.router = router;
     this.http = http;
     this.actionSheetController = actionSheetController;
     this.nativGeocoder = nativGeocoder;
     this.toast = toast;
+    this.fb = fb;
+    this.createService = createService;
+    this.mediaService = mediaService;
+    this.loadingController = loadingController;
+    this.imagePicker = imagePicker;
     this.GeocoderOption = {
       useLocale: true,
       maxResults: 5
     };
+    this.typesAssociation = ['Association déclarée', 'Association agréée', 'Association reconnue d\’utilité publique', 'Association culturelle', 'Association etrangere'];
+    this.categoriesAssociation = ['culture/Arts', 'Sports', 'Action sociale', 'Loisirs', 'Humanitaire', 'sante', 'Education', 'Environnement', 'Autres'];
     this.pays = [];
     this.pays_temp = [];
     this.ville = [];
     this.ville_temp = [];
-    this.associationName = '';
-    this.associationCreatorName = '';
-    this.contactAssociation = '';
-    this.codeContactAssociation = '';
-    this.paysAssociation = '';
-    this.villeAssociation = '';
-    this.adresseAssociation = '';
-    this.numeroContribuable = '';
-    this.password = '';
-    this.passwordConfirmation = '';
+    this.typeAssociation = '';
+    this.categoryAssociation = '';
+    this.associationName = ''; //name
+
+    this.associationCreatorName = ''; //nom_responsable
+
+    this.contactAssociation = ''; //contact
+
+    this.codeContactAssociation = ''; //codeContact
+
+    this.paysAssociation = ''; //pays
+
+    this.villeAssociation = ''; //ville
+
+    this.adresseAssociation = ''; //adresse
+
+    this.numeroContribuable = ''; //numeroContribuable
+
     this.password_input_type = 'password';
     this.password_confirm_input_type = 'password';
+    this.selectedImages = [];
+
+    this.convertBlobToBase64 = blob => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = reject;
+
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+
+      reader.readAsDataURL(blob);
+    });
   }
 
   ngOnInit() {
+    this.credential = this.fb.group({
+      name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.minLength(7)]],
+      type: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
+      category: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
+      contact: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")]],
+      adresse: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
+      password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
+      password_confirmation: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required]],
+      nom_responsable: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_8__.Validators.minLength(7)]]
+    });
     this.http.get('assets/country_dial_info.json').toPromise().then(res => {
       this.pays = res;
       this.pays_temp = this.pays;
@@ -150,6 +200,22 @@ let CreationAssociationPage = class CreationAssociationPage {
         console.log(this.ville);
       });
     });
+    this.geolocation();
+  }
+
+  geolocation() {
+    var _this = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_6__.Geolocation.watchPosition({
+        enableHighAccuracy: true,
+        timeout: 1000,
+        maximumAge: 1000
+      }, () => {
+        console.log('watchPosition updated');
+      });
+      _this.myCoordinate = yield _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_6__.Geolocation.getCurrentPosition();
+    })();
   }
 
   navBack() {
@@ -158,9 +224,209 @@ let CreationAssociationPage = class CreationAssociationPage {
   /*--------------------------FUCNTIONS--------------------------*/
 
 
+  createAssociation() {
+    var _this2 = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const loading = yield _this2.loadingController.create({
+        spinner: 'bubbles',
+        message: 'creation dons....',
+        translucent: true,
+        cssClass: 'custom-class custom-loading'
+      });
+      yield loading.present();
+      const data = {
+        name: _this2.name.value,
+        type: _this2.type.value,
+        category: _this2.category.value,
+        pays: _this2.paysAssociation,
+        ville: _this2.villeAssociation,
+        contact: _this2.codeContactAssociation + _this2.contact.value,
+        adresse: 'cameroun,yaounde,cite-verte',
+        password: _this2.password.value,
+        password_confirmation: _this2.password_confirmation.value,
+        nom_responsable: _this2.nom_responsable.value,
+        longitude: _this2.longitudeAssociation,
+        latitude: _this2.latitudeAssociation
+      };
+
+      _this2.createService.createAssociation(data, localStorage.getItem('token')).toPromise().then(data => {
+        _this2.upload_image(data, loading);
+      }).catch( /*#__PURE__*/function () {
+        var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+          loading.dismiss(); //on affiche un message de success
+
+          const toast = _this2.toast.create({
+            message: `${err.message}`,
+            icon: 'information-circle',
+            duration: 1000,
+            color: "danger"
+          });
+
+          (yield toast).present();
+        });
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }());
+    })();
+  }
+
+  upload_image(data, loading) {
+    var _this3 = this;
+
+    //creation don 
+    const token = localStorage.getItem('token');
+    let fd = {
+      association_id: data.Association.id,
+      files: this.selectedImages
+    };
+    this.mediaService.uploadImageAssociation(token, fd).then( /*#__PURE__*/function () {
+      var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
+        setTimeout( /*#__PURE__*/(0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+          loading.dismiss();
+
+          _this3.navBack(); //on affiche un message de success
+
+
+          const toast = _this3.toast.create({
+            message: `don creer avec success`,
+            icon: 'information-circle',
+            duration: 1000,
+            color: "success"
+          });
+
+          (yield toast).present();
+        }));
+      });
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }()).catch( /*#__PURE__*/function () {
+      var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+        loading.dismiss(); //on affiche un message de success
+
+        const toast = _this3.toast.create({
+          message: `${err.message}`,
+          icon: 'information-circle',
+          duration: 1000,
+          color: "danger"
+        });
+
+        (yield toast).present();
+      });
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+  }
+
+  removeOnImagesList(i) {
+    this.selectedImages.splice(i, 1);
+  }
+
+  getPicture() {
+    var _this4 = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      let option = {
+        quality: 100,
+        maximumImagesCount: 10
+      };
+
+      _this4.imagePicker.getPictures(option).then(images => {
+        for (let i = 0; i < images.length; i++) {
+          console.log(images[i]);
+
+          _this4.saveImage(images[i]);
+        }
+      });
+    })();
+  }
+
+  saveImage(image) {
+    var _this5 = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const base64data = yield _this5.readAsBase64(image);
+      console.log(base64data);
+      const filename = new Date().getTime() + '.jpeg';
+      const img = {
+        path: filename,
+        data: base64data
+      };
+      setTimeout(() => {
+        _this5.selectedImages.unshift(img);
+      }, 500);
+    })();
+  }
+
+  readAsBase64(photo) {
+    var _this6 = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const res = yield fetch(photo.webPath);
+      const blob = yield res.blob();
+      return yield _this6.convertBlobToBase64(blob);
+    })();
+  }
+
+  get name() {
+    return this.credential.get('name');
+  }
+
+  get type() {
+    return this.credential.get('type');
+  }
+
+  get category() {
+    return this.credential.get('category');
+  }
+
+  get contact() {
+    return this.credential.get('contact');
+  }
+
+  get adresse() {
+    return this.credential.get('adresse');
+  }
+
+  get nom_responsable() {
+    return this.credential.get('nom_responsable');
+  }
+
+  get password() {
+    return this.credential.get('password');
+  }
+
+  get password_confirmation() {
+    return this.credential.get('password_confirmation');
+  }
+
+  test() {
+    const data = {
+      name: this.name.value,
+      type: this.type.value,
+      category: this.category.value,
+      pays: this.paysAssociation,
+      ville: this.villeAssociation,
+      contact: this.codeContactAssociation + this.contact.value,
+      adresse: this.adresse.value,
+      password: this.password.value,
+      passwordConfirmation: this.password_confirmation.value,
+      nom_responsable: this.nom_responsable.value,
+      longitude: this.longitudeAssociation,
+      latitude: this.latitudeAssociation
+    };
+    console.log(data);
+  }
+
   passwordMatching() {
-    const password = this.password;
-    const passwordConf = this.passwordConfirmation;
+    const password = this.password.value;
+    const passwordConf = this.password_confirmation.value;
     return  true ? password == passwordConf : 0;
   }
 
@@ -173,23 +439,23 @@ let CreationAssociationPage = class CreationAssociationPage {
   }
 
   locationSheet() {
-    var _this = this;
+    var _this7 = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const actionsheet = yield _this.actionSheetController.create({
+      const actionsheet = yield _this7.actionSheetController.create({
         buttons: [{
           text: 'Ma position',
           handler: () => {
-            _this.longitudeAssociation = _this.myCoordinate.coords.longitude;
-            _this.latitudeAssociation = _this.myCoordinate.coords.latitude;
+            _this7.longitudeAssociation = _this7.myCoordinate.coords.longitude;
+            _this7.latitudeAssociation = _this7.myCoordinate.coords.latitude;
 
-            _this.nativGeocoder.reverseGeocode(_this.latitudeAssociation, _this.longitudeAssociation, _this.GeocoderOption).then(result => {
-              _this.MyGeocoder = result[0];
-              _this.adresseAssociation = _this.MyGeocoder.subLocality + "." + _this.MyGeocoder.locality + "." + _this.MyGeocoder.administrativeArea + "." + _this.MyGeocoder.countryName;
+            _this7.nativGeocoder.reverseGeocode(_this7.latitudeAssociation, _this7.longitudeAssociation, _this7.GeocoderOption).then(result => {
+              _this7.MyGeocoder = result[0];
+              _this7.adresseAssociation = _this7.MyGeocoder.subLocality + "." + _this7.MyGeocoder.locality + "." + _this7.MyGeocoder.administrativeArea + "." + _this7.MyGeocoder.countryName;
               console.log(JSON.stringify(result[0]));
             }).catch( /*#__PURE__*/function () {
-              var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
-                const toast = _this.toast.create({
+              var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+                const toast = _this7.toast.create({
                   message: `${err}`,
                   icon: 'information-circle',
                   duration: 1000,
@@ -200,16 +466,16 @@ let CreationAssociationPage = class CreationAssociationPage {
                 console.log('Error in reverse geocode');
               });
 
-              return function (_x) {
-                return _ref.apply(this, arguments);
+              return function (_x4) {
+                return _ref5.apply(this, arguments);
               };
             }());
           }
         }, {
           text: 'open Map',
           handler: () => {
-            _this.longitudeAssociation = null;
-            _this.latitudeAssociation = null;
+            _this7.longitudeAssociation = null;
+            _this7.latitudeAssociation = null;
           }
         }]
       });
@@ -240,24 +506,294 @@ let CreationAssociationPage = class CreationAssociationPage {
 };
 
 CreationAssociationPage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.NavController
 }, {
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__.HttpClient
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_11__.HttpClient
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ActionSheetController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.ActionSheetController
 }, {
   type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__.NativeGeocoder
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.ToastController
+}, {
+  type: _angular_forms__WEBPACK_IMPORTED_MODULE_8__.FormBuilder
+}, {
+  type: src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_4__.CreationService
+}, {
+  type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_5__.MediasService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_10__.LoadingController
+}, {
+  type: _awesome_cordova_plugins_image_picker_ngx__WEBPACK_IMPORTED_MODULE_7__.ImagePicker
 }];
 
-CreationAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+CreationAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_12__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_13__.Component)({
   selector: 'app-creation-association',
   template: _creation_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_creation_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
 })], CreationAssociationPage);
+
+
+/***/ }),
+
+/***/ 8549:
+/*!***************************************************!*\
+  !*** ./src/app/services/medias/medias.service.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MediasService": () => (/* binding */ MediasService)
+/* harmony export */ });
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
+
+
+
+let MediasService = class MediasService {
+  constructor(http) {
+    this.http = http;
+  }
+
+  uploadImageDon(token, credential) {
+    var _this = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('don_id', credential.don_id);
+            setTimeout(() => {
+              _this.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadImageAssociation(token, credential) {
+    var _this2 = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('association_id', credential.association_id);
+            setTimeout(() => {
+              _this2.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x2) {
+            return _ref2.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadData(formData, token) {
+    const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiURL + '/medias';
+    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(api, formData);
+  }
+
+  uploadImageProfil(token, credential) {
+    var _this3 = this;
+
+    console.log(credential.files);
+    return new Promise( /*#__PURE__*/function () {
+      var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resolve, reject) {
+        const res = yield fetch(credential.files.data);
+        const blob = yield res.blob();
+        const formData = new FormData();
+        console.log('this is credential');
+        console.log(credential.files.path);
+        console.log(credential.donateur_id);
+        formData.append('file', blob, credential.files.path);
+        formData.append('donateur_id', credential.donateur_id);
+
+        _this3.uploadData(formData, token);
+
+        resolve('success');
+      });
+
+      return function (_x3, _x4) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+  }
+
+};
+
+MediasService.ctorParameters = () => [{
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpClient
+}];
+
+MediasService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Injectable)({
+  providedIn: 'root'
+})], MediasService);
+
+
+/***/ }),
+
+/***/ 2153:
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@awesome-cordova-plugins/image-picker/__ivy_ngcc__/ngx/index.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ImagePicker": () => (/* binding */ ImagePicker),
+/* harmony export */   "OutputType": () => (/* binding */ OutputType)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @awesome-cordova-plugins/core */ 4624);
+
+
+
+
+var OutputType;
+
+(function (OutputType) {
+  OutputType[OutputType["FILE_URL"] = 0] = "FILE_URL";
+  OutputType[OutputType["DATA_URL"] = 1] = "DATA_URL";
+})(OutputType || (OutputType = {}));
+
+var ImagePicker =
+/** @class */
+function (_super) {
+  (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(ImagePicker, _super);
+
+  function ImagePicker() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  ImagePicker.prototype.getPictures = function (options) {
+    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getPictures", {
+      "callbackOrder": "reverse"
+    }, arguments);
+  };
+
+  ImagePicker.prototype.hasReadPermission = function () {
+    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "hasReadPermission", {
+      "platforms": ["Android"]
+    }, arguments);
+  };
+
+  ImagePicker.prototype.requestReadPermission = function () {
+    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "requestReadPermission", {
+      "platforms": ["Android"]
+    }, arguments);
+  };
+
+  ImagePicker.pluginName = "ImagePicker";
+  ImagePicker.plugin = "cordova-plugin-telerik-imagepicker";
+  ImagePicker.pluginRef = "window.imagePicker";
+  ImagePicker.repo = "https://github.com/Telerik-Verified-Plugins/ImagePicker";
+  ImagePicker.install = "ionic cordova plugin add cordova-plugin-telerik-imagepicker --variable PHOTO_LIBRARY_USAGE_DESCRIPTION=\"your usage message\"";
+  ImagePicker.installVariables = ["PHOTO_LIBRARY_USAGE_DESCRIPTION"];
+  ImagePicker.platforms = ["Android", "iOS"];
+
+  ImagePicker.ɵfac = /*@__PURE__*/function () {
+    var ɵImagePicker_BaseFactory;
+    return function ImagePicker_Factory(t) {
+      return (ɵImagePicker_BaseFactory || (ɵImagePicker_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetInheritedFactory"](ImagePicker)))(t || ImagePicker);
+    };
+  }();
+
+  ImagePicker.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+    token: ImagePicker,
+    factory: function (t) {
+      return ImagePicker.ɵfac(t);
+    }
+  });
+
+  (function () {
+    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](ImagePicker, [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable
+    }], null, null);
+  })();
+
+  return ImagePicker;
+}(_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.AwesomeCordovaNativePlugin);
+
+
+
+/***/ }),
+
+/***/ 591:
+/*!*********************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/definitions.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+
+
+/***/ }),
+
+/***/ 7621:
+/*!***************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/index.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Geolocation": () => (/* binding */ Geolocation)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 5099);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 591);
+
+const Geolocation = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Geolocation', {
+  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_geolocation_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 8391)).then(m => new m.GeolocationWeb())
+});
+
 
 
 /***/ }),
@@ -268,7 +804,7 @@ CreationAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,
   \***********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = ".input {\n  border: 0.5px solid rgb(206, 204, 204);\n  border-radius: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNyZWF0aW9uLWFzc29jaWF0aW9uLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHNDQUFBO0VBQ0EsbUJBQUE7QUFDSiIsImZpbGUiOiJjcmVhdGlvbi1hc3NvY2lhdGlvbi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW5wdXR7XG4gICAgYm9yZGVyOiAwLjVweCBzb2xpZCByZ2IoMjA2LCAyMDQsIDIwNCk7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbn0iXX0= */";
+module.exports = ".input {\n  border: 0.5px solid rgb(206, 204, 204);\n  border-radius: 10px;\n}\n\n.camera {\n  padding: 8px;\n  border: 1px dashed gray;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNyZWF0aW9uLWFzc29jaWF0aW9uLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHNDQUFBO0VBQ0EsbUJBQUE7QUFDSjs7QUFFQTtFQUNJLFlBQUE7RUFDQSx1QkFBQTtBQUNKIiwiZmlsZSI6ImNyZWF0aW9uLWFzc29jaWF0aW9uLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbnB1dHtcbiAgICBib3JkZXI6IDAuNXB4IHNvbGlkIHJnYigyMDYsIDIwNCwgMjA0KTtcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xufVxuXG4uY2FtZXJhe1xuICAgIHBhZGRpbmc6OHB4O1xuICAgIGJvcmRlcjoxcHggZGFzaGVkIGdyYXkgXG59Il19 */";
 
 /***/ }),
 
@@ -278,7 +814,7 @@ module.exports = ".input {\n  border: 0.5px solid rgb(206, 204, 204);\n  border-
   \***********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"danger\" slot=\"start\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>creation-association</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\"></ion-icon>\n    <ion-text>Creation : </ion-text><ion-text style=\"font-weight: bold\">Association</ion-text>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"associationName==''\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"associationName!=''\"></ion-icon>\n    <ion-row><ion-text>Nom de l'association: </ion-text></ion-row>\n  </ion-item>\n  <ion-item class=\"input ion-margin-horizontal\">\n    <ion-row><ion-input [(ngModel)]=\"associationName\" type=\"text\" placeholder=\"Ex : Nom de l'association... \" maxlength=\"45\"></ion-input></ion-row>\n  </ion-item>\n  <!-- ------------------- -->\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"associationCreatorName==''\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"associationCreatorName!=''\"></ion-icon>\n    <ion-text>Nom et prenom Createur : </ion-text>\n  </ion-item>\n  <ion-item class=\"input ion-margin-horizontal\">\n    <ion-row><ion-input [(ngModel)]=\"associationCreatorName\" type=\"text\" placeholder=\"Ex : John Doe .. \" maxlength=\"45\"></ion-input></ion-row>\n  </ion-item>\n  <!-- ------------------------ -->\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"paysAssociation==''\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"paysAssociation!=''\"></ion-icon>\n    <ion-text>Pays : </ion-text>\n  </ion-item>\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input ion-form-group\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre pays\" [(ngModel)]=\"paysAssociation\" (ionChange)=\"filterPays($event)\">\n          <ion-select-option [value]=\"country.name\" *ngFor=\"let country of pays_temp\" > {{country.flag}}{{country.name}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"villeAssociation==''\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"villeAssociation!=''\"></ion-icon>\n    <ion-text>Ville : </ion-text>\n  </ion-item>\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre ville\" [(ngModel)]=\"villeAssociation\">\n          <ion-select-option *ngFor=\"let city of ville_temp\" [value]=\"city\">{{city}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ---------------------- -->\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"contactAssociation.length<1 ||  codeContactAssociation.length<1 \"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"contactAssociation.length>1 && codeContactAssociation.length>1 \"></ion-icon>\n    <ion-text>Contact : </ion-text>\n  </ion-item>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-text style=\"font-weight:bold\" slot=\"start\">\n          {{codeContactAssociation}}\n        </ion-text>\n        <ion-input placeholder=\"Votre contact\" type=\"number\" [(ngModel)]='contactAssociation'></ion-input>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n<!-- ---------------------- -->\n\n<!-- ------------------------------------ -->\n<ion-item lines=\"none\">\n  <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"numeroContribuable ==''  ||  numeroContribuable=='' \"></ion-icon>\n  <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"numeroContribuable!='' && numeroContribuable!='' \"></ion-icon>\n  <ion-text>Numero contribuable : </ion-text>\n</ion-item>\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input placeholder=\"Numero contribuable\" type=\"number\" [(ngModel)]='numeroContribuable'></ion-input>\n    </ion-item>\n  </ion-col>\n</ion-row>\n<!-- ----------- -->\n<ion-item lines=\"none\">\n  <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"numeroContribuable ==''  ||  numeroContribuable=='' \"></ion-icon>\n  <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"numeroContribuable!='' && numeroContribuable!='' \"></ion-icon>\n  <ion-text slot=\"start\">Code Secret : </ion-text>\n</ion-item>\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Code Secret\" [(ngModel)]=\"password\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Confirmez Code secret\" [(ngModel)]=\"passwordConfirmation\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<!-- ------------ -->\n<ion-item lines=\"none\" (click)=\"locationSheet()\">\n  <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"latitudeAssociation==null || longitudeAssociation==null\"></ion-icon>\n  <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"latitudeAssociation!=null || longitudeAssociation!=null\"></ion-icon>\n  <ion-icon name=\"location\" color=\"danger\"></ion-icon>\n  <ion-text style=\"margin-left:10px\">{{adresseAssociation}}</ion-text>\n  <ion-icon name=\"chevron-forward-outline\"  color=\"medium\" slot=\"end\"></ion-icon>\n</ion-item>\n<!-- ------------ -->\n\n</ion-content>\n<ion-footer>\n  <ion-card-subtitle style=\"color:grey\" class=\"ion-margin\">\n    Votre adresse restera confidentielle et ne sera jamais affiche publiquement , elle nous permet d'afficher un point aleatoire dans un rayoun de 600 m dee vous \n    </ion-card-subtitle>\n    <ion-card style=\"width:100%;margin:0\">\n    <ion-button expand=\"block\" color=\"danger\"  class=\"ion-margin\"[disabled]=\"!validationDonation\" >Creer Association </ion-button>\n    </ion-card>\n</ion-footer>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"danger\" slot=\"start\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>creation-association</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-item>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\"></ion-icon>\n    <ion-text>Creation : </ion-text><ion-text style=\"font-weight: bold\">Association</ion-text>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"selectedImages.length>=1\"></ion-icon>\n    <ion-row><ion-text>Image(s): </ion-text></ion-row>\n  </ion-item>\n  <ion-row style=\"width:100%\" class=\"ion-margin-horizontal\"> \n    <ion-text color=\"medium\">la premiere image constituera celle du profil de l'association et les autres ferons partis de la gallerie de votre association</ion-text>\n  </ion-row>\n  \n  <ion-item lines=\"none\">\n    <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n      <ion-fab-button color=\"danger\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n        <ion-icon name=\"trash-outline\"></ion-icon>\n      </ion-fab-button>\n      <img [src]=\"image.data\" />\n    </ion-thumbnail>\n    \n    <div class=\"camera\" (click)=\"getPicture()\" *ngIf=\"selectedImages.length<5\">\n      <ion-icon name=\"camera-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n    </div>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <!-- <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"selectedImages.length>=1\"></ion-icon> -->\n    <ion-row><ion-text>Joindre document(s) association: </ion-text></ion-row>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <!-- <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n      <ion-fab-button color=\"danger\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n        <ion-icon name=\"trash-outline\"></ion-icon>\n      </ion-fab-button>\n      <img [src]=\"image.data\" />\n    </ion-thumbnail> -->\n    <div class=\"camera\" >\n      <ion-icon name=\"document-attach-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n    </div>\n  </ion-item>\n  <!--  -->\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input ion-form-group\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre pays\" (ionChange)=\"filterPays($event)\" [(ngModel)]=\"paysAssociation\">\n          <ion-select-option [value]=\"country.name\" *ngFor=\"let country of pays_temp\" > {{country.flag}}{{country.name}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------- -->\n  \n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre ville\" [(ngModel)]=\"villeAssociation\">\n          <ion-select-option *ngFor=\"let city of ville_temp\" [value]=\"city\">{{city}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ---------------------- -->\n  \n  <form [formGroup]=\"credential\">\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input formControlName=\"name\" type=\"text\"  placeholder=\"Nom de l'association\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(name.dirty||name.touched)&& name.errors\">min 7 characteres</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n \n  <!-- ------------------- -->\n <ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input formControlName=\"nom_responsable\" type=\"text\" placeholder=\"Nom responsable association\" maxlength=\"45\"></ion-input>\n      <ion-note slot=\"error\" *ngIf=\"(nom_responsable.dirty||nom_responsable.touched)&& nom_responsable.errors\">min 7 characteres</ion-note>\n    </ion-item>\n  </ion-col>\n </ion-row>\n \n  <!-- ------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez le type de l'association\" formControlName=\"type\">\n          <ion-select-option *ngFor=\"let type of typesAssociation\" [value]=\"type\">{{type}}</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(type.dirty||type.touched)&& type.errors\">selectionner le type de votre association</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Secteur d'activite\" formControlName=\"category\">\n          <ion-select-option *ngFor=\"let categorie of categoriesAssociation\" [value]=\"categorie\">{{categorie}}</ion-select-option>\n          <ion-note slot=\"error\" *ngIf=\"(category.dirty||category.touched)&& category.errors\">selectionnez une categorie </ion-note>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-text style=\"font-weight:bold\" slot=\"start\">\n          {{codeContactAssociation}}\n        </ion-text>\n        <ion-input placeholder=\"Votre contact\" type=\"number\" formControlName=\"contact\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(contact.dirty||contact.touched)&& contact.errors\">contact invalide</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n<!-- ---------------------- -->\n\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Code Secret\" formControlName=\"password\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Confirmez Code secret\" formControlName=\"password_confirmation\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<!-- ------------ -->\n<ion-item lines=\"none\" (click)=\"locationSheet()\">\n  <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"latitudeAssociation==null || longitudeAssociation==null\"></ion-icon>\n  <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"danger\" size=\"large\" *ngIf=\"latitudeAssociation!=null || longitudeAssociation!=null\"></ion-icon>\n  <ion-icon name=\"location\" color=\"danger\"></ion-icon>\n  <ion-text style=\"margin-left:10px\">{{adresseAssociation}}</ion-text>\n  <ion-icon name=\"chevron-forward-outline\"  color=\"medium\" slot=\"end\"></ion-icon>\n</ion-item>\n<!-- ------------ -->\n</form>\n</ion-content>\n<ion-footer>\n  <ion-card-subtitle style=\"color:grey\" class=\"ion-margin\">\n    Une fois le processus de creation termine , l'association ne sera valide qu'apres un controle des documents faits par les administrateurs de la plateforme.Ce processud de verification peux prendre 1 semaine apres quoi votre association sera disponible suir la plateforme\n    </ion-card-subtitle>\n    <ion-card style=\"width:100%;margin:0\">\n    <ion-button expand=\"block\" color=\"danger\" (click)=\"createAssociation()\"  class=\"ion-margin\" >Creer Association </ion-button>\n    </ion-card>\n</ion-footer>\n";
 
 /***/ })
 
