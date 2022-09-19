@@ -34,8 +34,8 @@
   
   <ion-item lines="none" *ngIf="donateur!=null && receiver!=null"  >
     <ion-thumbnail [routerLink]="['/profil-donateur',id!=donat_id?donateur.id:receiver.id]">
-      <img style="border-radius:10px" *ngIf="id!=donat_id" [src]="donateur.media.length>0?storage+donateur.media[0].filePath:'assets/images/user.png'" >
-      <img style="border-radius:10px" *ngIf="id==donat_id" [src]="receiver.media.length>0?storage+receiver.media[0].filePath:'assets/images/user.png'" >
+      <img style="border-radius:10px" *ngIf="id!=donat_id" [src]="donateur.media.length>0?storage+donateur.media[donateur.media.length-1].filePath:'assets/images/user.png'" >
+      <img style="border-radius:10px" *ngIf="id==donat_id" [src]="receiver.media.length>0?storage+receiver.media[receiver.media.length-1].filePath:'assets/images/user.png'" >
     </ion-thumbnail>
     <ion-col [routerLink]="['/profil-donateur',id!=donat_id?donateur.id:receiver.id]">
       <ion-row>
@@ -213,9 +213,13 @@
   <ion-item>
     <ion-icon name="add-outline" slot="start" size="large" color="danger"></ion-icon>
     
-    <ion-textarea maxRows="4" [(ngModel)]="new_message"  placeholder="Votre message" style="margin:0"></ion-textarea>
-    
-    <ion-icon  *ngIf="new_message.length>1" name="paper-plane-outline" size="large" slot="end" color="danger" (click)="addMessage()" ></ion-icon>
+    <ion-textarea maxRows="4" [(ngModel)]="new_message"  placeholder="Votre message" style="margin:0;padding-top:3%"></ion-textarea>
       
+    <ion-button shape="circle" *ngIf="new_message.length>0" (click)="addMessage()" slot="end" color="danger" style="margin-top:4%">
+      <ion-icon size="large" name="paper-plane-outline"></ion-icon>
+    </ion-button>
+    <ion-button shape="circle" *ngIf="new_message.length<1" slot="end" color="medium" style="margin-top:4%">
+      <ion-icon size="large" name="paper-plane-outline"></ion-icon>
+    </ion-button>
   </ion-item>
 </ion-footer>

@@ -322,6 +322,30 @@ export class ManageDataService {
     return this.http.post<any>(api,data,{headers:headers});
 
   }
+  public addAssociationMember(id_donateur:number,id_association:number):Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const data={
+    }
+    const api = environment.apiURL+`/addAssociationMember/${id_donateur}/${id_association}}`;
+    return this.http.post<any>(api,data,{headers:headers});
+  }
+  public rejectAssociationMember(id_donateur:number,id_association:number):Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const data={
+    }
+    const api = environment.apiURL+`/rejectAssociationMember/${id_donateur}/${id_association}}`;
+    return this.http.post<any>(api,data,{headers:headers});
+  }
   /*---------------------------ANNONCES_ASSOCIATIONS---------------------------_*/
   public getAnnonces():Observable<any>{
     const headers = new HttpHeaders({

@@ -848,41 +848,30 @@ let MediasService = class MediasService {
     this.http = http;
   }
 
-  uploadImageDon(token, credential) {
+  uploadImageProfil(token, credential) {
     var _this = this;
 
     console.log(credential.files);
-    return new Promise((resolve, reject) => {
-      try {
-        var i = 0;
-        var max = credential.files.length;
-        credential.files.forEach( /*#__PURE__*/function () {
-          var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
-            const res = yield fetch(file.data);
-            const blob = yield res.blob();
-            const formData = new FormData();
-            formData.append('file', blob, file.path);
-            formData.append('don_id', credential.don_id);
-            setTimeout(() => {
-              _this.uploadData(formData, token).toPromise().then(data => {
-                i += 1;
-                console.log(`image ${i} uploaded successfully`);
-                i >= max ? resolve('success') : null;
-              });
-            }, 3000);
-          });
+    return new Promise( /*#__PURE__*/function () {
+      var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resolve, reject) {
+        const res = yield fetch(credential.files.data);
+        const blob = yield res.blob();
+        const formData = new FormData();
+        formData.append('file', blob, credential.files.path);
+        formData.append('donateur_id', credential.donateur_id);
 
-          return function (_x) {
-            return _ref.apply(this, arguments);
-          };
-        }());
-      } catch (err) {
-        reject(err);
-      }
-    });
+        _this.uploadData(formData, token).toPromise().then(data => {
+          resolve('success');
+        });
+      });
+
+      return function (_x, _x2) {
+        return _ref.apply(this, arguments);
+      };
+    }());
   }
 
-  uploadImageAssociation(token, credential) {
+  uploadImageDon(token, credential) {
     var _this2 = this;
 
     console.log(credential.files);
@@ -896,7 +885,7 @@ let MediasService = class MediasService {
             const blob = yield res.blob();
             const formData = new FormData();
             formData.append('file', blob, file.path);
-            formData.append('association_id', credential.association_id);
+            formData.append('don_id', credential.don_id);
             setTimeout(() => {
               _this2.uploadData(formData, token).toPromise().then(data => {
                 i += 1;
@@ -906,8 +895,76 @@ let MediasService = class MediasService {
             }, 3000);
           });
 
-          return function (_x2) {
+          return function (_x3) {
             return _ref2.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadImageAssociation(token, credential) {
+    var _this3 = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('association_id', credential.association_id);
+            setTimeout(() => {
+              _this3.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x4) {
+            return _ref3.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadImageMouvement(token, credential) {
+    var _this4 = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('mouvement_id', credential.mouvement_id);
+            setTimeout(() => {
+              _this4.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x5) {
+            return _ref4.apply(this, arguments);
           };
         }());
       } catch (err) {
@@ -923,32 +980,6 @@ let MediasService = class MediasService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.post(api, formData);
-  }
-
-  uploadImageProfil(token, credential) {
-    var _this3 = this;
-
-    console.log(credential.files);
-    return new Promise( /*#__PURE__*/function () {
-      var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (resolve, reject) {
-        const res = yield fetch(credential.files.data);
-        const blob = yield res.blob();
-        const formData = new FormData();
-        console.log('this is credential');
-        console.log(credential.files.path);
-        console.log(credential.donateur_id);
-        formData.append('file', blob, credential.files.path);
-        formData.append('donateur_id', credential.donateur_id);
-
-        _this3.uploadData(formData, token);
-
-        resolve('success');
-      });
-
-      return function (_x3, _x4) {
-        return _ref3.apply(this, arguments);
-      };
-    }());
   }
 
 };

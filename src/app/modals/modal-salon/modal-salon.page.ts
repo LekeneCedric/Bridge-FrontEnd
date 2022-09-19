@@ -40,7 +40,7 @@ export class ModalSalonPage implements OnInit {
             id_donateur:room.id_donateur,
             id_receiver:room.id_receiver,
             id_don:room.id_don,
-            reic_img:data.media.lenght>0?data.media:'assets/images/user.png',
+            reic_img:data.media.lenght>0?data.media[data.media.length-1]:'assets/images/user.png',
             reic_name:data.name,
             reic_contact:data.contact
           })

@@ -1,10 +1,14 @@
 
 <ion-content>
+  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
   <ion-grid *ngIf="MesInfo!=null">
     <ion-item style="width:100%;"lines="none" 
     [routerLink]="['/profil-donateur',Id]">
       <ion-thumbnail slot="start" >
-        <img style="border-radius:10px" [src]="MesInfo.media.length>0?Storage+MesInfo.media[0].filePath:'../../../../assets/images/user.png'" />
+        <img style="border-radius:10px" [src]="MesInfo.media.length>0?Storage+MesInfo.media[MesInfo.media.length-1].filePath:'../../../../assets/images/user.png'" />
       </ion-thumbnail>
       <ion-col style="text-align: left">
         <ion-row>
@@ -46,7 +50,7 @@
     <ion-grid class="ion-margin-top">
       <ion-text color="medium" style="margin-left:4%;font-weight: bold">Associations</ion-text>
       <ion-item lines="none" style="padding-bottom:1%;border-bottom: 1px solid rgb(195, 195, 195);"(click)="removeTabs()" [routerLink]="['mes-associations',Id]">
-        <ion-text slot="start" >Mes Associations</ion-text>
+        <ion-text slot="start" >Associations</ion-text>
         <ion-icon name="body-outline" size="large" slot="end" color="primary"></ion-icon>
       </ion-item> 
     </ion-grid>

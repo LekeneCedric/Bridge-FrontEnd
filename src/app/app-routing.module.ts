@@ -94,6 +94,22 @@ const routes: Routes = [
     path: 'modal-annonces',
     loadChildren: () => import('./modals/modal-annonces/modal-annonces.module').then( m => m.ModalAnnoncesPageModule)
   },
+  {
+    path: 'modal-demandes-adhesion-association',
+    loadChildren: () => import('./modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.module').then( m => m.ModalDemandesAdhesionAssociationPageModule)
+  },
+  {
+    path: 'creation-annonces/:id_association',
+    loadChildren: () => import('./pages/creation/creation-annonces/creation-annonces.module').then( m => m.CreationAnnoncesPageModule)
+  },
+  {
+    path: 'creation-besoins/:id_association',
+    loadChildren: () => import('./pages/creation/creation-besoins/creation-besoins.module').then( m => m.CreationBesoinsPageModule)
+  },
+  {
+    path: 'creation-mouvements/:id_association',
+    loadChildren: () => import('./pages/creation/creation-mouvements/creation-mouvements.module').then( m => m.CreationMouvementsPageModule)
+  },
 ];
 @NgModule({
   imports: [

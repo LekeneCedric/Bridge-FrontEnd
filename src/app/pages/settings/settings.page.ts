@@ -38,6 +38,12 @@ export class SettingsPage implements OnInit {
    private storage = environment.storage;
   /*------------------------------FUNCTIONS------------------------------*/
 
+  doRefresh(event){
+    setTimeout(()=>{
+     this.ngOnInit(); 
+     event.target.complete();
+    },500)
+   }
   removeTabs(){
     const tabBar = document.getElementById('app-tab-bar');
     if (tabBar !== null) {

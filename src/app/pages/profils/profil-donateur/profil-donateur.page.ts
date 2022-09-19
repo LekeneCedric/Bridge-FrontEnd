@@ -63,7 +63,7 @@ export class ProfilDonateurPage implements OnInit {
         user:this.userInfo
       },
       breakpoints:[0,1],
-      initialBreakpoint:0.65,
+      initialBreakpoint:0.8,
       animated:true,
       handle:true
     });

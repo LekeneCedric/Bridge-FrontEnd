@@ -1,0 +1,40 @@
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-icon name="chevron-back-outline" size="large" slot="start" color="primary" (click)="navBack()"></ion-icon>
+  </ion-item>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="primary">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button color="light" [routerLink]="['/creation-mouvements',idAssociation]">
+        <ion-icon name="calendar-outline"  color="success"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="warning" [routerLink]="['/creation-annonces',idAssociation]">
+        <ion-icon name="megaphone-outline"  color="light"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" [routerLink]="['/creation-besoins',idAssociation]">
+        <ion-icon name="thumbs-up-outline"  color="primary"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" >
+        <ion-icon name="person-add-outline"  color="primary"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+ <!--  -->
+ <ion-item lines="none" (click)="openModalDemandesAdhesion()">
+  <ion-icon name="receipt-outline" slot="start" color="primary"></ion-icon>
+  <ion-text slot="start">Demandes d'adhesion</ion-text>
+  <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+ </ion-item>
+
+ <ion-item lines="none">
+  <ion-icon name="person-add-outline" slot="start" color="success"></ion-icon>
+  <ion-text slot="start">Ajouter membres</ion-text>
+  <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+ </ion-item>
+ 
+ 
+</ion-content>

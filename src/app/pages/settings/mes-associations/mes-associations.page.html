@@ -6,14 +6,15 @@
 </ion-header>
 
 <ion-content class="ion-padding-top">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
   <div *ngFor="let item of associations">
-
-  
-  <ion-item style="width:100%;margin-bottom:2%"lines="none" [routerLink]="['/details-association',item.id]">
-    <ion-thumbnail slot="start" >
+  <ion-item style="width:100%;margin-bottom:2%"lines="none">
+    <ion-thumbnail slot="start" [routerLink]="['/details-association',item.id]">
       <img style="border-radius:10px" [src]="item.media.length>0?storage+item.media[0].filePath:'../../../../assets/images/community.png'" />
     </ion-thumbnail>
-    <ion-col style="text-align: left;margin:0;padding:0">
+    <ion-col style="text-align: left;margin:0;padding:0" [routerLink]="['/details-association',item.id]">
       <ion-row style="display:flex">
        <ion-text style="font-weight: bold">{{item.name}}</ion-text>
        
@@ -25,15 +26,18 @@
         <ion-text style="color:gray">Creer depuis le {{item.created_at|date:'dd/mm/yyyy'}}</ion-text>
       </ion-row>
     </ion-col>
-      <ion-chip color="success" style="text-align:left;padding:0" class="ion-justify-content-center"> 
-        <ion-icon name="pulse-outline" style="margin-right:10px" *ngIf="item.attente.includes(Id)">
-        </ion-icon></ion-chip>
-        <ion-chip color="primary" style="text-align:left;padding:0" class="ion-justify-content-center"> 
-          <ion-icon name="people-outline" style="margin-right:10px" *ngIf="item.idDonateurs.includes(Id)">
-          </ion-icon></ion-chip>
-          <ion-chip color="success" style="text-align:left;padding:0" class="ion-justify-content-center"> 
-            <ion-icon name="person-add-outline" style="margin-right:10px" *ngIf="!item.idDonateurs.includes(Id)&&!item.attente.includes(Id)">
-            </ion-icon></ion-chip>
+      <ion-chip (click)="rejectDemand(item.id)" *ngIf="item.attenteId.includes(Id)" color="success" style="text-align:left;padding:0" class="ion-justify-content-center"> 
+        <ion-icon name="pulse-outline" style="margin-right:10px" >
+        </ion-icon>
+      </ion-chip>
+        <ion-chip (click)="iAmMember()" color="primary" style="text-align:left;padding:0" class="ion-justify-content-center" *ngIf="item.idDonateurs.includes(Id)"> 
+          <ion-icon name="people-outline" style="margin-right:10px" >
+          </ion-icon>
+        </ion-chip>
+          <ion-chip color="success" (click)="sendDemand(item.id)" style="text-align:left;padding:0" class="ion-justify-content-center" *ngIf="!item.idDonateurs.includes(Id)&&!item.attenteId.includes(Id)"> 
+            <ion-icon name="person-add-outline" style="margin-right:10px" >
+            </ion-icon>
+          </ion-chip>
   </ion-item>
 </div>
 

@@ -1,0 +1,21 @@
+<ion-content class="ion-padding">
+    <ion-icon name="exit-outline"color="danger" size="large" (click)="cancel()"></ion-icon>
+    <ion-grid *ngIf="Association!=null">
+    <ion-list>
+      <ion-item *ngIf="Association.attentes.length<1" lines="none">
+        <ion-icon name="happy-outline" size="large" slot="start"></ion-icon>
+        <ion-text>Aucune demande actuellement</ion-text>
+      </ion-item>
+    <ion-item *ngFor="let user of Association.attentes" lines="none" [routerLink]="['/profil-donateur',user.id]" style="margin-bottom:0.5px dashed rgb(200, 200, 200)">
+      <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+      <ion-text slot="start" style="font-weight:bold">{{user.name}}</ion-text>
+      <ion-chip (click)="acceptDemand(user.id)" slot="end" color="success" style="text-align:left;padding:0" class="ion-justify-content-center"> 
+        <ion-icon name="checkmark-outline" style="margin-right:10px"></ion-icon>
+      </ion-chip>
+      <ion-chip (click)="rejectDemand(user.id)" slot="end" color="danger" style="text-align:left;padding:0" class="ion-justify-content-center"> 
+        <ion-icon name="close-outline" style="margin-right:10px"></ion-icon>
+      </ion-chip>
+    </ion-item>
+    </ion-list>
+  </ion-grid>
+</ion-content>

@@ -1,24 +1,9 @@
 
 <ion-content>
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="Association!=null && Association.idDonateurs.includes(Id)==true">
-    <ion-fab-button color="primary">
-      <ion-icon name="add-outline"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="start">
-      <ion-fab-button color="light" routerLink="/creation-dons">
-        <ion-icon name="calendar-outline" size="large" color="success"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="warning" routerLink="/creation-demandes">
-        <ion-icon name="megaphone-outline" size="large" color="light"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light" routerLink="/creation-demandes">
-        <ion-icon name="person-add-outline" size="large" color="primary"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>
+ 
   <ion-item lines="none">
     <ion-icon name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
-    <ion-button shape="circle"slot="end" color="primary" *ngIf="Association!=null && Association.idDonateurs.includes(Id)==true">
+    <ion-button [routerLink]="['administration-association',Association.id]" shape="circle"slot="end" color="primary" *ngIf="Association!=null && Association.idDonateurs.includes(Id)==true">
       <ion-icon size="large" name="cog-sharp"></ion-icon>
     </ion-button>
   </ion-item>
@@ -40,16 +25,16 @@
     </ion-col>
   </ion-item>
   <ion-row *ngIf="Association!=null" style="width:100%;display: flex;border-bottom: 1px dashed rgb(207, 207, 207);border-top: 1px dashed rgb(207, 207, 207)" >
-    <ion-col style="text-align: center;margin-top:2%"*ngIf="Association.attente.includes(Id)!=true && Association.idDonateurs.includes(Id)!=true" >
+    <ion-col style="text-align: center;margin-top:2%"*ngIf="Association.attenteId.includes(Id)!=true && Association.idDonateurs.includes(Id)!=true" >
       <ion-text style="width:100%;height:100%;vertical-align: middle;">Devenir un membre </ion-text>
     </ion-col>
     <ion-col style="text-align: center">
-      <ion-button color="danger" *ngIf="Association.attente.includes(Id)!=true && Association.idDonateurs.includes(Id)!=true">
+      <ion-button color="danger" *ngIf="Association.attenteId.includes(Id)!=true && Association.idDonateurs.includes(Id)!=true">
         <ion-text>
           Membre
         </ion-text>
       </ion-button>
-      <ion-text color="success" *ngIf="Association.attente.includes(Id)==true">
+      <ion-text color="success" *ngIf="Association.attenteId.includes(Id)==true">
          Demande d'adhesion envoye 
       </ion-text>
       <ion-text color="primary" *ngIf="Association.idDonateurs.includes(Id)==true">
@@ -120,13 +105,13 @@
 
   <ion-row>
     <ion-item lines="none">
-        <ion-button shape="circle" (click)="buttonClicked()">
-          <ion-icon size="large" name="call-sharp"></ion-icon>
+        <ion-button shape="circle">
+          <ion-icon size="large" name="call-outline"></ion-icon>
         </ion-button>
-        <ion-button shape="circle" (click)="buttonClicked()" color="success">
+        <ion-button shape="circle" color="success">
           <ion-icon size="large" name="logo-whatsapp"></ion-icon>
         </ion-button>
-        <ion-button shape="circle" (click)="buttonClicked()" color="success">
+        <ion-button shape="circle" color="primary">
           <ion-icon size="large" name="chatbox-ellipses-outline"></ion-icon>
         </ion-button>
     </ion-item>

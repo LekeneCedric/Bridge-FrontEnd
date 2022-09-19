@@ -45,6 +45,120 @@ ModalAnnoncesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
+/***/ 2111:
+/*!********************************************************************************************************!*\
+  !*** ./src/app/modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.page.ts ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ModalDemandesAdhesionAssociationPage": () => (/* binding */ ModalDemandesAdhesionAssociationPage)
+/* harmony export */ });
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _modal_demandes_adhesion_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-demandes-adhesion-association.page.html?ngResource */ 1839);
+/* harmony import */ var _modal_demandes_adhesion_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-demandes-adhesion-association.page.scss?ngResource */ 4786);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+
+
+
+
+
+
+
+let ModalDemandesAdhesionAssociationPage = class ModalDemandesAdhesionAssociationPage {
+  constructor(manageDataService, modalCtrl, toast) {
+    this.manageDataService = manageDataService;
+    this.modalCtrl = modalCtrl;
+    this.toast = toast;
+    this.Association = null;
+  }
+
+  ngOnInit() {
+    this.manageDataService.getOneAssociation(this.id_association).toPromise().then(data => {
+      this.Association = data;
+    }).catch(() => {
+      this.cancel();
+    });
+  }
+
+  cancel() {
+    return this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  rejectDemand(id_donateur) {
+    var _this = this;
+
+    this.manageDataService.rejectAssociationMember(id_donateur, this.id_association).toPromise().then( /*#__PURE__*/function () {
+      var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
+        const toast = _this.toast.create({
+          message: `demande rejete`,
+          icon: 'information-circle',
+          duration: 1000,
+          color: "danger"
+        });
+
+        _this.ngOnInit();
+
+        (yield toast).present();
+      });
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+  }
+
+  acceptDemand(id_donateur) {
+    var _this2 = this;
+
+    this.manageDataService.addAssociationMember(id_donateur, this.id_association).toPromise().then( /*#__PURE__*/function () {
+      var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
+        const toast = _this2.toast.create({
+          message: `demande accpte`,
+          icon: 'information-circle',
+          duration: 1000,
+          color: "success"
+        });
+
+        _this2.ngOnInit();
+
+        (yield toast).present();
+      });
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+  }
+
+};
+
+ModalDemandesAdhesionAssociationPage.ctorParameters = () => [{
+  type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__.ManageDataService
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController
+}];
+
+ModalDemandesAdhesionAssociationPage.propDecorators = {
+  id_association: [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_5__.Input
+  }]
+};
+ModalDemandesAdhesionAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
+  selector: 'app-modal-demandes-adhesion-association',
+  template: _modal_demandes_adhesion_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  styles: [_modal_demandes_adhesion_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
+})], ModalDemandesAdhesionAssociationPage);
+
+
+/***/ }),
+
 /***/ 192:
 /*!******************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.ts ***!
@@ -341,7 +455,7 @@ let ModalSalonPage = class ModalSalonPage {
                     id_donateur: room.id_donateur,
                     id_receiver: room.id_receiver,
                     id_don: room.id_don,
-                    reic_img: data.media.lenght > 0 ? data.media : 'assets/images/user.png',
+                    reic_img: data.media.lenght > 0 ? data.media[data.media.length - 1] : 'assets/images/user.png',
                     reic_name: data.name,
                     reic_contact: data.contact
                 });
@@ -1763,6 +1877,16 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
+/***/ 4786:
+/*!*********************************************************************************************************************!*\
+  !*** ./src/app/modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.page.scss?ngResource ***!
+  \*********************************************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtb2RhbC1kZW1hbmRlcy1hZGhlc2lvbi1hc3NvY2lhdGlvbi5wYWdlLnNjc3MifQ== */";
+
+/***/ }),
+
 /***/ 7587:
 /*!*******************************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.scss?ngResource ***!
@@ -1810,6 +1934,16 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /***/ ((module) => {
 
 module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let annonce of Annonces\" [routerLink]=\"['detailsAnnonce',1]\">\n    <ion-img [src]=\"annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'\"></ion-img>\n    <ion-item style=\"width:100%;\" lines=\"none\" class=\"ion-no-padding ion-no-margin\">\n      <ion-thumbnail class=\"ion-margin-start\" slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row >\n         <ion-text style=\"font-weight: bold\">{{annonce.association.name}}</ion-text>\n        </ion-row >\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\">{{annonce.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-item style=\"width:100%\" lines=\"none\">\n      <ion-text style=\"font-weight:bold;text-align: center;\">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>\n    </ion-item>\n    <ion-item lines=\"none\">\n      <ion-text style=\"color:gray\">\n      {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}\n      </ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" style=\"width:100%;margin-top: 15px;margin-bottom:15px\">\n      <ion-icon name=\"heart-outline\" size=\"large\"></ion-icon>\n      <ion-chip slot=\"end\" color=\"warning\" style=\"padding: 20px;\">\n          <img src=\"../../../../assets/images/gift.png\">\n          <ion-text >Soutenir</ion-text>\n      </ion-chip>\n    </ion-item>\n  </ion-card>\n</ion-content>\n";
+
+/***/ }),
+
+/***/ 1839:
+/*!*********************************************************************************************************************!*\
+  !*** ./src/app/modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.page.html?ngResource ***!
+  \*********************************************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-content class=\"ion-padding\">\n    <ion-icon name=\"exit-outline\"color=\"danger\" size=\"large\" (click)=\"cancel()\"></ion-icon>\n    <ion-grid *ngIf=\"Association!=null\">\n    <ion-list>\n      <ion-item *ngIf=\"Association.attentes.length<1\" lines=\"none\">\n        <ion-icon name=\"happy-outline\" size=\"large\" slot=\"start\"></ion-icon>\n        <ion-text>Aucune demande actuellement</ion-text>\n      </ion-item>\n    <ion-item *ngFor=\"let user of Association.attentes\" lines=\"none\" [routerLink]=\"['/profil-donateur',user.id]\" style=\"margin-bottom:0.5px dashed rgb(200, 200, 200)\">\n      <ion-icon name=\"person-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text slot=\"start\" style=\"font-weight:bold\">{{user.name}}</ion-text>\n      <ion-chip (click)=\"acceptDemand(user.id)\" slot=\"end\" color=\"success\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"checkmark-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n      <ion-chip (click)=\"rejectDemand(user.id)\" slot=\"end\" color=\"danger\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"close-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n    </ion-item>\n    </ion-list>\n  </ion-grid>\n</ion-content>\n";
 
 /***/ }),
 

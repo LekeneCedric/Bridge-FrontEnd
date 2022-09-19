@@ -32,14 +32,14 @@
   <ion-grid *ngIf="userInfo!=null">
   <ion-item style="width:100%;" lines="none">
     <ion-thumbnail class="ion-margin-start" slot="start" class="profil">
-      <img style="border-radius:10px" src="{{userInfo.media.length>0 ? storage+userInfo.media[0].filePath:'assets/images/user.png'}}" />
+      <img style="border-radius:10px" src="{{userInfo.media.length>0 ? storage+userInfo.media[userInfo.media.length-1].filePath:'assets/images/user.png'}}" />
     </ion-thumbnail>
     <ion-col style="text-align: left">
       <ion-row>
        <ion-text style="font-weight: bold;font-size:large">{{userInfo.name}} {{userInfo.surname}}</ion-text>
       </ion-row>
       <ion-row style="margin-top:10px">
-        <ion-text style="color:gray">Membre depuis le {{userInfo.created_at|date:'dd/mm/yyyy'}}</ion-text>
+        <ion-text style="color:gray">Membre depuis <strong>{{userInfo.created_at|date:'YYYY,MMMM'}}</strong></ion-text>
       </ion-row>
     </ion-col>
   </ion-item>

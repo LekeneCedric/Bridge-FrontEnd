@@ -1,0 +1,99 @@
+<ion-content>
+  <ion-toolbar>
+    <ion-icon slot="start" name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
+    <ion-text slot="start" style="margin-left:10px" *ngIf="Association!=null">Mouvement <strong>{{Association.name | slice:0:17}}{{Association.name.length>17?'...':''}}</strong> </ion-text>
+  </ion-toolbar>
+  <ion-grid class="ion-padding">
+
+    <ion-col size="12" style="margin:0;padding:0">
+      <ion-row style="margin:0;padding:0">
+        <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="selectedImages.length<1"></ion-icon>
+        <ion-icon name="checkmark-circle" size="large" color="primary" *ngIf="selectedImages.length>0"></ion-icon>
+        <ion-title style="font-weight:bold">Images</ion-title>
+      </ion-row>
+      <ion-row style="margin-top:2%;padding:0">
+        <ion-item lines="none">
+          <ion-thumbnail slot="start" *ngFor="let image of selectedImages;let i = index" style="position:relative">
+            <ion-fab-button color="danger" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-fab-button>
+            <img [src]="image.data" />
+          </ion-thumbnail>
+          
+          <div class="camera" (click)="getPicture()" *ngIf="selectedImages.length<5">
+            <ion-icon name="camera-outline" size="large" color="medium" ></ion-icon>
+          </div>
+        </ion-item>
+      </ion-row>
+    </ion-col>
+
+   <div style="margin-top:2%"></div>
+
+    <ion-col size="12" style="margin:0;padding:0">
+      <ion-row style="margin:0;padding:0">
+        <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="selectedIntitule=='' || selectedIntitule==null"></ion-icon>
+        <ion-icon name="checkmark-circle" size="large" color="primary" *ngIf="selectedIntitule!=null && selectedIntitule!=''"></ion-icon>
+        <ion-title style="font-weight:bold">Intitule</ion-title>
+      </ion-row>
+      <ion-row style="margin-top:2%;padding:0">
+      <ion-input [(ngModel)]="selectedIntitule" placeholder="ex:marche sportive pour recolte de fonds ...etc" class="input"></ion-input>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-row style="margin:0;padding:0">
+        <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="description==null|| description==''"></ion-icon>
+        <ion-icon name="checkmark-circle" size="large" color="primary" *ngIf="description!=null && description!=''"></ion-icon>
+        <ion-title style="font-weight:bold">Description</ion-title>
+      </ion-row>
+      <ion-row style="margin:0;padding:0">
+        <ion-textarea class="input"  [(ngModel)]="description" placeholder="Aide : Decrivez de maniere detaille l'evenement que vous voulez realiser , son objectif ...etc"
+        maxlength="200" rows="4"></ion-textarea>
+      </ion-row>
+      <ion-row style="width:100%;text-align: right;color:gray;margin-top:2%">
+        <ion-text style="width:100%">200 caractere maximum</ion-text>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-row style="margin:0;padding:0">
+        <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="seletedCategory==null"></ion-icon>
+        <ion-icon name="checkmark-circle" size="large" color="primary" *ngIf="seletedCategory!=null"></ion-icon>
+        <ion-title style="font-weight:bold">Category</ion-title>
+      </ion-row>
+      <ion-row style="margin:0;padding:0">
+      <ion-select  [(ngModel)]="seletedCategory" interface="action-sheet" placeholder="De quel type de mouvement s'agit t'il ? " class="input" style="width:100%;margin-top:2%">
+        <ion-select-option value="Masculin">Masculin</ion-select-option>
+        <ion-select-option value="Feminin">Feminin</ion-select-option>
+      </ion-select>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-row style="margin:0;padding:0">
+        <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="DateDebut==null"></ion-icon>
+        <ion-icon name="checkmark-circle" size="large" color="primary"  *ngIf="DateDebut!=null"></ion-icon>
+        <ion-title style="font-weight:bold">Date/Heure Debut</ion-title>
+      </ion-row>
+      <ion-row style="margin:0;padding:0">
+    <ion-datetime [(ngModel)]="DateDebut" placeholder="Select Date"></ion-datetime>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-row style="margin:0;padding:0">
+        <ion-icon name="ellipse-outline" size="large" color="primary"  *ngIf="DateFin==null"></ion-icon>
+        <ion-icon name="checkmark-circle" size="large" color="primary"  *ngIf="DateFin!=null"></ion-icon>
+        <ion-title style="font-weight:bold">Date/Heure Fin</ion-title>
+      </ion-row>
+      <ion-row style="margin:0;padding:0">
+    <ion-datetime  [(ngModel)]="DateFin"  placeholder="Select Date"></ion-datetime>
+      </ion-row>
+    </ion-col>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-row style="width:100%">
+  <ion-button expand="full"style="width:100%" (click)="createMouvement()">Enregistrez l'evenement</ion-button>
+  </ion-row>
+</ion-footer>

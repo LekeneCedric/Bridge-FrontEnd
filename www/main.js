@@ -110,6 +110,22 @@ const routes = [
         path: 'modal-annonces',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-annonces_modal-annonces_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-annonces/modal-annonces.module */ 5737)).then(m => m.ModalAnnoncesPageModule)
     },
+    {
+        path: 'modal-demandes-adhesion-association',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-demandes-adhesion-association_modal-demandes-adhesion-association_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.module */ 8630)).then(m => m.ModalDemandesAdhesionAssociationPageModule)
+    },
+    {
+        path: 'creation-annonces/:id_association',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_creation_creation-annonces_creation-annonces_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-annonces/creation-annonces.module */ 761)).then(m => m.CreationAnnoncesPageModule)
+    },
+    {
+        path: 'creation-besoins/:id_association',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_creation_creation-besoins_creation-besoins_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-besoins/creation-besoins.module */ 6460)).then(m => m.CreationBesoinsPageModule)
+    },
+    {
+        path: 'creation-mouvements/:id_association',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("src_app_pages_creation_creation-mouvements_creation-mouvements_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-mouvements/creation-mouvements.module */ 4541)).then(m => m.CreationMouvementsPageModule)
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -726,6 +742,28 @@ let ManageDataService = class ManageDataService {
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/appartenances/';
         return this.http.post(api, data, { headers: headers });
     }
+    addAssociationMember(id_donateur, id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const data = {};
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/addAssociationMember/${id_donateur}/${id_association}}`;
+        return this.http.post(api, data, { headers: headers });
+    }
+    rejectAssociationMember(id_donateur, id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const data = {};
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/rejectAssociationMember/${id_donateur}/${id_association}}`;
+        return this.http.post(api, data, { headers: headers });
+    }
     /*---------------------------ANNONCES_ASSOCIATIONS---------------------------_*/
     getAnnonces() {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
@@ -818,8 +856,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiURL: ' http://127.0.0.1:8000/api',
-    storage: 'http://127.0.0.1:8000/storage/',
+    apiURL: ' http://192.168.8.105:8000/api',
+    storage: 'http://192.168.8.105:8000/storage/',
     map: 'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
     // apiURL:'http://192.168.8.105:8000/api'
 };

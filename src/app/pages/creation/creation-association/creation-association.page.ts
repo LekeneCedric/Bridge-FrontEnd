@@ -9,6 +9,7 @@ import { CreationService } from 'src/app/services/creation/creation.service';
 import { MediasService } from 'src/app/services/medias/medias.service';
 import { Geolocation } from '@capacitor/geolocation';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
+import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 
 @Component({
   selector: 'app-creation-association',
@@ -21,7 +22,7 @@ export class CreationAssociationPage implements OnInit {
     private actionSheetController:ActionSheetController,private nativGeocoder:NativeGeocoder,
     private toast:ToastController,private fb:FormBuilder, 
     private createService:CreationService,private mediaService:MediasService,
-    private loadingController:LoadingController,private imagePicker:ImagePicker) { }
+    private loadingController:LoadingController,private imagePicker:ImagePicker,private manageDataService:ManageDataService) { }
 
  ngOnInit() {
     this.credential = this.fb.group({
@@ -116,6 +117,17 @@ export class CreationAssociationPage implements OnInit {
     }
     this.createService.createAssociation(data,localStorage.getItem('token') as string).toPromise().then(
       data=>{
+        console.log(data)
+        let id = JSON.parse(localStorage.getItem('mydata')).id;
+        this.manageDataService.becameAssociationMember(id,data.Association.id).toPromise().then(
+          dat=>{
+            console.log(dat)
+            this.manageDataService.addAssociationMember(id,data.Association.id).toPromise().then(
+              data=>{console.log(data)}
+            );
+          }
+        )
+       
        this.upload_image(data,loading) 
       }
     ).catch(
@@ -171,17 +183,15 @@ export class CreationAssociationPage implements OnInit {
    }
   selectedImages:any[] = [];
 public async getPicture(){
-   let option = {
-    quality:100,maximumImagesCount:10,
-   }
-   this.imagePicker.getPictures(option).then(
-    (images)=>{
-       for(let i=0;i<images.length;i++){
-        console.log(images[i])
-        this.saveImage(images[i])
-       }
-    }
-   )
+  const image = await Camera.getPhoto({
+    resultType: CameraResultType.Uri,
+    source:CameraSource.Camera,
+    quality:100
+  });
+  if(image){
+    console.log(image)
+    this.saveImage(image)
+  }
   }
 public async saveImage(image:any){
   const base64data = await this.readAsBase64(image);

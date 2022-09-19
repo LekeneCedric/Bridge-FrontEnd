@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon name="chevron-back-outline" size="large" color="danger" slot="start" (click)="navBack()"></ion-icon>
+    <ion-icon name="chevron-back-outline" size="large" color="primary" slot="start" (click)="navBack()"></ion-icon>
     <ion-title>creation-association</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -8,12 +8,12 @@
 <ion-content>
 
   <ion-item>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large"></ion-icon>
+    <ion-icon name="checkmark-circle" slot="start" color="primary" size="large"></ion-icon>
     <ion-text>Creation : </ion-text><ion-text style="font-weight: bold">Association</ion-text>
   </ion-item>
   <ion-item lines="none">
     <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedImages.length<1"></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedImages.length>=1"></ion-icon>
+    <ion-icon name="checkmark-circle" slot="start" color="primary" size="large" *ngIf="selectedImages.length>=1"></ion-icon>
     <ion-row><ion-text>Image(s): </ion-text></ion-row>
   </ion-item>
   <ion-row style="width:100%" class="ion-margin-horizontal"> 
@@ -22,7 +22,7 @@
   
   <ion-item lines="none">
     <ion-thumbnail slot="start" *ngFor="let image of selectedImages;let i = index" style="position:relative">
-      <ion-fab-button color="danger" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
+      <ion-fab-button color="primary" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-fab-button>
       <img [src]="image.data" />
@@ -34,12 +34,12 @@
   </ion-item>
   <ion-item lines="none">
     <!-- <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="selectedImages.length<1"></ion-icon>
-    <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="selectedImages.length>=1"></ion-icon> -->
+    <ion-icon name="checkmark-circle" slot="start" color="primary" size="large" *ngIf="selectedImages.length>=1"></ion-icon> -->
     <ion-row><ion-text>Joindre document(s) association: </ion-text></ion-row>
   </ion-item>
   <ion-item lines="none">
     <!-- <ion-thumbnail slot="start" *ngFor="let image of selectedImages;let i = index" style="position:relative">
-      <ion-fab-button color="danger" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
+      <ion-fab-button color="primary" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-fab-button>
       <img [src]="image.data" />
@@ -153,8 +153,8 @@
 <!-- ------------ -->
 <ion-item lines="none" (click)="locationSheet()">
   <ion-icon name="ellipse-outline" slot="start" size="large" *ngIf="latitudeAssociation==null || longitudeAssociation==null"></ion-icon>
-  <ion-icon name="checkmark-circle" slot="start" color="danger" size="large" *ngIf="latitudeAssociation!=null || longitudeAssociation!=null"></ion-icon>
-  <ion-icon name="location" color="danger"></ion-icon>
+  <ion-icon name="checkmark-circle" slot="start" color="primary" size="large" *ngIf="latitudeAssociation!=null || longitudeAssociation!=null"></ion-icon>
+  <ion-icon name="location" color="primary"></ion-icon>
   <ion-text style="margin-left:10px">{{adresseAssociation}}</ion-text>
   <ion-icon name="chevron-forward-outline"  color="medium" slot="end"></ion-icon>
 </ion-item>
@@ -166,6 +166,6 @@
     Une fois le processus de creation termine , l'association ne sera valide qu'apres un controle des documents faits par les administrateurs de la plateforme.Ce processud de verification peux prendre 1 semaine apres quoi votre association sera disponible suir la plateforme
     </ion-card-subtitle>
     <ion-card style="width:100%;margin:0">
-    <ion-button expand="block" color="danger" (click)="createAssociation()"  class="ion-margin" >Creer Association </ion-button>
+    <ion-button expand="block" color="primary" (click)="createAssociation()"  class="ion-margin" >Creer Association </ion-button>
     </ion-card>
 </ion-footer>
