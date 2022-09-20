@@ -87,6 +87,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/details/details-association/details-association.module').then( m => m.DetailsAssociationPageModule)
   },
   {
+    path:'details-annonce/:id',
+    loadChildren:()=> import('./pages/details/details-annonce/details-annonce.module').then(m=>m.DetailsAnnoncePageModule)
+  },
+  {
+    path:'details-evenement/:id',
+    loadChildren:()=>import('./pages/details/details-evenements/details-evenements.module').then(m=>m.DetailsEvenementsPageModule)
+  },
+  {  
     path: 'modal-mouvements',
     loadChildren: () => import('./modals/modal-mouvements/modal-mouvements.module').then( m => m.ModalMouvementsPageModule)
   },
@@ -109,6 +117,14 @@ const routes: Routes = [
   {
     path: 'creation-mouvements/:id_association',
     loadChildren: () => import('./pages/creation/creation-mouvements/creation-mouvements.module').then( m => m.CreationMouvementsPageModule)
+  },
+  {
+    path: 'modal-add-member-association',
+    loadChildren: () => import('./modals/modal-add-member-association/modal-add-member-association.module').then( m => m.ModalAddMemberAssociationPageModule)
+  },
+  {
+    path: 'modal-associations-membres',
+    loadChildren: () => import('./modals/modal-associations-membres/modal-associations-membres.module').then( m => m.ModalAssociationsMembresPageModule)
   },
 ];
 @NgModule({

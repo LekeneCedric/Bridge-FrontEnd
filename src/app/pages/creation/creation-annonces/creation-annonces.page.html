@@ -1,9 +1,66 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>creation-annonces</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content>
 
+  <ion-toolbar>
+    <ion-icon slot="start" name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
+    <ion-text slot="start" style="margin-left:10px" *ngIf="Association!=null">Annonce <strong>{{Association.name | slice:0:17}}{{Association.name.length>17?'...':''}}</strong> </ion-text>
+  </ion-toolbar>
+  <ion-grid style="padding-left:16px;padding-right:16px;padding-bottom:16px;padding-top:0">
+  <ion-col size="12" style="margin:0;padding:0">
+    <ion-row style="margin:0;padding:0">
+      <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="selectedImages.length<1"></ion-icon>
+      <ion-icon name="checkmark-circle" size="large" color="primary" *ngIf="selectedImages.length>0"></ion-icon>
+      <ion-title style="font-weight:bold">Images</ion-title>
+    </ion-row>
+    <ion-row style="margin-top:2%;padding:0">
+      <ion-item lines="none">
+        <ion-thumbnail slot="start" *ngFor="let image of selectedImages;let i = index" style="position:relative">
+          <ion-fab-button color="danger" style="position: absolute; top: 0; right: 0;" size="small" (click)="removeOnImagesList(i)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-fab-button>
+          <img [src]="image.data" />
+        </ion-thumbnail>
+        
+        <div class="camera" (click)="getPicture()" *ngIf="selectedImages.length<5">
+          <ion-icon name="camera-outline" size="large" color="medium" ></ion-icon>
+        </div>
+      </ion-item>
+    </ion-row>
+  </ion-col>
+  <div size="12" class="ion-margin-top"></div>
+  <ion-col size="12" style="margin-top:10px;padding:0">
+    <ion-row style="margin:0;padding:0">
+      <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="title=='' || title==null"></ion-icon>
+      <ion-icon name="checkmark-circle" size="large" color="primary" *ngIf="title!=null && title!=''"></ion-icon>
+      <ion-title style="font-weight:bold">Titre</ion-title>
+    </ion-row>
+    <ion-row style="margin-top:2%;padding:0">
+    <ion-input [(ngModel)]="title" placeholder="ex:marche sportive pour recolte de fonds ...etc" class="input"></ion-input>
+    </ion-row>
+  </ion-col>
+  <div size="12" class="ion-margin-top"></div>
+  <ion-col size="12" style="margin-top:10px;padding:0">
+    <ion-row style="margin:0;padding:0">
+      <ion-icon name="ellipse-outline" size="large" color="primary" *ngIf="intitule=='' || intitule==null"></ion-icon>
+      <ion-icon name="checkmark-circle" size="large" color="primary" *ngIf="intitule!=null && intitule!=''"></ion-icon>
+      <ion-title style="font-weight:bold">Description</ion-title>
+    </ion-row>
+    <ion-row style="margin-top:2%;padding:0">
+      <ion-textarea class="input"  [(ngModel)]="intitule" placeholder="Aide : Decrivez de maniere detaille l'evenement que vous voulez realiser , son objectif ...etc"
+      maxlength="200" rows="4"></ion-textarea>
+    </ion-row>
+  </ion-col>
+</ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-row style="text-align:center;padding:2px">
+    <ion-icon name="help-circle-outline"></ion-icon>
+    <ion-text style="color:rgb(96, 95, 95)">
+      ke a type specimen book. essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+    </ion-text>
+  </ion-row>
+  <ion-row style="width:100%">
+  <ion-button expand="full"style="width:100%" (click)="createAssociation()" [disabled]="!validation">Enregistrez l'annonce</ion-button>
+  </ion-row>
+</ion-footer>

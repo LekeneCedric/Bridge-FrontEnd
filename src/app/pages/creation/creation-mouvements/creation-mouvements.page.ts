@@ -42,6 +42,18 @@ export class CreationMouvementsPage implements OnInit {
   public description:string = null ;
   selectedImages:any[] = [];
   /*---------------------------------FUNCTIONS--------------------------*/
+  get validation():boolean{
+  let res:boolean = false;
+  if(this.selectedImages.length>0&&this.selectedIntitule!=null&&this.description!=null&&this.seletedCategory!=null&&this.DateDebut!=null&&this.DateFin!=null){
+    if(this.selectedIntitule!=''&&this.description!=''){
+      res = true;
+    }
+  }
+  else{
+    res=false;
+  }
+  return res;
+  }
   public async createMouvement(){
     let dateDebut = new Date(this.DateDebut)
     let datefin = new Date(this.DateFin);

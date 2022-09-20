@@ -1,7 +1,8 @@
 
 <ion-content>
-  <ion-item lines="none">
+  <ion-item lines="none" *ngIf="Association!=null">
     <ion-icon name="chevron-back-outline" size="large" slot="start" color="primary" (click)="navBack()"></ion-icon>
+    <ion-text color="medium"> Administration &ensp; <strong style="color:black">{{Association.name | uppercase}}</strong></ion-text>
   </ion-item>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="primary">
@@ -24,14 +25,21 @@
   </ion-fab>
 
  <!--  -->
+
+ <ion-item lines="none" (click)="openModalMembers()">
+  <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+  <ion-text slot="start">Nos Membres</ion-text>
+  <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+ </ion-item>
+
  <ion-item lines="none" (click)="openModalDemandesAdhesion()">
   <ion-icon name="receipt-outline" slot="start" color="primary"></ion-icon>
   <ion-text slot="start">Demandes d'adhesion</ion-text>
   <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
  </ion-item>
 
- <ion-item lines="none">
-  <ion-icon name="person-add-outline" slot="start" color="success"></ion-icon>
+ <ion-item lines="none" (click)="openModalAddMembers()">
+  <ion-icon name="person-add-outline" slot="start" color="primary"></ion-icon>
   <ion-text slot="start">Ajouter membres</ion-text>
   <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
  </ion-item>

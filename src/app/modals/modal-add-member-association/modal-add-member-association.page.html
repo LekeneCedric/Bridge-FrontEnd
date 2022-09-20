@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-item lines="none" class="search-item">
+    <ion-icon name="search-outline" size="large" color="dark"></ion-icon>
+    <ion-input placeholder="Recherche dans les messages" [(ngModel)]="search" ></ion-input>
+    <ion-chip style="padding:0" *ngIf="search.length>0" (click)="search=''">
+      <ion-icon name="close-outline" style="margin-right:30%" color="dark"></ion-icon>
+    </ion-chip>
+  </ion-item>
+  <div *ngFor="let user of non_members">
+    <ion-item  lines="none" style="margin-bottom:0.5px dashed rgb(200, 200, 200)"
+    *ngIf="user.name.toLowerCase().includes(search.toLowerCase()) || user.surname.toLowerCase().includes(search.toLowerCase()) ||
+    user.email.toLowerCase().includes(search.toLowerCase())|| search==''">
+      <ion-icon (click)="cancel()"  name="person-circle-outline" slot="start"  [routerLink]="['/profil-donateur',user.id]"></ion-icon>
+      <ion-text (click)="cancel()" [routerLink]="['/profil-donateur',user.id]" slot="start" style="font-weight:bold">{{user.name}}&ensp;{{user.surname}}</ion-text>
+      <ion-chip slot="end" color="success" (click)="addMember(user.id)" style="text-align:left;padding:0" class="ion-justify-content-center"> 
+        <ion-icon name="person-add-outline" style="margin-right:10px"></ion-icon>
+      </ion-chip>
+    </ion-item>
+  </div>
+  
+
+</ion-content>

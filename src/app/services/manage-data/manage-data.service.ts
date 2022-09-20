@@ -286,6 +286,26 @@ export class ManageDataService {
 
 
   /*-----------------------------------ASSOCIATIONS-----------------------------------------------*/
+  public getAssociationMembersList(id_association):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/association_member_list/${id_association}`;
+    return this.http.get<any>(api,{headers:headers});
+  }
+  public getNonAssociationMemberList(id_association):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/non_association_member_list/${id_association}`;
+    return this.http.get<any>(api,{headers:headers});
+  }
   public getAssociations():Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

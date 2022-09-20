@@ -1,0 +1,20 @@
+
+<ion-content>
+  <div style="margin-top:5%"></div>
+  <ion-item lines="none" class="search-item">
+    <ion-icon name="search-outline" size="large" color="dark"></ion-icon>
+    <ion-input placeholder="Recherche parmis les donateurs" [(ngModel)]="search" ></ion-input>
+    <ion-chip style="padding:0" *ngIf="search.length>0" (click)="search=''">
+      <ion-icon name="close-outline" style="margin-right:30%" color="dark"></ion-icon>
+    </ion-chip>
+  </ion-item>
+  <div *ngFor="let user of members" style="margin-top:2%">
+    <ion-item  lines="none" style="margin-bottom:0.5px dashed rgb(200, 200, 200)"
+    *ngIf="user.donateur.name.toLowerCase().includes(search.toLowerCase()) || user.donateur.surname.toLowerCase().includes(search.toLowerCase()) ||
+    user.donateur.email.toLowerCase().includes(search.toLowerCase())|| search==''">
+      <ion-icon (click)="cancel()"  name="person-circle-outline" size="large" slot="start"  [routerLink]="['/profil-donateur',user.id]"></ion-icon>
+      <ion-text (click)="cancel()"  [routerLink]="['/profil-donateur',user.donateur.id]" slot="start" style="font-weight:bold">{{user.donateur.name}}&ensp;{{user.donateur.surname}}</ion-text>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+  </div>
+</ion-content>

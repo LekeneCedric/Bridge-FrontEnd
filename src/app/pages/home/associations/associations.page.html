@@ -48,8 +48,11 @@
   </ion-segment>
 </ion-header>
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
     <ion-list *ngIf="selectedSegment=='annonces'">
-      <ion-card *ngFor="let annonce of Annonces" [routerLink]="['detailsAnnonce',1]">
+      <ion-card *ngFor="let annonce of Annonces" [routerLink]="['/details-annonce',annonce.id]">
         <ion-img [src]="annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'"></ion-img>
         <ion-item style="width:100%;" lines="none" class="ion-no-padding ion-no-margin">
           <ion-thumbnail class="ion-margin-start" slot="start" >
@@ -82,7 +85,7 @@
       </ion-card>
     </ion-list>
   <ion-grid *ngIf="selectedSegment=='evenements'">
-    <ion-card *ngFor="let event of Mouvements" lines="none" [routerLink]="['detailsEvenement',1]">
+    <ion-card *ngFor="let event of Mouvements" lines="none" [routerLink]="['/details-evenement',event.id]">
       <ion-img [src]="event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'"></ion-img>
       <ion-item style="width:100%;" lines="none">
         <ion-thumbnail slot="start" >

@@ -3,7 +3,7 @@
     <ion-icon slot="start" name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
     <ion-text slot="start" style="margin-left:10px" *ngIf="Association!=null">Mouvement <strong>{{Association.name | slice:0:17}}{{Association.name.length>17?'...':''}}</strong> </ion-text>
   </ion-toolbar>
-  <ion-grid class="ion-padding">
+  <ion-grid style="padding-left:16px;padding-right:16px;padding-bottom:16px;padding-top:0">
 
     <ion-col size="12" style="margin:0;padding:0">
       <ion-row style="margin:0;padding:0">
@@ -94,6 +94,6 @@
 </ion-content>
 <ion-footer>
   <ion-row style="width:100%">
-  <ion-button expand="full"style="width:100%" (click)="createMouvement()">Enregistrez l'evenement</ion-button>
+  <ion-button expand="full"style="width:100%" (click)="createMouvement()" [disabled]="!validation">Enregistrez l'evenement</ion-button>
   </ion-row>
 </ion-footer>

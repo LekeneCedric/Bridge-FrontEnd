@@ -44,4 +44,9 @@ export class AssociationsPage implements OnInit {
   public segmentChanged(event:any){
     this.selectedSegment = event.target.value; 
    }
+   public doRefresh(event){
+    setTimeout(()=>{
+     this.ngOnInit(); 
+     event.target.complete();
+    },500)}
 }
