@@ -286,6 +286,16 @@ export class ManageDataService {
 
 
   /*-----------------------------------ASSOCIATIONS-----------------------------------------------*/
+  public getGalerieAssociation(id_association:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/galerieAssociation/${id_association}`;
+    return this.http.get<any>(api,{headers:headers});
+  }
   public getAssociationMembersList(id_association):Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -397,7 +407,47 @@ export class ManageDataService {
     const api = environment.apiURL+'/annonces/';
     return this.http.post<any>(api,credential,{headers:headers});
   }
+  public getAnnoncesAssociation(id_association:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+'/annoncesassociation/'+`${id_association}`;
+    return this.http.get<any>(api,{headers:headers});
+  }
   /*---------------------------MOUVEMENTS_ASSOCIATIONS---------------------------_*/
+  public imParticipate(myId:number,mouvementId:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/imParticipate/${myId}/${mouvementId}`;
+    return this.http.get<any>(api,{headers:headers});
+  }
+  public annulerParticipation(myId:number, mouvementId:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/annulerParticipation/${myId}/${mouvementId}`;
+    return this.http.post<any>(api,{},{headers:headers});
+  }
+  public participerMouvement(credential):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+'/participations/';
+    return this.http.post<any>(api,credential,{headers:headers});
+  }
   public getMouvements():Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -427,6 +477,16 @@ export class ManageDataService {
     });
     const api = environment.apiURL+'/mouvements/';
     return this.http.post<any>(api,credential,{headers:headers});
+  }
+  public getMouvementsAssociation(id_association:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+'/mouvementsassociation/'+`${id_association}`;
+    return this.http.get<any>(api,{headers:headers});
   }
   
 }

@@ -65,7 +65,15 @@ export class CreationAnnoncesPage implements OnInit {
       (data)=>{
         this.upload_image(data,loading)
       }
-    )
+    ).catch(async (err)=>{
+      const toast = this.toast.create({
+        message:`${err.message}`,
+        icon: 'information-circle',
+        duration:2000,
+        color:"danger"
+      });
+      (await (toast)).present();  
+    })
   }
 
   public upload_image(data:any,loading){

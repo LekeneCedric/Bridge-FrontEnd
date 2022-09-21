@@ -10,50 +10,47 @@
         <ion-icon name="heart-outline" size="large" slot="end"></ion-icon>
       </ion-fab-button>
     </ion-fab>
-
-    
     </ion-row>
-    <ion-card style="width: 100%;padding:0;margin:0">
-      <ion-img src="https://www.dreamhost.com/blog/wp-content/uploads/2019/06/afa314e6-1ae4-46c5-949e-c0a77f042e4f_DreamHost-howto-prod-descrips-full-750x500.jpeg"></ion-img>
-     </ion-card>
-     <ion-grid style="width: 100%;padding:0;margin:0">
-        <ion-item lines="none" style="margin-top:10px">
-          <ion-text style="font-weight: bold;font-size:1.3em">L'orphelinat qui s'est transforme</ion-text>
-        </ion-item>
-        <ion-item>
-          <ion-text style="color:gray;"> publie il y'a 4 heures</ion-text>
-        </ion-item>
-          <ion-item lines="none" style="margin:0;padding:0">
-            <ion-col size="12" style="margin:0;padding:0">
-            <ion-text style="color:gray;margin-top:10px ;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in</ion-text>
-            </ion-col>
+    <div *ngIf="Annonce!=null">
+        <ion-slides pager="true" [options]="slideOpts" *ngIf="Annonce!=null">
+          <ion-slide *ngFor="let img of Annonce.media" style="max-height:150px">
+            <ion-img
+            [src]="storage+img.filePath"
+              class="imgProduct"></ion-img>
+          </ion-slide>
+          <ion-slide *ngIf="Annonce.media.length<1" style="background-image:url('../../../../assets/images/empty.webp')">
+          </ion-slide>
+        </ion-slides>
+       <ion-grid style="width: 100%;padding:0;margin:0">
+          <ion-item lines="none" style="margin-top:10px;--background:#3880ff">
+            <ion-text style="font-weight: bold;font-size:1.3em" color="light">{{Annonce.title}}</ion-text>
           </ion-item>
-          <ion-item style="width:100%;margin-top:15px" lines="none">
-            <ion-thumbnail slot="start" >
-              <img style="border-radius:10px" src="https://i.pinimg.com/564x/44/9e/5e/449e5e93c14f34fb7b90559e4f9908ab.jpg" />
-            </ion-thumbnail>
-            <ion-col style="text-align: left">
-              <ion-row>
-               <ion-text style="font-weight: bold">Les Armandins </ion-text>
-              </ion-row>
-              <ion-row>
-                <ion-text style="color:gray"> association carritative</ion-text>
-              </ion-row>
-            </ion-col>
-            <ion-icon name="chevron-forward-outline" size="large" slot="end"></ion-icon>
+          <ion-item>
+            <ion-text style="color:#3880ff;"> publie&ensp;<strong >{{elapsedTime}}</strong> </ion-text>
           </ion-item>
-     </ion-grid>
-     <div style="margin-bottom:10%"></div>
+            <ion-item lines="none" style="margin:0;padding:0;margin-top:5%">
+              <ion-col size="12" style="margin:0;padding:0">
+              <ion-text style="color:gray;margin-top:10px ;">{{Annonce.intitule}}</ion-text>
+              </ion-col>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-icon name="heart-outline" slot="end"></ion-icon>
+            </ion-item>
+            
+       </ion-grid>
+       <div style="margin-bottom:10%"></div>
+    </div>
+   
 </ion-content>
 <ion-card style="padding:0;margin:0">
   <ion-row>
-    <ion-col size="2">
+    <ion-col size="2" *ngIf="Annonce!=null">
       <ion-thumbnail>
-      <img style="border-radius:10px" src="https://i.pinimg.com/564x/44/9e/5e/449e5e93c14f34fb7b90559e4f9908ab.jpg" />
+      <img style="border-radius:10px" [src]="Annonce.association.media.length>0?storage+Annonce.association.media[0].filePath:'../../../../assets/images/community.png'" />
       </ion-thumbnail>
     </ion-col>
-    <ion-col size="5"class="ion-margin-top">
-            <ion-text style="font-weight: bold">Les Armandins </ion-text>
+    <ion-col size="5"class="ion-margin-top" *ngIf="Annonce!=null">
+            <ion-text style="font-weight: bold;color: black;font-size: 1.3em;">{{Annonce.association.name}}</ion-text>
     </ion-col>
     <ion-col size="5">
       <ion-chip color="warning" style="padding: 20px;">

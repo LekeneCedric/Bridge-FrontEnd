@@ -9,6 +9,16 @@ import { environment } from 'src/environments/environment';
 export class MediasService {
 
   constructor(private http:HttpClient) { }
+  public getOneMedia(id:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/medias/${id}`;
+    return this.http.get<any>(api,{headers:headers});
+  }
   public uploadImageProfil(token:string,credential:any): Promise<any>{
    
     console.log(credential.files)

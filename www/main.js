@@ -103,6 +103,14 @@ const routes = [
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_details_details-association_details-association_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/details/details-association/details-association.module */ 5241)).then(m => m.DetailsAssociationPageModule)
     },
     {
+        path: 'details-annonce/:id',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("src_app_pages_details_details-annonce_details-annonce_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/details/details-annonce/details-annonce.module */ 328)).then(m => m.DetailsAnnoncePageModule)
+    },
+    {
+        path: 'details-evenement/:id',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("src_app_pages_details_details-evenements_details-evenements_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/details/details-evenements/details-evenements.module */ 3077)).then(m => m.DetailsEvenementsPageModule)
+    },
+    {
         path: 'modal-mouvements',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_modals_modal-mouvements_modal-mouvements_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-mouvements/modal-mouvements.module */ 3665)).then(m => m.ModalMouvementsPageModule)
     },
@@ -116,7 +124,7 @@ const routes = [
     },
     {
         path: 'creation-annonces/:id_association',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_creation_creation-annonces_creation-annonces_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-annonces/creation-annonces.module */ 761)).then(m => m.CreationAnnoncesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("src_app_pages_creation_creation-annonces_creation-annonces_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-annonces/creation-annonces.module */ 761)).then(m => m.CreationAnnoncesPageModule)
     },
     {
         path: 'creation-besoins/:id_association',
@@ -125,6 +133,10 @@ const routes = [
     {
         path: 'creation-mouvements/:id_association',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("src_app_pages_creation_creation-mouvements_creation-mouvements_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-mouvements/creation-mouvements.module */ 4541)).then(m => m.CreationMouvementsPageModule)
+    },
+    {
+        path: 'modal-galerie-association/:id',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_modals_modal-galerie-association_modal-galerie-association_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-galerie-association/modal-galerie-association.module */ 1945)).then(m => m.ModalGalerieAssociationPageModule)
     },
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -707,6 +719,36 @@ let ManageDataService = class ManageDataService {
         return this.http.get(api, { headers: headers });
     }
     /*-----------------------------------ASSOCIATIONS-----------------------------------------------*/
+    getGalerieAssociation(id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/galerieAssociation/${id_association}`;
+        return this.http.get(api, { headers: headers });
+    }
+    getAssociationMembersList(id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/association_member_list/${id_association}`;
+        return this.http.get(api, { headers: headers });
+    }
+    getNonAssociationMemberList(id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/non_association_member_list/${id_association}`;
+        return this.http.get(api, { headers: headers });
+    }
     getAssociations() {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
             'Content-Type': 'application/json',
@@ -795,7 +837,47 @@ let ManageDataService = class ManageDataService {
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annonces/';
         return this.http.post(api, credential, { headers: headers });
     }
+    getAnnoncesAssociation(id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annoncesassociation/' + `${id_association}`;
+        return this.http.get(api, { headers: headers });
+    }
     /*---------------------------MOUVEMENTS_ASSOCIATIONS---------------------------_*/
+    imParticipate(myId, mouvementId) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/imParticipate/${myId}/${mouvementId}`;
+        return this.http.get(api, { headers: headers });
+    }
+    annulerParticipation(myId, mouvementId) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/annulerParticipation/${myId}/${mouvementId}`;
+        return this.http.post(api, {}, { headers: headers });
+    }
+    participerMouvement(credential) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/participations/';
+        return this.http.post(api, credential, { headers: headers });
+    }
     getMouvements() {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
             'Content-Type': 'application/json',
@@ -825,6 +907,16 @@ let ManageDataService = class ManageDataService {
         });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvements/';
         return this.http.post(api, credential, { headers: headers });
+    }
+    getMouvementsAssociation(id_association) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvementsassociation/' + `${id_association}`;
+        return this.http.get(api, { headers: headers });
     }
 };
 ManageDataService.ctorParameters = () => [
@@ -856,8 +948,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiURL: ' http://192.168.8.105:8000/api',
-    storage: 'http://192.168.8.105:8000/storage/',
+    apiURL: ' http://192.168.43.113:8000/api',
+    storage: 'http://192.168.43.113:8000/storage/',
     map: 'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
     // apiURL:'http://192.168.8.105:8000/api'
 };

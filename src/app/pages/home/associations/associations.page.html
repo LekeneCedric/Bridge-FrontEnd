@@ -7,35 +7,11 @@
     <ion-col>
       <ion-col size="2" style="text-align:center;margin-left:5%"> 
         <ion-icon name="notifications" size="large" color="warning"></ion-icon>
-        <ion-badge style="position:absolute;top:0;right:0" color="danger">2</ion-badge>
+        <ion-badge style="position:absolute;top:0;right:0" color="primary">2</ion-badge>
       </ion-col>
     </ion-col>
-    <!-- <ion-col>
-      <ion-row style="width:100%">
-        <ion-col size="3" [routerLink]="['/profil-donateur',id]" style="text-align:left;height: 100%;">
-          <ion-icon name="person-circle-outline" size="large" color="danger" ></ion-icon>
-        </ion-col>
-        <ion-col size="8">
-          <ion-text style="color:gray;font-weight: bold;position:absolute;top:30%;">{{myData.name | slice:0:15}}&ensp;{{myData.surname | slice:0:10}}</ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-col> -->
   </ion-row>
-  <ion-row>
-    <ion-col size="12">
-      <ion-segment  scrollable>
-       <ion-chip>
-        <ion-icon name="options-outline" size="large"></ion-icon>
-        <ion-text>Filter</ion-text>
-       </ion-chip>
-       <ion-chip>
-       <ion-text>Category</ion-text>
-       <ion-icon name="chevron-down-outline"></ion-icon>
-       </ion-chip>
-      </ion-segment>
-    </ion-col>
-  </ion-row>
-  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="primary">
     <ion-segment-button value="annonces">
       <ion-label>Annonces</ion-label>
     </ion-segment-button>
@@ -49,45 +25,48 @@
 </ion-header>
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content color="danger"></ion-refresher-content>
+    <ion-refresher-content color="primary"></ion-refresher-content>
   </ion-refresher>
     <ion-list *ngIf="selectedSegment=='annonces'">
-      <ion-card *ngFor="let annonce of Annonces" [routerLink]="['/details-annonce',annonce.id]">
-        <ion-img [src]="annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'"></ion-img>
-        <ion-item style="width:100%;" lines="none" class="ion-no-padding ion-no-margin">
+      <ion-card *ngFor="let annonce of Annonces">
+        <div [routerLink]="['/details-annonce',annonce.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
+        background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})">
+        </div>
+        <ion-item  [routerLink]="['/details-association',annonce.association.id]" style="width:100%;" lines="none" class="ion-no-padding ion-no-margin">
           <ion-thumbnail class="ion-margin-start" slot="start" >
             <img style="border-radius:10px" [src]="annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'" />
           </ion-thumbnail>
           <ion-col style="text-align: left">
             <ion-row >
-             <ion-text style="font-weight: bold">{{annonce.association.name}}</ion-text>
+             <ion-text style="font-weight: bold;font-size: 1.1em;">{{annonce.association.name}}</ion-text>
             </ion-row >
             <ion-row style="margin-top:2%">
               <ion-text style="color:gray">{{annonce.association.type}}</ion-text>
-            </ion-row>
+            </ion-row >
           </ion-col>
         </ion-item>
-        <ion-item style="width:100%" lines="none">
-          <ion-text style="font-weight:bold;text-align: center;">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>
+        <ion-item style="width:100%;padding:0;margin:0" lines="none"  [routerLink]="['/details-annonce',annonce.id]">
+          <ion-text style="font-weight:bold;text-align: center;font-size: 1em;">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>
         </ion-item>
-        <ion-item lines="none">
-          <ion-text style="color:gray">
+        <ion-item lines="none" [routerLink]="['/details-annonce',annonce.id]">
+          <ion-text style="color:gray;font-size:0.8em">
           {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}
           </ion-text>
         </ion-item>
-        <ion-item lines="none" style="width:100%;margin-top: 15px;margin-bottom:15px">
-          <ion-icon name="heart-outline" size="large"></ion-icon>
-          <ion-chip slot="end" color="warning" style="padding: 20px;">
-              <img src="../../../../assets/images/gift.png">
-              <ion-text >Soutenir</ion-text>
-          </ion-chip>
-        </ion-item>
+        <ion-row style="width:100%">
+          <ion-col size="10"></ion-col>
+          <ion-col size="2">
+            <ion-icon name="heart-outline" size="large"></ion-icon>
+          </ion-col>
+        </ion-row>
       </ion-card>
     </ion-list>
   <ion-grid *ngIf="selectedSegment=='evenements'">
-    <ion-card *ngFor="let event of Mouvements" lines="none" [routerLink]="['/details-evenement',event.id]">
-      <ion-img [src]="event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'"></ion-img>
-      <ion-item style="width:100%;" lines="none">
+    <ion-card *ngFor="let event of Mouvements" lines="none" class="ion-padding-bottom">
+      <div  [routerLink]="['/details-evenement',event.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
+      background-image: url({{event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'}})">
+      </div>
+      <ion-item style="width:100%;" lines="none"  [routerLink]="['/details-association',event.association.id]">
         <ion-thumbnail slot="start" >
           <img style="border-radius:10px" [src]="event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'" />
         </ion-thumbnail>
@@ -100,30 +79,40 @@
           </ion-row>
         </ion-col>
       </ion-item>
-      <ion-item style="width:100%" lines="none">
-        <ion-text style="font-weight:bold;text-align: center;">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>
-      </ion-item>
-      <ion-item style="width:100%;" lines="none">
-        <ion-icon name="today-outline" size="large" slot="start"></ion-icon>
-        <ion-text style="color:gray">{{event.date_rencontre}} | </ion-text>
-        <ion-text style="color:gray"> &ensp;{{event.heure_debut}} - {{event.heure_fin}}</ion-text>
-      </ion-item>
-      <ion-item style="width:100%;" lines="none"> 
-        <img src="../../../../assets/images/location.png" slot="start">
-        <ion-text style="color:gray">yaounde , bastos , marche central</ion-text>
-      </ion-item>
-      <ion-item lines="none" style="margin-top:10px">
-        <ion-text style="color:gray">
-        {{event.description| slice:0:200}}{{event.description.length > 200 ? '&hellip;':'' }}
-        </ion-text>
-      </ion-item>
-      <ion-item lines="none" style="width:100%;margin-top: 15px;margin-bottom:15px">
-        <ion-button expand="block" color="success"> Participer</ion-button>
-        <ion-chip slot="end" color="warning" style="padding: 20px;">
-            <img src="../../../../assets/images/gift.png">
-            <ion-text>Soutenir</ion-text>
-        </ion-chip>
-      </ion-item>
+      <ion-row style="width:100%;margin-left:0" class="ion-margin-horizontal"  [routerLink]="['/details-evenement',event.id]">
+        <ion-col size="12">
+        <ion-row style="display:flex;">
+          <ion-icon name="information-outline" color="primary" size="small"></ion-icon>
+          <ion-text style="font-weight:bold;color:black;text-align: center;font-size: 1.2em;align-self: center;margin-left: 2%;" class="ion-margin-horizontal">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>  
+        </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row style="width:100%;margin-left:0" class="ion-margin-horizontal"  [routerLink]="['/details-evenement',event.id]">
+          <ion-col size="12">
+          <ion-row style="display:flex;">
+            <ion-icon name="today-outline" size="small" color="primary"></ion-icon>
+            <ion-text style="color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;"><strong>{{event.date_rencontre | date:'MMM d, y'}} &ensp;</strong> <strong>&ensp;|&ensp;</strong></ion-text>
+            <ion-text style="color:gray;font-size:1.1em;align-self: center;"> &ensp;de &ensp;<strong>{{event.heure_debut}}</strong> &ensp; a &ensp; <strong>{{event.heure_fin}}</strong></ion-text>
+          </ion-row>
+          </ion-col>
+        </ion-row>
+        <!------------------------->
+        <ion-row style="width:100%;margin-left:0;margin-top:0" class="ion-margin-horizontal" [routerLink]="['/details-evenement',event.id]"> 
+           <ion-col size="12">
+            <ion-row style="display:flex;">
+              <ion-icon name="location-outline" size="small" color="primary"></ion-icon>
+              <ion-text style="color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;">{{event.association.adresse}}</ion-text>
+            </ion-row>
+           </ion-col>
+        </ion-row>
+        <!-- <ion-row style="width:100%">
+          <ion-col size="7"></ion-col>
+          <ion-col size ="5">
+            <ion-button color="primary"  [routerLink]="['/details-evenement',event.id]">
+              <ion-text>consulter</ion-text>
+            </ion-button>
+          </ion-col>
+          </ion-row> -->
     </ion-card>
      </ion-grid>
 </ion-content>

@@ -1,0 +1,61 @@
+
+<ion-content>
+<ion-item lines="none">
+  <ion-icon name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
+  <ion-title>Galerie</ion-title>
+</ion-item>
+
+<div *ngIf="AssociationImages!=null"
+[routerLink]="['galery-type','association',association_id]"
+ class="ion-margin" style="height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;
+background-position: center;border-radius:5px;background-size:cover;
+background-image: url({{storage+AssociationImages.Association[0].filePath}});">
+ <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: bolder;font-size: 2em;opacity: 1;color:white"  color="light"> Association </ion-text>
+</div>
+<div *ngIf="AssociationImages!=null" 
+[routerLink]="['galery-type','mouvements',association_id]"
+class="ion-margin" style="height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;
+background-position: center;border-radius:5px;background-size:cover;
+background-image: url({{AssociationImages.Mouvements[0].length>0 ? storage+AssociationImages.Mouvements[0][0].filePath:'assets/empty.png'}});">
+  <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: bolder;font-size: 2em;opacity: 1;"  color="light"> Mouvements </ion-text>
+ </div>
+ <div *ngIf="AssociationImages!=null"
+ [routerLink]="['galery-type','annonces',association_id]"
+ class="ion-margin" style="height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;
+ background-position: center;border-radius:5px;background-size:cover;
+ background-image: url({{AssociationImages.Annonces[0].length>0 ? storage+AssociationImages.Annonces[0][0].filePath : 'assets/empty.png'}})">
+  <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: bolder;font-size: 2em;opacity: 1;" color="dark"> Annonces </ion-text>
+ </div>
+<!-- <ion-row>
+<ion-title style="font-weight:bold">Images Associations</ion-title>
+</ion-row>
+<ion-row *ngIf="AssociationImages!=null">
+  <ion-col size="12" style="display:flex">
+    <ion-thumbnail class="image" *ngFor="let image of AssociationImages.Association" style="margin:1%;">
+      <img [src]="storage+image.filePath" />
+    </ion-thumbnail>
+  </ion-col>
+</ion-row> -->
+<!-- ------------------MOUVEMENTS -->
+<!-- <ion-row>
+  <ion-title style="font-weight:bold">Images Mouvements</ion-title>
+  </ion-row>
+  <ion-row *ngIf="AssociationImages!=null">
+    <ion-col size="12" style="display:flex">
+      <ion-thumbnail class="image" *ngFor="let image of AssociationImages.Mouvements[0]" style="margin:1%;">
+        <img [src]="storage+image.filePath" />
+      </ion-thumbnail>
+    </ion-col>
+  </ion-row> -->
+  <!-- -----------ANNONCES -->
+  <!-- <ion-row>
+    <ion-title style="font-weight:bold">Images Annonces</ion-title>
+    </ion-row>
+    <ion-row *ngIf="AssociationImages!=null">
+      <ion-col size="12" style="display:flex">
+        <ion-thumbnail class="image" *ngFor="let image of AssociationImages.Annonces[0]" style="margin:1%;">
+          <img [src]="storage+image.filePath" />
+        </ion-thumbnail>
+      </ion-col>
+    </ion-row> -->
+</ion-content>

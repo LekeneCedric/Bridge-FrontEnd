@@ -119,12 +119,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/creation/creation-mouvements/creation-mouvements.module').then( m => m.CreationMouvementsPageModule)
   },
   {
-    path: 'modal-add-member-association',
-    loadChildren: () => import('./modals/modal-add-member-association/modal-add-member-association.module').then( m => m.ModalAddMemberAssociationPageModule)
-  },
-  {
-    path: 'modal-associations-membres',
-    loadChildren: () => import('./modals/modal-associations-membres/modal-associations-membres.module').then( m => m.ModalAssociationsMembresPageModule)
+    path: 'modal-galerie-association/:id',
+    loadChildren: () => import('./modals/modal-galerie-association/modal-galerie-association.module').then( m => m.ModalGalerieAssociationPageModule)
   },
 ];
 @NgModule({

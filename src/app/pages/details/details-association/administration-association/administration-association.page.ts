@@ -52,7 +52,7 @@ export class AdministrationAssociationPage implements OnInit {
         id_association:this.idAssociation
       },
       breakpoints:[0,1],
-      initialBreakpoint:this.Association.attentes.length<1 ?0.2:0.3,
+      initialBreakpoint:0.4,
       animated:true,
       handle:true,
     });

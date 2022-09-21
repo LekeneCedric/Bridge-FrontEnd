@@ -163,6 +163,20 @@ let CreationMouvementsPage = class CreationMouvementsPage {
   /*---------------------------------FUNCTIONS--------------------------*/
 
 
+  get validation() {
+    let res = false;
+
+    if (this.selectedImages.length > 0 && this.selectedIntitule != null && this.description != null && this.seletedCategory != null && this.DateDebut != null && this.DateFin != null) {
+      if (this.selectedIntitule != '' && this.description != '') {
+        res = true;
+      }
+    } else {
+      res = false;
+    }
+
+    return res;
+  }
+
   createMouvement() {
     var _this2 = this;
 
@@ -192,7 +206,22 @@ let CreationMouvementsPage = class CreationMouvementsPage {
         console.log(data);
 
         _this2.upload_image(data, loading);
-      });
+      }).catch( /*#__PURE__*/function () {
+        var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+          const toast = _this2.toast.create({
+            message: `${err.message}`,
+            icon: 'information-circle',
+            duration: 2000,
+            color: "danger"
+          });
+
+          (yield toast).present();
+        });
+
+        return function (_x) {
+          return _ref.apply(this, arguments);
+        };
+      }());
     })();
   }
 
@@ -206,7 +235,7 @@ let CreationMouvementsPage = class CreationMouvementsPage {
       files: this.selectedImages
     };
     this.mediaService.uploadImageMouvement(token, fd).then( /*#__PURE__*/function () {
-      var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
+      var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
         setTimeout( /*#__PURE__*/(0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
           loading.dismiss();
 
@@ -224,11 +253,11 @@ let CreationMouvementsPage = class CreationMouvementsPage {
         }));
       });
 
-      return function (_x) {
-        return _ref.apply(this, arguments);
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
       };
     }()).catch( /*#__PURE__*/function () {
-      var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+      var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
         loading.dismiss(); //on affiche un message de success
 
         const toast = _this3.toast.create({
@@ -241,8 +270,8 @@ let CreationMouvementsPage = class CreationMouvementsPage {
         (yield toast).present();
       });
 
-      return function (_x2) {
-        return _ref3.apply(this, arguments);
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
       };
     }());
   }
@@ -354,6 +383,19 @@ __webpack_require__.r(__webpack_exports__);
 let MediasService = class MediasService {
   constructor(http) {
     this.http = http;
+  }
+
+  getOneMedia(id) {
+    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiURL + `/medias/${id}`;
+    return this.http.get(api, {
+      headers: headers
+    });
   }
 
   uploadImageProfil(token, credential) {
@@ -473,6 +515,40 @@ let MediasService = class MediasService {
 
           return function (_x5) {
             return _ref4.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadImageAnnonce(token, credential) {
+    var _this5 = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('annonce_id', credential.annonce_id);
+            setTimeout(() => {
+              _this5.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x6) {
+            return _ref5.apply(this, arguments);
           };
         }());
       } catch (err) {
@@ -623,7 +699,7 @@ module.exports = ".input {\n  border: 0.5px solid rgb(206, 204, 204);\n  border-
   \*********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content>\n  <ion-toolbar>\n    <ion-icon slot=\"start\" name=\"chevron-back-outline\" size=\"large\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n    <ion-text slot=\"start\" style=\"margin-left:10px\" *ngIf=\"Association!=null\">Mouvement <strong>{{Association.name | slice:0:17}}{{Association.name.length>17?'...':''}}</strong> </ion-text>\n  </ion-toolbar>\n  <ion-grid class=\"ion-padding\">\n\n    <ion-col size=\"12\" style=\"margin:0;padding:0\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"selectedImages.length>0\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Images</ion-title>\n      </ion-row>\n      <ion-row style=\"margin-top:2%;padding:0\">\n        <ion-item lines=\"none\">\n          <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n            <ion-fab-button color=\"danger\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n              <ion-icon name=\"trash-outline\"></ion-icon>\n            </ion-fab-button>\n            <img [src]=\"image.data\" />\n          </ion-thumbnail>\n          \n          <div class=\"camera\" (click)=\"getPicture()\" *ngIf=\"selectedImages.length<5\">\n            <ion-icon name=\"camera-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n          </div>\n        </ion-item>\n      </ion-row>\n    </ion-col>\n\n   <div style=\"margin-top:2%\"></div>\n\n    <ion-col size=\"12\" style=\"margin:0;padding:0\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"selectedIntitule=='' || selectedIntitule==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"selectedIntitule!=null && selectedIntitule!=''\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Intitule</ion-title>\n      </ion-row>\n      <ion-row style=\"margin-top:2%;padding:0\">\n      <ion-input [(ngModel)]=\"selectedIntitule\" placeholder=\"ex:marche sportive pour recolte de fonds ...etc\" class=\"input\"></ion-input>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"description==null|| description==''\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"description!=null && description!=''\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Description</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-textarea class=\"input\"  [(ngModel)]=\"description\" placeholder=\"Aide : Decrivez de maniere detaille l'evenement que vous voulez realiser , son objectif ...etc\"\n        maxlength=\"200\" rows=\"4\"></ion-textarea>\n      </ion-row>\n      <ion-row style=\"width:100%;text-align: right;color:gray;margin-top:2%\">\n        <ion-text style=\"width:100%\">200 caractere maximum</ion-text>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"seletedCategory==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"seletedCategory!=null\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Category</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n      <ion-select  [(ngModel)]=\"seletedCategory\" interface=\"action-sheet\" placeholder=\"De quel type de mouvement s'agit t'il ? \" class=\"input\" style=\"width:100%;margin-top:2%\">\n        <ion-select-option value=\"Masculin\">Masculin</ion-select-option>\n        <ion-select-option value=\"Feminin\">Feminin</ion-select-option>\n      </ion-select>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"DateDebut==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\"  *ngIf=\"DateDebut!=null\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Date/Heure Debut</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n    <ion-datetime [(ngModel)]=\"DateDebut\" placeholder=\"Select Date\"></ion-datetime>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\"  *ngIf=\"DateFin==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\"  *ngIf=\"DateFin!=null\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Date/Heure Fin</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n    <ion-datetime  [(ngModel)]=\"DateFin\"  placeholder=\"Select Date\"></ion-datetime>\n      </ion-row>\n    </ion-col>\n  </ion-grid>\n</ion-content>\n<ion-footer>\n  <ion-row style=\"width:100%\">\n  <ion-button expand=\"full\"style=\"width:100%\" (click)=\"createMouvement()\">Enregistrez l'evenement</ion-button>\n  </ion-row>\n</ion-footer>\n";
+module.exports = "<ion-content>\n  <ion-toolbar>\n    <ion-icon slot=\"start\" name=\"chevron-back-outline\" size=\"large\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n    <ion-text slot=\"start\" style=\"margin-left:10px\" *ngIf=\"Association!=null\">Mouvement <strong>{{Association.name | slice:0:17}}{{Association.name.length>17?'...':''}}</strong> </ion-text>\n  </ion-toolbar>\n  <ion-grid style=\"padding-left:16px;padding-right:16px;padding-bottom:16px;padding-top:0\">\n\n    <ion-col size=\"12\" style=\"margin:0;padding:0\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"selectedImages.length>0\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Images</ion-title>\n      </ion-row>\n      <ion-row style=\"margin-top:2%;padding:0\">\n        <ion-item lines=\"none\">\n          <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n            <ion-fab-button color=\"danger\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n              <ion-icon name=\"trash-outline\"></ion-icon>\n            </ion-fab-button>\n            <img [src]=\"image.data\" />\n          </ion-thumbnail>\n          \n          <div class=\"camera\" (click)=\"getPicture()\" *ngIf=\"selectedImages.length<5\">\n            <ion-icon name=\"camera-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n          </div>\n        </ion-item>\n      </ion-row>\n    </ion-col>\n\n   <div style=\"margin-top:2%\"></div>\n\n    <ion-col size=\"12\" style=\"margin:0;padding:0\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"selectedIntitule=='' || selectedIntitule==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"selectedIntitule!=null && selectedIntitule!=''\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Intitule</ion-title>\n      </ion-row>\n      <ion-row style=\"margin-top:2%;padding:0\">\n      <ion-input [(ngModel)]=\"selectedIntitule\" placeholder=\"ex:marche sportive pour recolte de fonds ...etc\" class=\"input\"></ion-input>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"description==null|| description==''\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"description!=null && description!=''\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Description</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-textarea class=\"input\"  [(ngModel)]=\"description\" placeholder=\"Aide : Decrivez de maniere detaille l'evenement que vous voulez realiser , son objectif ...etc\"\n        maxlength=\"200\" rows=\"4\"></ion-textarea>\n      </ion-row>\n      <ion-row style=\"width:100%;text-align: right;color:gray;margin-top:2%\">\n        <ion-text style=\"width:100%\">200 caractere maximum</ion-text>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"seletedCategory==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\" *ngIf=\"seletedCategory!=null\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Category</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n      <ion-select  [(ngModel)]=\"seletedCategory\" interface=\"action-sheet\" placeholder=\"De quel type de mouvement s'agit t'il ? \" class=\"input\" style=\"width:100%;margin-top:2%\">\n        <ion-select-option value=\"Masculin\">Masculin</ion-select-option>\n        <ion-select-option value=\"Feminin\">Feminin</ion-select-option>\n      </ion-select>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\" *ngIf=\"DateDebut==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\"  *ngIf=\"DateDebut!=null\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Date/Heure Debut</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n    <ion-datetime [(ngModel)]=\"DateDebut\" placeholder=\"Select Date\"></ion-datetime>\n      </ion-row>\n    </ion-col>\n\n    <ion-col size=\"12\">\n      <ion-row style=\"margin:0;padding:0\">\n        <ion-icon name=\"ellipse-outline\" size=\"large\" color=\"primary\"  *ngIf=\"DateFin==null\"></ion-icon>\n        <ion-icon name=\"checkmark-circle\" size=\"large\" color=\"primary\"  *ngIf=\"DateFin!=null\"></ion-icon>\n        <ion-title style=\"font-weight:bold\">Date/Heure Fin</ion-title>\n      </ion-row>\n      <ion-row style=\"margin:0;padding:0\">\n    <ion-datetime  [(ngModel)]=\"DateFin\"  placeholder=\"Select Date\"></ion-datetime>\n      </ion-row>\n    </ion-col>\n  </ion-grid>\n</ion-content>\n<ion-footer>\n  <ion-row style=\"width:100%\">\n  <ion-button expand=\"full\"style=\"width:100%\" (click)=\"createMouvement()\" [disabled]=\"!validation\">Enregistrez l'evenement</ion-button>\n  </ion-row>\n</ion-footer>\n";
 
 /***/ })
 

@@ -6,7 +6,7 @@
         <ion-icon name="happy-outline" size="large" slot="start"></ion-icon>
         <ion-text>Aucune demande actuellement</ion-text>
       </ion-item>
-    <ion-item *ngFor="let user of Association.attentes" lines="none" [routerLink]="['/profil-donateur',user.id]" style="margin-bottom:0.5px dashed rgb(200, 200, 200)">
+    <ion-item *ngFor="let user of Association.attentes" lines="none" style="margin-bottom:0.5px dashed rgb(200, 200, 200)">
       <ion-icon (click)="cancel()" [routerLink]="['/profil-donateur',user.id]" name="person-circle-outline" slot="start"></ion-icon>
       <ion-text (click)="cancel()" [routerLink]="['/profil-donateur',user.id]" slot="start" style="font-weight:bold">{{user.name}}</ion-text>
       <ion-chip (click)="acceptDemand(user.id)" slot="end" color="success" style="text-align:left;padding:0" class="ion-justify-content-center"> 

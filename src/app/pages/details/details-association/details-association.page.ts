@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController, ModalController, NavController } from '@ionic/angular';
+import { AlertController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { ModalAnnoncesPage } from 'src/app/modals/modal-annonces/modal-annonces.page';
+import { ModalAssociationsMembresPage } from 'src/app/modals/modal-associations-membres/modal-associations-membres.page';
 import { ModalMouvementsPage } from 'src/app/modals/modal-mouvements/modal-mouvements.page';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import { environment } from 'src/environments/environment';
@@ -15,7 +16,7 @@ export class DetailsAssociationPage implements OnInit {
 
   constructor(private manageDataService: ManageDataService,private router:ActivatedRoute,
     private navCtrl:NavController,private alertController:AlertController,
-    private modalCtrl:ModalController) { }
+    private modalCtrl:ModalController,private toast:ToastController) { }
 
   ngOnInit() {
 
@@ -38,6 +39,53 @@ public Association:any = null;
 public storage:string = environment.storage;
 
 /*---------------------------FUNCTIONS----------------------------*/
+public async openModalMembers(){
+  const modal = await this.modalCtrl.create({
+    component:ModalAssociationsMembresPage,
+    componentProps:{
+      id_association:this.idAssociation
+    },
+    breakpoints:[0,1],
+    initialBreakpoint:0.4,
+    animated:true,
+    handle:true,
+  });
+  modal.present();
+  const {data,role } = await modal.onWillDismiss(); 
+}
+public rejectDemand(id_association:number){
+  this.manageDataService.rejectAssociationMember(this.myId,id_association).toPromise().then(
+    async data=>{
+      this.ngOnInit();
+      const toast = this.toast.create({
+        message:`demande rejete`,
+        icon: 'information-circle',
+        duration:2000,
+        color:"danger"
+      });
+      (await (toast)).present(); 
+    }
+  ).catch(()=>{
+    this.ngOnInit()
+  })
+}
+public sendDemand(id_association:number){
+  this.manageDataService.becameAssociationMember(this.myId,id_association).toPromise().then(
+    async data=>{
+      this.ngOnInit();
+      const toast = this.toast.create({
+        message:`demande envoye`,
+        icon: 'information-circle',
+        duration:2000,
+        color:"success"
+      });
+      (await (toast)).present(); 
+    }
+  ).catch(async ()=>{
+    this.ngOnInit();
+   
+  })
+}
 get Id(){
   return this.myId;
 }
@@ -48,7 +96,7 @@ public async openMouvementsModal(){
   const modal = await this.modalCtrl.create({
     component:ModalMouvementsPage,
     componentProps:{
-      mouvements:this.Association.mouvement
+      association_id:this.Association.id
     },
     breakpoints:[0,1],
     initialBreakpoint:1,
@@ -64,7 +112,7 @@ public async openAnnoncesModal(){
   const modal = await this.modalCtrl.create({
     component:ModalAnnoncesPage,
     componentProps:{
-      annonces:this.Association.annonce
+      association_id:this.Association.id
     },
     breakpoints:[0,1],
     initialBreakpoint:1,

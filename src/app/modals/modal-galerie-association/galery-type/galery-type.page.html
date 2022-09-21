@@ -1,0 +1,29 @@
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-icon name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
+    <ion-title>Galerie &ensp;<strong style="color:#3880ff">{{category | uppercase}}</strong> </ion-title>
+  </ion-item>
+
+  <ion-row *ngIf="AssociationImages!=null&&category=='association'">
+    <ion-col size="12" style="display:flex;justify-items: flex-end;">
+      <ion-thumbnail class="image" *ngFor="let image of AssociationImages.Association" style="margin:1%;" (click)="viewImage(image)">
+        <img [src]="storage+image.filePath"  />
+      </ion-thumbnail>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="AssociationImages!=null && category=='mouvements'">
+    <ion-col size="12" style="display:flex">
+      <ion-thumbnail class="image" *ngFor="let image of AssociationImages.Mouvements[0]" style="margin:1%;" (click)="viewImage(image)">
+        <img [src]="storage+image.filePath" />
+      </ion-thumbnail>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="AssociationImages!=null && category=='annonces'">
+    <ion-col size="12" style="display:flex">
+      <ion-thumbnail class="image" *ngFor="let image of AssociationImages.Annonces[0]" style="margin:1%;" (click)="viewImage(image)">
+        <img [src]="storage+image.filePath" />
+      </ion-thumbnail>
+    </ion-col>
+  </ion-row>
+</ion-content>

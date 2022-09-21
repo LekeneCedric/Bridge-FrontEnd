@@ -33,7 +33,8 @@ export class CreationAssociationPage implements OnInit {
       adresse:['',[Validators.required]],
       password:['',[Validators.required]],
       password_confirmation:['',[Validators.required]],
-      nom_responsable:['',[Validators.required, Validators.minLength(7)]]
+      nom_responsable:['',[Validators.required, Validators.minLength(7)]],
+      description:['',[Validators.required, Validators.minLength(50)]],
     })
     this.http.get<any>('assets/country_dial_info.json').toPromise().then(
       res=>{
@@ -114,6 +115,7 @@ export class CreationAssociationPage implements OnInit {
       nom_responsable:this.nom_responsable.value,
       longitude:this.longitudeAssociation,
       latitude:this.latitudeAssociation,
+      description:this.description.value
     }
     this.createService.createAssociation(data,localStorage.getItem('token') as string).toPromise().then(
       data=>{
@@ -226,6 +228,7 @@ public async saveImage(image:any){
   get nom_responsable(){return this.credential.get('nom_responsable');};
   get password(){return this.credential.get('password');};
   get password_confirmation(){return this.credential.get('password_confirmation');};
+  get description(){return this.credential.get('description');};
   public test(){
     const data = {
       name:this.name.value,

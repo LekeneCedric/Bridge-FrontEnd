@@ -11,30 +11,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalAnnoncesPage": () => (/* binding */ ModalAnnoncesPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _modal_annonces_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-annonces.page.html?ngResource */ 5868);
 /* harmony import */ var _modal_annonces_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-annonces.page.scss?ngResource */ 7852);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
 
 
 
 
 
 let ModalAnnoncesPage = class ModalAnnoncesPage {
-    constructor() {
-        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.storage;
+    constructor(manageDataService, modalCtrl) {
+        this.manageDataService = manageDataService;
+        this.modalCtrl = modalCtrl;
+        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.storage;
     }
     ngOnInit() {
-        this.Annonces = this.annonces;
+        this.manageDataService.getAnnoncesAssociation(this.association_id).toPromise().then((data) => {
+            this.Annonces = data;
+        });
+        console.log(this.Annonces);
+    }
+    confirm() {
+        return this.modalCtrl.dismiss(null, 'confirm');
     }
 };
-ModalAnnoncesPage.ctorParameters = () => [];
+ModalAnnoncesPage.ctorParameters = () => [
+    { type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__.ManageDataService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController }
+];
 ModalAnnoncesPage.propDecorators = {
-    annonces: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Input }]
+    association_id: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_5__.Input }]
 };
-ModalAnnoncesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+ModalAnnoncesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-modal-annonces',
         template: _modal_annonces_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_modal_annonces_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -245,31 +260,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalMouvementsPage": () => (/* binding */ ModalMouvementsPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _modal_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-mouvements.page.html?ngResource */ 5952);
 /* harmony import */ var _modal_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-mouvements.page.scss?ngResource */ 9654);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 2340);
+
+
 
 
 
 
 
 let ModalMouvementsPage = class ModalMouvementsPage {
-    constructor() {
+    constructor(manageDataService, modalCtrl) {
+        this.manageDataService = manageDataService;
+        this.modalCtrl = modalCtrl;
         this.Mouvements = null;
-        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__.environment.storage;
+        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.storage;
     }
     ngOnInit() {
-        this.Mouvements = this.mouvements;
+        this.manageDataService.getMouvementsAssociation(this.association_id).toPromise().then((data) => {
+            this.Mouvements = data;
+        });
+    }
+    confirm() {
+        return this.modalCtrl.dismiss(null, 'confirm');
     }
 };
-ModalMouvementsPage.ctorParameters = () => [];
+ModalMouvementsPage.ctorParameters = () => [
+    { type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__.ManageDataService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController }
+];
 ModalMouvementsPage.propDecorators = {
-    mouvements: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__.Input }]
+    association_id: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_5__.Input }]
 };
-ModalMouvementsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+ModalMouvementsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
         selector: 'app-modal-mouvements',
         template: _modal_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_modal_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -1933,7 +1962,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \***************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let annonce of Annonces\" [routerLink]=\"['detailsAnnonce',1]\">\n    <ion-img [src]=\"annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'\"></ion-img>\n    <ion-item style=\"width:100%;\" lines=\"none\" class=\"ion-no-padding ion-no-margin\">\n      <ion-thumbnail class=\"ion-margin-start\" slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row >\n         <ion-text style=\"font-weight: bold\">{{annonce.association.name}}</ion-text>\n        </ion-row >\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\">{{annonce.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-item style=\"width:100%\" lines=\"none\">\n      <ion-text style=\"font-weight:bold;text-align: center;\">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>\n    </ion-item>\n    <ion-item lines=\"none\">\n      <ion-text style=\"color:gray\">\n      {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}\n      </ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" style=\"width:100%;margin-top: 15px;margin-bottom:15px\">\n      <ion-icon name=\"heart-outline\" size=\"large\"></ion-icon>\n      <ion-chip slot=\"end\" color=\"warning\" style=\"padding: 20px;\">\n          <img src=\"../../../../assets/images/gift.png\">\n          <ion-text >Soutenir</ion-text>\n      </ion-chip>\n    </ion-item>\n  </ion-card>\n</ion-content>\n";
+module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let annonce of Annonces\" class=\"ion-padding-bottom\" (click)=\"confirm()\">\n    <div [routerLink]=\"['/details-annonce',annonce.id]\" style=\"padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;\n    background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})\">\n    </div>\n    <ion-item  (click)=\"confirm()\" [routerLink]=\"['/details-association',annonce.association.id]\" style=\"width:100%;\" lines=\"none\" class=\"ion-no-padding ion-no-margin\">\n      <ion-thumbnail class=\"ion-margin-start\" slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row >\n         <ion-text style=\"font-weight: bold;font-size: 1.1em;\">{{annonce.association.name}}</ion-text>\n        </ion-row >\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\">{{annonce.association.type}}</ion-text>\n        </ion-row >\n      </ion-col>\n    </ion-item>\n    <ion-item style=\"width:100%;padding:0;margin:0\" lines=\"none\"  (click)=\"confirm()\" [routerLink]=\"['/details-annonce',annonce.id]\">\n      <ion-text style=\"font-weight:bold;text-align: center;font-size: 1em;\">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" (click)=\"confirm()\" [routerLink]=\"['/details-annonce',annonce.id]\">\n      <ion-text style=\"color:gray;font-size:0.8em\">\n      {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}\n      </ion-text>\n    </ion-item>\n  </ion-card>\n</ion-content>\n";
 
 /***/ }),
 
@@ -1943,7 +1972,7 @@ module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let annonce of Annonces\
   \*********************************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content class=\"ion-padding\">\n    <ion-icon name=\"exit-outline\"color=\"danger\" size=\"large\" (click)=\"cancel()\"></ion-icon>\n    <ion-grid *ngIf=\"Association!=null\">\n    <ion-list>\n      <ion-item *ngIf=\"Association.attentes.length<1\" lines=\"none\">\n        <ion-icon name=\"happy-outline\" size=\"large\" slot=\"start\"></ion-icon>\n        <ion-text>Aucune demande actuellement</ion-text>\n      </ion-item>\n    <ion-item *ngFor=\"let user of Association.attentes\" lines=\"none\" [routerLink]=\"['/profil-donateur',user.id]\" style=\"margin-bottom:0.5px dashed rgb(200, 200, 200)\">\n      <ion-icon name=\"person-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text slot=\"start\" style=\"font-weight:bold\">{{user.name}}</ion-text>\n      <ion-chip (click)=\"acceptDemand(user.id)\" slot=\"end\" color=\"success\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"checkmark-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n      <ion-chip (click)=\"rejectDemand(user.id)\" slot=\"end\" color=\"danger\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"close-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n    </ion-item>\n    </ion-list>\n  </ion-grid>\n</ion-content>\n";
+module.exports = "<ion-content class=\"ion-padding\">\n    <ion-icon name=\"exit-outline\"color=\"danger\" size=\"large\" (click)=\"cancel()\"></ion-icon>\n    <ion-grid *ngIf=\"Association!=null\">\n    <ion-list>\n      <ion-item *ngIf=\"Association.attentes.length<1\" lines=\"none\">\n        <ion-icon name=\"happy-outline\" size=\"large\" slot=\"start\"></ion-icon>\n        <ion-text>Aucune demande actuellement</ion-text>\n      </ion-item>\n    <ion-item *ngFor=\"let user of Association.attentes\" lines=\"none\" style=\"margin-bottom:0.5px dashed rgb(200, 200, 200)\">\n      <ion-icon (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" name=\"person-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" slot=\"start\" style=\"font-weight:bold\">{{user.name}}</ion-text>\n      <ion-chip (click)=\"acceptDemand(user.id)\" slot=\"end\" color=\"success\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"checkmark-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n      <ion-chip (click)=\"rejectDemand(user.id)\" slot=\"end\" color=\"danger\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"close-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n    </ion-item>\n    </ion-list>\n  </ion-grid>\n</ion-content>\n";
 
 /***/ }),
 
@@ -1963,7 +1992,7 @@ module.exports = "\n<ion-content>\n  <ion-list class=\"ion-justify-content-betwe
   \*******************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let event of Mouvements\" lines=\"none\" [routerLink]=\"['detailsEvenement',1]\">\n    <ion-img [src]=\"event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'\"></ion-img>\n    <ion-item style=\"width:100%;\" lines=\"none\">\n      <ion-thumbnail slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row>\n         <ion-text style=\"font-weight: bold\">{{event.association.name}}</ion-text>\n        </ion-row>\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\"> {{event.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-item style=\"width:100%\" lines=\"none\">\n      <ion-text style=\"font-weight:bold;text-align: center;\">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>\n    </ion-item>\n    <ion-item style=\"width:100%;\" lines=\"none\">\n      <ion-icon name=\"today-outline\" size=\"large\" slot=\"start\"></ion-icon>\n      <ion-text style=\"color:gray\">{{event.date_rencontre}} | </ion-text>\n      <ion-text style=\"color:gray\"> &ensp;{{event.heure_debut}} - {{event.heure_fin}}</ion-text>\n    </ion-item>\n    <ion-item style=\"width:100%;\" lines=\"none\"> \n      <img src=\"../../../../assets/images/location.png\" slot=\"start\">\n      <ion-text style=\"color:gray\">yaounde , bastos , marche central</ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" style=\"margin-top:10px\">\n      <ion-text style=\"color:gray\">\n      {{event.description| slice:0:200}}{{event.description.length > 200 ? '&hellip;':'' }}\n      </ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" style=\"width:100%;margin-top: 15px;margin-bottom:15px\">\n      <ion-button expand=\"block\" color=\"success\"> Participer</ion-button>\n      <ion-chip slot=\"end\" color=\"warning\" style=\"padding: 20px;\">\n          <img src=\"../../../../assets/images/gift.png\">\n          <ion-text>Soutenir</ion-text>\n      </ion-chip>\n    </ion-item>\n  </ion-card>\n</ion-content>\n";
+module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let event of Mouvements\" lines=\"none\" class=\"ion-padding-bottom\">\n    <div  [routerLink]=\"['/details-evenement',event.id]\" style=\"padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;\n    background-image: url({{event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'}})\">\n    </div>\n    <ion-item style=\"width:100%;\" lines=\"none\" (click)=\"confirm()\" [routerLink]=\"['/details-association',event.association.id]\">\n      <ion-thumbnail slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row>\n         <ion-text style=\"font-weight: bold\">{{event.association.name}}</ion-text>\n        </ion-row>\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\"> {{event.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-row style=\"width:100%;margin-left:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n      <ion-col size=\"12\">\n      <ion-row style=\"display:flex;\">\n        <ion-icon name=\"information-outline\" color=\"primary\" size=\"small\"></ion-icon>\n        <ion-text style=\"font-weight:bold;color:black;text-align: center;font-size: 1.2em;align-self: center;margin-left: 2%;\" class=\"ion-margin-horizontal\">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>  \n      </ion-row>\n      </ion-col>\n    </ion-row>\n    <ion-row style=\"width:100%;margin-left:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n        <ion-col size=\"12\">\n        <ion-row style=\"display:flex;\">\n          <ion-icon name=\"today-outline\" size=\"small\" color=\"primary\"></ion-icon>\n          <ion-text style=\"color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;\"><strong>{{event.date_rencontre | date:'MMM d, y'}} &ensp;</strong> <strong>&ensp;|&ensp;</strong></ion-text>\n          <ion-text style=\"color:gray;font-size:1.1em;align-self: center;\"> &ensp;de &ensp;<strong>{{event.heure_debut}}</strong> &ensp; a &ensp; <strong>{{event.heure_fin}}</strong></ion-text>\n        </ion-row>\n        </ion-col>\n      </ion-row>\n      <!------------------------->\n      <ion-row style=\"width:100%;margin-left:0;margin-top:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\"> \n         <ion-col size=\"12\">\n          <ion-row style=\"display:flex;\">\n            <ion-icon name=\"location-outline\" size=\"small\" color=\"primary\"></ion-icon>\n            <ion-text style=\"color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;\">{{event.association.adresse}}</ion-text>\n          </ion-row>\n         </ion-col>\n      </ion-row>\n      <!-- <ion-row style=\"width:100%\">\n        <ion-col size=\"7\"></ion-col>\n        <ion-col size =\"5\">\n          <ion-button color=\"primary\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n            <ion-text>consulter</ion-text>\n          </ion-button>\n        </ion-col>\n        </ion-row> -->\n  </ion-card>\n</ion-content>\n";
 
 /***/ }),
 

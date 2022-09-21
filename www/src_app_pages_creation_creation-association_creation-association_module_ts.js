@@ -95,20 +95,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CreationAssociationPage": () => (/* binding */ CreationAssociationPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _creation_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-association.page.html?ngResource */ 6841);
 /* harmony import */ var _creation_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./creation-association.page.scss?ngResource */ 2905);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ 124);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common/http */ 8987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ 124);
 /* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @capacitor/camera */ 4241);
 /* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/creation/creation.service */ 9444);
 /* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 8549);
 /* harmony import */ var _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @capacitor/geolocation */ 7621);
 /* harmony import */ var _awesome_cordova_plugins_image_picker_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @awesome-cordova-plugins/image-picker/ngx */ 2153);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+
 
 
 
@@ -125,7 +127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CreationAssociationPage = class CreationAssociationPage {
-  constructor(route, router, http, actionSheetController, nativGeocoder, toast, fb, createService, mediaService, loadingController, imagePicker) {
+  constructor(route, router, http, actionSheetController, nativGeocoder, toast, fb, createService, mediaService, loadingController, imagePicker, manageDataService) {
     this.route = route;
     this.router = router;
     this.http = http;
@@ -137,6 +139,7 @@ let CreationAssociationPage = class CreationAssociationPage {
     this.mediaService = mediaService;
     this.loadingController = loadingController;
     this.imagePicker = imagePicker;
+    this.manageDataService = manageDataService;
     this.GeocoderOption = {
       useLocale: true,
       maxResults: 5
@@ -183,14 +186,15 @@ let CreationAssociationPage = class CreationAssociationPage {
 
   ngOnInit() {
     this.credential = this.fb.group({
-      name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.minLength(7)]],
-      type: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
-      category: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
-      contact: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")]],
-      adresse: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
-      password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
-      password_confirmation: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required]],
-      nom_responsable: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_9__.Validators.minLength(7)]]
+      name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.minLength(7)]],
+      type: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required]],
+      category: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required]],
+      contact: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.pattern("^((\\+91-?)|0)?[0-9]{9}$")]],
+      adresse: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required]],
+      password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required]],
+      password_confirmation: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required]],
+      nom_responsable: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.minLength(7)]],
+      description: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.required, _angular_forms__WEBPACK_IMPORTED_MODULE_10__.Validators.minLength(50)]]
     });
     this.http.get('assets/country_dial_info.json').toPromise().then(res => {
       this.pays = res;
@@ -249,10 +253,22 @@ let CreationAssociationPage = class CreationAssociationPage {
         password_confirmation: _this2.password_confirmation.value,
         nom_responsable: _this2.nom_responsable.value,
         longitude: _this2.longitudeAssociation,
-        latitude: _this2.latitudeAssociation
+        latitude: _this2.latitudeAssociation,
+        description: _this2.description.value
       };
 
       _this2.createService.createAssociation(data, localStorage.getItem('token')).toPromise().then(data => {
+        console.log(data);
+        let id = JSON.parse(localStorage.getItem('mydata')).id;
+
+        _this2.manageDataService.becameAssociationMember(id, data.Association.id).toPromise().then(dat => {
+          console.log(dat);
+
+          _this2.manageDataService.addAssociationMember(id, data.Association.id).toPromise().then(data => {
+            console.log(data);
+          });
+        });
+
         _this2.upload_image(data, loading);
       }).catch( /*#__PURE__*/function () {
         var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
@@ -407,6 +423,10 @@ let CreationAssociationPage = class CreationAssociationPage {
     return this.credential.get('password_confirmation');
   }
 
+  get description() {
+    return this.credential.get('description');
+  }
+
   test() {
     const data = {
       name: this.name.value,
@@ -507,30 +527,32 @@ let CreationAssociationPage = class CreationAssociationPage {
 };
 
 CreationAssociationPage.ctorParameters = () => [{
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_10__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_11__.Router
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.NavController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.NavController
 }, {
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_12__.HttpClient
+  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_13__.HttpClient
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.ActionSheetController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.ActionSheetController
 }, {
   type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__.NativeGeocoder
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.ToastController
 }, {
-  type: _angular_forms__WEBPACK_IMPORTED_MODULE_9__.FormBuilder
+  type: _angular_forms__WEBPACK_IMPORTED_MODULE_10__.FormBuilder
 }, {
   type: src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_5__.CreationService
 }, {
   type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_6__.MediasService
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.LoadingController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_12__.LoadingController
 }, {
   type: _awesome_cordova_plugins_image_picker_ngx__WEBPACK_IMPORTED_MODULE_8__.ImagePicker
+}, {
+  type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_9__.ManageDataService
 }];
 
-CreationAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_13__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_14__.Component)({
+CreationAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_15__.Component)({
   selector: 'app-creation-association',
   template: _creation_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_creation_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -562,6 +584,19 @@ __webpack_require__.r(__webpack_exports__);
 let MediasService = class MediasService {
   constructor(http) {
     this.http = http;
+  }
+
+  getOneMedia(id) {
+    const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__.HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiURL + `/medias/${id}`;
+    return this.http.get(api, {
+      headers: headers
+    });
   }
 
   uploadImageProfil(token, credential) {
@@ -681,6 +716,40 @@ let MediasService = class MediasService {
 
           return function (_x5) {
             return _ref4.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadImageAnnonce(token, credential) {
+    var _this5 = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('annonce_id', credential.annonce_id);
+            setTimeout(() => {
+              _this5.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x6) {
+            return _ref5.apply(this, arguments);
           };
         }());
       } catch (err) {
@@ -918,7 +987,7 @@ module.exports = ".input {\n  border: 0.5px solid rgb(206, 204, 204);\n  border-
   \***********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"primary\" slot=\"start\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>creation-association</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-item>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\"></ion-icon>\n    <ion-text>Creation : </ion-text><ion-text style=\"font-weight: bold\">Association</ion-text>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\" *ngIf=\"selectedImages.length>=1\"></ion-icon>\n    <ion-row><ion-text>Image(s): </ion-text></ion-row>\n  </ion-item>\n  <ion-row style=\"width:100%\" class=\"ion-margin-horizontal\"> \n    <ion-text color=\"medium\">la premiere image constituera celle du profil de l'association et les autres ferons partis de la gallerie de votre association</ion-text>\n  </ion-row>\n  \n  <ion-item lines=\"none\">\n    <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n      <ion-fab-button color=\"primary\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n        <ion-icon name=\"trash-outline\"></ion-icon>\n      </ion-fab-button>\n      <img [src]=\"image.data\" />\n    </ion-thumbnail>\n    \n    <div class=\"camera\" (click)=\"getPicture()\" *ngIf=\"selectedImages.length<5\">\n      <ion-icon name=\"camera-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n    </div>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <!-- <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\" *ngIf=\"selectedImages.length>=1\"></ion-icon> -->\n    <ion-row><ion-text>Joindre document(s) association: </ion-text></ion-row>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <!-- <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n      <ion-fab-button color=\"primary\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n        <ion-icon name=\"trash-outline\"></ion-icon>\n      </ion-fab-button>\n      <img [src]=\"image.data\" />\n    </ion-thumbnail> -->\n    <div class=\"camera\" >\n      <ion-icon name=\"document-attach-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n    </div>\n  </ion-item>\n  <!--  -->\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input ion-form-group\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre pays\" (ionChange)=\"filterPays($event)\" [(ngModel)]=\"paysAssociation\">\n          <ion-select-option [value]=\"country.name\" *ngFor=\"let country of pays_temp\" > {{country.flag}}{{country.name}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------- -->\n  \n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre ville\" [(ngModel)]=\"villeAssociation\">\n          <ion-select-option *ngFor=\"let city of ville_temp\" [value]=\"city\">{{city}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ---------------------- -->\n  \n  <form [formGroup]=\"credential\">\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input formControlName=\"name\" type=\"text\"  placeholder=\"Nom de l'association\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(name.dirty||name.touched)&& name.errors\">min 7 characteres</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n \n  <!-- ------------------- -->\n <ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input formControlName=\"nom_responsable\" type=\"text\" placeholder=\"Nom responsable association\" maxlength=\"45\"></ion-input>\n      <ion-note slot=\"error\" *ngIf=\"(nom_responsable.dirty||nom_responsable.touched)&& nom_responsable.errors\">min 7 characteres</ion-note>\n    </ion-item>\n  </ion-col>\n </ion-row>\n \n  <!-- ------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez le type de l'association\" formControlName=\"type\">\n          <ion-select-option *ngFor=\"let type of typesAssociation\" [value]=\"type\">{{type}}</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(type.dirty||type.touched)&& type.errors\">selectionner le type de votre association</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Secteur d'activite\" formControlName=\"category\">\n          <ion-select-option *ngFor=\"let categorie of categoriesAssociation\" [value]=\"categorie\">{{categorie}}</ion-select-option>\n          <ion-note slot=\"error\" *ngIf=\"(category.dirty||category.touched)&& category.errors\">selectionnez une categorie </ion-note>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-text style=\"font-weight:bold\" slot=\"start\">\n          {{codeContactAssociation}}\n        </ion-text>\n        <ion-input placeholder=\"Votre contact\" type=\"number\" formControlName=\"contact\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(contact.dirty||contact.touched)&& contact.errors\">contact invalide</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n<!-- ---------------------- -->\n\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Code Secret\" formControlName=\"password\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Confirmez Code secret\" formControlName=\"password_confirmation\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<!-- ------------ -->\n<ion-item lines=\"none\" (click)=\"locationSheet()\">\n  <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"latitudeAssociation==null || longitudeAssociation==null\"></ion-icon>\n  <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\" *ngIf=\"latitudeAssociation!=null || longitudeAssociation!=null\"></ion-icon>\n  <ion-icon name=\"location\" color=\"primary\"></ion-icon>\n  <ion-text style=\"margin-left:10px\">{{adresseAssociation}}</ion-text>\n  <ion-icon name=\"chevron-forward-outline\"  color=\"medium\" slot=\"end\"></ion-icon>\n</ion-item>\n<!-- ------------ -->\n</form>\n</ion-content>\n<ion-footer>\n  <ion-card-subtitle style=\"color:grey\" class=\"ion-margin\">\n    Une fois le processus de creation termine , l'association ne sera valide qu'apres un controle des documents faits par les administrateurs de la plateforme.Ce processud de verification peux prendre 1 semaine apres quoi votre association sera disponible suir la plateforme\n    </ion-card-subtitle>\n    <ion-card style=\"width:100%;margin:0\">\n    <ion-button expand=\"block\" color=\"primary\" (click)=\"createAssociation()\"  class=\"ion-margin\" >Creer Association </ion-button>\n    </ion-card>\n</ion-footer>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"primary\" slot=\"start\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>creation-association</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-item>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\"></ion-icon>\n    <ion-text>Creation : </ion-text><ion-text style=\"font-weight: bold\">Association</ion-text>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\" *ngIf=\"selectedImages.length>=1\"></ion-icon>\n    <ion-row><ion-text>Image(s): </ion-text></ion-row>\n  </ion-item>\n  <ion-row style=\"width:100%\" class=\"ion-margin-horizontal\"> \n    <ion-text color=\"medium\">la premiere image constituera celle du profil de l'association et les autres ferons partis de la gallerie de votre association</ion-text>\n  </ion-row>\n  \n  <ion-item lines=\"none\">\n    <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n      <ion-fab-button color=\"primary\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n        <ion-icon name=\"trash-outline\"></ion-icon>\n      </ion-fab-button>\n      <img [src]=\"image.data\" />\n    </ion-thumbnail>\n    \n    <div class=\"camera\" (click)=\"getPicture()\" *ngIf=\"selectedImages.length<5\">\n      <ion-icon name=\"camera-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n    </div>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <!-- <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"selectedImages.length<1\"></ion-icon>\n    <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\" *ngIf=\"selectedImages.length>=1\"></ion-icon> -->\n    <ion-row><ion-text>Joindre document(s) association: </ion-text></ion-row>\n  </ion-item>\n  <ion-item lines=\"none\">\n    <!-- <ion-thumbnail slot=\"start\" *ngFor=\"let image of selectedImages;let i = index\" style=\"position:relative\">\n      <ion-fab-button color=\"primary\" style=\"position: absolute; top: 0; right: 0;\" size=\"small\" (click)=\"removeOnImagesList(i)\">\n        <ion-icon name=\"trash-outline\"></ion-icon>\n      </ion-fab-button>\n      <img [src]=\"image.data\" />\n    </ion-thumbnail> -->\n    <div class=\"camera\" >\n      <ion-icon name=\"document-attach-outline\" size=\"large\" color=\"medium\" ></ion-icon>\n    </div>\n  </ion-item>\n  <!--  -->\n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input ion-form-group\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre pays\" (ionChange)=\"filterPays($event)\" [(ngModel)]=\"paysAssociation\">\n          <ion-select-option [value]=\"country.name\" *ngFor=\"let country of pays_temp\" > {{country.flag}}{{country.name}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------- -->\n  \n  <ion-row *ngIf=\"pays!=null\">\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez votre ville\" [(ngModel)]=\"villeAssociation\">\n          <ion-select-option *ngFor=\"let city of ville_temp\" [value]=\"city\">{{city}}</ion-select-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ---------------------- -->\n  \n  <form [formGroup]=\"credential\">\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-input formControlName=\"name\" type=\"text\"  placeholder=\"Nom de l'association\" maxlength=\"45\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(name.dirty||name.touched)&& name.errors\">min 7 characteres</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n \n  <!-- ------------------- -->\n <ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input formControlName=\"nom_responsable\" type=\"text\" placeholder=\"Nom responsable association\" maxlength=\"45\"></ion-input>\n      <ion-note slot=\"error\" *ngIf=\"(nom_responsable.dirty||nom_responsable.touched)&& nom_responsable.errors\">min 7 characteres</ion-note>\n    </ion-item>\n  </ion-col>\n </ion-row>\n \n  <!-- ------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Selectionnez le type de l'association\" formControlName=\"type\">\n          <ion-select-option *ngFor=\"let type of typesAssociation\" [value]=\"type\">{{type}}</ion-select-option>\n        </ion-select>\n        <ion-note slot=\"error\" *ngIf=\"(type.dirty||type.touched)&& type.errors\">selectionner le type de votre association</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------------ -->\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-select interface=\"action-sheet\" placeholder=\"Secteur d'activite\" formControlName=\"category\">\n          <ion-select-option *ngFor=\"let categorie of categoriesAssociation\" [value]=\"categorie\">{{categorie}}</ion-select-option>\n          <ion-note slot=\"error\" *ngIf=\"(category.dirty||category.touched)&& category.errors\">selectionnez une categorie </ion-note>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  <!-- ------------------------ -->\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-textarea formControlName=\"description\"  placeholder=\"Aide : Donnez une description complete de votre association , son objectifs afin de pouvoir convaincre les potentiels donateurs ou membres a adherer a votre projet \"\n           maxlength=\"300\" rows=\"4\"></ion-textarea>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  \n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-item class=\"input\">\n        <ion-text style=\"font-weight:bold\" slot=\"start\">\n          {{codeContactAssociation}}\n        </ion-text>\n        <ion-input placeholder=\"Votre contact\" type=\"number\" formControlName=\"contact\"></ion-input>\n        <ion-note slot=\"error\" *ngIf=\"(contact.dirty||contact.touched)&& contact.errors\">contact invalide</ion-note>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n<!-- ---------------------- -->\n\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Code Secret\" formControlName=\"password\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<ion-row>\n  <ion-col size=\"12\">\n    <ion-item class=\"input\">\n      <ion-input [type]=\"password_confirm_input_type\" placeholder=\"Confirmez Code secret\" formControlName=\"password_confirmation\"></ion-input>\n      <ion-icon name=\"eye-off-outline\" *ngIf=\"password_confirm_input_type=='password'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n    <ion-icon name=\"eye-outline\" *ngIf=\"password_confirm_input_type=='text'\" (click)=\"changePassConfirmInputType()\"></ion-icon>\n      <!-- <ion-note slot=\"error\" *ngIf=\"(confirmPassword.dirty||confirmPassword.touched)&& confirmPassword.errors\">invalid confirmPassword</ion-note> -->\n    </ion-item>\n  </ion-col>\n</ion-row>\n<!-- ------------ -->\n<ion-item lines=\"none\" (click)=\"locationSheet()\">\n  <ion-icon name=\"ellipse-outline\" slot=\"start\" size=\"large\" *ngIf=\"latitudeAssociation==null || longitudeAssociation==null\"></ion-icon>\n  <ion-icon name=\"checkmark-circle\" slot=\"start\" color=\"primary\" size=\"large\" *ngIf=\"latitudeAssociation!=null || longitudeAssociation!=null\"></ion-icon>\n  <ion-icon name=\"location\" color=\"primary\"></ion-icon>\n  <ion-text style=\"margin-left:10px\">{{adresseAssociation}}</ion-text>\n  <ion-icon name=\"chevron-forward-outline\"  color=\"medium\" slot=\"end\"></ion-icon>\n</ion-item>\n<!-- ------------ -->\n</form>\n</ion-content>\n<ion-footer>\n  <ion-card-subtitle style=\"color:grey\" class=\"ion-margin\">\n    Une fois le processus de creation termine , l'association ne sera valide qu'apres un controle des documents faits par les administrateurs de la plateforme.Ce processud de verification peux prendre 1 semaine apres quoi votre association sera disponible suir la plateforme\n    </ion-card-subtitle>\n    <ion-card style=\"width:100%;margin:0\">\n    <ion-button expand=\"block\" color=\"primary\" (click)=\"createAssociation()\"  class=\"ion-margin\" >Creer Association </ion-button>\n    </ion-card>\n</ion-footer>\n";
 
 /***/ })
 

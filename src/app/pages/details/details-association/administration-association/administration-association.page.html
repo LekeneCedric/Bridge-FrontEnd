@@ -12,13 +12,13 @@
       <ion-fab-button color="light" [routerLink]="['/creation-mouvements',idAssociation]">
         <ion-icon name="calendar-outline"  color="success"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="warning" [routerLink]="['/creation-annonces',idAssociation]">
-        <ion-icon name="megaphone-outline"  color="light"></ion-icon>
+      <ion-fab-button color="light" [routerLink]="['/creation-annonces',idAssociation]">
+        <ion-icon name="megaphone-outline"  color="warning"></ion-icon>
       </ion-fab-button>
       <ion-fab-button color="light" [routerLink]="['/creation-besoins',idAssociation]">
-        <ion-icon name="thumbs-up-outline"  color="primary"></ion-icon>
+        <ion-icon name="thumbs-up-outline"  color="danger"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="light" >
+      <ion-fab-button color="light" (click)="openModalAddMembers()" >
         <ion-icon name="person-add-outline"  color="primary"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

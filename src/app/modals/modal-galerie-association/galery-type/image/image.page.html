@@ -1,0 +1,7 @@
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-icon name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
+  </ion-item>
+  <img *ngIf="currentMedia!=null" [src]="storage+currentMedia.filePath">
+</ion-content>

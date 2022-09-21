@@ -13,61 +13,58 @@
 
     
     </ion-row>
-    <ion-card style="width: 100%;padding:0;margin:0">
-      <ion-img src="https://www.dreamhost.com/blog/wp-content/uploads/2019/06/afa314e6-1ae4-46c5-949e-c0a77f042e4f_DreamHost-howto-prod-descrips-full-750x500.jpeg"></ion-img>
-     </ion-card>
-     <ion-grid style="width: 100%;padding:0;margin:0">
-        <ion-item lines="none" style="margin-top:10px">
-          <ion-text style="font-weight: bold;font-size:1.3em">Marche sportive pour collecte de fonds afin d'aider les enfants handicapes</ion-text>
+    <ion-slides pager="true" [options]="slideOpts" *ngIf="Mouvement!=null">
+      <ion-slide *ngFor="let img of Mouvement.media" style="max-height:150px">
+        <ion-img
+        [src]="storage+img.filePath"
+          class="imgProduct"></ion-img>
+      </ion-slide>
+      <ion-slide *ngIf="Mouvement.media.length<1" style="background-image:url('../../../../assets/images/empty.webp')">
+      </ion-slide>
+    </ion-slides>
+     <ion-grid style="width: 100%;padding:0;margin:0" *ngIf="Mouvement !=null">
+        <ion-item lines="none" style="--background:#3880ff;">
+          <ion-text style="font-weight: bold;font-size:1.3em" color="light" >{{Mouvement.intitule}}</ion-text>
         </ion-item>
         <ion-item lines="none">
-          <ion-text style="color:gray;"> publie il y'a 4 heures</ion-text>
+          <ion-text style="color:#3880ff;"> <strong>publie  &ensp;</strong><strong style="color:#3880ff">{{elapsedTime}}</strong> </ion-text>
         </ion-item>
         <ion-item lines="none">
-          <ion-text style="color:gray;" slot="start">Debut</ion-text>
-          <ion-text style="color:gray;font-weight: bold;" >Mardi 29/09/2002 15h30</ion-text>
+          <ion-text style="color:gray;width:auto" slot="start"><strong>Debut &ensp; :</strong> </ion-text>
+          <ion-text style="color:gray;font-weight: bold;" slot="start">{{Mouvement.date_rencontre | date:'MMM d, y'}} a {{Mouvement.heure_debut}}</ion-text>
         </ion-item>
         <ion-item lines="none">
-            <ion-text style="color:gray;" slot="start">Fin</ion-text>
-          <ion-text style="color:gray;font-weight: bold;" >Mercredi 30/09/2022 16h15</ion-text>
+          <ion-text style="color:gray;width:auto" slot="start"><strong>Fin &ensp; :</strong></ion-text>
+          <ion-text style="color:gray;font-weight: bold;" slot="start">{{Mouvement.date_rencontre | date:'MMM d, y'}} a {{Mouvement.heure_fin}}</ion-text>
         </ion-item>
         <ion-item>
           <img src="../../../../assets//images/location.png" alt="">
-          <ion-text style="color:gray;font-weight: bold;" >Cameroun-yaounde-cite verte</ion-text>
+          <ion-text style="color:gray;font-weight: bold;" >{{Mouvement.adresse}}Cameroun , yaounde, cite-verte</ion-text>
         </ion-item>
-          <ion-item lines="none" style="margin:0;padding:0">
+          <ion-item lines="none" style="margin-top:5%;padding:0">
             <ion-col size="12" style="margin:0;padding:0">
-            <ion-text style="color:gray;margin-top:10px ;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in</ion-text>
+            <ion-text style="color:gray;margin-top:10px ;">{{Mouvement.description}}</ion-text>
             </ion-col>
           </ion-item>
-          
-          <ion-item style="width:100%;margin-top:15px" lines="none">
-            <ion-thumbnail slot="start" >
-              <img style="border-radius:10px" src="https://i.pinimg.com/564x/44/9e/5e/449e5e93c14f34fb7b90559e4f9908ab.jpg" />
-            </ion-thumbnail>
-            <ion-col style="text-align: left">
-              <ion-row>
-               <ion-text style="font-weight: bold">Les Armandins </ion-text>
-              </ion-row>
-              <ion-row>
-                <ion-text style="color:gray"> association carritative</ion-text>
-              </ion-row>
-            </ion-col>
-            <ion-icon name="chevron-forward-outline" size="large" slot="end"></ion-icon>
-          </ion-item>
+          <div style="margin-top:15px">
+            <iframe style="height:150px;" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d31846.589784163676!2d11.504356780700759!3d3.8479866401768335!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2scm!4v1663688996918!5m2!1sfr!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
      </ion-grid>
      <div style="margin-bottom:10%"></div>
 </ion-content>
 <ion-card style="padding:0;margin:0">
   <ion-row>
     <ion-col size="6">
-      <ion-chip color="warning" style="padding: 20px;">
-        <img src="../../../../assets/images/gift.png">
-        <ion-text>Soutenir</ion-text>
-    </ion-chip>
+      <ion-button color="light">
+        <ion-icon name="gift-outline" style="margin-bottom:5%" color="danger"></ion-icon>
+        <ion-text style="margin-left:10px;font-weight: bold;" color="warning">Soutenir</ion-text>
+      </ion-button>
     </ion-col>
-    <ion-col size="6">
-      <ion-button expand="block" color="success"> Participer</ion-button>
+    <ion-col size="6" *ngIf="imParticipate==false">
+      <ion-button expand="block" color="primary" (click)="participerMouvement()"> Participer</ion-button>
+    </ion-col>
+    <ion-col size="6" *ngIf="imParticipate==true">
+      <ion-button expand="block" color="danger" (click)="annulerParticipation()"> Annuler</ion-button>
     </ion-col>
     
       
