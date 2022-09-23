@@ -2,7 +2,7 @@
   <ion-item lines="none" class="search-item">
     <ion-icon name="search-outline" size="large" color="dark"></ion-icon>
     <ion-input placeholder="Recherche dans les messages" [(ngModel)]="search" ></ion-input>
-    <ion-chip style="padding:0" *ngIf="search.length>0" (click)="search=''">
+    <ion-chip style="padding:0" *ngIf="search.length>0">
       <ion-icon name="close-outline" style="margin-right:30%" color="dark"></ion-icon>
     </ion-chip>
   </ion-item>
@@ -17,6 +17,4 @@
       </ion-chip>
     </ion-item>
   </div>
-  
-
 </ion-content>

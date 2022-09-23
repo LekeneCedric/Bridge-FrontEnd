@@ -9,6 +9,9 @@ import { ManageDataService } from 'src/app/services/manage-data/manage-data.serv
   styleUrls: ['./modal-edit-dons.page.scss'],
 })
 export class ModalEditDonsPage implements OnInit {
+confirm() {
+throw new Error('Method not implemented.');
+}
   @Input() don ;
   constructor(private actionSheetController: ActionSheetController,private toast:ToastController,
     private nativeGeocoder:NativeGeocoder,private loadingController: LoadingController,

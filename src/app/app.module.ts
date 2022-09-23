@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AutoCompleteModule } from 'ionic4-auto-complete';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { PhotoViewer } from '@awesome-cordova-plugins/photo-viewer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
     AutoCompleteModule,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},CallNumber,NativeGeocoder],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},CallNumber,NativeGeocoder,PhotoViewer],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -52,15 +52,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GaleryTypePageModule": () => (/* binding */ GaleryTypePageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
 /* harmony import */ var _galery_type_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./galery-type-routing.module */ 8173);
 /* harmony import */ var _galery_type_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./galery-type.page */ 353);
-/* harmony import */ var _awesome_cordova_plugins_photo_viewer_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/photo-viewer/ngx */ 9446);
-
 
 
 
@@ -70,15 +68,14 @@ __webpack_require__.r(__webpack_exports__);
 
 let GaleryTypePageModule = class GaleryTypePageModule {
 };
-GaleryTypePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.NgModule)({
+GaleryTypePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
         imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_5__.CommonModule,
-            _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormsModule,
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule,
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
             _galery_type_routing_module__WEBPACK_IMPORTED_MODULE_0__.GaleryTypePageRoutingModule
         ],
-        providers: [_awesome_cordova_plugins_photo_viewer_ngx__WEBPACK_IMPORTED_MODULE_2__.PhotoViewer],
         declarations: [_galery_type_page__WEBPACK_IMPORTED_MODULE_1__.GaleryTypePage]
     })
 ], GaleryTypePageModule);
@@ -160,72 +157,6 @@ GaleryTypePage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
         styles: [_galery_type_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], GaleryTypePage);
-
-
-
-/***/ }),
-
-/***/ 9446:
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/photo-viewer/__ivy_ngcc__/ngx/index.js ***!
-  \**************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PhotoViewer": () => (/* binding */ PhotoViewer)
-/* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @awesome-cordova-plugins/core */ 4624);
-
-
-
-
-
-var PhotoViewer =
-/** @class */
-function (_super) {
-  (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(PhotoViewer, _super);
-
-  function PhotoViewer() {
-    return _super !== null && _super.apply(this, arguments) || this;
-  }
-
-  PhotoViewer.prototype.show = function (url, title, options) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "show", {
-      "sync": true
-    }, arguments);
-  };
-
-  PhotoViewer.pluginName = "PhotoViewer";
-  PhotoViewer.plugin = "com-sarriaroman-photoviewer";
-  PhotoViewer.pluginRef = "PhotoViewer";
-  PhotoViewer.repo = "https://github.com/sarriaroman/photoviewer";
-  PhotoViewer.platforms = ["Android", "iOS"];
-
-  PhotoViewer.ɵfac = /*@__PURE__*/function () {
-    var ɵPhotoViewer_BaseFactory;
-    return function PhotoViewer_Factory(t) {
-      return (ɵPhotoViewer_BaseFactory || (ɵPhotoViewer_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetInheritedFactory"](PhotoViewer)))(t || PhotoViewer);
-    };
-  }();
-
-  PhotoViewer.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
-    token: PhotoViewer,
-    factory: function (t) {
-      return PhotoViewer.ɵfac(t);
-    }
-  });
-
-  (function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](PhotoViewer, [{
-      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable
-    }], null, null);
-  })();
-
-  return PhotoViewer;
-}(_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.AwesomeCordovaNativePlugin);
 
 
 

@@ -26,6 +26,9 @@ export class ModalDemandesAdhesionAssociationPage implements OnInit {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
   
+  confirm(){
+    return this.modalCtrl.dismiss(null, 'confirm');
+  }
   public rejectDemand(id_donateur:number){
     this.manageDataService.rejectAssociationMember(id_donateur,this.id_association).toPromise().then(
       async data=>{

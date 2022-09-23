@@ -8,8 +8,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ManageDataService {
 
-  constructor(private http:HttpClient) { }
-
+  constructor(private http:HttpClient) { 
+    setInterval(()=>{
+      this.myId = JSON.parse(localStorage.getItem('mydata')).id;
+    },100)
+   
+  }
+  public myId:number;
   public getDons(page:number):Observable<any>{
     const api = environment.apiURL+`/dons?page=${page}`;
     return this.http.get<any>(api,{headers: {
@@ -377,6 +382,27 @@ export class ManageDataService {
     return this.http.post<any>(api,data,{headers:headers});
   }
   /*---------------------------ANNONCES_ASSOCIATIONS---------------------------_*/
+
+  public LikerAnnonce(credential:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+'/likerAnnonce/';
+    return this.http.post<any>(api,credential,{headers:headers});
+  }
+  public disLikerAnnonce(id_annonce:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'Accept': 'application/json, text/plain, */*',
+    'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/dislikeAnnonce/${id_annonce}/${this.myId}`;
+    return this.http.delete<any>(api,{headers:headers});
+  }
   public getAnnonces():Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -384,7 +410,8 @@ export class ManageDataService {
     'Accept': 'application/json, text/plain, */*',
     'X-Requested-With': 'XMLHttpRequest'
     });
-    const api = environment.apiURL+'/annonces/';
+    console.log(this.myId)
+    const api = environment.apiURL+`/annonces/${this.myId}`;
     return this.http.get<any>(api,{headers:headers});
   }
   public getOneAnnonce(idannonces:number):Observable<any>{
@@ -394,7 +421,7 @@ export class ManageDataService {
     'Accept': 'application/json, text/plain, */*',
     'X-Requested-With': 'XMLHttpRequest'
     });
-    const api = environment.apiURL+'/annonces/'+`${idannonces}`;
+    const api = environment.apiURL+'/annonces/'+`${idannonces}/${this.myId}`;
     return this.http.get<any>(api,{headers:headers});
   }
   public addAnnonce(credential:any):Observable<any>{

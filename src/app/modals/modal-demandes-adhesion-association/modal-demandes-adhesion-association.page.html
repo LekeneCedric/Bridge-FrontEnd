@@ -1,3 +1,11 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="end" color="primary" (click)="confirm()">
+      <ion-text>Fermer</ion-text>
+      <ion-icon name="close-circle-outline" size="large"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="ion-padding">
     <ion-icon name="exit-outline"color="danger" size="large" (click)="cancel()"></ion-icon>
     <ion-grid *ngIf="Association!=null">

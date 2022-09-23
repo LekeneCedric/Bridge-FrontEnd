@@ -156,12 +156,12 @@
 </ion-item>
 <ion-item lines="none" *ngIf="Association!=null" (click)="openModalMembers()">
   <ion-icon name="people-outline" slot="start"></ion-icon>
-  <ion-text slot="start"><strong>{{Association.membres.length}}</strong> &ensp; membres / administrateurs </ion-text>
-  <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  <ion-text slot="start"><strong>{{Association.membres.length}}</strong> &ensp; membres </ion-text>
+  <ion-icon name="chevron-forward-outline" slot="end" ></ion-icon>
 </ion-item>
 <ion-item lines="none" *ngIf="Association!=null">
-  <ion-icon name="gift-outline" slot="start"></ion-icon>
-  <ion-text slot="start"><strong>{{Association.don.length}}</strong> &ensp; dons </ion-text>
+  <ion-icon name="thumbs-up-outline" slot="start"></ion-icon>
+  <ion-text slot="start"><strong></strong> &ensp; Besoins actuels </ion-text>
   <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
 </ion-item>
 </ion-content>

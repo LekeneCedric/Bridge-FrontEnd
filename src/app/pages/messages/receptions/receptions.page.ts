@@ -142,10 +142,8 @@ filtration(){
     let temp1:number[] = [];
     console.log(this.mesdonsContactes.length);
     this.mesdonsContactes.forEach(don=>{
-      if(temp1.includes(don.id_don)){
-      }
+      if(temp1.includes(don.id_don)){}
       else{
-        console.log('')
         temp1.push(don.id_don);
         this.manageDataService.getOneDon(don.id_don).toPromise().then(
           data=>{

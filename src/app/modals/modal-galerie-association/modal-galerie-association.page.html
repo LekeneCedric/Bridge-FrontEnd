@@ -10,21 +10,21 @@
  class="ion-margin" style="height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;
 background-position: center;border-radius:5px;background-size:cover;
 background-image: url({{storage+AssociationImages.Association[0].filePath}});">
- <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: bolder;font-size: 2em;opacity: 1;color:white"  color="light"> Association </ion-text>
+ <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black" > Association </ion-text>
 </div>
 <div *ngIf="AssociationImages!=null" 
 [routerLink]="['galery-type','mouvements',association_id]"
 class="ion-margin" style="height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;
 background-position: center;border-radius:5px;background-size:cover;
 background-image: url({{AssociationImages.Mouvements[0].length>0 ? storage+AssociationImages.Mouvements[0][0].filePath:'assets/empty.png'}});">
-  <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: bolder;font-size: 2em;opacity: 1;"  color="light"> Mouvements </ion-text>
+  <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black" > Mouvements </ion-text>
  </div>
  <div *ngIf="AssociationImages!=null"
  [routerLink]="['galery-type','annonces',association_id]"
  class="ion-margin" style="height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;
  background-position: center;border-radius:5px;background-size:cover;
  background-image: url({{AssociationImages.Annonces[0].length>0 ? storage+AssociationImages.Annonces[0][0].filePath : 'assets/empty.png'}})">
-  <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: bolder;font-size: 2em;opacity: 1;" color="dark"> Annonces </ion-text>
+  <ion-text style="position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black"> Annonces </ion-text>
  </div>
 <!-- <ion-row>
 <ion-title style="font-weight:bold">Images Associations</ion-title>

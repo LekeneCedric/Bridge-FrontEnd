@@ -1,9 +1,20 @@
-
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="end" color="primary" (click)="confirm()">
+      <ion-text>Fermer</ion-text>
+      <ion-icon name="close-circle-outline" size="large"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-card *ngFor="let event of Mouvements" lines="none" class="ion-padding-bottom">
     <div  [routerLink]="['/details-evenement',event.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
     background-image: url({{event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'}})">
-    </div>
+   <ion-button style="position:absolute;z-index:10;float:right">
+    <ion-icon name="walk-outline"></ion-icon>
+    <ion-text color="light" style="font-weight:bold;margin-top:7px">{{event.nbparticipants}} &ensp;participants</ion-text>
+    </ion-button>    
+  </div>
     <ion-item style="width:100%;" lines="none" (click)="confirm()" [routerLink]="['/details-association',event.association.id]">
       <ion-thumbnail slot="start" >
         <img style="border-radius:10px" [src]="event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'" />

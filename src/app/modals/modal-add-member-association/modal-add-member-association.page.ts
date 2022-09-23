@@ -10,8 +10,8 @@ import { ManageDataService } from 'src/app/services/manage-data/manage-data.serv
 })
 export class ModalAddMemberAssociationPage implements OnInit {
 
-  constructor(private manageDataService:ManageDataService,private route:ActivatedRoute,private toast:ToastController,
-    private loadingController:LoadingController,private modalCtrl:ModalController) { }
+  constructor(private manageDataService:ManageDataService,private toast:ToastController,
+    private modalCtrl:ModalController) { }
   @Input() id_association:number;
   ngOnInit() {
     this.getMemberList();
@@ -21,8 +21,8 @@ export class ModalAddMemberAssociationPage implements OnInit {
   }
 
   /*--------------------------------VARIABLES-------------------------------*/
-  public members:any[]=[];
-  public non_members:any[]=[];
+  public members:any[];
+  public non_members:any[];
   public search:string = '';
   /*--------------------------------FUNCTIONS-------------------------------*/
 

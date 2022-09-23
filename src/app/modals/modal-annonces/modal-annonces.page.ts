@@ -13,6 +13,7 @@ export class ModalAnnoncesPage implements OnInit {
   constructor(private manageDataService:ManageDataService,private modalCtrl:ModalController) { }
 
   ngOnInit() {
+    this.id = JSON.parse(localStorage.getItem('mydata')).id;
     this.manageDataService.getAnnoncesAssociation(this.association_id).toPromise().then(
       (data)=>{
         this.Annonces = data
@@ -20,9 +21,25 @@ export class ModalAnnoncesPage implements OnInit {
     )
     console.log(this.Annonces);
   }
+  public id:number;
   public storage = environment.storage;
   public Annonces:any 
-
+  public like(id_annonce){
+    const data = {
+      donateur_id:this.id,
+      annonce_id:id_annonce
+    }
+    this.manageDataService.LikerAnnonce(data).toPromise().then((data)=>{
+      this.ngOnInit()
+    })
+  }
+  public dislike(id_annonce){
+    this.manageDataService.disLikerAnnonce(id_annonce).toPromise().then(
+      (data)=>{
+         this.ngOnInit();
+      }
+    )
+  }
   confirm(){
     return this.modalCtrl.dismiss(null, 'confirm');
   }

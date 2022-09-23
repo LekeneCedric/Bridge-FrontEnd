@@ -1,29 +1,32 @@
 
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="end" color="primary" (click)="confirm()">
+      <ion-text>Fermer</ion-text>
+      <ion-icon name="close-circle-outline" size="large"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-card *ngFor="let annonce of Annonces" class="ion-padding-bottom" (click)="confirm()">
-    <div [routerLink]="['/details-annonce',annonce.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
-    background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})">
-    </div>
-    <ion-item  (click)="confirm()" [routerLink]="['/details-association',annonce.association.id]" style="width:100%;" lines="none" class="ion-no-padding ion-no-margin">
-      <ion-thumbnail class="ion-margin-start" slot="start" >
-        <img style="border-radius:10px" [src]="annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'" />
-      </ion-thumbnail>
-      <ion-col style="text-align: left">
-        <ion-row >
-         <ion-text style="font-weight: bold;font-size: 1.1em;">{{annonce.association.name}}</ion-text>
-        </ion-row >
-        <ion-row style="margin-top:2%">
-          <ion-text style="color:gray">{{annonce.association.type}}</ion-text>
-        </ion-row >
-      </ion-col>
-    </ion-item>
-    <ion-item style="width:100%;padding:0;margin:0" lines="none"  (click)="confirm()" [routerLink]="['/details-annonce',annonce.id]">
-      <ion-text style="font-weight:bold;text-align: center;font-size: 1em;">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>
-    </ion-item>
-    <ion-item lines="none" (click)="confirm()" [routerLink]="['/details-annonce',annonce.id]">
-      <ion-text style="color:gray;font-size:0.8em">
-      {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}
-      </ion-text>
-    </ion-item>
-  </ion-card>
+  <ion-list>
+    <ion-card *ngFor="let annonce of Annonces">
+      <div [routerLink]="['/details-annonce',annonce.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
+      background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})">
+      </div>
+      <ion-item style="width:100%;padding:0;margin:0" lines="none"  [routerLink]="['/details-annonce',annonce.id]">
+        <ion-text style="font-weight:bold;text-align: center;font-size: 1em;">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>
+      </ion-item>
+      <ion-item lines="none" [routerLink]="['/details-annonce',annonce.id]">
+        <ion-text style="color:gray;font-size:0.8em">
+        {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}
+        </ion-text>
+      </ion-item>
+        <ion-item lines="none"  style="width: 100%;">
+            <ion-text slot="end" style="margin-top:10px">{{annonce.nbLikes}}</ion-text>
+            <ion-icon slot="end"   name="heart" size="large" ></ion-icon>
+        </ion-item>
+    </ion-card>
+    
+  </ion-list>
+  
 </ion-content>

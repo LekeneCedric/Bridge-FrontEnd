@@ -46,9 +46,9 @@ public async openModalMembers(){
       id_association:this.idAssociation
     },
     breakpoints:[0,1],
-    initialBreakpoint:0.4,
+    initialBreakpoint:0.6,
     animated:true,
-    handle:true,
+    handle:false,
   });
   modal.present();
   const {data,role } = await modal.onWillDismiss(); 
@@ -99,9 +99,9 @@ public async openMouvementsModal(){
       association_id:this.Association.id
     },
     breakpoints:[0,1],
-    initialBreakpoint:1,
+    initialBreakpoint:0.6,
     animated:true,
-    handle:true
+    handle:false
   });
   modal.present();
   const {data,role } = await modal.onWillDismiss();
@@ -115,9 +115,9 @@ public async openAnnoncesModal(){
       association_id:this.Association.id
     },
     breakpoints:[0,1],
-    initialBreakpoint:1,
+    initialBreakpoint:0.6,
     animated:true,
-    handle:true
+    handle:false
   });
   modal.present();
   const {data,role } = await modal.onWillDismiss();

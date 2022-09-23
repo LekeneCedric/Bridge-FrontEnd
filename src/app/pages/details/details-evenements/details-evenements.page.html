@@ -5,23 +5,26 @@
           <ion-icon name="chevron-back-outline" size="large" color="danger"></ion-icon>
       </ion-fab-button>
     </ion-fab>
-    <ion-fab style="margin-top:5px" horizontal="end" (click)="navBack()">
-      <ion-fab-button color="light">
-        <ion-icon name="heart-outline" size="large" slot="end"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-
-    
     </ion-row>
-    <ion-slides pager="true" [options]="slideOpts" *ngIf="Mouvement!=null">
-      <ion-slide *ngFor="let img of Mouvement.media" style="max-height:150px">
-        <ion-img
-        [src]="storage+img.filePath"
-          class="imgProduct"></ion-img>
-      </ion-slide>
-      <ion-slide *ngIf="Mouvement.media.length<1" style="background-image:url('../../../../assets/images/empty.webp')">
-      </ion-slide>
-    </ion-slides>
+   
+   
+    <div style="position:relative"  *ngIf="Mouvement!=null">
+      <ion-button  style="position:absolute; z-index:10;right: 2%;top:5%" color="primary">
+        <ion-icon name="walk-outline"></ion-icon>
+        <ion-text color="light" style="font-weight:bold;font-size: large">{{Mouvement.nbparticipants}}</ion-text>
+      </ion-button>
+      <ion-slides pager="true" [options]="slideOpts" >
+        <ion-slide *ngFor="let img of Mouvement.media" style="max-height:150px">
+          <ion-img
+          [src]="storage+img.filePath"
+            class="imgProduct"></ion-img>
+        </ion-slide>
+        <ion-slide *ngIf="Mouvement.media.length<1" style="background-image:url('../../../../assets/images/empty.webp')">
+        </ion-slide>
+      </ion-slides>
+    </div>
+    
+  
      <ion-grid style="width: 100%;padding:0;margin:0" *ngIf="Mouvement !=null">
         <ion-item lines="none" style="--background:#3880ff;">
           <ion-text style="font-weight: bold;font-size:1.3em" color="light" >{{Mouvement.intitule}}</ion-text>

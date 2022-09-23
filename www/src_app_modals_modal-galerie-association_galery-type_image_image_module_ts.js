@@ -159,7 +159,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \***********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n  </ion-item>\n  <img *ngIf=\"currentMedia!=null\" [src]=\"storage+currentMedia.filePath\">\n</ion-content>\n";
+module.exports = "\n<ion-content style=\"--background:black\">\n  <ion-item lines=\"none\" style=\"--background:black\">\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"light\" (click)=\"navBack()\"></ion-icon>\n    <ion-title *ngIf=\"currentMedia!=null\" color=\"light\">{{currentMedia.fileName}} </ion-title>\n  </ion-item>\n  <img *ngIf=\"currentMedia!=null\" [src]=\"storage+currentMedia.filePath\" style=\"width:100%;margin-top:50%\">\n</ion-content>\n";
 
 /***/ })
 
