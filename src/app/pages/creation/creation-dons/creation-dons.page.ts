@@ -20,10 +20,10 @@ import { Filesystem } from '@capacitor/filesystem';
 export class CreationDonsPage implements OnInit {
 
   constructor(private creationService:CreationService,private mediaService:MediasService,
-    private navCtrl:NavController,private actionSheetController:ActionSheetController,
-    private nativGeocoder:NativeGeocoder,private platform:Platform,
+    private actionSheetController:ActionSheetController,
+    private nativGeocoder:NativeGeocoder,
     private loadingController:LoadingController,
-    private http:HttpClient, private toast:ToastController,private router:Router) { }
+    private toast:ToastController,private router:Router) { }
   
   async ngOnInit() {
     Geolocation.watchPosition({
@@ -67,7 +67,8 @@ export class CreationDonsPage implements OnInit {
       this.saveImage(image)
     }
   }
-  public async saveImage(image:Photo){
+  public async saveImage(image:Photo)
+  {
   const base64data = await this.readAsBase64(image);
   console.log(base64data)
   const filename = new Date().getTime()+'.jpeg';
@@ -75,10 +76,10 @@ export class CreationDonsPage implements OnInit {
     path:filename,
     data:base64data
   }
-  setTimeout(() => {
-    this.selectedImages.unshift(img)},500)
+  this.selectedImages.unshift(img)
   }
-  public async readAsBase64(photo:Photo){
+  public async readAsBase64(photo:Photo)
+  {
       const res = await fetch(photo.webPath);
       const blob = await res.blob();
       return await this.convertBlobToBase64(blob) as string;

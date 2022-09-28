@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'administration-association/:id',
     loadChildren: () => import('./administration-association/administration-association.module').then( m => m.AdministrationAssociationPageModule)
+  },
+  {
+    path: 'besoins-association/:id',
+    loadChildren: () => import('./besoins-association/besoins-association.module').then( m => m.BesoinsAssociationPageModule)
   }
 ];
 

@@ -1,21 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon (click)="navBack()" name="chevron-back-outline" size="large" color="danger" slot="start"></ion-icon>
+    <ion-title *ngIf="Mouvement!=null" style="font-size:1.8em;font-weight:bolder">
+      {{Mouvement.intitule}}
+    </ion-title>
+    <ion-button *ngIf="Mouvement!=null" slot="end" color="primary">
+      <ion-icon name="walk-outline"></ion-icon>
+      <ion-text color="light" style="font-weight:bold;font-size: large">{{Mouvement.nbparticipants}}</ion-text>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-row slot="fixed">
-    <ion-fab style="margin-top:5px" horizontal="start" (click)="navBack()">
-      <ion-fab-button color="light">
-          <ion-icon name="chevron-back-outline" size="large" color="danger"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    </ion-row>
-   
-   
-    <div style="position:relative"  *ngIf="Mouvement!=null">
-      <ion-button  style="position:absolute; z-index:10;right: 2%;top:5%" color="primary">
-        <ion-icon name="walk-outline"></ion-icon>
-        <ion-text color="light" style="font-weight:bold;font-size: large">{{Mouvement.nbparticipants}}</ion-text>
-      </ion-button>
+    <div *ngIf="Mouvement!=null">
       <ion-slides pager="true" [options]="slideOpts" >
         <ion-slide *ngFor="let img of Mouvement.media" style="max-height:150px">
-          <ion-img
+          <ion-img [routerLink]="['/image',img.id]"
           [src]="storage+img.filePath"
             class="imgProduct"></ion-img>
         </ion-slide>

@@ -11,10 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalGalerieAssociationPageRoutingModule": () => (/* binding */ ModalGalerieAssociationPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _modal_galerie_association_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-galerie-association.page */ 7346);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _modal_galerie_association_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-galerie-association.page */ 67346);
 
 
 
@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: 'galery-type/:category/:id',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_modals_modal-galerie-association_galery-type_galery-type_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./galery-type/galery-type.module */ 2517)).then(m => m.GaleryTypePageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_modals_modal-galerie-association_galery-type_galery-type_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./galery-type/galery-type.module */ 32517)).then(m => m.GaleryTypePageModule)
     }
 ];
 let ModalGalerieAssociationPageRoutingModule = class ModalGalerieAssociationPageRoutingModule {
@@ -42,7 +42,7 @@ ModalGalerieAssociationPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__
 
 /***/ }),
 
-/***/ 1945:
+/***/ 31945:
 /*!**************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/modal-galerie-association.module.ts ***!
   \**************************************************************************************/
@@ -52,13 +52,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalGalerieAssociationPageModule": () => (/* binding */ ModalGalerieAssociationPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _modal_galerie_association_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-galerie-association-routing.module */ 7646);
-/* harmony import */ var _modal_galerie_association_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-galerie-association.page */ 7346);
+/* harmony import */ var _modal_galerie_association_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-galerie-association.page */ 67346);
 
 
 
@@ -84,7 +84,7 @@ ModalGalerieAssociationPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__deco
 
 /***/ }),
 
-/***/ 7346:
+/***/ 67346:
 /*!************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/modal-galerie-association.page.ts ***!
   \************************************************************************************/
@@ -94,15 +94,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalGalerieAssociationPage": () => (/* binding */ ModalGalerieAssociationPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_galerie_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-galerie-association.page.html?ngResource */ 6643);
-/* harmony import */ var _modal_galerie_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-galerie-association.page.scss?ngResource */ 1435);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 8549);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_galerie_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-galerie-association.page.html?ngResource */ 16643);
+/* harmony import */ var _modal_galerie_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-galerie-association.page.scss?ngResource */ 71435);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
+/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 28549);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -153,7 +153,7 @@ ModalGalerieAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)(
 
 /***/ }),
 
-/***/ 8549:
+/***/ 28549:
 /*!***************************************************!*\
   !*** ./src/app/services/medias/medias.service.ts ***!
   \***************************************************/
@@ -163,11 +163,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MediasService": () => (/* binding */ MediasService)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -248,9 +248,10 @@ let MediasService = class MediasService {
     });
   }
 
-  uploadImageAssociation(token, credential) {
+  uploadImageAssoBesoinDon(token, credential) {
     var _this3 = this;
 
+    //  creation don en reponse a un besoin d'une association
     console.log(credential.files);
     return new Promise((resolve, reject) => {
       try {
@@ -262,7 +263,7 @@ let MediasService = class MediasService {
             const blob = yield res.blob();
             const formData = new FormData();
             formData.append('file', blob, file.path);
-            formData.append('association_id', credential.association_id);
+            formData.append('asso_don_id', credential.asso_don_id);
             setTimeout(() => {
               _this3.uploadData(formData, token).toPromise().then(data => {
                 i += 1;
@@ -282,7 +283,7 @@ let MediasService = class MediasService {
     });
   }
 
-  uploadImageMouvement(token, credential) {
+  uploadImageAssociation(token, credential) {
     var _this4 = this;
 
     console.log(credential.files);
@@ -296,7 +297,7 @@ let MediasService = class MediasService {
             const blob = yield res.blob();
             const formData = new FormData();
             formData.append('file', blob, file.path);
-            formData.append('mouvement_id', credential.mouvement_id);
+            formData.append('association_id', credential.association_id);
             setTimeout(() => {
               _this4.uploadData(formData, token).toPromise().then(data => {
                 i += 1;
@@ -316,7 +317,7 @@ let MediasService = class MediasService {
     });
   }
 
-  uploadImageAnnonce(token, credential) {
+  uploadImageMouvement(token, credential) {
     var _this5 = this;
 
     console.log(credential.files);
@@ -330,7 +331,7 @@ let MediasService = class MediasService {
             const blob = yield res.blob();
             const formData = new FormData();
             formData.append('file', blob, file.path);
-            formData.append('annonce_id', credential.annonce_id);
+            formData.append('mouvement_id', credential.mouvement_id);
             setTimeout(() => {
               _this5.uploadData(formData, token).toPromise().then(data => {
                 i += 1;
@@ -342,6 +343,40 @@ let MediasService = class MediasService {
 
           return function (_x6) {
             return _ref5.apply(this, arguments);
+          };
+        }());
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  uploadImageAnnonce(token, credential) {
+    var _this6 = this;
+
+    console.log(credential.files);
+    return new Promise((resolve, reject) => {
+      try {
+        var i = 0;
+        var max = credential.files.length;
+        credential.files.forEach( /*#__PURE__*/function () {
+          var _ref6 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (file) {
+            const res = yield fetch(file.data);
+            const blob = yield res.blob();
+            const formData = new FormData();
+            formData.append('file', blob, file.path);
+            formData.append('annonce_id', credential.annonce_id);
+            setTimeout(() => {
+              _this6.uploadData(formData, token).toPromise().then(data => {
+                i += 1;
+                console.log(`image ${i} uploaded successfully`);
+                i >= max ? resolve('success') : null;
+              });
+            }, 3000);
+          });
+
+          return function (_x7) {
+            return _ref6.apply(this, arguments);
           };
         }());
       } catch (err) {
@@ -372,7 +407,7 @@ MediasService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([(0,_angular_c
 
 /***/ }),
 
-/***/ 1435:
+/***/ 71435:
 /*!*************************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/modal-galerie-association.page.scss?ngResource ***!
   \*************************************************************************************************/
@@ -382,13 +417,13 @@ module.exports = ".image {\n  min-width: 5rem;\n  min-height: 5rem;\n}\n.image i
 
 /***/ }),
 
-/***/ 6643:
+/***/ 16643:
 /*!*************************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/modal-galerie-association.page.html?ngResource ***!
   \*************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n<ion-item lines=\"none\">\n  <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n  <ion-title>Galerie</ion-title>\n</ion-item>\n\n<div *ngIf=\"AssociationImages!=null\"\n[routerLink]=\"['galery-type','association',association_id]\"\n class=\"ion-margin\" style=\"height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;\nbackground-position: center;border-radius:5px;background-size:cover;\nbackground-image: url({{storage+AssociationImages.Association[0].filePath}});\">\n <ion-text style=\"position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black\" > Association </ion-text>\n</div>\n<div *ngIf=\"AssociationImages!=null\" \n[routerLink]=\"['galery-type','mouvements',association_id]\"\nclass=\"ion-margin\" style=\"height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;\nbackground-position: center;border-radius:5px;background-size:cover;\nbackground-image: url({{AssociationImages.Mouvements[0].length>0 ? storage+AssociationImages.Mouvements[0][0].filePath:'assets/empty.png'}});\">\n  <ion-text style=\"position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black\" > Mouvements </ion-text>\n </div>\n <div *ngIf=\"AssociationImages!=null\"\n [routerLink]=\"['galery-type','annonces',association_id]\"\n class=\"ion-margin\" style=\"height:200px;opacity: 0.8; position:relative;background-repeat: no-repeat;\n background-position: center;border-radius:5px;background-size:cover;\n background-image: url({{AssociationImages.Annonces[0].length>0 ? storage+AssociationImages.Annonces[0][0].filePath : 'assets/empty.png'}})\">\n  <ion-text style=\"position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black\"> Annonces </ion-text>\n </div>\n<!-- <ion-row>\n<ion-title style=\"font-weight:bold\">Images Associations</ion-title>\n</ion-row>\n<ion-row *ngIf=\"AssociationImages!=null\">\n  <ion-col size=\"12\" style=\"display:flex\">\n    <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Association\" style=\"margin:1%;\">\n      <img [src]=\"storage+image.filePath\" />\n    </ion-thumbnail>\n  </ion-col>\n</ion-row> -->\n<!-- ------------------MOUVEMENTS -->\n<!-- <ion-row>\n  <ion-title style=\"font-weight:bold\">Images Mouvements</ion-title>\n  </ion-row>\n  <ion-row *ngIf=\"AssociationImages!=null\">\n    <ion-col size=\"12\" style=\"display:flex\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Mouvements[0]\" style=\"margin:1%;\">\n        <img [src]=\"storage+image.filePath\" />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row> -->\n  <!-- -----------ANNONCES -->\n  <!-- <ion-row>\n    <ion-title style=\"font-weight:bold\">Images Annonces</ion-title>\n    </ion-row>\n    <ion-row *ngIf=\"AssociationImages!=null\">\n      <ion-col size=\"12\" style=\"display:flex\">\n        <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Annonces[0]\" style=\"margin:1%;\">\n          <img [src]=\"storage+image.filePath\" />\n        </ion-thumbnail>\n      </ion-col>\n    </ion-row> -->\n</ion-content>\n";
+module.exports = "\n<ion-content>\n<ion-item lines=\"none\">\n  <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n  <ion-title>Galerie</ion-title>\n</ion-item>\n\n<div *ngIf=\"AssociationImages!=null && AssociationImages.Association.length>0\"\n[routerLink]=\"['galery-type','association',association_id]\"\n class=\"ion-margin\" style=\"height:200px;opacity: 1; position:relative;background-repeat: no-repeat;\nbackground-position: center;border-radius:5px;background-size:cover;\nbackground-image: url({{storage+AssociationImages.Association[0].filePath}});\">\n <ion-text style=\"position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black\" > Association </ion-text>\n</div>\n<div *ngIf=\"AssociationImages!=null && AssociationImages.Mouvements.length>0\" \n[routerLink]=\"['galery-type','mouvements',association_id]\"\nclass=\"ion-margin\" style=\"height:200px;opacity: 1; position:relative;background-repeat: no-repeat;\nbackground-position: center;border-radius:5px;background-size:cover;\nbackground-image: url({{AssociationImages.Mouvements[0].length>0 ? storage+AssociationImages.Mouvements[0][0].filePath:'assets/empty.png'}});\">\n  <ion-text style=\"position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black\" > Mouvements </ion-text>\n </div>\n <div *ngIf=\"AssociationImages!=null && AssociationImages.Annonces.length>0\"\n [routerLink]=\"['galery-type','annonces',association_id]\"\n class=\"ion-margin\" style=\"height:200px;opacity: 1; position:relative;background-repeat: no-repeat;\n background-position: center;border-radius:5px;background-size:cover;\n background-image: url({{AssociationImages.Annonces[0].length>0 ? storage+AssociationImages.Annonces[0][0].filePath : 'assets/empty.png'}})\">\n  <ion-text style=\"position:absolute;bottom:2%;left:2%;font-weight: 50px;font-size: 2.5em;opacity: 1;color:black\"> Annonces </ion-text>\n </div>\n<!-- <ion-row>\n<ion-title style=\"font-weight:bold\">Images Associations</ion-title>\n</ion-row>\n<ion-row *ngIf=\"AssociationImages!=null\">\n  <ion-col size=\"12\" style=\"display:flex\">\n    <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Association\" style=\"margin:1%;\">\n      <img [src]=\"storage+image.filePath\" />\n    </ion-thumbnail>\n  </ion-col>\n</ion-row> -->\n<!-- ------------------MOUVEMENTS -->\n<!-- <ion-row>\n  <ion-title style=\"font-weight:bold\">Images Mouvements</ion-title>\n  </ion-row>\n  <ion-row *ngIf=\"AssociationImages!=null\">\n    <ion-col size=\"12\" style=\"display:flex\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Mouvements[0]\" style=\"margin:1%;\">\n        <img [src]=\"storage+image.filePath\" />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row> -->\n  <!-- -----------ANNONCES -->\n  <!-- <ion-row>\n    <ion-title style=\"font-weight:bold\">Images Annonces</ion-title>\n    </ion-row>\n    <ion-row *ngIf=\"AssociationImages!=null\">\n      <ion-col size=\"12\" style=\"display:flex\">\n        <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Annonces[0]\" style=\"margin:1%;\">\n          <img [src]=\"storage+image.filePath\" />\n        </ion-thumbnail>\n      </ion-col>\n    </ion-row> -->\n</ion-content>\n";
 
 /***/ })
 

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-icon name="chevron-back-outline" slot="start" size="large" color="primary" (click)="navBack()"></ion-icon>
+    <ion-icon name="chevron-back-outline" slot="start" size="large" color="danger" (click)="navBack()"></ion-icon>
     <ion-title>Associations</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -30,7 +30,7 @@
         <ion-icon name="pulse-outline" style="margin-right:10px" >
         </ion-icon>
       </ion-chip>
-        <ion-chip (click)="iAmMember()" color="primary" style="text-align:left;padding:0" class="ion-justify-content-center" *ngIf="item.idDonateurs.includes(Id)"> 
+        <ion-chip (click)="iAmMember()" color="danger" style="text-align:left;padding:0" class="ion-justify-content-center" *ngIf="item.idDonateurs.includes(Id)"> 
           <ion-icon name="people-outline" style="margin-right:10px" >
           </ion-icon>
         </ion-chip>
@@ -43,7 +43,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/creation-association">
-    <ion-fab-button color="primary">
+    <ion-fab-button color="danger">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

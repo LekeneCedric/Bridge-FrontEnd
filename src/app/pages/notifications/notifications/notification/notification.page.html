@@ -1,0 +1,22 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button slot="end" color="danger" (click)="confirm()">
+      <ion-text>Fermer</ion-text>
+      <ion-icon name="close-circle-outline" size="large"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list class="ion-padding">
+  <ion-row style="width:100%;text-align:left;margin-bottom:5%">
+    <ion-title style="width:100%;font-weight: bold;font-size:1.5em">
+      {{description | slice : 0:15}}
+    </ion-title>
+  </ion-row>
+  <ion-text>{{description}}</ion-text>
+  <ion-item lines="none">
+    <ion-text slot="end" style="color:gray">{{timeAgo}}</ion-text>
+  </ion-item>
+</ion-list>
+</ion-content>

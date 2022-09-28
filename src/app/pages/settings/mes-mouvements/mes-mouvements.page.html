@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="chevron-back-outline" slot="start" size="large" (click)="back()" color="danger"></ion-icon>
+    <ion-title>mes-mouvements</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-card *ngFor="let event of MesMouvements" lines="none" class="ion-padding-bottom">
+    <div  [routerLink]="['/details-evenement',event.mouvement.id]" style="padding:0;position:relative;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
+    background-image: url({{event.mouvement.media.length>0?storage+event.mouvement.media[0].filePath:'../../../../assets/images/user.png'}})">
+  <ion-button style="position:absolute;float:right">
+  <ion-icon name="walk-outline"></ion-icon>
+  <ion-text color="light" style="font-weight:bold;margin-top:7px">{{event.mouvement.nbparticipants}}&ensp;participants</ion-text>
+  </ion-button>  
+  </div>
+    <ion-item style="width:100%;" lines="none"  [routerLink]="['/details-association',event.mouvement.association.id]">
+      <ion-thumbnail slot="start" >
+        <img style="border-radius:10px" [src]="event.mouvement.association.media.length>0?storage+event.mouvement.association.media[0].filePath:'../../../../assets/images/user.png'" />
+      </ion-thumbnail>
+      <ion-col style="text-align: left">
+        <ion-row>
+         <ion-text style="font-weight: bold">{{event.mouvement.association.name}}</ion-text>
+        </ion-row>
+        <ion-row style="margin-top:2%">
+          <ion-text style="color:gray"> {{event.mouvement.association.type}}</ion-text>
+        </ion-row>
+      </ion-col>
+    </ion-item>
+    <ion-row style="width:100%;margin-left:0" class="ion-margin-horizontal"  [routerLink]="['/details-evenement',event.mouvement.id]">
+      <ion-col size="12">
+      <ion-row style="display:flex;">
+        <ion-icon name="information-outline" color="danger" size="small"></ion-icon>
+        <ion-text style="font-weight:bold;color:black;text-align: center;font-size: 1.2em;align-self: center;margin-left: 2%;" class="ion-margin-horizontal">{{event.mouvement.intitule | slice:0:30}}{{event.mouvement.intitule > 30 ? '&hellip;':'' }}</ion-text>  
+      </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row style="width:100%;margin-left:0" class="ion-margin-horizontal"  [routerLink]="['/details-evenement',event.mouvement.id]">
+        <ion-col size="12">
+        <ion-row style="display:flex;">
+          <ion-icon name="today-outline" size="small" color="danger"></ion-icon>
+          <ion-text style="color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;"><strong>{{event.mouvement.date_rencontre | date:'MMM d, y'}} &ensp;</strong> <strong>&ensp;|&ensp;</strong></ion-text>
+          <ion-text style="color:gray;font-size:1.1em;align-self: center;"> &ensp;de &ensp;<strong>{{event.mouvement.heure_debut}}</strong> &ensp; a &ensp; <strong>{{event.mouvement.heure_fin}}</strong></ion-text>
+        </ion-row>
+        </ion-col>
+      </ion-row>
+      <!------------------------->
+      <ion-row style="width:100%;margin-left:0;margin-top:0" class="ion-margin-horizontal" [routerLink]="['/details-evenement',event.mouvement.id]"> 
+         <ion-col size="12">
+          <ion-row style="display:flex;">
+            <ion-icon name="location-outline" size="small" color="danger"></ion-icon>
+            <ion-text style="color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;">{{event.mouvement.association.adresse}}</ion-text>
+          </ion-row>
+         </ion-col>
+      </ion-row>
+      <!-- <ion-row style="width:100%">
+        <ion-col size="7"></ion-col>
+        <ion-col size ="5">
+          <ion-button color="danger"  [routerLink]="['/details-evenement',event.mouvement.id]">
+            <ion-text>consulter</ion-text>
+          </ion-button>
+        </ion-col>
+        </ion-row> -->
+  </ion-card>
+</ion-list>
+</ion-content>

@@ -36,4 +36,28 @@ export class CreationService {
     });
     return this.http.post(api,credential,{headers:headers})
   }
+
+    /*----------------------------------BESOINS------------------------------*/
+    public createBesoin(credential):Observable<any>
+    {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
+      });
+      const api = environment.apiURL+'/besoins';
+      return this.http.post<any>(api,credential,{headers:headers});
+    }  
+    
+    public createDonBesoinAssociation(credential):Observable<any>{
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
+      });
+      const api = environment.apiURL+'/donsAssociation';
+      return this.http.post<any>(api,credential,{headers:headers});
+    }
 }

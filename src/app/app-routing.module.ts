@@ -122,6 +122,18 @@ const routes: Routes = [
     path: 'modal-galerie-association/:id',
     loadChildren: () => import('./modals/modal-galerie-association/modal-galerie-association.module').then( m => m.ModalGalerieAssociationPageModule)
   },
+  {
+    path: 'creation-association-don/:id_association/:id_donateur/:id_besoin',
+    loadChildren: () => import('./pages/creation/creation-association-don/creation-association-don.module').then( m => m.CreationAssociationDonPageModule)
+  },
+  {
+    path:'image/:id',
+    loadChildren: () => import('./modals/modal-galerie-association/galery-type/image/image.module').then( m => m.ImagePageModule)
+  },
+  {
+    path: 'notifications/:id_donateur',
+    loadChildren: () => import('./pages/notifications/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  }
 ];
 @NgModule({
   imports: [

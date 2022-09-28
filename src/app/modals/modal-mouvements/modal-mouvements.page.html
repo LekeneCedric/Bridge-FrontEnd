@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
   <ion-card *ngFor="let event of Mouvements" lines="none" class="ion-padding-bottom">
-    <div  [routerLink]="['/details-evenement',event.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
+    <div  [routerLink]="['/details-evenement',event.id]" (click)="confirm()" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
     background-image: url({{event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'}})">
    <ion-button style="position:absolute;z-index:10;float:right">
     <ion-icon name="walk-outline"></ion-icon>

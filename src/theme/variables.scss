@@ -2,8 +2,12 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@font-face {   
+  font-family: 'Josefin Sans';    //This is what we are going to call
+  src: url('../assets/polices/Josefin_Sans/static/JosefinSans-LightItalic.ttf');
+}
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 :root {
   --ion-font-family:'Josefin Sans', sans-serif;
   --ion-font-weight:bold;

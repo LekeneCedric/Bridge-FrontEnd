@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["default-src_app_modals_modal-category_modal-category_page_ts"],{
 
-/***/ 4098:
+/***/ 44098:
 /*!**************************************************************!*\
   !*** ./src/app/modals/modal-category/modal-category.page.ts ***!
   \**************************************************************/
@@ -11,12 +11,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalCategoryPage": () => (/* binding */ ModalCategoryPage)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_category_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-category.page.html?ngResource */ 5301);
-/* harmony import */ var _modal_category_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-category.page.scss?ngResource */ 2080);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_category_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-category.page.html?ngResource */ 35301);
+/* harmony import */ var _modal_category_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-category.page.scss?ngResource */ 62080);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 93819);
 
 
 
@@ -403,7 +403,7 @@ ModalCategoryPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angul
 
 /***/ }),
 
-/***/ 2080:
+/***/ 62080:
 /*!***************************************************************************!*\
   !*** ./src/app/modals/modal-category/modal-category.page.scss?ngResource ***!
   \***************************************************************************/
@@ -413,7 +413,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 5301:
+/***/ 35301:
 /*!***************************************************************************!*\
   !*** ./src/app/modals/modal-category/modal-category.page.html?ngResource ***!
   \***************************************************************************/

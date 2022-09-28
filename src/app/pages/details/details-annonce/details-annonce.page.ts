@@ -14,6 +14,7 @@ export class DetailsAnnoncePage implements OnInit {
   constructor(private navCtrl: NavController,private route:ActivatedRoute,
     private manageDataService:ManageDataService){}
   ngOnInit() {
+    this.myId = JSON.parse(localStorage.getItem('mydata')).id;
     TimeAgo.addDefaultLocale(fr);
     this.id = this.route.snapshot.params['id'];
     this.AnnonceInfo()
@@ -25,6 +26,7 @@ export class DetailsAnnoncePage implements OnInit {
   }
 
   /*-----------------------VARIABLES------------------*/
+  private myId:number;
   public slideOpts = {
     initialSlide: 0,
     speed: 1000,
@@ -52,6 +54,22 @@ export class DetailsAnnoncePage implements OnInit {
         const timeAgo = new TimeAgo('fr-EU');
         this.elapsedTime = timeAgo.format(new Date(Date.parse(data.created_at)));
         
+      }
+    )
+  }
+  public like(id_annonce){
+    const data = {
+      donateur_id:this.myId,
+      annonce_id:id_annonce
+    }
+    this.manageDataService.LikerAnnonce(data).toPromise().then((data)=>{
+      this.ngOnInit()
+    })
+  }
+  public dislike(id_annonce){
+    this.manageDataService.disLikerAnnonce(id_annonce).toPromise().then(
+      (data)=>{
+         this.ngOnInit();
       }
     )
   }

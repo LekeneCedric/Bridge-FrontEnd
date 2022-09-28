@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_messages_reception_reception_module_ts"],{
 
-/***/ 6939:
+/***/ 36939:
 /*!**********************************************************************!*\
   !*** ./src/app/pages/messages/reception/reception-routing.module.ts ***!
   \**********************************************************************/
@@ -11,10 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ReceptionPageRoutingModule": () => (/* binding */ ReceptionPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _reception_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reception.page */ 6836);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _reception_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reception.page */ 86836);
 
 
 
@@ -38,7 +38,7 @@ ReceptionPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
 
 /***/ }),
 
-/***/ 4432:
+/***/ 84432:
 /*!**************************************************************!*\
   !*** ./src/app/pages/messages/reception/reception.module.ts ***!
   \**************************************************************/
@@ -48,12 +48,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ReceptionPageModule": () => (/* binding */ ReceptionPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _reception_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reception-routing.module */ 6939);
-/* harmony import */ var _reception_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reception.page */ 6836);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _reception_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reception-routing.module */ 36939);
+/* harmony import */ var _reception_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reception.page */ 86836);
 
 
 
@@ -77,7 +77,7 @@ ReceptionPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 6836:
+/***/ 86836:
 /*!************************************************************!*\
   !*** ./src/app/pages/messages/reception/reception.page.ts ***!
   \************************************************************/
@@ -87,12 +87,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ReceptionPage": () => (/* binding */ ReceptionPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _reception_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reception.page.html?ngResource */ 9165);
-/* harmony import */ var _reception_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reception.page.scss?ngResource */ 2366);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _reception_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reception.page.html?ngResource */ 39165);
+/* harmony import */ var _reception_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reception.page.scss?ngResource */ 72366);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -140,7 +140,7 @@ ReceptionPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 2366:
+/***/ 72366:
 /*!*************************************************************************!*\
   !*** ./src/app/pages/messages/reception/reception.page.scss?ngResource ***!
   \*************************************************************************/
@@ -150,7 +150,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 9165:
+/***/ 39165:
 /*!*************************************************************************!*\
   !*** ./src/app/pages/messages/reception/reception.page.html?ngResource ***!
   \*************************************************************************/

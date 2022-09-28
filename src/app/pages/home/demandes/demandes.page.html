@@ -5,21 +5,10 @@
       
     </ion-col>
     <ion-col>
-      <ion-col size="2" style="text-align:center;margin-left:5%"> 
+      <ion-col size="2" style="text-align:center;margin-left:5%" [routerLink]="['/notifications',id]"> 
         <ion-icon name="notifications" size="large" color="warning"></ion-icon>
-        <ion-badge style="position:absolute;top:0;right:0" color="danger">2</ion-badge>
       </ion-col>
     </ion-col>
-    <!-- <ion-col>
-      <ion-row style="width:100%">
-        <ion-col size="3" [routerLink]="['/profil-donateur',id]" style="text-align:left;height: 100%;">
-          <ion-icon name="person-circle-outline" size="large" color="danger" ></ion-icon>
-        </ion-col>
-        <ion-col size="8">
-          <ion-text style="color:gray;font-weight: bold;position:absolute;top:30%;">{{myData.name | slice:0:15}}&ensp;{{myData.surname | slice:0:10}}</ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-col> -->
   </ion-row>
   <ion-row>
     <ion-col size="12">
@@ -40,10 +29,40 @@
   </ion-row>
 </ion-header>
 <ion-content>
+
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content color="danger"></ion-refresher-content>
   </ion-refresher>
-  <ion-grid style="text-align:center;margin-top:15%" *ngIf="demandes.length<1">
+  <ion-list *ngIf="loadingDemandes == true">
+    <ion-card *ngFor="let i of [1,1,1,1,1,1]"> 
+    <ion-item >
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text [animated]="true" style="width: 30%;"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-skeleton-text [animated]="true" style="width: 30%;" slot="start"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 70%;"></ion-skeleton-text>
+    </ion-item>
+    <ion-item>
+      <ion-skeleton-text [animated]="true" style="width: 30%;" slot="start"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 70%;"></ion-skeleton-text>
+    </ion-item>
+  </ion-card>
+  </ion-list>
+ 
+  <ion-grid style="text-align:center;margin-top:15%" *ngIf="is_null_Demande">
     <img src="../../../../assets/images/emptydemande.png" class="ion-margin-vertical">
     <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
       <ion-text style="color:rgb(64, 64, 64);width: 100%">Aucune demande disponible dans cette categorie</ion-text>
@@ -63,9 +82,9 @@
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
-  <ion-row>
+  <ion-row *ngIf="!is_null_Demande">
     <div *ngFor="let demand of demandes" style="width: 95%">
-      <ion-card *ngIf="selectedCategory.indexOf(demand.category)!=-1 || selectedCategory.length<1 " style="width: 100%;" [routerLink]="['details',demand.id]">
+      <ion-card style="width: 100%;" [routerLink]="['details',demand.id]">
         <ion-row style="width: 100%;margin-top:5%">
           <ion-thumbnail class="ion-margin-start">
             <img style="border-radius:10px;margin-right:5%" [src]="demand.donateur.media.length>0?storage+demand.donateur.media[0].filePath:'assets/images/user.png'" />

@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_home_dons_dons_module_ts"],{
 
-/***/ 3321:
+/***/ 59128:
 /*!********************************************************!*\
   !*** ./src/app/pages/home/dons/dons-routing.module.ts ***!
   \********************************************************/
@@ -11,10 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DonsPageRoutingModule": () => (/* binding */ DonsPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _dons_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dons.page */ 2347);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _dons_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dons.page */ 52347);
 
 
 
@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: 'details/:id',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_details_details-don_details-don_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../details/details-don/details-don.module */ 8975)).then(m => m.DetailsDonPageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_details_details-don_details-don_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../details/details-don/details-don.module */ 18975)).then(m => m.DetailsDonPageModule)
     }
 ];
 let DonsPageRoutingModule = class DonsPageRoutingModule {
@@ -42,7 +42,7 @@ DonsPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
 
 /***/ }),
 
-/***/ 4984:
+/***/ 84984:
 /*!************************************************!*\
   !*** ./src/app/pages/home/dons/dons.module.ts ***!
   \************************************************/
@@ -52,14 +52,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DonsPageModule": () => (/* binding */ DonsPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ 94666);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _dons_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dons-routing.module */ 3321);
-/* harmony import */ var _dons_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dons.page */ 2347);
-/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _dons_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dons-routing.module */ 59128);
+/* harmony import */ var _dons_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dons.page */ 52347);
+/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 29036);
 
 
 
@@ -87,7 +87,7 @@ DonsPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 
 /***/ }),
 
-/***/ 2347:
+/***/ 52347:
 /*!**********************************************!*\
   !*** ./src/app/pages/home/dons/dons.page.ts ***!
   \**********************************************/
@@ -97,22 +97,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DonsPage": () => (/* binding */ DonsPage)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dons.page.html?ngResource */ 7145);
-/* harmony import */ var _dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dons.page.scss?ngResource */ 474);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dons.page.html?ngResource */ 47145);
+/* harmony import */ var _dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dons.page.scss?ngResource */ 40474);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
 /* harmony import */ var javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! javascript-time-ago/locale/fr */ 8996);
-/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 9036);
-/* harmony import */ var src_app_modals_modal_category_modal_category_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/modals/modal-category/modal-category.page */ 4098);
-/* harmony import */ var src_app_modals_modal_etat_modal_etat_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/modals/modal-etat/modal-etat.page */ 192);
-/* harmony import */ var javascript_time_ago__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! javascript-time-ago */ 488);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/auth/auth.service */ 1228);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 29036);
+/* harmony import */ var src_app_modals_modal_category_modal_category_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/modals/modal-category/modal-category.page */ 44098);
+/* harmony import */ var src_app_modals_modal_etat_modal_etat_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/modals/modal-etat/modal-etat.page */ 20192);
+/* harmony import */ var javascript_time_ago__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! javascript-time-ago */ 20488);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/auth/auth.service */ 51228);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -308,7 +308,7 @@ DonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_14__.__decorate)([(0,_angular_core_
 
 /***/ }),
 
-/***/ 474:
+/***/ 40474:
 /*!***********************************************************!*\
   !*** ./src/app/pages/home/dons/dons.page.scss?ngResource ***!
   \***********************************************************/
@@ -318,7 +318,7 @@ module.exports = ".logo .title {\n  margin-left: 2%;\n  text-align: left;\n  col
 
 /***/ }),
 
-/***/ 7145:
+/***/ 47145:
 /*!***********************************************************!*\
   !*** ./src/app/pages/home/dons/dons.page.html?ngResource ***!
   \***********************************************************/

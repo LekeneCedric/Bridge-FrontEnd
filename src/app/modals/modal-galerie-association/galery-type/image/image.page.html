@@ -2,7 +2,7 @@
 <ion-content style="--background:black">
   <ion-item lines="none" style="--background:black">
     <ion-icon name="chevron-back-outline" size="large" color="light" (click)="navBack()"></ion-icon>
-    <ion-title *ngIf="currentMedia!=null" color="light">{{currentMedia.fileName}} </ion-title>
+    <ion-title *ngIf="currentMedia!=null" color="light">{{currentMedia.fileName | slice:0:15}} {{currentMedia.fileName.lenght>15?'...':''}} </ion-title>
   </ion-item>
   <img *ngIf="currentMedia!=null" [src]="storage+currentMedia.filePath" style="width:100%;margin-top:50%">
 </ion-content>

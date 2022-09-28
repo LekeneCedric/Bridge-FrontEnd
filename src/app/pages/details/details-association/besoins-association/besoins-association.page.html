@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="chevron-back" size="large" slot="start" color="danger" (click)="navBack()"></ion-icon>
+    <ion-title>besoins-association</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedSegment" color="danger">
+    <ion-segment-button value="non_resolus">
+      <ion-label color="danger">Non Resolus</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="resolus">
+      <ion-label>Resolus</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <!-- Besoins Non resolus  -->
+  <ion-list *ngIf="selectedSegment=='non_resolus'">
+    <ion-card *ngFor="let besoin of BesoinsNonResolus" style="padding-bottom:0" lines="none" class="ion-padding-bottom">
+     <ion-item style="width:100%;" lines="none"  [routerLink]="['/details-association',besoin.association.id]">
+       <ion-thumbnail slot="start" >
+         <img style="border-radius:10px" [src]="besoin.association.media.length>0?storage+besoin.association.media[0].filePath:'../../../../assets/images/user.png'" />
+       </ion-thumbnail>
+       <ion-col style="text-align: left">
+         <ion-row>
+          <ion-text style="font-weight: bold">{{besoin.association.name}}</ion-text>
+         </ion-row>
+         <ion-row style="margin-top:2%">
+           <ion-text style="color:gray"> {{besoin.association.type}}</ion-text>
+         </ion-row>
+       </ion-col>
+     </ion-item>
+     <!-- <ion-row class="ion-padding-horizontal " *ngIf="besoin.quantite_actuelle>=besoin.quantite">
+       <ion-text color="success"> <strong>Besoin resolus</strong></ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal " *ngIf="besoin.quantite_actuelle<besoin.quantite">
+       <ion-text color="danger"> <strong>Besoin non resolus</strong></ion-text>
+     </ion-row> -->
+     <ion-row class="ion-margin-horizontal" style="width:100%">
+       <ion-text>
+         Publie {{timeAgo(besoin.created_at)}}
+       </ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal ion-margin-bottom">
+       <ion-text style="font-weight:bold"><strong style="color:black">Besoin : &ensp;</strong> {{besoin.title| lowercase|slice:0:30}}{{besoin.title.length>30?'...':''}} </ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal ion-margin-top ion-margin-bottom">
+        <ion-text style="font-weight:bold"><strong style="color:black">Description : &ensp;</strong> {{besoin.contenu|slice:0:150}}{{besoin.contenu.length>150?'...':''}}</ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal">
+     <ion-text><strong style="color:black">Quantite : &ensp;</strong><strong style="color:#2dd36f"*ngIf="besoin.quantite_actuelle>=besoin.quantite">{{besoin.quantite_actuelle}}</strong>
+       <strong style="color:#ec566a" *ngIf="besoin.quantite_actuelle<besoin.quantite">{{besoin.quantite_actuelle}}</strong> &ensp; / &ensp; <strong>{{besoin.quantite}}</strong> </ion-text>
+     </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <!-- Besoins Resolus  -->
+
+  <ion-list *ngIf="selectedSegment=='resolus'">
+    <ion-card *ngFor="let besoin of BesoinsResolus" style="padding-bottom:0" lines="none" class="ion-padding-bottom">
+     <ion-item style="width:100%;" lines="none"  [routerLink]="['/details-association',besoin.association.id]">
+       <ion-thumbnail slot="start" >
+         <img style="border-radius:10px" [src]="besoin.association.media.length>0?storage+besoin.association.media[0].filePath:'../../../../assets/images/user.png'" />
+       </ion-thumbnail>
+       <ion-col style="text-align: left">
+         <ion-row>
+          <ion-text style="font-weight: bold">{{besoin.association.name}}</ion-text>
+         </ion-row>
+         <ion-row style="margin-top:2%">
+           <ion-text style="color:gray"> {{besoin.association.type}}</ion-text>
+         </ion-row>
+       </ion-col>
+     </ion-item>
+     <!-- <ion-row class="ion-padding-horizontal " *ngIf="besoin.quantite_actuelle>=besoin.quantite">
+       <ion-text color="success"> <strong>Besoin resolus</strong></ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal " *ngIf="besoin.quantite_actuelle<besoin.quantite">
+       <ion-text color="danger"> <strong>Besoin non resolus</strong></ion-text>
+     </ion-row> -->
+     <ion-row class="ion-margin-horizontal" style="width:100%">
+       <ion-text>
+         Publie {{timeAgo(besoin.created_at)}}
+       </ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal ion-margin-bottom">
+       <ion-text style="font-weight:bold"><strong style="color:black">Besoin : &ensp;</strong> {{besoin.title| lowercase|slice:0:30}}{{besoin.title.length>30?'...':''}} </ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal ion-margin-top ion-margin-bottom">
+        <ion-text style="font-weight:bold"><strong style="color:black">Description : &ensp;</strong> {{besoin.contenu|slice:0:150}}{{besoin.contenu.length>150?'...':''}}</ion-text>
+     </ion-row>
+     <ion-row class="ion-padding-horizontal">
+     <ion-text><strong style="color:black">Quantite : &ensp;</strong><strong style="color:#2dd36f"*ngIf="besoin.quantite_actuelle>=besoin.quantite">{{besoin.quantite_actuelle}}</strong>
+       <strong style="color:#ec566a" *ngIf="besoin.quantite_actuelle<besoin.quantite">{{besoin.quantite_actuelle}}</strong> &ensp; / &ensp; <strong>{{besoin.quantite}}</strong> </ion-text>
+     </ion-row>
+    </ion-card>
+  </ion-list>
+</ion-content>

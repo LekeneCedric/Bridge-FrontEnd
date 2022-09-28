@@ -7,7 +7,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-    <ion-icon name="exit-outline"color="danger" size="large" (click)="cancel()"></ion-icon>
     <ion-grid *ngIf="Association!=null">
     <ion-list>
       <ion-item *ngIf="Association.attentes.length<1" lines="none">

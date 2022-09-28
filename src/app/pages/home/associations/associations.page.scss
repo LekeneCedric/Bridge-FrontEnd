@@ -16,3 +16,9 @@
 ion-chip{
     border-radius: 10px;
 }
+
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}

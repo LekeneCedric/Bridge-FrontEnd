@@ -4,7 +4,6 @@ import { NavController } from '@ionic/angular';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import { MediasService } from 'src/app/services/medias/medias.service';
 import { environment } from 'src/environments/environment';
-import { PhotoViewer } from '@awesome-cordova-plugins/photo-viewer/ngx';
 @Component({
   selector: 'app-galery-type',
   templateUrl: './galery-type.page.html',
@@ -13,7 +12,7 @@ import { PhotoViewer } from '@awesome-cordova-plugins/photo-viewer/ngx';
 export class GaleryTypePage implements OnInit {
 
   constructor(private route:ActivatedRoute,private manageDataService:ManageDataService,
-    private mediaService:MediasService,private navCtrl:NavController,private photoViewer:PhotoViewer) { }
+    private mediaService:MediasService,private navCtrl:NavController) { }
 
   ngOnInit() {
     this.category = this.route.snapshot.params.category;
@@ -33,8 +32,5 @@ public storage = environment.storage;
 /*----------------------------------FUNCTIONS---------------------------------*/
 public navBack(){
   this.navCtrl.back();
-}
-public viewImage(image:any){
-  this.photoViewer.show(`${this.storage+image.filePath}`);
 }
 }

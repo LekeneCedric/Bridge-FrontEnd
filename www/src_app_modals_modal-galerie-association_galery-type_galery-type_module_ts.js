@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_modals_modal-galerie-association_galery-type_galery-type_module_ts"],{
 
-/***/ 8173:
+/***/ 68173:
 /*!********************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/galery-type/galery-type-routing.module.ts ***!
   \********************************************************************************************/
@@ -11,10 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GaleryTypePageRoutingModule": () => (/* binding */ GaleryTypePageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _galery_type_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./galery-type.page */ 353);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _galery_type_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./galery-type.page */ 10353);
 
 
 
@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: 'image/:id',
-        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_modals_modal-galerie-association_galery-type_image_image_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./image/image.module */ 6772)).then(m => m.ImagePageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ "common").then(__webpack_require__.bind(__webpack_require__, /*! ./image/image.module */ 46772)).then(m => m.ImagePageModule)
     }
 ];
 let GaleryTypePageRoutingModule = class GaleryTypePageRoutingModule {
@@ -42,7 +42,7 @@ GaleryTypePageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)(
 
 /***/ }),
 
-/***/ 2517:
+/***/ 32517:
 /*!************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/galery-type/galery-type.module.ts ***!
   \************************************************************************************/
@@ -52,13 +52,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GaleryTypePageModule": () => (/* binding */ GaleryTypePageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _galery_type_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./galery-type-routing.module */ 8173);
-/* harmony import */ var _galery_type_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./galery-type.page */ 353);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _galery_type_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./galery-type-routing.module */ 68173);
+/* harmony import */ var _galery_type_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./galery-type.page */ 10353);
 
 
 
@@ -84,7 +84,7 @@ GaleryTypePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 353:
+/***/ 10353:
 /*!**********************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/galery-type/galery-type.page.ts ***!
   \**********************************************************************************/
@@ -94,17 +94,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "GaleryTypePage": () => (/* binding */ GaleryTypePage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _galery_type_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./galery-type.page.html?ngResource */ 5998);
-/* harmony import */ var _galery_type_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./galery-type.page.scss?ngResource */ 4617);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 8549);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ 2340);
-/* harmony import */ var _awesome_cordova_plugins_photo_viewer_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @awesome-cordova-plugins/photo-viewer/ngx */ 9446);
-
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _galery_type_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./galery-type.page.html?ngResource */ 35998);
+/* harmony import */ var _galery_type_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./galery-type.page.scss?ngResource */ 58268);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
+/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 28549);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -115,12 +113,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let GaleryTypePage = class GaleryTypePage {
-    constructor(route, manageDataService, mediaService, navCtrl, photoViewer) {
+    constructor(route, manageDataService, mediaService, navCtrl) {
         this.route = route;
         this.manageDataService = manageDataService;
         this.mediaService = mediaService;
         this.navCtrl = navCtrl;
-        this.photoViewer = photoViewer;
         /*----------------------------------VARIABLES------------------------------___*/
         this.category = '';
         this.association_id = null;
@@ -139,19 +136,15 @@ let GaleryTypePage = class GaleryTypePage {
     navBack() {
         this.navCtrl.back();
     }
-    viewImage(image) {
-        this.photoViewer.show(`${this.storage + image.filePath}`);
-    }
 };
 GaleryTypePage.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.ActivatedRoute },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.ActivatedRoute },
     { type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__.ManageDataService },
     { type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_3__.MediasService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.NavController },
-    { type: _awesome_cordova_plugins_photo_viewer_ngx__WEBPACK_IMPORTED_MODULE_5__.PhotoViewer }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController }
 ];
-GaleryTypePage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
+GaleryTypePage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
         selector: 'app-galery-type',
         template: _galery_type_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_galery_type_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
@@ -162,7 +155,7 @@ GaleryTypePage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
 
 /***/ }),
 
-/***/ 4617:
+/***/ 58268:
 /*!***********************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/galery-type/galery-type.page.scss?ngResource ***!
   \***********************************************************************************************/
@@ -172,13 +165,13 @@ module.exports = ".image {\n  min-width: 10rem;\n  min-height: 10rem;\n}\n.image
 
 /***/ }),
 
-/***/ 5998:
+/***/ 35998:
 /*!***********************************************************************************************!*\
   !*** ./src/app/modals/modal-galerie-association/galery-type/galery-type.page.html?ngResource ***!
   \***********************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>Galerie &ensp;<strong style=\"color:#3880ff\">{{category | uppercase}}</strong> </ion-title>\n  </ion-item>\n\n  <ion-row *ngIf=\"AssociationImages!=null&&category=='association'\">\n    <ion-col size=\"12\" style=\"display:flex;justify-items: flex-end;\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Association\" style=\"margin:1%;\" (click)=\"viewImage(image)\">\n        <img [src]=\"storage+image.filePath\"  />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row>\n  <ion-row *ngIf=\"AssociationImages!=null && category=='mouvements'\">\n    <ion-col size=\"12\" style=\"display:flex\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Mouvements[0]\" style=\"margin:1%;\" (click)=\"viewImage(image)\">\n        <img [src]=\"storage+image.filePath\" />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row>\n  <ion-row *ngIf=\"AssociationImages!=null && category=='annonces'\">\n    <ion-col size=\"12\" style=\"display:flex\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Annonces[0]\" style=\"margin:1%;\" (click)=\"viewImage(image)\">\n        <img [src]=\"storage+image.filePath\" />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row>\n</ion-content>\n";
+module.exports = "\n<ion-content>\n  <ion-item lines=\"none\">\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>Galerie &ensp;<strong style=\"color:#3880ff\">{{category | uppercase}}</strong> </ion-title>\n  </ion-item>\n\n  <ion-row *ngIf=\"AssociationImages!=null&&category=='association'\">\n    <ion-col size=\"12\" style=\"display:flex;justify-items: flex-end;\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Association\" style=\"margin:1%;\" [routerLink]=\"['image',image.id]\">\n        <img [src]=\"storage+image.filePath\"  />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row>\n  <ion-row *ngIf=\"AssociationImages!=null && category=='mouvements'\">\n    <ion-col size=\"12\" style=\"display:flex\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Mouvements[0]\" style=\"margin:1%;\" [routerLink]=\"['image',image.id]\">\n        <img [src]=\"storage+image.filePath\" />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row>\n  <ion-row *ngIf=\"AssociationImages!=null && category=='annonces'\">\n    <ion-col size=\"12\" style=\"display:flex\">\n      <ion-thumbnail class=\"image\" *ngFor=\"let image of AssociationImages.Annonces[0]\" style=\"margin:1%;\" [routerLink]=\"['image',image.id]\">\n        <img [src]=\"storage+image.filePath\" />\n      </ion-thumbnail>\n    </ion-col>\n  </ion-row>\n</ion-content>\n";
 
 /***/ })
 

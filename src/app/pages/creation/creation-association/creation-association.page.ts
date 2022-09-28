@@ -55,7 +55,7 @@ export class CreationAssociationPage implements OnInit {
     this.geolocation();
   }
   async geolocation(){
-    Geolocation.watchPosition({
+    await Geolocation.watchPosition({
       enableHighAccuracy:true,
       timeout:1000,
       maximumAge:1000,
@@ -86,8 +86,8 @@ export class CreationAssociationPage implements OnInit {
   villeAssociation:string='';//ville
   adresseAssociation:string='';//adresse
   numeroContribuable:string='';//numeroContribuable
-  longitudeAssociation:number;//longitude
-  latitudeAssociation:number;//latitude
+  longitudeAssociation:number=11;//longitude
+  latitudeAssociation:number=7;//latitude
   password_input_type:string = 'password';
   password_confirm_input_type:string = 'password';
   

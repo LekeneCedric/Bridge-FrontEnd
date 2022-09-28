@@ -39,6 +39,11 @@ public Association:any = null;
 public storage:string = environment.storage;
 
 /*---------------------------FUNCTIONS----------------------------*/
+public doRefresh(event){
+  setTimeout(()=>{
+   this.ngOnInit(); 
+   event.target.complete();
+  },500)}
 public async openModalMembers(){
   const modal = await this.modalCtrl.create({
     component:ModalAssociationsMembresPage,

@@ -1,9 +1,12 @@
 
 <ion-content>
  
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
   <ion-item lines="none">
-    <ion-icon name="chevron-back-outline" size="large" color="primary" (click)="navBack()"></ion-icon>
-    <ion-button [routerLink]="['administration-association',Association.id]" shape="circle"slot="end" color="primary" *ngIf="Association!=null && Association.idDonateurs.includes(Id)==true">
+    <ion-icon name="chevron-back-outline" size="large" color="danger" (click)="navBack()"></ion-icon>
+    <ion-button [routerLink]="['administration-association',Association.id]" shape="circle"slot="end" color="danger" *ngIf="Association!=null && Association.idDonateurs.includes(Id)==true">
       <ion-icon size="large" name="cog-sharp"></ion-icon>
     </ion-button>
   </ion-item>
@@ -29,7 +32,7 @@
       <ion-text style="width:100%;height:100%;vertical-align: middle;">Devenir un membre </ion-text>
     </ion-col>
     <ion-col style="text-align: center">
-      <ion-button color="primary" (click)="sendDemand(Association.id)" *ngIf="Association.attenteId.includes(Id)!=true && Association.idDonateurs.includes(Id)!=true">
+      <ion-button color="danger" (click)="sendDemand(Association.id)" *ngIf="Association.attenteId.includes(Id)!=true && Association.idDonateurs.includes(Id)!=true">
         <ion-text>
           Membre
         </ion-text>
@@ -42,7 +45,7 @@
           Annuler
         </ion-text>
       </ion-button>
-      <ion-text color="primary" *ngIf="Association.idDonateurs.includes(Id)==true">
+      <ion-text color="danger" *ngIf="Association.idDonateurs.includes(Id)==true">
         Vous etes membre de cette association
      </ion-text>
       
@@ -52,37 +55,37 @@
   <ion-row class="ion-margin-top">
       <ion-item lines="none">
         <ion-text style="font-weight:bold"> Plus d'informations</ion-text>
-        <ion-icon name="caret-down" color="primary"></ion-icon>
+        <ion-icon name="caret-down" color="danger"></ion-icon>
         <ion-icon name="chatbox-ellipses-outline" slot="end" color="light"></ion-icon>
       </ion-item>
   </ion-row>
   <ion-item lines="none" style="margin-bottom:2.5%" *ngIf="Association!=null">
     <ion-col size="6" style="margin-top:0;padding-top:0">
-     <ion-row><ion-text style="font-weight:bold" color="primary">Categorie</ion-text></ion-row>
+     <ion-row><ion-text style="font-weight:bold" color="danger">Categorie</ion-text></ion-row>
      <ion-row><ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{Association.category}}</ion-text></ion-row>
     </ion-col>
     <ion-col size="6" style="margin-top:0;padding-top:0">
-      <ion-row><ion-text style="font-weight:bold" color="primary">Type</ion-text></ion-row>
+      <ion-row><ion-text style="font-weight:bold" color="danger">Type</ion-text></ion-row>
       <ion-row><ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{Association.type}}</ion-text></ion-row>
     </ion-col>
     </ion-item>
     <ion-item lines="none" style="margin-bottom:2.5%" *ngIf="Association!=null">
       <ion-col size="6" style="margin-top:0;padding-top:0">
-       <ion-row><ion-text style="font-weight:bold" color="primary">Pays</ion-text></ion-row>
+       <ion-row><ion-text style="font-weight:bold" color="danger">Pays</ion-text></ion-row>
        <ion-row><ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{Association.pays}}</ion-text></ion-row>
       </ion-col>
       <ion-col size="6" style="margin-top:0;padding-top:0">
-        <ion-row><ion-text style="font-weight:bold" color="primary">Ville</ion-text></ion-row>
+        <ion-row><ion-text style="font-weight:bold" color="danger">Ville</ion-text></ion-row>
         <ion-row><ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{Association.ville}}</ion-text></ion-row>
       </ion-col>
       </ion-item>
       <ion-item lines="none" style="margin-bottom:2.5%" *ngIf="Association!=null">
         <ion-col size="6" style="margin-top:0;padding-top:0">
-         <ion-row><ion-text style="font-weight:bold" color="primary">Adresse</ion-text></ion-row>
+         <ion-row><ion-text style="font-weight:bold" color="danger">Adresse</ion-text></ion-row>
          <ion-row><ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{Association.adresse}}</ion-text></ion-row>
         </ion-col>
         <ion-col size="6" style="margin-top:0;padding-top:0">
-          <ion-row><ion-text style="font-weight:bold" color="primary">Contact principale</ion-text></ion-row>
+          <ion-row><ion-text style="font-weight:bold" color="danger">Contact principale</ion-text></ion-row>
           <ion-row><ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{Association.contact}}</ion-text></ion-row>
         </ion-col>
         </ion-item>
@@ -90,7 +93,7 @@
   <ion-row class="ion-margin-top">
     <ion-item lines="none">
       <ion-text style="font-weight:bold"> Description de l'association</ion-text>
-      <ion-icon name="caret-down" color="primary"></ion-icon>
+      <ion-icon name="caret-down" color="danger"></ion-icon>
       <ion-icon name="chatbox-ellipses-outline" slot="end" color="light"></ion-icon>
     </ion-item>
   </ion-row>
@@ -103,7 +106,7 @@
   <ion-row class="ion-margin-top">
     <ion-item lines="none">
       <ion-text style="font-weight:bold">Nous contacter</ion-text>
-      <ion-icon name="call-outline" color="primary" class="ion-margin-horizontal" ></ion-icon>
+      <ion-icon name="call-outline" color="danger" class="ion-margin-horizontal" ></ion-icon>
       <ion-icon name="chatbox-ellipses-outline" slot="end" color="light"></ion-icon>
     </ion-item>
   </ion-row>
@@ -125,7 +128,7 @@
   <div *ngIf="Association!=null">
     <ion-item lines="none" [routerLink]="['/modal-galerie-association',this.Association.id]">
         <ion-text style="font-weight:bold"> Galerie</ion-text>
-        <ion-icon name="images-outline" color="primary" class="ion-margin-horizontal"></ion-icon>
+        <ion-icon name="images-outline" color="danger" class="ion-margin-horizontal"></ion-icon>
         <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
   <ion-row>
@@ -140,7 +143,7 @@
 <ion-row class="ion-margin-top">
   <ion-item lines="none">
       <ion-text style="font-weight:bold"> Activites</ion-text>
-      <ion-icon name="bar-chart-outline" color="primary" class="ion-margin-horizontal"></ion-icon>
+      <ion-icon name="bar-chart-outline" color="danger" class="ion-margin-horizontal"></ion-icon>
       <ion-icon name="chatbox-ellipses-outline" slot="end" color="light"></ion-icon>
   </ion-item>
 </ion-row>
@@ -159,9 +162,9 @@
   <ion-text slot="start"><strong>{{Association.membres.length}}</strong> &ensp; membres </ion-text>
   <ion-icon name="chevron-forward-outline" slot="end" ></ion-icon>
 </ion-item>
-<ion-item lines="none" *ngIf="Association!=null">
+<ion-item lines="none" *ngIf="Association!=null" [routerLink]="['besoins-association',idAssociation]">
   <ion-icon name="thumbs-up-outline" slot="start"></ion-icon>
-  <ion-text slot="start"><strong></strong> &ensp; Besoins actuels </ion-text>
+  <ion-text slot="start"><strong>{{Association.besoin.length}}</strong> &ensp; Besoins de l'association </ion-text>
   <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
 </ion-item>
 </ion-content>

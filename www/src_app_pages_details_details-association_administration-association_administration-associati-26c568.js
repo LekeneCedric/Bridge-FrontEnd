@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_details_details-association_administration-association_administration-associati-26c568"],{
 
-/***/ 6732:
+/***/ 86732:
 /*!******************************************************************************************!*\
   !*** ./src/app/modals/modal-add-member-association/modal-add-member-association.page.ts ***!
   \******************************************************************************************/
@@ -11,15 +11,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalAddMemberAssociationPage": () => (/* binding */ ModalAddMemberAssociationPage)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _modal_add_member_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-add-member-association.page.html?ngResource */ 4156);
 /* harmony import */ var _modal_add_member_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-add-member-association.page.scss?ngResource */ 4862);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
 
 
 
@@ -28,16 +26,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ModalAddMemberAssociationPage = class ModalAddMemberAssociationPage {
-  constructor(manageDataService, route, toast, loadingController, modalCtrl) {
+  constructor(manageDataService, toast, modalCtrl) {
     this.manageDataService = manageDataService;
-    this.route = route;
     this.toast = toast;
-    this.loadingController = loadingController;
     this.modalCtrl = modalCtrl;
-    /*--------------------------------VARIABLES-------------------------------*/
-
-    this.members = [];
-    this.non_members = [];
     this.search = '';
   }
 
@@ -97,21 +89,17 @@ let ModalAddMemberAssociationPage = class ModalAddMemberAssociationPage {
 ModalAddMemberAssociationPage.ctorParameters = () => [{
   type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__.ManageDataService
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.ActivatedRoute
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController
-}, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.LoadingController
-}, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ModalController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ModalController
 }];
 
 ModalAddMemberAssociationPage.propDecorators = {
   id_association: [{
-    type: _angular_core__WEBPACK_IMPORTED_MODULE_6__.Input
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_5__.Input
   }]
 };
-ModalAddMemberAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+ModalAddMemberAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
   selector: 'app-modal-add-member-association',
   template: _modal_add_member_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_modal_add_member_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -120,7 +108,7 @@ ModalAddMemberAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate
 
 /***/ }),
 
-/***/ 2528:
+/***/ 22528:
 /*!***************************************************************************************************************************!*\
   !*** ./src/app/pages/details/details-association/administration-association/administration-association-routing.module.ts ***!
   \***************************************************************************************************************************/
@@ -130,10 +118,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AdministrationAssociationPageRoutingModule": () => (/* binding */ AdministrationAssociationPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _administration_association_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./administration-association.page */ 9040);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _administration_association_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./administration-association.page */ 39040);
 
 
 
@@ -157,7 +145,7 @@ AdministrationAssociationPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1
 
 /***/ }),
 
-/***/ 2732:
+/***/ 32732:
 /*!*******************************************************************************************************************!*\
   !*** ./src/app/pages/details/details-association/administration-association/administration-association.module.ts ***!
   \*******************************************************************************************************************/
@@ -167,13 +155,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AdministrationAssociationPageModule": () => (/* binding */ AdministrationAssociationPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _administration_association_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./administration-association-routing.module */ 2528);
-/* harmony import */ var _administration_association_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./administration-association.page */ 9040);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _administration_association_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./administration-association-routing.module */ 22528);
+/* harmony import */ var _administration_association_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./administration-association.page */ 39040);
 
 
 
@@ -199,7 +187,7 @@ AdministrationAssociationPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__de
 
 /***/ }),
 
-/***/ 9040:
+/***/ 39040:
 /*!*****************************************************************************************************************!*\
   !*** ./src/app/pages/details/details-association/administration-association/administration-association.page.ts ***!
   \*****************************************************************************************************************/
@@ -209,17 +197,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AdministrationAssociationPage": () => (/* binding */ AdministrationAssociationPage)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _administration_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./administration-association.page.html?ngResource */ 2968);
-/* harmony import */ var _administration_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./administration-association.page.scss?ngResource */ 6820);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_modals_modal_add_member_association_modal_add_member_association_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/modals/modal-add-member-association/modal-add-member-association.page */ 6732);
-/* harmony import */ var src_app_modals_modal_associations_membres_modal_associations_membres_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/modals/modal-associations-membres/modal-associations-membres.page */ 2310);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _administration_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./administration-association.page.html?ngResource */ 92968);
+/* harmony import */ var _administration_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./administration-association.page.scss?ngResource */ 66820);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_modals_modal_add_member_association_modal_add_member_association_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/modals/modal-add-member-association/modal-add-member-association.page */ 86732);
+/* harmony import */ var src_app_modals_modal_associations_membres_modal_associations_membres_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/modals/modal-associations-membres/modal-associations-membres.page */ 62310);
 /* harmony import */ var src_app_modals_modal_demandes_adhesion_association_modal_demandes_adhesion_association_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.page */ 2111);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
 
 
 
@@ -349,7 +337,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 6820:
+/***/ 66820:
 /*!******************************************************************************************************************************!*\
   !*** ./src/app/pages/details/details-association/administration-association/administration-association.page.scss?ngResource ***!
   \******************************************************************************************************************************/
@@ -365,17 +353,17 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
   \*******************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content>\n  <ion-item lines=\"none\" class=\"search-item\">\n    <ion-icon name=\"search-outline\" size=\"large\" color=\"dark\"></ion-icon>\n    <ion-input placeholder=\"Recherche dans les messages\" [(ngModel)]=\"search\" ></ion-input>\n    <ion-chip style=\"padding:0\" *ngIf=\"search.length>0\" (click)=\"search=''\">\n      <ion-icon name=\"close-outline\" style=\"margin-right:30%\" color=\"dark\"></ion-icon>\n    </ion-chip>\n  </ion-item>\n  <div *ngFor=\"let user of non_members\">\n    <ion-item  lines=\"none\" style=\"margin-bottom:0.5px dashed rgb(200, 200, 200)\"\n    *ngIf=\"user.name.toLowerCase().includes(search.toLowerCase()) || user.surname.toLowerCase().includes(search.toLowerCase()) ||\n    user.email.toLowerCase().includes(search.toLowerCase())|| search==''\">\n      <ion-icon (click)=\"cancel()\"  name=\"person-circle-outline\" slot=\"start\"  [routerLink]=\"['/profil-donateur',user.id]\"></ion-icon>\n      <ion-text (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" slot=\"start\" style=\"font-weight:bold\">{{user.name}}&ensp;{{user.surname}}</ion-text>\n      <ion-chip slot=\"end\" color=\"success\" (click)=\"addMember(user.id)\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"person-add-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n    </ion-item>\n  </div>\n  \n\n</ion-content>\n";
+module.exports = "<ion-content>\n  <ion-item lines=\"none\" class=\"search-item\">\n    <ion-icon name=\"search-outline\" size=\"large\" color=\"dark\"></ion-icon>\n    <ion-input placeholder=\"Recherche dans les messages\" [(ngModel)]=\"search\" ></ion-input>\n    <ion-chip style=\"padding:0\" *ngIf=\"search.length>0\">\n      <ion-icon name=\"close-outline\" style=\"margin-right:30%\" color=\"dark\"></ion-icon>\n    </ion-chip>\n  </ion-item>\n  <div *ngFor=\"let user of non_members\">\n    <ion-item  lines=\"none\" style=\"margin-bottom:0.5px dashed rgb(200, 200, 200)\"\n    *ngIf=\"user.name.toLowerCase().includes(search.toLowerCase()) || user.surname.toLowerCase().includes(search.toLowerCase()) ||\n    user.email.toLowerCase().includes(search.toLowerCase())|| search==''\">\n      <ion-icon (click)=\"cancel()\"  name=\"person-circle-outline\" slot=\"start\"  [routerLink]=\"['/profil-donateur',user.id]\"></ion-icon>\n      <ion-text (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" slot=\"start\" style=\"font-weight:bold\">{{user.name}}&ensp;{{user.surname}}</ion-text>\n      <ion-chip slot=\"end\" color=\"success\" (click)=\"addMember(user.id)\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"person-add-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n    </ion-item>\n  </div>\n</ion-content>\n";
 
 /***/ }),
 
-/***/ 2968:
+/***/ 92968:
 /*!******************************************************************************************************************************!*\
   !*** ./src/app/pages/details/details-association/administration-association/administration-association.page.html?ngResource ***!
   \******************************************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  <ion-item lines=\"none\" *ngIf=\"Association!=null\">\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" slot=\"start\" color=\"primary\" (click)=\"navBack()\"></ion-icon>\n    <ion-text color=\"medium\"> Administration &ensp; <strong style=\"color:black\">{{Association.name | uppercase}}</strong></ion-text>\n  </ion-item>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"primary\">\n      <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n    <ion-fab-list side=\"start\">\n      <ion-fab-button color=\"light\" [routerLink]=\"['/creation-mouvements',idAssociation]\">\n        <ion-icon name=\"calendar-outline\"  color=\"success\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" [routerLink]=\"['/creation-annonces',idAssociation]\">\n        <ion-icon name=\"megaphone-outline\"  color=\"warning\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" [routerLink]=\"['/creation-besoins',idAssociation]\">\n        <ion-icon name=\"thumbs-up-outline\"  color=\"danger\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" (click)=\"openModalAddMembers()\" >\n        <ion-icon name=\"person-add-outline\"  color=\"primary\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab-list>\n  </ion-fab>\n\n <!--  -->\n\n <ion-item lines=\"none\" (click)=\"openModalMembers()\">\n  <ion-icon name=\"person-outline\" slot=\"start\" color=\"primary\"></ion-icon>\n  <ion-text slot=\"start\">Nos Membres</ion-text>\n  <ion-icon name=\"chevron-forward-outline\" slot=\"end\"></ion-icon>\n </ion-item>\n\n <ion-item lines=\"none\" (click)=\"openModalDemandesAdhesion()\">\n  <ion-icon name=\"receipt-outline\" slot=\"start\" color=\"primary\"></ion-icon>\n  <ion-text slot=\"start\">Demandes d'adhesion</ion-text>\n  <ion-icon name=\"chevron-forward-outline\" slot=\"end\"></ion-icon>\n </ion-item>\n\n <ion-item lines=\"none\" (click)=\"openModalAddMembers()\">\n  <ion-icon name=\"person-add-outline\" slot=\"start\" color=\"primary\"></ion-icon>\n  <ion-text slot=\"start\">Ajouter membres</ion-text>\n  <ion-icon name=\"chevron-forward-outline\" slot=\"end\"></ion-icon>\n </ion-item>\n \n \n</ion-content>\n";
+module.exports = "\n<ion-content>\n  <ion-item lines=\"none\" *ngIf=\"Association!=null\">\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" slot=\"start\" color=\"danger\" (click)=\"navBack()\"></ion-icon>\n    <ion-text color=\"medium\"> Administration &ensp; <strong style=\"color:black\">{{Association.name | uppercase}}</strong></ion-text>\n  </ion-item>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"danger\">\n      <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n    <ion-fab-list side=\"start\">\n      <ion-fab-button color=\"light\" [routerLink]=\"['/creation-mouvements',idAssociation]\">\n        <ion-icon name=\"calendar-outline\"  color=\"success\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" [routerLink]=\"['/creation-annonces',idAssociation]\">\n        <ion-icon name=\"megaphone-outline\"  color=\"warning\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" [routerLink]=\"['/creation-besoins',idAssociation]\">\n        <ion-icon name=\"thumbs-up-outline\"  color=\"danger\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" (click)=\"openModalAddMembers()\" >\n        <ion-icon name=\"person-add-outline\"  color=\"danger\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab-list>\n  </ion-fab>\n\n <!--  -->\n\n <ion-item lines=\"none\" (click)=\"openModalMembers()\">\n  <ion-icon name=\"person-outline\" slot=\"start\" color=\"danger\"></ion-icon>\n  <ion-text slot=\"start\">Nos Membres</ion-text>\n  <ion-icon name=\"chevron-forward-outline\" slot=\"end\"></ion-icon>\n </ion-item>\n\n <ion-item lines=\"none\" (click)=\"openModalDemandesAdhesion()\">\n  <ion-icon name=\"receipt-outline\" slot=\"start\" color=\"danger\"></ion-icon>\n  <ion-text slot=\"start\">Demandes d'adhesion</ion-text>\n  <ion-icon name=\"chevron-forward-outline\" slot=\"end\"></ion-icon>\n </ion-item>\n\n <ion-item lines=\"none\" (click)=\"openModalAddMembers()\">\n  <ion-icon name=\"person-add-outline\" slot=\"start\" color=\"danger\"></ion-icon>\n  <ion-text slot=\"start\">Ajouter membres</ion-text>\n  <ion-icon name=\"chevron-forward-outline\" slot=\"end\"></ion-icon>\n </ion-item>\n \n \n</ion-content>\n";
 
 /***/ })
 

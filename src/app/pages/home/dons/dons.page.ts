@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { IDon } from 'src/app/models/don.model';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import fr from 'javascript-time-ago/locale/fr'
-import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { ModalCategoryPage } from 'src/app/modals/modal-category/modal-category.page';
 import { ModalEtatPage } from 'src/app/modals/modal-etat/modal-etat.page';
 import TimeAgo from 'javascript-time-ago';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-dons',
@@ -18,27 +14,58 @@ import { environment } from 'src/environments/environment';
 })
 export class DonsPage implements OnInit {
 
-  constructor(private manageDataService:ManageDataService,
-    private nativGeocoder:NativeGeocoder,private modalCtrl:ModalController,
-    private authService: AuthService,private http:HttpClient,private router:Router) { }
+  constructor(private manageDataService:ManageDataService,private modalCtrl:ModalController) {}
 
   ngOnInit() {
+    this.notifications = [];
+    this.loadingDons = true;
+    this.is_null_Don = true;
+    this.myid = JSON.parse(localStorage.getItem('mydata')).id;
+    setInterval(()=>{
+      if(this.loadingDons==false && this.dons.length<1){
+          this.is_null_Don = true;
+      }
+      else{
+        this.is_null_Don = false;
+      }
+    },100)
+    setTimeout(()=>{
+      if(this.is_null_Don)
+      {
+        this.dons.length<1 ? this.loadingDons == true : this.loadingDons = false;
+      }
+      else if (!this.is_null_Don){
+        this.dons.length<1 ? this.loadingDons == true : this.loadingDons = false;
+      }
+      else{
+        this.loadingDons = false;
+      }
+    },100)
+    setTimeout(()=>{
+      this.dons.length <1 ? this.is_null_Don = true:this.is_null_Don = false;
+      this.loadingDons = false
+    },10000)
+    this.dons = [];
+    this.loadingDons= true;
+    this.is_null_Don= false;
     this.myData = JSON.parse(localStorage.getItem('mydata'));
     console.log(this.myData);
     this.current_page = 1;
-    this.dons = [];
     this.getDons();
-    this.myid = JSON.parse(localStorage.getItem('mydata')).id;
+    this.getMyNotifications();
     setInterval(()=>{
       const tabBar = document.getElementById('app-tab-bar');
       tabBar.style.display = 'flex';
     },100)
     TimeAgo.addDefaultLocale(fr);
-    
+   
   }
   /*-----------------------------VARIABLES-----------------------------*/
+  public loadingDons:boolean = false;
+  public is_null_Don:boolean = false;
   private myid :number = null;
   public dons:IDon[]=[];
+  public donContainer:IDon[] = [];
   GeocoderOption:any={useLocale: true,maxResults: 5};
   public selectedCategory : string[]=[];
   public selectedEtat:string[]=[];
@@ -47,7 +74,9 @@ export class DonsPage implements OnInit {
   public next_page : number = this.current_page;
   public last_page :number = null;
   public myData:any = {};
+  public notifications:any[] = [];
   /*-----------------------------FUNCTIONS-----------------------------*/
+ 
   public timeAgo(created_at:any):string{
     const timeAgo = new TimeAgo('fr-EU');
     const elapsedTime = timeAgo.format(new Date(Date.parse(created_at)-60*1000));
@@ -69,6 +98,13 @@ export class DonsPage implements OnInit {
     const {data,role } = await modal.onWillDismiss();
     if(role ==='confirm'){
       this.selectedCategory=data;
+      this.dons = this.donContainer;
+      console.log(this.selectedCategory)
+        this.selectedCategory.length>0?
+        this.dons = this.dons.filter((don)=>{
+          console.log(don.category)
+          return this.selectedCategory.includes(don.category);
+        }):null;
     }
   }
   public async openModalEtat(){
@@ -87,9 +123,20 @@ export class DonsPage implements OnInit {
   const {data,role} = await modal.onWillDismiss();
   if(role ==='confirm'){
     this.selectedEtat=data;
+    this.selectedCategory.length<1?
+    this.dons = this.dons.filter((don)=>{
+      return this.selectedEtat.includes(don.etat);
+    })
+    :
+    this.dons = this.dons.filter((don)=>{
+      return this.selectedCategory.includes(don.category) && this.selectedEtat.includes(don.etat)
+    })
+    ;
   }
 }
   public refreshFilter(){
+    console.log(this.donContainer)
+    this.dons = this.donContainer;
     this.selectedCategory = [];
     this.selectedEtat = [];
   }
@@ -98,7 +145,17 @@ export class DonsPage implements OnInit {
     don.media.length>0?url= `${this.storage+don.media[0].filePath}`: url='assets/images/empty.webp'
     return url;
   }
-  getDons(){
+  public getMyNotifications(){
+    this.manageDataService.getNotificationDonateur(this.myid).toPromise().then(
+      data=>{
+        console.log(data)
+        data.forEach((notif)=>{
+          this.notifications.push(notif);
+        })
+      }
+    )
+  }
+  public getDons(){
     
     this.manageDataService.getDons(this.current_page).toPromise().then(
       data=>{
@@ -106,7 +163,14 @@ export class DonsPage implements OnInit {
         console.log(this.last_page)
         data.data.forEach((don)=>{
           this.dons.push(don);
+          this.donContainer.push(don);
         })
+        this.selectedCategory.length>0?
+        this.dons = this.dons.filter((don)=>{
+          console.log(don.category)
+          return this.selectedCategory.includes(don.category);
+        }):null;
+         
       },
     ).catch(err=>{
 
@@ -138,6 +202,7 @@ export class DonsPage implements OnInit {
    },500)
   }
   refresh(){
+    this.refreshFilter();
     this.ngOnInit();
   }
 }

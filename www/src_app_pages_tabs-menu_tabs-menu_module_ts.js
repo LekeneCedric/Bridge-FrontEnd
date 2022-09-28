@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_tabs-menu_tabs-menu_module_ts"],{
 
-/***/ 1447:
+/***/ 21447:
 /*!*************************************************************!*\
   !*** ./src/app/pages/tabs-menu/tabs-menu-routing.module.ts ***!
   \*************************************************************/
@@ -11,10 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TabsMenuPageRoutingModule": () => (/* binding */ TabsMenuPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _tabs_menu_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs-menu.page */ 5776);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _tabs_menu_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs-menu.page */ 15776);
 
 
 
@@ -26,19 +26,19 @@ const routes = [
         children: [
             {
                 path: 'dons',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 4984)).then(m => m.DonsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_home_dons_dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/dons/dons.module */ 84984)).then(m => m.DonsPageModule)
             },
             {
                 path: 'demandes',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("src_app_pages_home_demandes_demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/demandes/demandes.module */ 4314)).then(m => m.DemandesPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-src_app_modals_modal-category_modal-category_page_ts"), __webpack_require__.e("src_app_pages_home_demandes_demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/demandes/demandes.module */ 40472)).then(m => m.DemandesPageModule)
             },
             {
                 path: 'associations',
-                loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_pages_home_associations_associations_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/associations/associations.module */ 6359)).then(m => m.AssociationsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("src_app_pages_home_associations_associations_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/home/associations/associations.module */ 36359)).then(m => m.AssociationsPageModule)
             },
             {
                 path: 'messages',
-                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/receptions/receptions.module */ 6929)).then(m => m.ReceptionsPageModule)
+                loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_pages_messages_receptions_receptions_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../pages/messages/receptions/receptions.module */ 96929)).then(m => m.ReceptionsPageModule)
             },
             {
                 path: 'settings',
@@ -75,13 +75,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TabsMenuPageModule": () => (/* binding */ TabsMenuPageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _tabs_menu_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs-menu-routing.module */ 1447);
-/* harmony import */ var _tabs_menu_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs-menu.page */ 5776);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _tabs_menu_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs-menu-routing.module */ 21447);
+/* harmony import */ var _tabs_menu_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs-menu.page */ 15776);
 
 
 
@@ -107,7 +107,7 @@ TabsMenuPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 5776:
+/***/ 15776:
 /*!***************************************************!*\
   !*** ./src/app/pages/tabs-menu/tabs-menu.page.ts ***!
   \***************************************************/
@@ -117,12 +117,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TabsMenuPage": () => (/* binding */ TabsMenuPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _tabs_menu_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs-menu.page.html?ngResource */ 5575);
-/* harmony import */ var _tabs_menu_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs-menu.page.scss?ngResource */ 9919);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth/auth.service */ 1228);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _tabs_menu_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs-menu.page.html?ngResource */ 87412);
+/* harmony import */ var _tabs_menu_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tabs-menu.page.scss?ngResource */ 19919);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var src_app_services_auth_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth/auth.service */ 51228);
 
 
 
@@ -153,7 +153,7 @@ TabsMenuPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 9919:
+/***/ 19919:
 /*!****************************************************************!*\
   !*** ./src/app/pages/tabs-menu/tabs-menu.page.scss?ngResource ***!
   \****************************************************************/
@@ -163,7 +163,7 @@ module.exports = "ion-tab-button {\n  font-size: 10px;\n  --background-focused: 
 
 /***/ }),
 
-/***/ 5575:
+/***/ 87412:
 /*!****************************************************************!*\
   !*** ./src/app/pages/tabs-menu/tabs-menu.page.html?ngResource ***!
   \****************************************************************/

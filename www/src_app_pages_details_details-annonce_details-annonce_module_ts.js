@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_details_details-annonce_details-annonce_module_ts"],{
 
-/***/ 351:
+/***/ 20351:
 /*!*********************************************************************************!*\
   !*** ./src/app/pages/details/details-annonce/details-annonce-routing.module.ts ***!
   \*********************************************************************************/
@@ -11,10 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DetailsAnnoncePageRoutingModule": () => (/* binding */ DetailsAnnoncePageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _details_annonce_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./details-annonce.page */ 6042);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _details_annonce_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./details-annonce.page */ 56042);
 
 
 
@@ -38,7 +38,7 @@ DetailsAnnoncePageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decora
 
 /***/ }),
 
-/***/ 328:
+/***/ 10328:
 /*!*************************************************************************!*\
   !*** ./src/app/pages/details/details-annonce/details-annonce.module.ts ***!
   \*************************************************************************/
@@ -48,13 +48,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DetailsAnnoncePageModule": () => (/* binding */ DetailsAnnoncePageModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 4666);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var _details_annonce_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./details-annonce-routing.module */ 351);
-/* harmony import */ var _details_annonce_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./details-annonce.page */ 6042);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _details_annonce_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./details-annonce-routing.module */ 20351);
+/* harmony import */ var _details_annonce_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./details-annonce.page */ 56042);
 
 
 
@@ -80,7 +80,7 @@ DetailsAnnoncePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 6042:
+/***/ 56042:
 /*!***********************************************************************!*\
   !*** ./src/app/pages/details/details-annonce/details-annonce.page.ts ***!
   \***********************************************************************/
@@ -90,16 +90,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DetailsAnnoncePage": () => (/* binding */ DetailsAnnoncePage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _details_annonce_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./details-annonce.page.html?ngResource */ 3993);
-/* harmony import */ var _details_annonce_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./details-annonce.page.scss?ngResource */ 434);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var javascript_time_ago__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! javascript-time-ago */ 488);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _details_annonce_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./details-annonce.page.html?ngResource */ 23993);
+/* harmony import */ var _details_annonce_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./details-annonce.page.scss?ngResource */ 50434);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
+/* harmony import */ var javascript_time_ago__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! javascript-time-ago */ 20488);
 /* harmony import */ var javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! javascript-time-ago/locale/fr */ 8996);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -115,7 +115,6 @@ let DetailsAnnoncePage = class DetailsAnnoncePage {
         this.navCtrl = navCtrl;
         this.route = route;
         this.manageDataService = manageDataService;
-        /*-----------------------VARIABLES------------------*/
         this.slideOpts = {
             initialSlide: 0,
             speed: 1000,
@@ -130,6 +129,7 @@ let DetailsAnnoncePage = class DetailsAnnoncePage {
         this.Annonce = null;
     }
     ngOnInit() {
+        this.myId = JSON.parse(localStorage.getItem('mydata')).id;
         javascript_time_ago__WEBPACK_IMPORTED_MODULE_4__["default"].addDefaultLocale(javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_5__["default"]);
         this.id = this.route.snapshot.params['id'];
         this.AnnonceInfo();
@@ -151,6 +151,20 @@ let DetailsAnnoncePage = class DetailsAnnoncePage {
             javascript_time_ago__WEBPACK_IMPORTED_MODULE_4__["default"].addDefaultLocale(javascript_time_ago_locale_fr__WEBPACK_IMPORTED_MODULE_5__["default"]);
             const timeAgo = new javascript_time_ago__WEBPACK_IMPORTED_MODULE_4__["default"]('fr-EU');
             this.elapsedTime = timeAgo.format(new Date(Date.parse(data.created_at)));
+        });
+    }
+    like(id_annonce) {
+        const data = {
+            donateur_id: this.myId,
+            annonce_id: id_annonce
+        };
+        this.manageDataService.LikerAnnonce(data).toPromise().then((data) => {
+            this.ngOnInit();
+        });
+    }
+    dislike(id_annonce) {
+        this.manageDataService.disLikerAnnonce(id_annonce).toPromise().then((data) => {
+            this.ngOnInit();
         });
     }
     get IdRoute() {
@@ -177,7 +191,7 @@ DetailsAnnoncePage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([
 
 /***/ }),
 
-/***/ 434:
+/***/ 50434:
 /*!************************************************************************************!*\
   !*** ./src/app/pages/details/details-annonce/details-annonce.page.scss?ngResource ***!
   \************************************************************************************/
@@ -187,13 +201,13 @@ module.exports = ".imgProduct {\n  width: 100%;\n}\n/*# sourceMappingURL=data:ap
 
 /***/ }),
 
-/***/ 3993:
+/***/ 23993:
 /*!************************************************************************************!*\
   !*** ./src/app/pages/details/details-annonce/details-annonce.page.html?ngResource ***!
   \************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content>\n  <ion-row slot=\"fixed\">\n    <ion-fab style=\"margin-top:5px\" horizontal=\"start\" (click)=\"navBack()\">\n      <ion-fab-button color=\"light\">\n          <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"danger\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab>\n    <ion-fab style=\"margin-top:5px\" horizontal=\"end\">\n      <ion-fab-button color=\"light\">\n        <ion-icon name=\"heart-outline\" size=\"large\" slot=\"end\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab>\n    </ion-row>\n    <div *ngIf=\"Annonce!=null\">\n        <ion-slides pager=\"true\" [options]=\"slideOpts\" *ngIf=\"Annonce!=null\">\n          <ion-slide *ngFor=\"let img of Annonce.media\" style=\"max-height:150px\">\n            <ion-img\n            [src]=\"storage+img.filePath\"\n              class=\"imgProduct\"></ion-img>\n          </ion-slide>\n          <ion-slide *ngIf=\"Annonce.media.length<1\" style=\"background-image:url('../../../../assets/images/empty.webp')\">\n          </ion-slide>\n        </ion-slides>\n       <ion-grid style=\"width: 100%;padding:0;margin:0\">\n          <ion-item lines=\"none\" style=\"margin-top:10px;--background:#3880ff\">\n            <ion-text style=\"font-weight: bold;font-size:1.3em\" color=\"light\">{{Annonce.title}}</ion-text>\n          </ion-item>\n          <ion-item>\n            <ion-text style=\"color:#3880ff;\"> publie&ensp;<strong >{{elapsedTime}}</strong> </ion-text>\n          </ion-item>\n            <ion-item lines=\"none\" style=\"margin:0;padding:0;margin-top:5%\">\n              <ion-col size=\"12\" style=\"margin:0;padding:0\">\n              <ion-text style=\"color:gray;margin-top:10px ;\">{{Annonce.intitule}}</ion-text>\n              </ion-col>\n            </ion-item>\n            <ion-item lines=\"none\">\n              <ion-icon name=\"heart-outline\" slot=\"end\"></ion-icon>\n            </ion-item>\n            \n       </ion-grid>\n       <div style=\"margin-bottom:10%\"></div>\n    </div>\n   \n</ion-content>\n<ion-card style=\"padding:0;margin:0\">\n  <ion-row>\n    <ion-col size=\"2\" *ngIf=\"Annonce!=null\">\n      <ion-thumbnail>\n      <img style=\"border-radius:10px\" [src]=\"Annonce.association.media.length>0?storage+Annonce.association.media[0].filePath:'../../../../assets/images/community.png'\" />\n      </ion-thumbnail>\n    </ion-col>\n    <ion-col size=\"5\"class=\"ion-margin-top\" *ngIf=\"Annonce!=null\">\n            <ion-text style=\"font-weight: bold;color: black;font-size: 1.3em;\">{{Annonce.association.name}}</ion-text>\n    </ion-col>\n    <ion-col size=\"5\">\n      <ion-chip color=\"warning\" style=\"padding: 20px;\">\n        <img src=\"../../../../assets/images/gift.png\">\n        <ion-text>Soutenir</ion-text>\n    </ion-chip>\n    </ion-col>\n    \n      \n  </ion-row>\n  \n</ion-card>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-icon (click)=\"navBack()\" name=\"chevron-back-outline\" size=\"large\" color=\"danger\" slot=\"start\"></ion-icon>\n    <ion-title *ngIf=\"Annonce!=null\" style=\"font-size:1.8em;font-weight:bolder\">\n      {{Annonce.title}}\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n    <div *ngIf=\"Annonce!=null\">\n        <ion-slides pager=\"true\" [options]=\"slideOpts\" *ngIf=\"Annonce!=null\">\n          <ion-slide *ngFor=\"let img of Annonce.media\" style=\"max-height:150px\">\n            <ion-img [routerLink]=\"['/image',img.id]\"\n            [src]=\"storage+img.filePath\"\n              class=\"imgProduct\"></ion-img>\n          </ion-slide>\n          <ion-slide *ngIf=\"Annonce.media.length<1\" style=\"background-image:url('../../../../assets/images/empty.webp')\">\n          </ion-slide>\n        </ion-slides>\n       <ion-grid style=\"width: 100%;padding:0;margin:0\">\n          <ion-item>\n            <ion-text style=\"color:#acacac;\"> publie&ensp;<strong >{{elapsedTime}}</strong> </ion-text>\n          </ion-item>\n            <ion-item lines=\"none\" style=\"margin:0;padding:0;margin-top:5%\">\n              <ion-col size=\"12\" style=\"margin:0;padding:0\">\n              <ion-text style=\"color:rgb(0, 0, 0);margin-top:10px ;\">{{Annonce.intitule}}</ion-text>\n              </ion-col>\n            </ion-item>\n            <ion-row style=\"width:100%\">\n              <ion-item lines=\"none\"  style=\"width: 100%;\" *ngIf=\"Annonce.isLike==false\">\n                  <ion-text slot=\"end\" style=\"margin-top:10px\">{{Annonce.nbLikes}}</ion-text>\n                  <ion-icon slot=\"end\" (click)=\"like(Annonce.id)\"  name=\"heart-outline\" size=\"large\" ></ion-icon>\n              </ion-item>\n               <ion-item lines=\"none\"  style=\"width: 100%;\" *ngIf=\"Annonce.isLike==true\">\n                  <ion-text slot=\"end\" style=\"margin-top:10px\">{{Annonce.nbLikes}}</ion-text>\n                  <ion-icon slot=\"end\" (click)=\"dislike(Annonce.id)\"  name=\"heart\" color=\"danger\" size=\"large\" ></ion-icon>\n              </ion-item>\n            </ion-row>\n            \n       </ion-grid>\n       <div style=\"margin-bottom:10%\"></div>\n    </div>\n   \n</ion-content>\n<ion-card style=\"padding:0;margin:0\">\n  <ion-row>\n    <ion-col size=\"2\" *ngIf=\"Annonce!=null\">\n      <ion-thumbnail>\n      <img style=\"border-radius:10px\" [src]=\"Annonce.association.media.length>0?storage+Annonce.association.media[0].filePath:'../../../../assets/images/community.png'\" />\n      </ion-thumbnail>\n    </ion-col>\n    <ion-col size=\"5\"class=\"ion-margin-top\" *ngIf=\"Annonce!=null\">\n            <ion-text style=\"font-weight: bold;color: black;font-size: 1.3em;\">{{Annonce.association.name}}</ion-text>\n    </ion-col>\n    <ion-col size=\"5\">\n      <ion-chip color=\"warning\" style=\"padding: 20px;\">\n        <img src=\"../../../../assets/images/gift.png\">\n        <ion-text>Soutenir</ion-text>\n    </ion-chip>\n    </ion-col>\n    \n      \n  </ion-row>\n  \n</ion-card>\n";
 
 /***/ })
 

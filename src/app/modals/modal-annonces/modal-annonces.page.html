@@ -10,13 +10,13 @@
 <ion-content>
   <ion-list>
     <ion-card *ngFor="let annonce of Annonces">
-      <div [routerLink]="['/details-annonce',annonce.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
+      <div (click)="confirm()" [routerLink]="['/details-annonce',annonce.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
       background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})">
       </div>
-      <ion-item style="width:100%;padding:0;margin:0" lines="none"  [routerLink]="['/details-annonce',annonce.id]">
+      <ion-item style="width:100%;padding:0;margin:0" lines="none" (click)="confirm()"  [routerLink]="['/details-annonce',annonce.id]">
         <ion-text style="font-weight:bold;text-align: center;font-size: 1em;">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>
       </ion-item>
-      <ion-item lines="none" [routerLink]="['/details-annonce',annonce.id]">
+      <ion-item lines="none" (click)="confirm()" [routerLink]="['/details-annonce',annonce.id]">
         <ion-text style="color:gray;font-size:0.8em">
         {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}
         </ion-text>

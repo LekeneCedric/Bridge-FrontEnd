@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-item lines="none">
+    <ion-icon name="chevron-back" (click)="back()" slot="start"></ion-icon>
+    <ion-title slot="start">Notifications</ion-title>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid style="text-align:center;margin-top:15%" *ngIf="notifications.length<1">
+    <img src="../../../../assets/images/chat.png" class="ion-margin-vertical">
+    <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
+      <ion-text style="color:rgb(64, 64, 64);width: 100%">Actuellement vous n'avez aucune notification</ion-text>
+    </ion-item>
+    <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%">reessayer</ion-button>
+  </ion-grid>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" class="red">
+    <ion-refresher-content color="danger"></ion-refresher-content>
+  </ion-refresher>
+<ion-list>
+  <ion-item style="margin-top:5px" *ngFor="let notif of notifications" (click)="openNotification(notif)">
+    <ion-icon name="notifications-outline" slot="start"></ion-icon>
+  <ion-col size="12">
+    <ion-row style="width:100%;text-align:left">
+      <ion-text style="width:100%;font-weight: bold;">
+        {{notif.message | slice : 0:15}}
+      </ion-text>
+    </ion-row>
+    <ion-row style="width:100%;text-align:left;margin-top:5px">
+      <ion-text style="width:100%">
+        {{notif.message | slice : 0:36}}{{notif.message.length>36?'...':''}}
+      </ion-text>
+    </ion-row>
+    <ion-row style="width:100%;text-align: right;">
+      <ion-text style="width:100%;color: gray;" >
+        il y'a {{timeAgo(notif.created_at) | slice:7}}
+      </ion-text>
+    </ion-row>
+  </ion-col>
+  </ion-item>
+</ion-list>
+</ion-content>

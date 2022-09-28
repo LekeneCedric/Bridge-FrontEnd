@@ -15,6 +15,14 @@ const routes: Routes = [
   {
     path: 'mes-associations/:id',
     loadChildren: () => import('./mes-associations/mes-associations.module').then( m => m.MesAssociationsPageModule)
+  },
+  {
+    path: 'mes-mouvements',
+    loadChildren: () => import('./mes-mouvements/mes-mouvements.module').then( m => m.MesMouvementsPageModule)
+  },
+  {
+    path: 'mes-favoris',
+    loadChildren: () => import('./mes-favoris/mes-favoris.module').then( m => m.MesFavorisPageModule)
   }
 ];
 

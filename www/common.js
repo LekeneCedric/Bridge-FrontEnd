@@ -1,7 +1,7 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["common"],{
 
-/***/ 7087:
+/***/ 97087:
 /*!**************************************************************!*\
   !*** ./src/app/modals/modal-annonces/modal-annonces.page.ts ***!
   \**************************************************************/
@@ -11,13 +11,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalAnnoncesPage": () => (/* binding */ ModalAnnoncesPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_annonces_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-annonces.page.html?ngResource */ 5868);
-/* harmony import */ var _modal_annonces_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-annonces.page.scss?ngResource */ 7852);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_annonces_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-annonces.page.html?ngResource */ 75868);
+/* harmony import */ var _modal_annonces_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-annonces.page.scss?ngResource */ 57852);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -32,10 +32,25 @@ let ModalAnnoncesPage = class ModalAnnoncesPage {
         this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.storage;
     }
     ngOnInit() {
+        this.id = JSON.parse(localStorage.getItem('mydata')).id;
         this.manageDataService.getAnnoncesAssociation(this.association_id).toPromise().then((data) => {
             this.Annonces = data;
         });
         console.log(this.Annonces);
+    }
+    like(id_annonce) {
+        const data = {
+            donateur_id: this.id,
+            annonce_id: id_annonce
+        };
+        this.manageDataService.LikerAnnonce(data).toPromise().then((data) => {
+            this.ngOnInit();
+        });
+    }
+    dislike(id_annonce) {
+        this.manageDataService.disLikerAnnonce(id_annonce).toPromise().then((data) => {
+            this.ngOnInit();
+        });
     }
     confirm() {
         return this.modalCtrl.dismiss(null, 'confirm');
@@ -70,13 +85,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalDemandesAdhesionAssociationPage": () => (/* binding */ ModalDemandesAdhesionAssociationPage)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_demandes_adhesion_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-demandes-adhesion-association.page.html?ngResource */ 1839);
-/* harmony import */ var _modal_demandes_adhesion_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-demandes-adhesion-association.page.scss?ngResource */ 4786);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_demandes_adhesion_association_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-demandes-adhesion-association.page.html?ngResource */ 61839);
+/* harmony import */ var _modal_demandes_adhesion_association_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-demandes-adhesion-association.page.scss?ngResource */ 64786);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
 
 
 
@@ -102,6 +117,10 @@ let ModalDemandesAdhesionAssociationPage = class ModalDemandesAdhesionAssociatio
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    return this.modalCtrl.dismiss(null, 'confirm');
   }
 
   rejectDemand(id_donateur) {
@@ -174,7 +193,7 @@ ModalDemandesAdhesionAssociationPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__d
 
 /***/ }),
 
-/***/ 192:
+/***/ 20192:
 /*!******************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.ts ***!
   \******************************************************/
@@ -184,11 +203,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalEtatPage": () => (/* binding */ ModalEtatPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_etat_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-etat.page.html?ngResource */ 7099);
-/* harmony import */ var _modal_etat_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-etat.page.scss?ngResource */ 7587);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ 3819);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_etat_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-etat.page.html?ngResource */ 17099);
+/* harmony import */ var _modal_etat_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-etat.page.scss?ngResource */ 47587);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ 93819);
 
 
 
@@ -250,7 +269,149 @@ ModalEtatPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 
 /***/ }),
 
-/***/ 3951:
+/***/ 56340:
+/*!********************************************************************************************!*\
+  !*** ./src/app/modals/modal-galerie-association/galery-type/image/image-routing.module.ts ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ImagePageRoutingModule": () => (/* binding */ ImagePageRoutingModule)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _image_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./image.page */ 2238);
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _image_page__WEBPACK_IMPORTED_MODULE_0__.ImagePage
+    }
+];
+let ImagePageRoutingModule = class ImagePageRoutingModule {
+};
+ImagePageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule],
+    })
+], ImagePageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ 46772:
+/*!************************************************************************************!*\
+  !*** ./src/app/modals/modal-galerie-association/galery-type/image/image.module.ts ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ImagePageModule": () => (/* binding */ ImagePageModule)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 94666);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 2508);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _image_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./image-routing.module */ 56340);
+/* harmony import */ var _image_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./image.page */ 2238);
+
+
+
+
+
+
+
+let ImagePageModule = class ImagePageModule {
+};
+ImagePageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__.CommonModule,
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormsModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.IonicModule,
+            _image_routing_module__WEBPACK_IMPORTED_MODULE_0__.ImagePageRoutingModule
+        ],
+        declarations: [_image_page__WEBPACK_IMPORTED_MODULE_1__.ImagePage]
+    })
+], ImagePageModule);
+
+
+
+/***/ }),
+
+/***/ 2238:
+/*!**********************************************************************************!*\
+  !*** ./src/app/modals/modal-galerie-association/galery-type/image/image.page.ts ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ImagePage": () => (/* binding */ ImagePage)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _image_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./image.page.html?ngResource */ 48803);
+/* harmony import */ var _image_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./image.page.scss?ngResource */ 94558);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 28549);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 92340);
+
+
+
+
+
+
+
+
+let ImagePage = class ImagePage {
+    constructor(route, media, navCtrl) {
+        this.route = route;
+        this.media = media;
+        this.navCtrl = navCtrl;
+        this.media_id = null;
+        this.currentMedia = null;
+        this.storage = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__.environment.storage;
+    }
+    ngOnInit() {
+        this.media_id = this.route.snapshot.params.id;
+        this.media.getOneMedia(this.media_id).toPromise().then(data => {
+            this.currentMedia = data;
+        });
+        console.log(this.media_id);
+    }
+    navBack() {
+        this.navCtrl.back();
+    }
+};
+ImagePage.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.ActivatedRoute },
+    { type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_2__.MediasService },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController }
+];
+ImagePage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+        selector: 'app-image',
+        template: _image_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
+        styles: [_image_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
+    })
+], ImagePage);
+
+
+
+/***/ }),
+
+/***/ 53951:
 /*!******************************************************************!*\
   !*** ./src/app/modals/modal-mouvements/modal-mouvements.page.ts ***!
   \******************************************************************/
@@ -260,13 +421,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalMouvementsPage": () => (/* binding */ ModalMouvementsPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-mouvements.page.html?ngResource */ 5952);
-/* harmony import */ var _modal_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-mouvements.page.scss?ngResource */ 9654);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-mouvements.page.html?ngResource */ 15952);
+/* harmony import */ var _modal_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-mouvements.page.scss?ngResource */ 29654);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -309,7 +470,7 @@ ModalMouvementsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
 
 /***/ }),
 
-/***/ 5780:
+/***/ 25780:
 /*!************************************************************!*\
   !*** ./src/app/modals/modal-popover/modal-popover.page.ts ***!
   \************************************************************/
@@ -319,14 +480,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalPopoverPage": () => (/* binding */ ModalPopoverPage)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_popover_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-popover.page.html?ngResource */ 8683);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_popover_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-popover.page.html?ngResource */ 78683);
 /* harmony import */ var _modal_popover_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal-popover.page.scss?ngResource */ 6607);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
 
 
 
@@ -436,7 +597,7 @@ ModalPopoverPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([(0,_angula
 
 /***/ }),
 
-/***/ 3378:
+/***/ 83378:
 /*!********************************************************!*\
   !*** ./src/app/modals/modal-salon/modal-salon.page.ts ***!
   \********************************************************/
@@ -446,12 +607,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ModalSalonPage": () => (/* binding */ ModalSalonPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _modal_salon_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-salon.page.html?ngResource */ 6520);
-/* harmony import */ var _modal_salon_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-salon.page.scss?ngResource */ 2415);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 3819);
-/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 8027);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _modal_salon_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal-salon.page.html?ngResource */ 96520);
+/* harmony import */ var _modal_salon_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal-salon.page.scss?ngResource */ 32415);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
 
 
 
@@ -518,7 +679,7 @@ ModalSalonPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
 
 /***/ }),
 
-/***/ 9444:
+/***/ 79444:
 /*!*******************************************************!*\
   !*** ./src/app/services/creation/creation.service.ts ***!
   \*******************************************************/
@@ -528,10 +689,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CreationService": () => (/* binding */ CreationService)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4929);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 8987);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 2340);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ 58987);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/environments/environment */ 92340);
 
 
 
@@ -564,6 +725,27 @@ let CreationService = class CreationService {
         });
         return this.http.post(api, credential, { headers: headers });
     }
+    /*----------------------------------BESOINS------------------------------*/
+    createBesoin(credential) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/besoins';
+        return this.http.post(api, credential, { headers: headers });
+    }
+    createDonBesoinAssociation(credential) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/donsAssociation';
+        return this.http.post(api, credential, { headers: headers });
+    }
 };
 CreationService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpClient }
@@ -578,7 +760,7 @@ CreationService = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
 
 /***/ }),
 
-/***/ 2483:
+/***/ 52483:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-4975dbd0.js ***!
   \*********************************************************************/
@@ -588,9 +770,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "c": () => (/* binding */ createButtonActiveGesture)
 /* harmony export */ });
-/* harmony import */ var _index_1a99aeb7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-1a99aeb7.js */ 4895);
-/* harmony import */ var _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-683b3b3c.js */ 634);
-/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 2172);
+/* harmony import */ var _index_1a99aeb7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-1a99aeb7.js */ 34895);
+/* harmony import */ var _haptic_683b3b3c_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./haptic-683b3b3c.js */ 70634);
+/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 82172);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -673,7 +855,7 @@ const createButtonActiveGesture = (el, isButton) => {
 
 /***/ }),
 
-/***/ 7481:
+/***/ 17481:
 /*!***********************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/dir-e8b767a8.js ***!
   \***********************************************************/
@@ -706,7 +888,7 @@ const isRTL = hostEl => {
 
 /***/ }),
 
-/***/ 9013:
+/***/ 69013:
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/focus-visible-5ad6825d.js ***!
   \*********************************************************************/
@@ -791,7 +973,7 @@ const startFocusVisible = rootEl => {
 
 /***/ }),
 
-/***/ 2668:
+/***/ 92668:
 /*!**************************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-ce4f806c.js ***!
   \**************************************************************************/
@@ -803,8 +985,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "a": () => (/* binding */ attachComponent),
 /* harmony export */   "d": () => (/* binding */ detachComponent)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
 
 
 /*!
@@ -953,7 +1135,7 @@ const CoreDelegate = () => {
 
 /***/ }),
 
-/***/ 634:
+/***/ 70634:
 /*!**************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/haptic-683b3b3c.js ***!
   \**************************************************************/
@@ -1113,7 +1295,7 @@ const hapticImpact = options => {
 
 /***/ }),
 
-/***/ 2286:
+/***/ 42286:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/index-33ffec25.js ***!
   \*************************************************************/
@@ -1154,7 +1336,7 @@ const win = typeof window !== 'undefined' ? window : undefined;
 
 /***/ }),
 
-/***/ 7288:
+/***/ 27288:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/index-3413f7be.js ***!
   \*************************************************************/
@@ -1174,9 +1356,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "r": () => (/* binding */ resetContentScrollY),
 /* harmony export */   "s": () => (/* binding */ scrollToTop)
 /* harmony export */ });
-/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
-/* harmony import */ var _index_c4b11676_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-c4b11676.js */ 9273);
+/* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
+/* harmony import */ var _index_c4b11676_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-c4b11676.js */ 99273);
 
 
 /*!
@@ -1336,7 +1518,7 @@ const resetContentScrollY = (contentEl, initialScrollY) => {
 
 /***/ }),
 
-/***/ 2312:
+/***/ 72312:
 /*!*************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/index-45ecc7ca.js ***!
   \*************************************************************/
@@ -1398,7 +1580,7 @@ const searchSharp = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/
 
 /***/ }),
 
-/***/ 6524:
+/***/ 96524:
 /*!****************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/keyboard-4d5544a0.js ***!
   \****************************************************************/
@@ -1572,7 +1754,7 @@ const copyVisualViewport = visualViewport => {
 
 /***/ }),
 
-/***/ 3963:
+/***/ 23963:
 /*!***************************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/keyboard-controller-73af62b2.js ***!
   \***************************************************************************/
@@ -1582,7 +1764,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "c": () => (/* binding */ createKeyboardController)
 /* harmony export */ });
-/* harmony import */ var _index_33ffec25_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-33ffec25.js */ 2286);
+/* harmony import */ var _index_33ffec25_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-33ffec25.js */ 42286);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -1634,7 +1816,7 @@ const createKeyboardController = keyboardChangeCallback => {
 
 /***/ }),
 
-/***/ 3844:
+/***/ 43844:
 /*!***********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-5d6b6fe7.js ***!
   \***********************************************************************/
@@ -1791,7 +1973,7 @@ const SPINNERS = spinners;
 
 /***/ }),
 
-/***/ 1812:
+/***/ 21812:
 /*!******************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/swipe-back-fa30a130.js ***!
   \******************************************************************/
@@ -1801,10 +1983,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "createSwipeBackGesture": () => (/* binding */ createSwipeBackGesture)
 /* harmony export */ });
-/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
-/* harmony import */ var _dir_e8b767a8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dir-e8b767a8.js */ 7481);
-/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 2172);
-/* harmony import */ var _gesture_controller_17e82006_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gesture-controller-17e82006.js */ 607);
+/* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-4d272360.js */ 59158);
+/* harmony import */ var _dir_e8b767a8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dir-e8b767a8.js */ 17481);
+/* harmony import */ var _index_3f1a7d95_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-3f1a7d95.js */ 82172);
+/* harmony import */ var _gesture_controller_17e82006_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./gesture-controller-17e82006.js */ 70607);
 /*!
  * (C) Ionic http://ionicframework.com - MIT License
  */
@@ -1896,7 +2078,7 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
 
 /***/ }),
 
-/***/ 7852:
+/***/ 57852:
 /*!***************************************************************************!*\
   !*** ./src/app/modals/modal-annonces/modal-annonces.page.scss?ngResource ***!
   \***************************************************************************/
@@ -1906,7 +2088,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 4786:
+/***/ 64786:
 /*!*********************************************************************************************************************!*\
   !*** ./src/app/modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.page.scss?ngResource ***!
   \*********************************************************************************************************************/
@@ -1916,7 +2098,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 7587:
+/***/ 47587:
 /*!*******************************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.scss?ngResource ***!
   \*******************************************************************/
@@ -1926,7 +2108,17 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 9654:
+/***/ 94558:
+/*!***********************************************************************************************!*\
+  !*** ./src/app/modals/modal-galerie-association/galery-type/image/image.page.scss?ngResource ***!
+  \***********************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbWFnZS5wYWdlLnNjc3MifQ== */";
+
+/***/ }),
+
+/***/ 29654:
 /*!*******************************************************************************!*\
   !*** ./src/app/modals/modal-mouvements/modal-mouvements.page.scss?ngResource ***!
   \*******************************************************************************/
@@ -1946,7 +2138,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 2415:
+/***/ 32415:
 /*!*********************************************************************!*\
   !*** ./src/app/modals/modal-salon/modal-salon.page.scss?ngResource ***!
   \*********************************************************************/
@@ -1956,27 +2148,27 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 
 /***/ }),
 
-/***/ 5868:
+/***/ 75868:
 /*!***************************************************************************!*\
   !*** ./src/app/modals/modal-annonces/modal-annonces.page.html?ngResource ***!
   \***************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let annonce of Annonces\" class=\"ion-padding-bottom\" (click)=\"confirm()\">\n    <div [routerLink]=\"['/details-annonce',annonce.id]\" style=\"padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;\n    background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})\">\n    </div>\n    <ion-item  (click)=\"confirm()\" [routerLink]=\"['/details-association',annonce.association.id]\" style=\"width:100%;\" lines=\"none\" class=\"ion-no-padding ion-no-margin\">\n      <ion-thumbnail class=\"ion-margin-start\" slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"annonce.association.media.length>0?storage+annonce.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row >\n         <ion-text style=\"font-weight: bold;font-size: 1.1em;\">{{annonce.association.name}}</ion-text>\n        </ion-row >\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\">{{annonce.association.type}}</ion-text>\n        </ion-row >\n      </ion-col>\n    </ion-item>\n    <ion-item style=\"width:100%;padding:0;margin:0\" lines=\"none\"  (click)=\"confirm()\" [routerLink]=\"['/details-annonce',annonce.id]\">\n      <ion-text style=\"font-weight:bold;text-align: center;font-size: 1em;\">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>\n    </ion-item>\n    <ion-item lines=\"none\" (click)=\"confirm()\" [routerLink]=\"['/details-annonce',annonce.id]\">\n      <ion-text style=\"color:gray;font-size:0.8em\">\n      {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}\n      </ion-text>\n    </ion-item>\n  </ion-card>\n</ion-content>\n";
+module.exports = "\n<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-button slot=\"end\" color=\"primary\" (click)=\"confirm()\">\n      <ion-text>Fermer</ion-text>\n      <ion-icon name=\"close-circle-outline\" size=\"large\"></ion-icon>\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-list>\n    <ion-card *ngFor=\"let annonce of Annonces\">\n      <div (click)=\"confirm()\" [routerLink]=\"['/details-annonce',annonce.id]\" style=\"padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;\n      background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})\">\n      </div>\n      <ion-item style=\"width:100%;padding:0;margin:0\" lines=\"none\" (click)=\"confirm()\"  [routerLink]=\"['/details-annonce',annonce.id]\">\n        <ion-text style=\"font-weight:bold;text-align: center;font-size: 1em;\">{{annonce.title | slice:0:30}}{{annonce.title.length > 30 ? '&hellip;':'' }}</ion-text>\n      </ion-item>\n      <ion-item lines=\"none\" (click)=\"confirm()\" [routerLink]=\"['/details-annonce',annonce.id]\">\n        <ion-text style=\"color:gray;font-size:0.8em\">\n        {{annonce.intitule| slice:0:200}}{{annonce.intitule.length > 200 ? '&hellip;':'' }}\n        </ion-text>\n      </ion-item>\n        <ion-item lines=\"none\"  style=\"width: 100%;\">\n            <ion-text slot=\"end\" style=\"margin-top:10px\">{{annonce.nbLikes}}</ion-text>\n            <ion-icon slot=\"end\"   name=\"heart\" size=\"large\" ></ion-icon>\n        </ion-item>\n    </ion-card>\n    \n  </ion-list>\n  \n</ion-content>\n";
 
 /***/ }),
 
-/***/ 1839:
+/***/ 61839:
 /*!*********************************************************************************************************************!*\
   !*** ./src/app/modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.page.html?ngResource ***!
   \*********************************************************************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-content class=\"ion-padding\">\n    <ion-icon name=\"exit-outline\"color=\"danger\" size=\"large\" (click)=\"cancel()\"></ion-icon>\n    <ion-grid *ngIf=\"Association!=null\">\n    <ion-list>\n      <ion-item *ngIf=\"Association.attentes.length<1\" lines=\"none\">\n        <ion-icon name=\"happy-outline\" size=\"large\" slot=\"start\"></ion-icon>\n        <ion-text>Aucune demande actuellement</ion-text>\n      </ion-item>\n    <ion-item *ngFor=\"let user of Association.attentes\" lines=\"none\" style=\"margin-bottom:0.5px dashed rgb(200, 200, 200)\">\n      <ion-icon (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" name=\"person-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" slot=\"start\" style=\"font-weight:bold\">{{user.name}}</ion-text>\n      <ion-chip (click)=\"acceptDemand(user.id)\" slot=\"end\" color=\"success\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"checkmark-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n      <ion-chip (click)=\"rejectDemand(user.id)\" slot=\"end\" color=\"danger\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"close-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n    </ion-item>\n    </ion-list>\n  </ion-grid>\n</ion-content>\n";
+module.exports = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-button slot=\"end\" color=\"primary\" (click)=\"confirm()\">\n      <ion-text>Fermer</ion-text>\n      <ion-icon name=\"close-circle-outline\" size=\"large\"></ion-icon>\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n<ion-content class=\"ion-padding\">\n    <ion-grid *ngIf=\"Association!=null\">\n    <ion-list>\n      <ion-item *ngIf=\"Association.attentes.length<1\" lines=\"none\">\n        <ion-icon name=\"happy-outline\" size=\"large\" slot=\"start\"></ion-icon>\n        <ion-text>Aucune demande actuellement</ion-text>\n      </ion-item>\n    <ion-item *ngFor=\"let user of Association.attentes\" lines=\"none\" style=\"margin-bottom:0.5px dashed rgb(200, 200, 200)\">\n      <ion-icon (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" name=\"person-circle-outline\" slot=\"start\"></ion-icon>\n      <ion-text (click)=\"cancel()\" [routerLink]=\"['/profil-donateur',user.id]\" slot=\"start\" style=\"font-weight:bold\">{{user.name}}</ion-text>\n      <ion-chip (click)=\"acceptDemand(user.id)\" slot=\"end\" color=\"success\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"checkmark-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n      <ion-chip (click)=\"rejectDemand(user.id)\" slot=\"end\" color=\"danger\" style=\"text-align:left;padding:0\" class=\"ion-justify-content-center\"> \n        <ion-icon name=\"close-outline\" style=\"margin-right:10px\"></ion-icon>\n      </ion-chip>\n    </ion-item>\n    </ion-list>\n  </ion-grid>\n</ion-content>\n";
 
 /***/ }),
 
-/***/ 7099:
+/***/ 17099:
 /*!*******************************************************************!*\
   !*** ./src/app/modals/modal-etat/modal-etat.page.html?ngResource ***!
   \*******************************************************************/
@@ -1986,17 +2178,27 @@ module.exports = "\n<ion-content>\n  <ion-list class=\"ion-justify-content-betwe
 
 /***/ }),
 
-/***/ 5952:
+/***/ 48803:
+/*!***********************************************************************************************!*\
+  !*** ./src/app/modals/modal-galerie-association/galery-type/image/image.page.html?ngResource ***!
+  \***********************************************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n<ion-content style=\"--background:black\">\n  <ion-item lines=\"none\" style=\"--background:black\">\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"light\" (click)=\"navBack()\"></ion-icon>\n    <ion-title *ngIf=\"currentMedia!=null\" color=\"light\">{{currentMedia.fileName | slice:0:15}} {{currentMedia.fileName.lenght>15?'...':''}} </ion-title>\n  </ion-item>\n  <img *ngIf=\"currentMedia!=null\" [src]=\"storage+currentMedia.filePath\" style=\"width:100%;margin-top:50%\">\n</ion-content>\n";
+
+/***/ }),
+
+/***/ 15952:
 /*!*******************************************************************************!*\
   !*** ./src/app/modals/modal-mouvements/modal-mouvements.page.html?ngResource ***!
   \*******************************************************************************/
 /***/ ((module) => {
 
-module.exports = "\n<ion-content>\n  <ion-card *ngFor=\"let event of Mouvements\" lines=\"none\" class=\"ion-padding-bottom\">\n    <div  [routerLink]=\"['/details-evenement',event.id]\" style=\"padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;\n    background-image: url({{event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'}})\">\n    </div>\n    <ion-item style=\"width:100%;\" lines=\"none\" (click)=\"confirm()\" [routerLink]=\"['/details-association',event.association.id]\">\n      <ion-thumbnail slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row>\n         <ion-text style=\"font-weight: bold\">{{event.association.name}}</ion-text>\n        </ion-row>\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\"> {{event.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-row style=\"width:100%;margin-left:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n      <ion-col size=\"12\">\n      <ion-row style=\"display:flex;\">\n        <ion-icon name=\"information-outline\" color=\"primary\" size=\"small\"></ion-icon>\n        <ion-text style=\"font-weight:bold;color:black;text-align: center;font-size: 1.2em;align-self: center;margin-left: 2%;\" class=\"ion-margin-horizontal\">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>  \n      </ion-row>\n      </ion-col>\n    </ion-row>\n    <ion-row style=\"width:100%;margin-left:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n        <ion-col size=\"12\">\n        <ion-row style=\"display:flex;\">\n          <ion-icon name=\"today-outline\" size=\"small\" color=\"primary\"></ion-icon>\n          <ion-text style=\"color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;\"><strong>{{event.date_rencontre | date:'MMM d, y'}} &ensp;</strong> <strong>&ensp;|&ensp;</strong></ion-text>\n          <ion-text style=\"color:gray;font-size:1.1em;align-self: center;\"> &ensp;de &ensp;<strong>{{event.heure_debut}}</strong> &ensp; a &ensp; <strong>{{event.heure_fin}}</strong></ion-text>\n        </ion-row>\n        </ion-col>\n      </ion-row>\n      <!------------------------->\n      <ion-row style=\"width:100%;margin-left:0;margin-top:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\"> \n         <ion-col size=\"12\">\n          <ion-row style=\"display:flex;\">\n            <ion-icon name=\"location-outline\" size=\"small\" color=\"primary\"></ion-icon>\n            <ion-text style=\"color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;\">{{event.association.adresse}}</ion-text>\n          </ion-row>\n         </ion-col>\n      </ion-row>\n      <!-- <ion-row style=\"width:100%\">\n        <ion-col size=\"7\"></ion-col>\n        <ion-col size =\"5\">\n          <ion-button color=\"primary\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n            <ion-text>consulter</ion-text>\n          </ion-button>\n        </ion-col>\n        </ion-row> -->\n  </ion-card>\n</ion-content>\n";
+module.exports = "<ion-header class=\"ion-no-border\">\n  <ion-toolbar>\n    <ion-button slot=\"end\" color=\"primary\" (click)=\"confirm()\">\n      <ion-text>Fermer</ion-text>\n      <ion-icon name=\"close-circle-outline\" size=\"large\"></ion-icon>\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-card *ngFor=\"let event of Mouvements\" lines=\"none\" class=\"ion-padding-bottom\">\n    <div  [routerLink]=\"['/details-evenement',event.id]\" (click)=\"confirm()\" style=\"padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;\n    background-image: url({{event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'}})\">\n   <ion-button style=\"position:absolute;z-index:10;float:right\">\n    <ion-icon name=\"walk-outline\"></ion-icon>\n    <ion-text color=\"light\" style=\"font-weight:bold;margin-top:7px\">{{event.nbparticipants}} &ensp;participants</ion-text>\n    </ion-button>    \n  </div>\n    <ion-item style=\"width:100%;\" lines=\"none\" (click)=\"confirm()\" [routerLink]=\"['/details-association',event.association.id]\">\n      <ion-thumbnail slot=\"start\" >\n        <img style=\"border-radius:10px\" [src]=\"event.association.media.length>0?storage+event.association.media[0].filePath:'../../../../assets/images/user.png'\" />\n      </ion-thumbnail>\n      <ion-col style=\"text-align: left\">\n        <ion-row>\n         <ion-text style=\"font-weight: bold\">{{event.association.name}}</ion-text>\n        </ion-row>\n        <ion-row style=\"margin-top:2%\">\n          <ion-text style=\"color:gray\"> {{event.association.type}}</ion-text>\n        </ion-row>\n      </ion-col>\n    </ion-item>\n    <ion-row style=\"width:100%;margin-left:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n      <ion-col size=\"12\">\n      <ion-row style=\"display:flex;\">\n        <ion-icon name=\"information-outline\" color=\"primary\" size=\"small\"></ion-icon>\n        <ion-text style=\"font-weight:bold;color:black;text-align: center;font-size: 1.2em;align-self: center;margin-left: 2%;\" class=\"ion-margin-horizontal\">{{event.intitule | slice:0:30}}{{event.intitule > 30 ? '&hellip;':'' }}</ion-text>  \n      </ion-row>\n      </ion-col>\n    </ion-row>\n    <ion-row style=\"width:100%;margin-left:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n        <ion-col size=\"12\">\n        <ion-row style=\"display:flex;\">\n          <ion-icon name=\"today-outline\" size=\"small\" color=\"primary\"></ion-icon>\n          <ion-text style=\"color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;\"><strong>{{event.date_rencontre | date:'MMM d, y'}} &ensp;</strong> <strong>&ensp;|&ensp;</strong></ion-text>\n          <ion-text style=\"color:gray;font-size:1.1em;align-self: center;\"> &ensp;de &ensp;<strong>{{event.heure_debut}}</strong> &ensp; a &ensp; <strong>{{event.heure_fin}}</strong></ion-text>\n        </ion-row>\n        </ion-col>\n      </ion-row>\n      <!------------------------->\n      <ion-row style=\"width:100%;margin-left:0;margin-top:0\" class=\"ion-margin-horizontal\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\"> \n         <ion-col size=\"12\">\n          <ion-row style=\"display:flex;\">\n            <ion-icon name=\"location-outline\" size=\"small\" color=\"primary\"></ion-icon>\n            <ion-text style=\"color:gray;font-size: 1.1em;align-self: center;margin-left: 2%;\">{{event.association.adresse}}</ion-text>\n          </ion-row>\n         </ion-col>\n      </ion-row>\n      <!-- <ion-row style=\"width:100%\">\n        <ion-col size=\"7\"></ion-col>\n        <ion-col size =\"5\">\n          <ion-button color=\"primary\" (click)=\"confirm()\" [routerLink]=\"['/details-evenement',event.id]\">\n            <ion-text>consulter</ion-text>\n          </ion-button>\n        </ion-col>\n        </ion-row> -->\n  </ion-card>\n</ion-content>\n";
 
 /***/ }),
 
-/***/ 8683:
+/***/ 78683:
 /*!*************************************************************************!*\
   !*** ./src/app/modals/modal-popover/modal-popover.page.html?ngResource ***!
   \*************************************************************************/
@@ -2006,7 +2208,7 @@ module.exports = "\n<ion-content>\n  <ion-item [button]=\"true\" [detail]=\"fals
 
 /***/ }),
 
-/***/ 6520:
+/***/ 96520:
 /*!*********************************************************************!*\
   !*** ./src/app/modals/modal-salon/modal-salon.page.html?ngResource ***!
   \*********************************************************************/

@@ -1,20 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon (click)="navBack()" name="chevron-back-outline" size="large" color="danger" slot="start"></ion-icon>
+    <ion-title *ngIf="Annonce!=null" style="font-size:1.8em;font-weight:bolder">
+      {{Annonce.title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-row slot="fixed">
-    <ion-fab style="margin-top:5px" horizontal="start" (click)="navBack()">
-      <ion-fab-button color="light">
-          <ion-icon name="chevron-back-outline" size="large" color="danger"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <ion-fab style="margin-top:5px" horizontal="end">
-      <ion-fab-button color="light">
-        <ion-icon name="heart-outline" size="large" slot="end"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    </ion-row>
     <div *ngIf="Annonce!=null">
         <ion-slides pager="true" [options]="slideOpts" *ngIf="Annonce!=null">
           <ion-slide *ngFor="let img of Annonce.media" style="max-height:150px">
-            <ion-img
+            <ion-img [routerLink]="['/image',img.id]"
             [src]="storage+img.filePath"
               class="imgProduct"></ion-img>
           </ion-slide>
@@ -22,20 +18,24 @@
           </ion-slide>
         </ion-slides>
        <ion-grid style="width: 100%;padding:0;margin:0">
-          <ion-item lines="none" style="margin-top:10px;--background:#3880ff">
-            <ion-text style="font-weight: bold;font-size:1.3em" color="light">{{Annonce.title}}</ion-text>
-          </ion-item>
           <ion-item>
-            <ion-text style="color:#3880ff;"> publie&ensp;<strong >{{elapsedTime}}</strong> </ion-text>
+            <ion-text style="color:#acacac;"> publie&ensp;<strong >{{elapsedTime}}</strong> </ion-text>
           </ion-item>
             <ion-item lines="none" style="margin:0;padding:0;margin-top:5%">
               <ion-col size="12" style="margin:0;padding:0">
-              <ion-text style="color:gray;margin-top:10px ;">{{Annonce.intitule}}</ion-text>
+              <ion-text style="color:rgb(0, 0, 0);margin-top:10px ;">{{Annonce.intitule}}</ion-text>
               </ion-col>
             </ion-item>
-            <ion-item lines="none">
-              <ion-icon name="heart-outline" slot="end"></ion-icon>
-            </ion-item>
+            <ion-row style="width:100%">
+              <ion-item lines="none"  style="width: 100%;" *ngIf="Annonce.isLike==false">
+                  <ion-text slot="end" style="margin-top:10px">{{Annonce.nbLikes}}</ion-text>
+                  <ion-icon slot="end" (click)="like(Annonce.id)"  name="heart-outline" size="large" ></ion-icon>
+              </ion-item>
+               <ion-item lines="none"  style="width: 100%;" *ngIf="Annonce.isLike==true">
+                  <ion-text slot="end" style="margin-top:10px">{{Annonce.nbLikes}}</ion-text>
+                  <ion-icon slot="end" (click)="dislike(Annonce.id)"  name="heart" color="danger" size="large" ></ion-icon>
+              </ion-item>
+            </ion-row>
             
        </ion-grid>
        <div style="margin-bottom:10%"></div>

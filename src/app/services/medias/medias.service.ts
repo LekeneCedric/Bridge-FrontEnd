@@ -37,7 +37,37 @@ export class MediasService {
   }
 
   public uploadImageDon(token:string,credential:any): Promise<any>{
-   
+    console.log(credential.files)
+    return new Promise<any>((resolve, reject) => {
+        try{
+            var i = 0 ;
+            var max = credential.files.length;
+            credential.files.forEach(async file=>{
+                
+                const res = await fetch(file.data);
+                const blob = await res.blob();
+                const formData = new FormData();
+                   
+                formData.append('file',blob, file.path);
+                formData.append('don_id',credential.don_id);
+                setTimeout(()=>{
+                  this.uploadData(formData,token).toPromise().then(
+                    data=>{
+                      i +=1;
+                      console.log(`image ${i} uploaded successfully`)
+                      i>=max?resolve('success'):null;
+                    }
+                  );
+                },3000)
+                  
+              }
+            );
+        }catch(err){
+          reject(err);
+        }});
+  }
+  public uploadImageAssoBesoinDon(token:string,credential:any): Promise<any>{
+  //  creation don en reponse a un besoin d'une association
     console.log(credential.files)
     return new Promise<any>((resolve, reject) => {
         try{
@@ -50,7 +80,7 @@ export class MediasService {
               const formData = new FormData();
                  
               formData.append('file',blob, file.path);
-              formData.append('don_id',credential.don_id);
+              formData.append('asso_don_id',credential.asso_don_id);
               setTimeout(()=>{
                 this.uploadData(formData,token).toPromise().then(
                   data=>{
@@ -130,7 +160,6 @@ export class MediasService {
                 
             }
           );
-          
         }catch(err){
           reject(err);
         }
