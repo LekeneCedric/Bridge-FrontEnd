@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterPage implements OnInit {
 
   constructor(private fb:FormBuilder,private authService:AuthService,
     private loadingController:LoadingController,private toast:ToastController,
-    private http:HttpClient,
+    private http:HttpClient,private manageDataService:ManageDataService,
     private router:Router) { }
 
   ngOnInit() {
@@ -119,6 +120,20 @@ export class RegisterPage implements OnInit {
           color:"danger"
         });
         (await (toast)).present();  
+    }).finally(()=>{
+      let myData =JSON.parse(localStorage.getItem('mydata'));
+      const notification = {
+        donateur_id:myData.id,
+        title:`Bienvenue ${myData.name}`,
+        message:`Bienvenue dans la communaute BRIDGE ${myData.name} . Bridge est une plateforme mobile qui vous permettra tout en etant la ou vous etes 
+        a venir en aide a votre prochain et meme demander de l'aide en cas de besoin sans honte car nous sommes une famille unis et aussi a vous engager a 
+        venir en aide a une / plusieurs association dans le besoin , de participer aux evenements creer par ces dernies et meme d'y devenir membre si leurs 
+        projet vous interesse... Et bien plus encore nous ne pourrons vous citez tout ce que nous vous donnons comme possibilite de faire , de ce fait 
+        allez dans vos parametres et consultez le menu \"Aide\" pour plus d'informations`
+      }
+      this.manageDataService.setNotification(notification).toPromise().then(
+        (data)=>{console.log(data)}
+      )
     })
   }
   public test(){

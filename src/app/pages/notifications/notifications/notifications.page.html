@@ -18,7 +18,7 @@
     <ion-refresher-content color="danger"></ion-refresher-content>
   </ion-refresher>
 <ion-list>
-  <ion-item style="margin-top:5px" *ngFor="let notif of notifications" (click)="openNotification(notif)">
+  <ion-item style="margin-top:5px" *ngFor="let notif of notifications" (click)="openNotification(notif)" lines="full">
     <ion-icon name="notifications-outline" slot="start"></ion-icon>
   <ion-col size="12">
     <ion-row style="width:100%;text-align:left">
@@ -32,7 +32,7 @@
       </ion-text>
     </ion-row>
     <ion-row style="width:100%;text-align: right;">
-      <ion-text style="width:100%;color: gray;" >
+      <ion-text style="width:100%;color: gray;" class="ion-margin-top" >
         il y'a {{timeAgo(notif.created_at) | slice:7}}
       </ion-text>
     </ion-row>

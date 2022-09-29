@@ -9,13 +9,11 @@
 
 <ion-content>
 <ion-list class="ion-padding">
-  <ion-row style="width:100%;text-align:left;margin-bottom:5%">
-    <ion-title style="width:100%;font-weight: bold;font-size:1.5em">
+  <ion-row style="width:100%;text-align:left;margin-bottom:5%;font-weight: bold;font-size:1.5em">
       {{title}}
-    </ion-title>
   </ion-row>
   <ion-text>{{description}}</ion-text>
-  <ion-item lines="none">
+  <ion-item lines="none" class="ion-margin-top">
     <ion-text slot="end" style="color:gray">{{timeAgo}}</ion-text>
   </ion-item>
 </ion-list>
