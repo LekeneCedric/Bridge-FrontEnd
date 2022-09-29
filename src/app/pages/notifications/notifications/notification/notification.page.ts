@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./notification.page.scss'],
 })
 export class NotificationPage implements OnInit {
+@Input() title:string;
 @Input() description:string;
 @Input() timeAgo:any;
   constructor(private modalCtrl:ModalController) { }

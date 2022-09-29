@@ -19,23 +19,33 @@ export class DonsPage implements OnInit {
   ngOnInit() {
     this.notifications = [];
     this.loadingDons = true;
-    this.is_null_Don = true;
     this.myid = JSON.parse(localStorage.getItem('mydata')).id;
     setInterval(()=>{
       if(this.loadingDons==false && this.dons.length<1){
           this.is_null_Don = true;
       }
-      else{
+      else if (this.loadingDons==true && this.dons.length>1){
         this.is_null_Don = false;
+        this.loadingDons = false
       }
     },100)
-    setTimeout(()=>{
+    setInterval(()=>{
       if(this.is_null_Don)
       {
-        this.dons.length<1 ? this.loadingDons == true : this.loadingDons = false;
+        if(this.dons.length>0){
+          this.is_null_Don = false;
+        }
+        else{
+          this.is_null_Don = true;
+        }
       }
       else if (!this.is_null_Don){
-        this.dons.length<1 ? this.loadingDons == true : this.loadingDons = false;
+        if(this.dons.length<1){
+          this.is_null_Don = true;
+        }
+        else{
+          this.is_null_Don = false;
+        }
       }
       else{
         this.loadingDons = false;
@@ -100,11 +110,24 @@ export class DonsPage implements OnInit {
       this.selectedCategory=data;
       this.dons = this.donContainer;
       console.log(this.selectedCategory)
-        this.selectedCategory.length>0?
-        this.dons = this.dons.filter((don)=>{
-          console.log(don.category)
+      if(this.selectedCategory.length>0 && this.selectedEtat.length<1)
+      {
+        this.dons = this.donContainer.filter((don)=>{
           return this.selectedCategory.includes(don.category);
-        }):null;
+        }); 
+      }
+      else if (this.selectedCategory.length>0 && this.selectedEtat.length>0)
+      {
+        this.dons = this.donContainer.filter((don)=>{
+          return this.selectedCategory.includes(don.category) && this.selectedEtat.includes(don.etat);
+        });   
+      }
+      else if (this.selectedCategory.length<1 && this.selectedEtat.length>0)
+      {
+        this.dons = this.donContainer.filter((don)=>{
+          return this.selectedEtat.includes(don.etat);
+        }); 
+      }
     }
   }
   public async openModalEtat(){
@@ -122,16 +145,26 @@ export class DonsPage implements OnInit {
   modal.present();
   const {data,role} = await modal.onWillDismiss();
   if(role ==='confirm'){
+    this.dons = this.donContainer;
     this.selectedEtat=data;
-    this.selectedCategory.length<1?
-    this.dons = this.dons.filter((don)=>{
-      return this.selectedEtat.includes(don.etat);
-    })
-    :
-    this.dons = this.dons.filter((don)=>{
-      return this.selectedCategory.includes(don.category) && this.selectedEtat.includes(don.etat)
-    })
-    ;
+    if(this.selectedCategory.length>0 && this.selectedEtat.length<1)
+      {
+        this.dons = this.donContainer.filter((don)=>{
+          return this.selectedCategory.includes(don.category);
+        }); 
+      }
+      else if (this.selectedCategory.length>0 && this.selectedEtat.length>0)
+      {
+        this.dons = this.donContainer.filter((don)=>{
+          return this.selectedCategory.includes(don.category) && this.selectedEtat.includes(don.etat);
+        });   
+      }
+      else if (this.selectedCategory.length<1 && this.selectedEtat.length>0)
+      {
+        this.dons = this.donContainer.filter((don)=>{
+          return this.selectedEtat.includes(don.etat);
+        }); 
+      }
   }
 }
   public refreshFilter(){

@@ -3,12 +3,13 @@ import { ModalController } from '@ionic/angular';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 
 @Component({
-  selector: 'app-modal-associations-membres',
-  templateUrl: './modal-associations-membres.page.html',
-  styleUrls: ['./modal-associations-membres.page.scss'],
+  selector: 'app-modal-association-member',
+  templateUrl: './modal-association-member.page.html',
+  styleUrls: ['./modal-association-member.page.scss'],
 })
-export class ModalAssociationsMembresPage implements OnInit {
-  
+export class ModalAssociationMemberPage implements OnInit {
+
+    
   @Input() id_association:number;
   constructor(private manageDataService:ManageDataService,private modalCtrl:ModalController){}
 

@@ -224,14 +224,20 @@ export class ManageDataService {
     return this.http.get<any>(api,{headers:headers});
   }
   public getAssociations():Observable<any>{
-    const headers = this.header;
     const api = environment.apiURL+'/associations/';
-    return this.http.get<any>(api,{headers:headers});
+    return this.http.get<any>(api,{headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    }});
   }
   public getOneAssociation(idassociation:number):Observable<any>{
-    const headers = this.header;
     const api = environment.apiURL+'/associations/'+`${idassociation}`;
-    return this.http.get<any>(api,{headers:headers});
+    return this.http.get<any>(api,{headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
+    }});
   }
   public becameAssociationMember(id_donateur:number,id_association:number):Observable<any>{
     const headers = this.header;

@@ -23,7 +23,7 @@
   <ion-col size="12">
     <ion-row style="width:100%;text-align:left">
       <ion-text style="width:100%;font-weight: bold;">
-        {{notif.message | slice : 0:15}}
+        {{notif.title | slice : 0:36}}{{notif.title.length>36?'...':''}}
       </ion-text>
     </ion-row>
     <ion-row style="width:100%;text-align:left;margin-top:5px">

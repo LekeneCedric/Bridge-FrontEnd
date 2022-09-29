@@ -113,10 +113,10 @@
 
   <ion-row>
     <ion-item lines="none">
-        <ion-button shape="circle">
+        <ion-button shape="circle" (click)="callNumber(Association.contact)">
           <ion-icon size="large" name="call-outline"></ion-icon>
         </ion-button>
-        <ion-button shape="circle" color="success">
+        <ion-button shape="circle" color="success" [href]="whatsappLink">
           <ion-icon size="large" name="logo-whatsapp"></ion-icon>
         </ion-button>
         <ion-button shape="circle" color="primary">

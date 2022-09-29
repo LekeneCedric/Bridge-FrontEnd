@@ -28,7 +28,17 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content color="danger"></ion-refresher-content>
   </ion-refresher>
-    <ion-list *ngIf="selectedSegment=='annonces'">
+
+
+  
+    <ion-list *ngIf="selectedSegment=='annonces'" >
+      <ion-grid style="text-align:center;margin-top:15%" *ngIf="Annonces!=null && Annonces.length<1">
+        <img src="../../../../assets/images/anounce.png" class="ion-margin-vertical">
+        <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
+          <ion-text style="color:rgb(64, 64, 64);width: 100%">Aucune annonce actuellement faite</ion-text>
+        </ion-item>
+        <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%">reessayer</ion-button>
+      </ion-grid>
       <ion-card *ngFor="let annonce of Annonces">
         <div [routerLink]="['/details-annonce',annonce.id]" style="padding:0;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
         background-image: url({{annonce.media.length>0?storage+annonce.media[0].filePath:'../../../../assets/images/user.png'}})">
@@ -74,7 +84,20 @@
       </ion-card>
       
     </ion-list>
+
+
+
+
+
+
   <ion-grid *ngIf="selectedSegment=='evenements'">
+    <ion-grid style="text-align:center;margin-top:15%" *ngIf="Mouvements!=null &&  Mouvements.length<1">
+      <img src="../../../../assets/images/event.png" class="ion-margin-vertical">
+      <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
+        <ion-text style="color:rgb(64, 64, 64);width: 100%">Aucun evenement actuellement publie / annonce </ion-text>
+      </ion-item>
+      <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%">reessayer</ion-button>
+    </ion-grid>
     <ion-card *ngFor="let event of Mouvements" lines="none" class="ion-padding-bottom">
       <div  [routerLink]="['/details-evenement',event.id]" style="padding:0;position:relative;margin:0;height:180px;width:100%;background-size:cover;background-position: center;
       background-image: url({{event.media.length>0?storage+event.media[0].filePath:'../../../../assets/images/user.png'}})">
@@ -129,7 +152,16 @@
           </ion-item>
     </ion-card>
      </ion-grid>
+
+
      <ion-grid *ngIf="selectedSegment=='besoins'">
+      <ion-grid style="text-align:center;margin-top:15%" *ngIf="Besoins!=null &&  Besoins.length<1">
+        <img src="../../../../assets/images/besoin.png" class="ion-margin-vertical">
+        <ion-item lines="none"style="text-align:center;width: 100%;" class="ion-margin-vertical">
+          <ion-text style="color:rgb(64, 64, 64);width: 100%">Aucune association n'a actuellement publie un besopin actuellement publie / annonce </ion-text>
+        </ion-item>
+        <ion-button (click)="refresh()" expand="block" class="ion-margin-horizontal" color="danger" class="ion-margin-vertical" style="font-weight:bold;margin-left: 20%;margin-right:20%">reessayer</ion-button>
+      </ion-grid>
        <ion-card *ngFor="let besoin of Besoins" style="padding-bottom:0" lines="none" class="ion-padding-bottom">
         <ion-item style="width:100%;" lines="none"  [routerLink]="['/details-association',besoin.association.id]">
           <ion-thumbnail slot="start" >

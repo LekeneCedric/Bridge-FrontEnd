@@ -55,6 +55,7 @@ export class NotificationsPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component:NotificationPage,
       componentProps:{
+        title:notif.title,
         description:notif.message,
         timeAgo:this.timeAgo(notif.created_at)
       },

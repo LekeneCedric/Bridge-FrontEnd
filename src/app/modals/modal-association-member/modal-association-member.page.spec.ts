@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ModalAssociationsMembresPage } from './modal-associations-membres.page';
+import { ModalAssociationMemberPage } from './modal-association-member.page';
 
-describe('ModalAssociationsMembresPage', () => {
-  let component: ModalAssociationsMembresPage;
-  let fixture: ComponentFixture<ModalAssociationsMembresPage>;
+describe('ModalAssociationMemberPage', () => {
+  let component: ModalAssociationMemberPage;
+  let fixture: ComponentFixture<ModalAssociationMemberPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalAssociationsMembresPage ],
+      declarations: [ ModalAssociationMemberPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModalAssociationsMembresPage);
+    fixture = TestBed.createComponent(ModalAssociationMemberPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

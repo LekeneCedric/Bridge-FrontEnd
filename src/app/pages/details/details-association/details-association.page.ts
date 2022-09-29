@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
 import { AlertController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { ModalAnnoncesPage } from 'src/app/modals/modal-annonces/modal-annonces.page';
-import { ModalAssociationsMembresPage } from 'src/app/modals/modal-associations-membres/modal-associations-membres.page';
+import { ModalAssociationMemberPage } from 'src/app/modals/modal-association-member/modal-association-member.page';
 import { ModalMouvementsPage } from 'src/app/modals/modal-mouvements/modal-mouvements.page';
 import { ManageDataService } from 'src/app/services/manage-data/manage-data.service';
 import { environment } from 'src/environments/environment';
@@ -16,7 +17,7 @@ export class DetailsAssociationPage implements OnInit {
 
   constructor(private manageDataService: ManageDataService,private router:ActivatedRoute,
     private navCtrl:NavController,private alertController:AlertController,
-    private modalCtrl:ModalController,private toast:ToastController) { }
+    private modalCtrl:ModalController,private toast:ToastController,private callNumb: CallNumber) { }
 
   ngOnInit() {
 
@@ -28,17 +29,24 @@ this.myId = JSON.parse(localStorage.getItem('mydata')).id;
         this.Association = data;
         console.log(data)
       }
-    )
+    ).finally(()=>{
+      this.whatsappPhone = this.Association.contact;
+      this.whatsappLink = `https://wa.me/${this.whatsappPhone}?text=Hello%20World`
+    })
   }
 
 /*---------------------------VARIABLES----------------------------*/
 myId:number=null;
-
 public idAssociation:number=null;
 public Association:any = null;
 public storage:string = environment.storage;
+public whatsappPhone:string;
+public whatsappLink:string;
 
 /*---------------------------FUNCTIONS----------------------------*/
+public callNumber(number:any){
+  this.callNumb.callNumber(`${number}`,true);
+}
 public doRefresh(event){
   setTimeout(()=>{
    this.ngOnInit(); 
@@ -46,7 +54,7 @@ public doRefresh(event){
   },500)}
 public async openModalMembers(){
   const modal = await this.modalCtrl.create({
-    component:ModalAssociationsMembresPage,
+    component:ModalAssociationMemberPage,
     componentProps:{
       id_association:this.idAssociation
     },

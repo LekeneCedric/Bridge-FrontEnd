@@ -52,7 +52,9 @@ export class AssociationsPage implements OnInit {
   
 
   /*------------------------------------FUNCTIONS------------------------------------*/
-
+  public refresh(){
+    this.ngOnInit();
+  }
   public getMyNotifications(){
     this.manageDataService.getNotificationDonateur(this.id).toPromise().then(
       data=>{
