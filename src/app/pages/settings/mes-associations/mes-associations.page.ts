@@ -10,6 +10,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./mes-associations.page.scss'],
 })
 export class MesAssociationsPage implements OnInit {
+refresh() {
+this.ngOnInit();
+}
 
   constructor(private router:Router,private manageDataService:ManageDataService,private toast:ToastController) { }
 
