@@ -116,21 +116,50 @@ let DemandesPage = class DemandesPage {
     this.modalCtrl = modalCtrl;
     /*------------------------------VARIABLES------------------------------*/
 
+    this.loadingDemandes = true;
+    this.is_null_Demande = false;
     this.myData = {};
     this.myid = null;
     this.demandes = [];
+    this.demandesContainer = [];
     this.storage = 'http://127.0.0.1:8000/storage/';
     this.selectedCategory = [];
+    this.notifications = [];
   }
 
   ngOnInit() {
+    this.notifications = [];
+    this.demandes = [];
+    this.getDemande();
+    this.getMyNotifications();
+    setInterval(() => {
+      if (this.loadingDemandes == false && this.demandes.length < 1) {
+        this.is_null_Demande = true;
+      } else {
+        this.is_null_Demande = false;
+      }
+    }, 100);
+    setTimeout(() => {
+      if (this.is_null_Demande) {
+        this.demandes.length < 1 ? this.loadingDemandes == true : this.loadingDemandes = false;
+      } else if (!this.is_null_Demande) {
+        this.demandes.length < 1 ? this.loadingDemandes == true : this.loadingDemandes = false;
+      } else {
+        this.loadingDemandes = false;
+      }
+    }, 100);
+    setTimeout(() => {
+      this.demandes.length < 1 ? this.is_null_Demande = true : this.is_null_Demande = false;
+      this.loadingDemandes = false;
+    }, 10000);
+    this.loadingDemandes = true;
+    this.is_null_Demande = false;
     this.myData = JSON.parse(localStorage.getItem('mydata'));
     this.myid = JSON.parse(localStorage.getItem('mydata')).id;
     setInterval(() => {
       const tabBar = document.getElementById('app-tab-bar');
       tabBar.style.display = 'flex';
     }, 100);
-    this.getDemande();
   }
   /*------------------------------FUNCTIONS------------------------------*/
 
@@ -140,7 +169,17 @@ let DemandesPage = class DemandesPage {
   }
 
   refreshFilter() {
+    this.demandes = this.demandesContainer;
     this.selectedCategory = [];
+  }
+
+  getMyNotifications() {
+    this.manageDataService.getNotificationDonateur(this.myid).toPromise().then(data => {
+      console.log(data);
+      data.forEach(notif => {
+        notif.vu == 0 ? this.notifications.push(notif) : null;
+      });
+    });
   }
 
   openModal() {
@@ -165,11 +204,16 @@ let DemandesPage = class DemandesPage {
 
       if (role === 'confirm') {
         _this.selectedCategory = data;
+        _this.demandes = _this.demandesContainer;
+        _this.selectedCategory.length > 0 ? _this.demandes = _this.demandes.filter(demande => {
+          return _this.selectedCategory.includes(demande.category);
+        }) : null;
       }
     })();
   }
 
   refresh() {
+    this.refreshFilter();
     setTimeout(() => {
       this.ngOnInit();
     }, 500);
@@ -185,6 +229,7 @@ let DemandesPage = class DemandesPage {
   getDemande() {
     return this.manageDataService.getDemandes().toPromise().then(data => {
       this.demandes = data;
+      this.demandesContainer = data;
       console.log(data);
     }).catch(err => {});
   }
@@ -222,7 +267,7 @@ module.exports = ".logo .title {\n  margin-left: 2%;\n  text-align: left;\n  col
   \*******************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header class=\"ion-no-border\">\n  <ion-row style=\"width: 100%;\">\n    <ion-col class=\"logo\" size=\"10\">\n      <ion-text class=\"title\">BRIDGE</ion-text>\n      \n    </ion-col>\n    <ion-col>\n      <ion-col size=\"2\" style=\"text-align:center;margin-left:5%\"> \n        <ion-icon name=\"notifications\" size=\"large\" color=\"warning\"></ion-icon>\n        <ion-badge style=\"position:absolute;top:0;right:0\" color=\"danger\">2</ion-badge>\n      </ion-col>\n    </ion-col>\n    <!-- <ion-col>\n      <ion-row style=\"width:100%\">\n        <ion-col size=\"3\" [routerLink]=\"['/profil-donateur',id]\" style=\"text-align:left;height: 100%;\">\n          <ion-icon name=\"person-circle-outline\" size=\"large\" color=\"danger\" ></ion-icon>\n        </ion-col>\n        <ion-col size=\"8\">\n          <ion-text style=\"color:gray;font-weight: bold;position:absolute;top:30%;\">{{myData.name | slice:0:15}}&ensp;{{myData.surname | slice:0:10}}</ion-text>\n        </ion-col>\n      </ion-row>\n    </ion-col> -->\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-segment scrollable>\n       <ion-chip class=\"chip\" color=\"danger\" style=\"padding:0;border-radius: 20%;\">\n        <ion-icon name=\"options-outline\" color = 'danger' size=\"large\" style=\"margin-right:5px\"></ion-icon>\n       </ion-chip>\n       <ion-chip class=\"chip\" (click)=\"openModal()\">\n       <ion-text>Category</ion-text>\n       <ion-badge color=\"danger\" style=\"margin-left:2px;border-radius: 100%;\">{{selectedCategory.length}}</ion-badge>\n       <ion-icon name=\"chevron-down-outline\"></ion-icon>\n       </ion-chip>\n       <ion-chip class=\"chip\" color=\"success\" (click)=\"refreshFilter()\" style=\"padding:0;border-radius:100%\" >\n        <ion-icon name=\"refresh-outline\" color=\"success\" size=\"large\" ></ion-icon>\n        </ion-chip>\n      </ion-segment>\n    </ion-col>\n  </ion-row>\n</ion-header>\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n    <ion-refresher-content color=\"danger\"></ion-refresher-content>\n  </ion-refresher>\n  <ion-grid style=\"text-align:center;margin-top:15%\" *ngIf=\"demandes.length<1\">\n    <img src=\"../../../../assets/images/emptydemande.png\" class=\"ion-margin-vertical\">\n    <ion-item lines=\"none\"style=\"text-align:center;width: 100%;\" class=\"ion-margin-vertical\">\n      <ion-text style=\"color:rgb(64, 64, 64);width: 100%\">Aucune demande disponible dans cette categorie</ion-text>\n    </ion-item>\n    <ion-button (click)=\"refresh()\" expand=\"block\" class=\"ion-margin-horizontal\" color=\"danger\" class=\"ion-margin-vertical\" style=\"font-weight:bold;margin-left: 20%;margin-right:20%\">reessayer</ion-button>\n  </ion-grid>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"danger\">\n      <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n    <ion-fab-list side=\"start\">\n      <ion-fab-button color=\"danger\" routerLink=\"/creation-dons\">\n        <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" routerLink=\"/creation-demandes\">\n        <ion-icon name=\"hand-left-outline\" size=\"large\" color=\"danger\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab-list>\n  </ion-fab>\n  <ion-row>\n    <div *ngFor=\"let demand of demandes\" style=\"width: 95%\">\n      <ion-card *ngIf=\"selectedCategory.indexOf(demand.category)!=-1 || selectedCategory.length<1 \" style=\"width: 100%;\" [routerLink]=\"['details',demand.id]\">\n        <ion-row style=\"width: 100%;margin-top:5%\">\n          <ion-thumbnail class=\"ion-margin-start\">\n            <img style=\"border-radius:10px;margin-right:5%\" [src]=\"demand.donateur.media.length>0?storage+demand.donateur.media[0].filePath:'assets/images/user.png'\" />\n          </ion-thumbnail>\n          <ion-col style=\"text-align: left;margin-left:5%\">\n            <ion-row>\n             <ion-text style=\"font-weight: bold\">{{demand.donateur.name}}  {{demand.donateur.surname | slice:0:8 }}</ion-text>\n            </ion-row>\n            <ion-row>\n              <ion-text style=\"color:gray\"> donateur/necessiteux</ion-text>\n            </ion-row>\n          </ion-col>\n        </ion-row>\n         \n        <ion-item style=\"width:100%;\">\n          <ion-text style=\"color:gray\" slot=\"start\">Besoin:</ion-text>\n          <ion-text> {{demand.title}}</ion-text>\n        </ion-item>\n        <ion-item style=\"width:100%;\">\n          <ion-text style=\"color:gray\" slot=\"start\">Date:</ion-text>\n          <ion-text> {{demand.created_at | date:'medium'}}</ion-text>\n        </ion-item>\n        <ion-item style=\"width:100%;\">\n          <ion-text style=\"color:gray\" slot=\"start\">Adresse:</ion-text>\n          <ion-text  style=\"vertical-align: middle;justify-self: center;\"> {{demand.adresse}} </ion-text>\n        </ion-item>\n    </ion-card> \n    </div>\n   \n  </ion-row>\n  </ion-content>";
+module.exports = "<ion-header class=\"ion-no-border\">\n  <ion-row style=\"width: 100%;\">\n    <ion-col class=\"logo\" size=\"10\">\n      <ion-text class=\"title\">BRIDGE</ion-text>\n      \n    </ion-col>\n    <ion-col>\n      <ion-col size=\"2\" style=\"text-align:center;margin-left:5%\" [routerLink]=\"['/notifications',id]\"> \n        <ion-icon name=\"notifications\" size=\"large\" color=\"warning\"></ion-icon>\n      </ion-col>\n    </ion-col>\n  </ion-row>\n  <ion-row>\n    <ion-col size=\"12\">\n      <ion-segment scrollable>\n       <ion-chip class=\"chip\" color=\"danger\" style=\"padding:0;border-radius: 20%;\">\n        <ion-icon name=\"options-outline\" color = 'danger' size=\"large\" style=\"margin-right:5px\"></ion-icon>\n       </ion-chip>\n       <ion-chip class=\"chip\" (click)=\"openModal()\">\n       <ion-text>Category</ion-text>\n       <ion-badge style=\"position:absolute;top:0;right:0\" color=\"danger\" *ngIf=\"notifications.length>0\">{{notifications.length}}</ion-badge>\n       <ion-icon name=\"chevron-down-outline\"></ion-icon>\n       </ion-chip>\n       <ion-chip class=\"chip\" color=\"success\" (click)=\"refreshFilter()\" style=\"padding:0;border-radius:100%\" >\n        <ion-icon name=\"refresh-outline\" color=\"success\" size=\"large\" ></ion-icon>\n        </ion-chip>\n      </ion-segment>\n    </ion-col>\n  </ion-row>\n</ion-header>\n<ion-content>\n\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n    <ion-refresher-content color=\"danger\"></ion-refresher-content>\n  </ion-refresher>\n  <ion-list *ngIf=\"loadingDemandes == true\">\n    <ion-card *ngFor=\"let i of [1,1,1,1,1,1]\"> \n    <ion-item >\n      <ion-thumbnail slot=\"start\">\n        <ion-skeleton-text [animated]=\"true\"></ion-skeleton-text>\n      </ion-thumbnail>\n      <ion-label>\n        <h3>\n          <ion-skeleton-text [animated]=\"true\" style=\"width: 80%;\"></ion-skeleton-text>\n        </h3>\n        <p>\n          <ion-skeleton-text [animated]=\"true\" style=\"width: 60%;\"></ion-skeleton-text>\n        </p>\n        <p>\n          <ion-skeleton-text [animated]=\"true\" style=\"width: 30%;\"></ion-skeleton-text>\n        </p>\n      </ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-skeleton-text [animated]=\"true\" style=\"width: 30%;\" slot=\"start\"></ion-skeleton-text>\n      <ion-skeleton-text [animated]=\"true\" style=\"width: 70%;\"></ion-skeleton-text>\n    </ion-item>\n    <ion-item>\n      <ion-skeleton-text [animated]=\"true\" style=\"width: 30%;\" slot=\"start\"></ion-skeleton-text>\n      <ion-skeleton-text [animated]=\"true\" style=\"width: 70%;\"></ion-skeleton-text>\n    </ion-item>\n  </ion-card>\n  </ion-list>\n \n  <ion-grid style=\"text-align:center;margin-top:15%\" *ngIf=\"is_null_Demande\">\n    <img src=\"../../../../assets/images/emptydemande.png\" class=\"ion-margin-vertical\">\n    <ion-item lines=\"none\"style=\"text-align:center;width: 100%;\" class=\"ion-margin-vertical\">\n      <ion-text style=\"color:rgb(64, 64, 64);width: 100%\">Aucune demande disponible dans cette categorie</ion-text>\n    </ion-item>\n    <ion-button (click)=\"refresh()\" expand=\"block\" class=\"ion-margin-horizontal\" color=\"danger\" class=\"ion-margin-vertical\" style=\"font-weight:bold;margin-left: 20%;margin-right:20%\">reessayer</ion-button>\n  </ion-grid>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\">\n    <ion-fab-button color=\"danger\">\n      <ion-icon name=\"add-outline\"></ion-icon>\n    </ion-fab-button>\n    <ion-fab-list side=\"start\">\n      <ion-fab-button color=\"danger\" routerLink=\"/creation-dons\">\n        <ion-icon name=\"gift-outline\" size=\"large\"></ion-icon>\n      </ion-fab-button>\n      <ion-fab-button color=\"light\" routerLink=\"/creation-demandes\">\n        <ion-icon name=\"hand-left-outline\" size=\"large\" color=\"danger\"></ion-icon>\n      </ion-fab-button>\n    </ion-fab-list>\n  </ion-fab>\n  <ion-row *ngIf=\"!is_null_Demande\">\n    <div *ngFor=\"let demand of demandes\" style=\"width: 95%\">\n      <ion-card style=\"width: 100%;\" [routerLink]=\"['details',demand.id]\">\n        <ion-row style=\"width: 100%;margin-top:5%\">\n          <ion-thumbnail class=\"ion-margin-start\">\n            <img style=\"border-radius:10px;margin-right:5%\" [src]=\"demand.donateur.media.length>0?storage+demand.donateur.media[0].filePath:'assets/images/user.png'\" />\n          </ion-thumbnail>\n          <ion-col style=\"text-align: left;margin-left:5%\">\n            <ion-row>\n             <ion-text style=\"font-weight: bold\">{{demand.donateur.name}}  {{demand.donateur.surname | slice:0:8 }}</ion-text>\n            </ion-row>\n            <ion-row>\n              <ion-text style=\"color:gray\"> donateur/necessiteux</ion-text>\n            </ion-row>\n          </ion-col>\n        </ion-row>\n         \n        <ion-item style=\"width:100%;\">\n          <ion-text style=\"color:gray\" slot=\"start\">Besoin:</ion-text>\n          <ion-text> {{demand.title}}</ion-text>\n        </ion-item>\n        <ion-item style=\"width:100%;\">\n          <ion-text style=\"color:gray\" slot=\"start\">Date:</ion-text>\n          <ion-text> {{demand.created_at | date:'medium'}}</ion-text>\n        </ion-item>\n        <ion-item style=\"width:100%;\">\n          <ion-text style=\"color:gray\" slot=\"start\">Adresse:</ion-text>\n          <ion-text  style=\"vertical-align: middle;justify-self: center;\"> {{demand.adresse}} </ion-text>\n        </ion-item>\n    </ion-card> \n    </div>\n   \n  </ion-row>\n  </ion-content>";
 
 /***/ })
 

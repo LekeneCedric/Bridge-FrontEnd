@@ -55,7 +55,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var _creation_dons_routing_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./creation-dons-routing.module */ 81127);
 /* harmony import */ var _creation_dons_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-dons.page */ 730);
-/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 29036);
+/* harmony import */ var _awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/native-geocoder/ngx */ 79683);
 
 
 
@@ -74,7 +74,7 @@ CreationDonsPageModule = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule,
             _creation_dons_routing_module__WEBPACK_IMPORTED_MODULE_0__.CreationDonsPageRoutingModule
         ],
-        providers: [_ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__.NativeGeocoder],
+        providers: [_awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_2__.NativeGeocoder],
         declarations: [_creation_dons_page__WEBPACK_IMPORTED_MODULE_1__.CreationDonsPage]
     })
 ], CreationDonsPageModule);
@@ -94,19 +94,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CreationDonsPage": () => (/* binding */ CreationDonsPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _creation_dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-dons.page.html?ngResource */ 97495);
 /* harmony import */ var _creation_dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./creation-dons.page.scss?ngResource */ 47957);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/creation/creation.service */ 79444);
 /* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 28549);
 /* harmony import */ var _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @capacitor/geolocation */ 7621);
-/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 29036);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ 58987);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @capacitor/camera */ 4241);
-
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @capacitor/camera */ 4241);
+/* harmony import */ var _awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @awesome-cordova-plugins/native-geocoder/ngx */ 79683);
 
 
 
@@ -120,17 +118,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CreationDonsPage = class CreationDonsPage {
-  constructor(creationService, mediaService, navCtrl, actionSheetController, nativGeocoder, platform, loadingController, http, toast, router) {
+  constructor(creationService, mediaService, actionSheetController, loadingController, nativeGeocoder, toast, router) {
     this.creationService = creationService;
     this.mediaService = mediaService;
-    this.navCtrl = navCtrl;
     this.actionSheetController = actionSheetController;
-    this.nativGeocoder = nativGeocoder;
-    this.platform = platform;
     this.loadingController = loadingController;
-    this.http = http;
+    this.nativeGeocoder = nativeGeocoder;
     this.toast = toast;
     this.router = router;
+    /*-----------------------------VARIABLES------------------------------------------------*/
+
+    this.options = {
+      useLocale: true,
+      maxResults: 5
+    };
     this.GeocoderOption = {
       useLocale: true,
       maxResults: 5
@@ -142,8 +143,8 @@ let CreationDonsPage = class CreationDonsPage {
     this.selectedTitle = '';
     this.selectedDescription = '';
     this.selectedImages = [];
-    this.selectedLatitude = 11;
-    this.selectedLongitude = 7;
+    this.selectedLatitude = null;
+    this.selectedLongitude = null;
     this.selectedCategory = ''; //Modals
 
     this.iscategoriesModalOpen = false;
@@ -189,9 +190,9 @@ let CreationDonsPage = class CreationDonsPage {
     var _this2 = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const image = yield _capacitor_camera__WEBPACK_IMPORTED_MODULE_7__.Camera.getPhoto({
-        resultType: _capacitor_camera__WEBPACK_IMPORTED_MODULE_7__.CameraResultType.Uri,
-        source: _capacitor_camera__WEBPACK_IMPORTED_MODULE_7__.CameraSource.Camera,
+      const image = yield _capacitor_camera__WEBPACK_IMPORTED_MODULE_6__.Camera.getPhoto({
+        resultType: _capacitor_camera__WEBPACK_IMPORTED_MODULE_6__.CameraResultType.Uri,
+        source: _capacitor_camera__WEBPACK_IMPORTED_MODULE_6__.CameraSource.Camera,
         quality: 100
       });
 
@@ -214,9 +215,8 @@ let CreationDonsPage = class CreationDonsPage {
         path: filename,
         data: base64data
       };
-      setTimeout(() => {
-        _this3.selectedImages.unshift(img);
-      }, 500);
+
+      _this3.selectedImages.unshift(img);
     })();
   }
 
@@ -251,9 +251,9 @@ let CreationDonsPage = class CreationDonsPage {
         category: _this5.selectedCategory,
         etat: _this5.selectedState,
         description: _this5.selectedDescription,
-        longitude: 11,
-        latitude: 3,
-        adresse: 'this.myAdress'
+        longitude: _this5.myCoordinate.coords.longitude,
+        latitude: _this5.myCoordinate.coords.latitude,
+        adresse: "this.myAdress"
       };
 
       _this5.creationService.createDon(donation, token).toPromise().then(data => {
@@ -355,30 +355,25 @@ let CreationDonsPage = class CreationDonsPage {
         buttons: [{
           text: 'Ma position',
           handler: () => {
-            _this7.selectedLongitude = _this7.myCoordinate.coords.longitude;
-            _this7.selectedLatitude = _this7.myCoordinate.coords.latitude;
+            _this7.selectedLongitude = _this7.myCoordinate.coords.longitude, _this7.selectedLatitude = _this7.myCoordinate.coords.latitude, _this7.nativeGeocoder.reverseGeocode(_this7.myCoordinate.coords.latitude, _this7.myCoordinate.coords.longitude, _this7.options).then( /*#__PURE__*/function () {
+              var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (result) {
+                _this7.myAdress = JSON.stringify(result[0].countryName) + '' + JSON.stringify(result[0].administrativeArea) + '' + JSON.stringify(result[0].subAdministrativeArea) + '' + JSON.stringify(result[0].locality) + '' + JSON.stringify(result[0].thoroughfare) + JSON.stringify(result[0].subThoroughfare);
 
-            _this7.nativGeocoder.reverseGeocode(_this7.selectedLatitude, _this7.selectedLongitude, _this7.GeocoderOption).then(result => {
-              _this7.MyGeocoder = result[0];
-              _this7.myAdress = _this7.MyGeocoder.subLocality + "." + _this7.MyGeocoder.locality + "." + _this7.MyGeocoder.administrativeArea + "." + _this7.MyGeocoder.countryName;
-              console.log(JSON.stringify(result[0]));
-            }).catch( /*#__PURE__*/function () {
-              var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
                 const toast = _this7.toast.create({
-                  message: `${err}`,
+                  message: `${JSON.stringify(result[0].countryName) + '' + JSON.stringify(result[0].administrativeArea) + '' + JSON.stringify(result[0].subAdministrativeArea) + '' + JSON.stringify(result[0].locality)}`,
                   icon: 'information-circle',
                   duration: 1000,
-                  color: "danger"
+                  color: "success"
                 });
 
                 (yield toast).present();
-                console.log('Error in reverse geocode');
+                console.log(JSON.stringify(result));
               });
 
               return function (_x4) {
                 return _ref5.apply(this, arguments);
               };
-            }());
+            }()).catch(error => console.log(error));
 
             _this7.setCategoriesModalOpen(false);
           }
@@ -797,24 +792,18 @@ CreationDonsPage.ctorParameters = () => [{
 }, {
   type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_4__.MediasService
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.NavController
-}, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ActionSheetController
-}, {
-  type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_6__.NativeGeocoder
-}, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.Platform
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.LoadingController
 }, {
-  type: _angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClient
+  type: _awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_7__.NativeGeocoder
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ToastController
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_10__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router
 }];
 
-CreationDonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_11__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_12__.Component)({
+CreationDonsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_10__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
   selector: 'app-creation-dons',
   template: _creation_dons_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_creation_dons_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]

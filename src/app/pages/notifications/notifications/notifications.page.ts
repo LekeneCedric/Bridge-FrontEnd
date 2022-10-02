@@ -52,21 +52,24 @@ export class NotificationsPage implements OnInit {
   this.navCtrl.back();
   }
   public async openNotification(notif){
-    const modal = await this.modalCtrl.create({
-      component:NotificationPage,
-      componentProps:{
-        title:notif.title,
-        description:notif.message,
-        timeAgo:this.timeAgo(notif.created_at)
-      },
-      breakpoints:[0,1],
-      initialBreakpoint:1,
-      animated:true,
-      handle:false
-    });
-    modal.present();
-    const {data,role } = await modal.onWillDismiss();
-    if(role ==='confirm'){}
+    this.manageDataService.vueNotification(this.id_donateur,notif.id).toPromise().then(async ()=>{
+      const modal = await this.modalCtrl.create({
+        component:NotificationPage,
+        componentProps:{
+          title:notif.title,
+          description:notif.message,
+          timeAgo:this.timeAgo(notif.created_at)
+        },
+        breakpoints:[0,1],
+        initialBreakpoint:1,
+        animated:true,
+        handle:false
+      });
+      modal.present();
+      const {data,role } = await modal.onWillDismiss();
+      if(role ==='confirm'){}
+    })
+    
   }
   doRefresh(event){
     setTimeout(()=>{

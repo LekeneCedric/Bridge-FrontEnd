@@ -21,7 +21,7 @@ export class DonsPage implements OnInit {
     this.loadingDons = true;
     this.myid = JSON.parse(localStorage.getItem('mydata')).id;
     setInterval(()=>{
-      if(this.loadingDons==false && this.dons.length<1){
+      if(this.loadingDons==true && this.dons.length<1){
           this.is_null_Don = true;
       }
       else if (this.loadingDons==true && this.dons.length>1){
@@ -34,21 +34,22 @@ export class DonsPage implements OnInit {
       {
         if(this.dons.length>0){
           this.is_null_Don = false;
+          this.loadingDons=false;
         }
         else{
           this.is_null_Don = true;
+          this.loadingDons=false;
         }
       }
       else if (!this.is_null_Don){
         if(this.dons.length<1){
           this.is_null_Don = true;
+          this.loadingDons=false;
         }
         else{
           this.is_null_Don = false;
+          this.loadingDons=false;
         }
-      }
-      else{
-        this.loadingDons = false;
       }
     },100)
     setTimeout(()=>{
@@ -183,7 +184,7 @@ export class DonsPage implements OnInit {
       data=>{
         console.log(data)
         data.forEach((notif)=>{
-          this.notifications.push(notif);
+          notif.vu==0? this.notifications.push(notif):null;
         })
       }
     )

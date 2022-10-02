@@ -2,16 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, LoadingController, NavController, Platform, ToastController } from '@ionic/angular';
 import { CreationService } from 'src/app/services/creation/creation.service';
 import { MediasService } from 'src/app/services/medias/medias.service';
-import { PhotoService } from 'src/app/services/photo/photo.service';
 import { Geolocation } from '@capacitor/geolocation';
-import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
-import {decode} from "base64-arraybuffer";
-import * as moment from 'moment';
-import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
-import { Filesystem } from '@capacitor/filesystem';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 @Component({
   selector: 'app-creation-dons',
   templateUrl: './creation-dons.page.html',
@@ -21,8 +15,7 @@ export class CreationDonsPage implements OnInit {
 
   constructor(private creationService:CreationService,private mediaService:MediasService,
     private actionSheetController:ActionSheetController,
-    private nativGeocoder:NativeGeocoder,
-    private loadingController:LoadingController,
+    private loadingController:LoadingController,private nativeGeocoder: NativeGeocoder,
     private toast:ToastController,private router:Router) { }
   
   async ngOnInit() {
@@ -32,9 +25,13 @@ export class CreationDonsPage implements OnInit {
       maximumAge:1000,
     },()=>{console.log('watchPosition updated')});
        this.myCoordinate = await Geolocation.getCurrentPosition();
+     
   }
   /*-----------------------------VARIABLES------------------------------------------------*/
-  MyGeocoder:NativeGeocoderResult;
+ options:NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+};
   GeocoderOption:any={useLocale: true,maxResults: 5};
   myCoordinate:GeolocationPosition;
   myAdress:string ="";
@@ -44,8 +41,8 @@ export class CreationDonsPage implements OnInit {
   selectedTitle:string='';
   selectedDescription:string='';
   selectedImages:any[] = [];
-  selectedLatitude:number = 11;
-  selectedLongitude:number = 7;
+  selectedLatitude:number = null;
+  selectedLongitude:number = null;
   selectedCategory:string = '';
   //Modals
   iscategoriesModalOpen:boolean = false;
@@ -108,9 +105,9 @@ export class CreationDonsPage implements OnInit {
       category:this.selectedCategory,
       etat:this.selectedState,
       description:this.selectedDescription,
-      longitude:11,
-      latitude:3,
-      adresse:'this.myAdress'
+      longitude:this.myCoordinate.coords.longitude,
+      latitude:this.myCoordinate.coords.latitude,
+      adresse:"this.myAdress"
     }
    
     this.creationService.createDon(donation,token).toPromise()
@@ -184,24 +181,21 @@ export class CreationDonsPage implements OnInit {
       {
         text:'Ma position',
         handler:()=>{
-          this.selectedLongitude = this.myCoordinate.coords.longitude;
-          this.selectedLatitude = this.myCoordinate.coords.latitude;
-          this.nativGeocoder.reverseGeocode(this.selectedLatitude, this.selectedLongitude,this.GeocoderOption).then(
-            (result:NativeGeocoderResult[])=>{
-              this.MyGeocoder=result[0];
-              this.myAdress = this.MyGeocoder.subLocality+"."+this.MyGeocoder.locality+"."+this.MyGeocoder.administrativeArea+"."+this.MyGeocoder.countryName;
-              console.log(JSON.stringify(result[0]));
-            }
-          ).catch(async err=>{
+          this.selectedLongitude=this.myCoordinate.coords.longitude,
+      this.selectedLatitude=this.myCoordinate.coords.latitude,
+          this.nativeGeocoder.reverseGeocode(this.myCoordinate.coords.latitude,this.myCoordinate.coords.longitude, this.options)
+          .then(async (result: NativeGeocoderResult[]) => {
+            this.myAdress =JSON.stringify(result[0].countryName)+''+JSON.stringify(result[0].administrativeArea)+''+JSON.stringify(result[0].subAdministrativeArea)+''+JSON.stringify(result[0].locality)+''+JSON.stringify(result[0].thoroughfare)+JSON.stringify(result[0].subThoroughfare)
             const toast = this.toast.create({
-              message:`${err}`,
+              message:`${JSON.stringify(result[0].countryName)+''+JSON.stringify(result[0].administrativeArea)+''+JSON.stringify(result[0].subAdministrativeArea)+''+JSON.stringify(result[0].locality)}`,
               icon: 'information-circle',
               duration:1000,
-              color:"danger"
+              color:"success"
             });
             (await (toast)).present(); 
-            console.log('Error in reverse geocode');
-          });
+            console.log(JSON.stringify(result))
+          })
+          .catch((error: any) => console.log(error));
           this.setCategoriesModalOpen(false);
         }
       },

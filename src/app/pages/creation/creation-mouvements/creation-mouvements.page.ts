@@ -16,8 +16,14 @@ export class CreationMouvementsPage implements OnInit {
     private route:ActivatedRoute,private loadingController:LoadingController,private mediaService:MediasService,
     private toast:ToastController,private router:Router) { }
 
-  ngOnInit() {
-  
+  async ngOnInit() {
+    Geolocation.watchPosition({
+      enableHighAccuracy:true,
+      timeout:1000,
+      maximumAge:1000,
+    },()=>{console.log('watchPosition updated')});
+       this.coordinates = await Geolocation.getCurrentPosition();
+     
     let id = this.route.snapshot.params['id_association'];
     this.manageDataService.getOneAssociation(id).toPromise().then(
       data=>{
@@ -67,8 +73,8 @@ export class CreationMouvementsPage implements OnInit {
       date_rencontre:`${dateDebut.getFullYear()}-${dateDebut.getMonth()+1}-${this.DateDebut.toString().slice(8,10)}`,
       heure_debut:`${dateDebut.getHours()}:${dateDebut.getMinutes()}`,
       heure_fin:`${datefin.getHours()}:${datefin.getMinutes()}`,
-      latitude:11,
-      longitude:7,
+      longitude:this.coordinates.coords.longitude,
+      latitude:this.coordinates.coords.latitude,
       description:this.description
     }
    this.manageDataService.addMouvement(data).toPromise().then((data)=>{

@@ -91,15 +91,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CreationMouvementsPage": () => (/* binding */ CreationMouvementsPage)
 /* harmony export */ });
 /* harmony import */ var _home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _creation_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-mouvements.page.html?ngResource */ 17904);
 /* harmony import */ var _creation_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./creation-mouvements.page.scss?ngResource */ 20943);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 60124);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/core */ 22560);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 60124);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
-/* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/camera */ 4241);
-/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 28549);
+/* harmony import */ var _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @capacitor/geolocation */ 7621);
+/* harmony import */ var _capacitor_camera__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @capacitor/camera */ 4241);
+/* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 28549);
+
 
 
 
@@ -142,11 +144,24 @@ let CreationMouvementsPage = class CreationMouvementsPage {
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.params['id_association'];
-    this.manageDataService.getOneAssociation(id).toPromise().then(data => {
-      console.log(data);
-      this.Association = data;
-    });
+    var _this = this;
+
+    return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_4__.Geolocation.watchPosition({
+        enableHighAccuracy: true,
+        timeout: 1000,
+        maximumAge: 1000
+      }, () => {
+        console.log('watchPosition updated');
+      });
+      _this.coordinates = yield _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_4__.Geolocation.getCurrentPosition();
+      let id = _this.route.snapshot.params['id_association'];
+
+      _this.manageDataService.getOneAssociation(id).toPromise().then(data => {
+        console.log(data);
+        _this.Association = data;
+      });
+    })();
   }
   /*---------------------------------FUNCTIONS--------------------------*/
 
@@ -166,12 +181,12 @@ let CreationMouvementsPage = class CreationMouvementsPage {
   }
 
   createMouvement() {
-    var _this = this;
+    var _this2 = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      let dateDebut = new Date(_this.DateDebut);
-      let datefin = new Date(_this.DateFin);
-      const loading = yield _this.loadingController.create({
+      let dateDebut = new Date(_this2.DateDebut);
+      let datefin = new Date(_this2.DateFin);
+      const loading = yield _this2.loadingController.create({
         spinner: 'bubbles',
         message: 'creation Mouvement....',
         translucent: true,
@@ -179,24 +194,24 @@ let CreationMouvementsPage = class CreationMouvementsPage {
       });
       yield loading.present();
       const data = {
-        association_id: _this.Association.id,
-        category: _this.seletedCategory,
-        intitule: _this.selectedIntitule,
-        date_rencontre: `${dateDebut.getFullYear()}-${dateDebut.getMonth() + 1}-${_this.DateDebut.toString().slice(8, 10)}`,
+        association_id: _this2.Association.id,
+        category: _this2.seletedCategory,
+        intitule: _this2.selectedIntitule,
+        date_rencontre: `${dateDebut.getFullYear()}-${dateDebut.getMonth() + 1}-${_this2.DateDebut.toString().slice(8, 10)}`,
         heure_debut: `${dateDebut.getHours()}:${dateDebut.getMinutes()}`,
         heure_fin: `${datefin.getHours()}:${datefin.getMinutes()}`,
-        latitude: 11,
-        longitude: 7,
-        description: _this.description
+        longitude: _this2.coordinates.coords.longitude,
+        latitude: _this2.coordinates.coords.latitude,
+        description: _this2.description
       };
 
-      _this.manageDataService.addMouvement(data).toPromise().then(data => {
+      _this2.manageDataService.addMouvement(data).toPromise().then(data => {
         console.log(data);
 
-        _this.upload_image(data, loading);
+        _this2.upload_image(data, loading);
       }).catch( /*#__PURE__*/function () {
         var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
-          const toast = _this.toast.create({
+          const toast = _this2.toast.create({
             message: `${err.message}`,
             icon: 'information-circle',
             duration: 2000,
@@ -214,7 +229,7 @@ let CreationMouvementsPage = class CreationMouvementsPage {
   }
 
   upload_image(data, loading) {
-    var _this2 = this;
+    var _this3 = this;
 
     //creation don 
     const token = localStorage.getItem('token');
@@ -227,10 +242,10 @@ let CreationMouvementsPage = class CreationMouvementsPage {
         setTimeout( /*#__PURE__*/(0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
           loading.dismiss();
 
-          _this2.router.navigateByUrl('/menu/associations'); //on affiche un message de success
+          _this3.router.navigateByUrl('/menu/associations'); //on affiche un message de success
 
 
-          const toast = _this2.toast.create({
+          const toast = _this3.toast.create({
             message: `Evenement creer avec success`,
             icon: 'information-circle',
             duration: 1000,
@@ -248,7 +263,7 @@ let CreationMouvementsPage = class CreationMouvementsPage {
       var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
         loading.dismiss(); //on affiche un message de success
 
-        const toast = _this2.toast.create({
+        const toast = _this3.toast.create({
           message: `${err.message}`,
           icon: 'information-circle',
           duration: 1000,
@@ -269,28 +284,28 @@ let CreationMouvementsPage = class CreationMouvementsPage {
   }
 
   getPicture() {
-    var _this3 = this;
+    var _this4 = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const image = yield _capacitor_camera__WEBPACK_IMPORTED_MODULE_4__.Camera.getPhoto({
-        resultType: _capacitor_camera__WEBPACK_IMPORTED_MODULE_4__.CameraResultType.Uri,
-        source: _capacitor_camera__WEBPACK_IMPORTED_MODULE_4__.CameraSource.Camera,
+      const image = yield _capacitor_camera__WEBPACK_IMPORTED_MODULE_5__.Camera.getPhoto({
+        resultType: _capacitor_camera__WEBPACK_IMPORTED_MODULE_5__.CameraResultType.Uri,
+        source: _capacitor_camera__WEBPACK_IMPORTED_MODULE_5__.CameraSource.Camera,
         quality: 100
       });
 
       if (image) {
         console.log(image);
 
-        _this3.saveImage(image);
+        _this4.saveImage(image);
       }
     })();
   }
 
   saveImage(image) {
-    var _this4 = this;
+    var _this5 = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      const base64data = yield _this4.readAsBase64(image);
+      const base64data = yield _this5.readAsBase64(image);
       console.log(base64data);
       const filename = new Date().getTime() + '.jpeg';
       const img = {
@@ -298,18 +313,18 @@ let CreationMouvementsPage = class CreationMouvementsPage {
         data: base64data
       };
       setTimeout(() => {
-        _this4.selectedImages.unshift(img);
+        _this5.selectedImages.unshift(img);
       }, 500);
     })();
   }
 
   readAsBase64(photo) {
-    var _this5 = this;
+    var _this6 = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const res = yield fetch(photo.webPath);
       const blob = yield res.blob();
-      return yield _this5.convertBlobToBase64(blob);
+      return yield _this6.convertBlobToBase64(blob);
     })();
   }
 
@@ -324,22 +339,22 @@ let CreationMouvementsPage = class CreationMouvementsPage {
 };
 
 CreationMouvementsPage.ctorParameters = () => [{
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.NavController
 }, {
   type: src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_3__.ManageDataService
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.ActivatedRoute
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.ActivatedRoute
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.LoadingController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.LoadingController
 }, {
-  type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_5__.MediasService
+  type: src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_6__.MediasService
 }, {
-  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.ToastController
 }, {
-  type: _angular_router__WEBPACK_IMPORTED_MODULE_7__.Router
+  type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.Router
 }];
 
-CreationMouvementsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
+CreationMouvementsPage = (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_10__.Component)({
   selector: 'app-creation-mouvements',
   template: _creation_mouvements_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
   styles: [_creation_mouvements_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__]
@@ -668,6 +683,38 @@ __webpack_require__.r(__webpack_exports__);
 
 const Camera = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Camera', {
   web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_camera_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 71327)).then(m => new m.CameraWeb())
+});
+
+
+
+/***/ }),
+
+/***/ 40591:
+/*!*********************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/definitions.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+
+
+/***/ }),
+
+/***/ 7621:
+/*!***************************************************************!*\
+  !*** ./node_modules/@capacitor/geolocation/dist/esm/index.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Geolocation": () => (/* binding */ Geolocation)
+/* harmony export */ });
+/* harmony import */ var _capacitor_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @capacitor/core */ 26549);
+/* harmony import */ var _definitions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions */ 40591);
+
+const Geolocation = (0,_capacitor_core__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)('Geolocation', {
+  web: () => __webpack_require__.e(/*! import() */ "node_modules_capacitor_geolocation_dist_esm_web_js").then(__webpack_require__.bind(__webpack_require__, /*! ./web */ 58391)).then(m => new m.GeolocationWeb())
 });
 
 

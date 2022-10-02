@@ -608,4 +608,14 @@ export class ManageDataService {
     const api = environment.apiURL+'/notifications/';
     return this.http.post<any>(api,credential,{headers:headers});
   }
+  public vueNotification(id_donateur,id_notification):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
+    });
+    const api = environment.apiURL+`/notificationVue/${id_donateur}/${id_notification}`;
+    return this.http.post<any>(api,{},{headers:headers});
+  }
 }

@@ -44,7 +44,7 @@ const routes = [
     },
     {
         path: 'creation-demandes',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_creation_creation-demandes_creation-demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-demandes/creation-demandes.module */ 38619)).then(m => m.CreationDemandesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("common"), __webpack_require__.e("src_app_pages_creation_creation-demandes_creation-demandes_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/creation/creation-demandes/creation-demandes.module */ 38619)).then(m => m.CreationDemandesPageModule)
     },
     {
         path: 'creation-association',
@@ -92,7 +92,7 @@ const routes = [
     },
     {
         path: 'modal-edit-dons',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-src_app_modals_modal-edit-dons_modal-edit-dons_page_ts"), __webpack_require__.e("src_app_modals_modal-edit-dons_modal-edit-dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-edit-dons/modal-edit-dons.module */ 7504)).then(m => m.ModalEditDonsPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_modals_modal-edit-dons_modal-edit-dons_page_ts"), __webpack_require__.e("src_app_modals_modal-edit-dons_modal-edit-dons_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-edit-dons/modal-edit-dons.module */ 7504)).then(m => m.ModalEditDonsPageModule)
     },
     {
         path: 'map/:category/:id',
@@ -145,6 +145,10 @@ const routes = [
     {
         path: 'image/:id',
         loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("common"), __webpack_require__.e("src_app_services_medias_medias_service_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./modals/modal-galerie-association/galery-type/image/image.module */ 46772)).then(m => m.ImagePageModule)
+    },
+    {
+        path: 'notifications/:id_donateur',
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("src_app_pages_notifications_notifications_notifications_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./pages/notifications/notifications/notifications.module */ 95440)).then(m => m.NotificationsPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -256,7 +260,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component */ 55041);
 /* harmony import */ var ionic4_auto_complete__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ionic4-auto-complete */ 16629);
 /* harmony import */ var _awesome_cordova_plugins_call_number_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @awesome-cordova-plugins/call-number/ngx */ 28221);
-/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 29036);
+/* harmony import */ var _awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @awesome-cordova-plugins/native-geocoder/ngx */ 79683);
 
 
 
@@ -285,7 +289,7 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
             ionic4_auto_complete__WEBPACK_IMPORTED_MODULE_11__.AutoCompleteModule,
         ],
         schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_5__.CUSTOM_ELEMENTS_SCHEMA],
-        providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_12__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.IonicRouteStrategy }, _awesome_cordova_plugins_call_number_ngx__WEBPACK_IMPORTED_MODULE_2__.CallNumber, _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__.NativeGeocoder],
+        providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_12__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.IonicRouteStrategy }, _awesome_cordova_plugins_call_number_ngx__WEBPACK_IMPORTED_MODULE_2__.CallNumber, _awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__.NativeGeocoder],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_1__.AppComponent],
     })
 ], AppModule);
@@ -492,18 +496,33 @@ let ManageDataService = class ManageDataService {
             } });
     }
     nbreInteressesDon(id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/interessesDon/' + `${id}`;
         return this.http.get(api, { headers: headers });
     }
     isReserv(id_don, idUser) {
         console.log(idUser);
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/isreserv/' + `${id_don}-${idUser}`;
         return this.http.get(api, { headers: headers });
     }
     reserverDon(don_id, donateur_id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const data = {
             don_id: don_id,
             donateur_id: donateur_id
@@ -512,7 +531,12 @@ let ManageDataService = class ManageDataService {
         return this.http.post(api, data, { headers: headers });
     }
     annulerReservation(don_id, donateur_id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const data = {
             don_id: don_id,
             donateur_id: donateur_id
@@ -529,25 +553,45 @@ let ManageDataService = class ManageDataService {
             } });
     }
     receptionner(id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dons/${id}?_method=PUT`;
         return this.http.post(api, {
             disponible: 1
         }, { headers: headers });
     }
     deleteDon(id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dons/${id}`;
         return this.http.delete(api, { headers: headers });
     }
     updateDon(id, data) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dons/${id}?_method=PUT`;
         return this.http.post(api, data, { headers: headers });
     }
     /*-------------------------DEMANDES---------------------------*/
     deleteDemande(id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/demandes/${id}`;
         return this.http.delete(api, { headers: headers });
     }
@@ -568,7 +612,12 @@ let ManageDataService = class ManageDataService {
             } });
     }
     finishDemande(id, data) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/demandes/${id}?_method=PUT`;
         return this.http.post(api, data, { headers: headers });
     }
@@ -582,23 +631,43 @@ let ManageDataService = class ManageDataService {
             } });
     }
     updateProfil(id, data) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/donateurs/${id}?_method=PUT`;
         return this.http.post(api, data, { headers: headers });
     }
     /*-------------------------CONVERSATIONS-------------------------*/
     getLastMessage(id_donateur, id_receiver, id_don) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/lastMessage/' + `${id_donateur}-${id_receiver}-${id_don}`;
         return this.http.get(api, { headers: headers });
     }
     deleteMessage(id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages/' + `${id}`;
         return this.http.delete(api, { headers: headers });
     }
     addMessageDon(don_id, donateur_id, receiver_id, contenu, vu, sender, receiver) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages';
         const message = {
             don_id: don_id,
@@ -612,7 +681,12 @@ let ManageDataService = class ManageDataService {
         return this.http.post(api, message, { headers: headers });
     }
     addMessageDemande(demande_id, donateur_id, receiver_id, contenu, vu, sender, receiver) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/messages';
         const message = {
             demande_id: demande_id,
@@ -626,53 +700,99 @@ let ManageDataService = class ManageDataService {
         return this.http.post(api, message, { headers: headers });
     }
     getConversationsDon(id_donateur, id_receiver, id_don) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/conversationDon' + `/${id_donateur}-${id_receiver}-${id_don}`;
         return this.http.get(api, { headers: headers });
     }
     getConversationsDemande(id_donateur, id_receiver, id_demande) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/conversationDemande' + `/${id_donateur}-${id_receiver}-${id_demande}`;
         return this.http.get(api, { headers: headers });
     }
     getSalonsDons(mon_id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/salonsDiscussionsDon/' + `${mon_id}`;
         return this.http.get(api, { headers: headers });
     }
     getSalonsDemandes(mon_id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/salonsDiscussionsDemande/' + `${mon_id}`;
         return this.http.get(api, { headers: headers });
     }
     /*-----------------------------------ASSOCIATIONS-----------------------------------------------*/
     getGalerieAssociation(id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/galerieAssociation/${id_association}`;
         return this.http.get(api, { headers: headers });
     }
     getAssociationMembersList(id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/association_member_list/${id_association}`;
         return this.http.get(api, { headers: headers });
     }
     getNonAssociationMemberList(id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/non_association_member_list/${id_association}`;
         return this.http.get(api, { headers: headers });
     }
     getAssociations() {
-        const headers = this.header;
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/associations/';
-        return this.http.get(api, { headers: headers });
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
     }
     getOneAssociation(idassociation) {
-        const headers = this.header;
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/associations/' + `${idassociation}`;
-        return this.http.get(api, { headers: headers });
+        return this.http.get(api, { headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            } });
     }
     becameAssociationMember(id_donateur, id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const data = {
             association_id: id_association,
             donateur_id: id_donateur,
@@ -682,120 +802,261 @@ let ManageDataService = class ManageDataService {
         return this.http.post(api, data, { headers: headers });
     }
     addAssociationMember(id_donateur, id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const data = {};
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/addAssociationMember/${id_donateur}/${id_association}}`;
         return this.http.post(api, data, { headers: headers });
     }
     rejectAssociationMember(id_donateur, id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const data = {};
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/rejectAssociationMember/${id_donateur}/${id_association}}`;
         return this.http.post(api, data, { headers: headers });
     }
     /*---------------------------ANNONCES_ASSOCIATIONS---------------------------_*/
     mesAnnoncesFavoris() {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annoncesFavoris/' + `${this.myId}`;
         return this.http.get(api, { headers: headers });
     }
     LikerAnnonce(credential) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/likerAnnonce/';
         return this.http.post(api, credential, { headers: headers });
     }
     disLikerAnnonce(id_annonce) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/dislikeAnnonce/${id_annonce}/${this.myId}`;
         return this.http.delete(api, { headers: headers });
     }
     getAnnonces() {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         console.log(this.myId);
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/annonces/${this.myId}`;
         return this.http.get(api, { headers: headers });
     }
     getOneAnnonce(idannonces) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annonces/' + `${idannonces}/${this.myId}`;
         return this.http.get(api, { headers: headers });
     }
     addAnnonce(credential) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annonces/';
         return this.http.post(api, credential, { headers: headers });
     }
     getAnnoncesAssociation(id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/annoncesassociation/' + `${id_association}`;
         return this.http.get(api, { headers: headers });
     }
     /*---------------------------MOUVEMENTS_ASSOCIATIONS---------------------------_*/
     getMesMouvements() {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/mouvementsParticiper/${this.myId}`;
         return this.http.get(api, { headers: headers });
     }
     imParticipate(myId, mouvementId) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/imParticipate/${myId}/${mouvementId}`;
         return this.http.get(api, { headers: headers });
     }
     annulerParticipation(myId, mouvementId) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/annulerParticipation/${myId}/${mouvementId}`;
         return this.http.post(api, {}, { headers: headers });
     }
     participerMouvement(credential) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/participations/';
         return this.http.post(api, credential, { headers: headers });
     }
     getMouvements() {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvements/';
         return this.http.get(api, { headers: headers });
     }
     getOneMouvement(idmouvement) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvements/' + `${idmouvement}`;
         return this.http.get(api, { headers: headers });
     }
     addMouvement(credential) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvements/';
         return this.http.post(api, credential, { headers: headers });
     }
     getMouvementsAssociation(id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/mouvementsassociation/' + `${id_association}`;
         return this.http.get(api, { headers: headers });
     }
     /*---------------------------BESOINS---------------------*/
     getBesoinsNonResolusAssociation(id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/besoinsnonresolusassociation/${id_association}`;
         return this.http.get(api, { headers: headers });
     }
     getBesoinsResolusAssociation(id_association) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/besoinsresolusassociation/${id_association}`;
         return this.http.get(api, { headers: headers });
     }
     getBesoins() {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/besoins';
         return this.http.get(api, { headers: headers });
     }
     getOneBesoin(id) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/besoins' + `/${id}`;
         return this.http.get(api, { headers: headers });
     }
     getBesoinsAssociation(id_besoin) {
-        const headers = this.header;
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
         const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/besoinsassociation' + `/${id_besoin}`;
         return this.http.get(api, { headers: headers });
+    }
+    /*--------------------------NOTIFICATION--------------------------*/
+    getNotificationDonateur(id) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/notifications' + `/${id}`;
+        return this.http.get(api, { headers: headers });
+    }
+    setNotification(credential) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + '/notifications/';
+        return this.http.post(api, credential, { headers: headers });
+    }
+    vueNotification(id_donateur, id_notification) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Accept': 'application/json, text/plain, */*',
+            'X-Requested-With': 'XMLHttpRequest'
+        });
+        const api = src_environments_environment__WEBPACK_IMPORTED_MODULE_0__.environment.apiURL + `/notificationVue/${id_donateur}/${id_notification}`;
+        return this.http.post(api, {}, { headers: headers });
     }
 };
 ManageDataService.ctorParameters = () => [
@@ -827,7 +1088,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    apiURL: ' http://192.168.8.105:8000/api',
+    apiURL: 'http://192.168.8.105:8000/api',
     storage: 'http://192.168.8.105:8000/storage/',
     map: 'AIzaSyAioYBvV5rpt9NIAAhyN4ZcxxbLamS052E'
     // apiURL:'http://192.168.8.105:8000/api'

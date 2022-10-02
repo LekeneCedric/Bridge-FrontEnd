@@ -26,7 +26,7 @@ const routes = [
     },
     {
         path: 'annonces/:id',
-        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-src_app_modals_modal-edit-dons_modal-edit-dons_page_ts"), __webpack_require__.e("src_app_pages_settings_annonces_annonces_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./annonces/annonces.module */ 85475)).then(m => m.AnnoncesPageModule)
+        loadChildren: () => Promise.all(/*! import() */[__webpack_require__.e("default-node_modules_capacitor_core_dist_index_js"), __webpack_require__.e("default-node_modules_javascript-time-ago_locale_fr_json_js-node_modules_javascript-time-ago_m-f2b7d5"), __webpack_require__.e("default-node_modules_ionic-native_native-geocoder___ivy_ngcc___ngx_index_js"), __webpack_require__.e("default-src_app_modals_modal-edit-dons_modal-edit-dons_page_ts"), __webpack_require__.e("src_app_pages_settings_annonces_annonces_module_ts")]).then(__webpack_require__.bind(__webpack_require__, /*! ./annonces/annonces.module */ 85475)).then(m => m.AnnoncesPageModule)
     },
     {
         path: 'mes-associations/:id',

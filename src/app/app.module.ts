@@ -9,8 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AutoCompleteModule } from 'ionic4-auto-complete';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
-
+import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 @NgModule({
   declarations: [AppComponent],
   imports: [

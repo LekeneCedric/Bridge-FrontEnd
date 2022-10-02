@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NativeGeocoderResult } from '@ionic-native/native-geocoder';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { NavController, ActionSheetController, LoadingController, ToastController } from '@ionic/angular';
 import { CreationService } from 'src/app/services/creation/creation.service';
 import { MediasService } from 'src/app/services/medias/medias.service';
@@ -29,6 +28,10 @@ export class CreationDemandesPage implements OnInit {
     this.myCoordinate = mycoordinate;
   }
   /*-----------------------------VARIABLES------------------------------------------------*/
+  options:NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+};
   MyGeocoder:NativeGeocoderResult;
   GeocoderOption:any={useLocale: true,maxResults: 5};
   myCoordinate:GeolocationPosition;
@@ -37,8 +40,8 @@ export class CreationDemandesPage implements OnInit {
   selectedTitle:string='';
   selectedDescription:string='';
   selectedImages:any[] = [];
-  selectedLatitude:number = 7;
-  selectedLongitude:number = 11;
+  selectedLatitude:number = null;
+  selectedLongitude:number = null;
   selectedCategory:string = '';
   //Modals
   iscategoriesModalOpen:boolean = false;
@@ -61,9 +64,9 @@ export class CreationDemandesPage implements OnInit {
       contenu:this.selectedDescription,
       title:this.selectedTitle,
       category:this.selectedCategory,
-      adresse:'cameroun,yaounde',
-      longitude:this.selectedLongitude,
-      latitude:this.selectedLatitude
+      adresse:this.myAdress,
+      longitude:this.myCoordinate.coords.longitude,
+      latitude:this.myCoordinate.coords.latitude,
     }
     this.creationService.createDemande(demande,token).toPromise()
     .then(async data=>{
@@ -111,25 +114,22 @@ export class CreationDemandesPage implements OnInit {
         text:'Ma position',
         icon:'body-outline',
         handler:()=>{
-          this.selectedLongitude = this.myCoordinate.coords.longitude;
-          this.selectedLatitude = this.myCoordinate.coords.latitude;
-          this.nativGeocoder.reverseGeocode(this.selectedLatitude, this.selectedLongitude,this.GeocoderOption).then(
-            (result:NativeGeocoderResult[])=>{
-              this.MyGeocoder=result[0];
-              this.myAdress = this.MyGeocoder.subLocality+","+this.MyGeocoder.locality+","+this.MyGeocoder.administrativeArea+","+this.MyGeocoder.postalCode+","+this.MyGeocoder.countryName;
-              console.log(JSON.stringify(result[0]));
-            }
-          ).catch(async err=>{
-            const toast = this.toast.create({
-              message:`${err}`,
-              icon: 'information-circle',
-              duration:1000,
-              color:"danger"
-            });
-            (await (toast)).present(); 
-            console.log('Error in reverse geocode');
-          });
-          this.setCategoriesModalOpen(false);
+          this.selectedLongitude=this.myCoordinate.coords.longitude,
+          this.selectedLatitude=this.myCoordinate.coords.latitude,
+              this.nativGeocoder.reverseGeocode(this.myCoordinate.coords.latitude,this.myCoordinate.coords.longitude, this.options)
+              .then(async (result: NativeGeocoderResult[]) => {
+                this.myAdress =JSON.stringify(result[0].countryName)+''+JSON.stringify(result[0].administrativeArea)+''+JSON.stringify(result[0].subAdministrativeArea)+''+JSON.stringify(result[0].locality)
+                const toast = this.toast.create({
+                  message:`${JSON.stringify(result[0].countryName)+''+JSON.stringify(result[0].administrativeArea)+''+JSON.stringify(result[0].subAdministrativeArea)+''+JSON.stringify(result[0].locality)}`,
+                  icon: 'information-circle',
+                  duration:1000,
+                  color:"success"
+                });
+                (await (toast)).present(); 
+                console.log(JSON.stringify(result))
+              })
+              .catch((error: any) => console.log(error));
+              this.setCategoriesModalOpen(false);
         }
       },
       {

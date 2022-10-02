@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
-import { NativeGeocoder, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { ActionSheetController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { CreationService } from 'src/app/services/creation/creation.service';
 import { MediasService } from 'src/app/services/medias/medias.service';
@@ -19,8 +19,8 @@ import { ManageDataService } from 'src/app/services/manage-data/manage-data.serv
 export class CreationAssociationPage implements OnInit {
 
   constructor(private route:Router,private router:NavController,private http:HttpClient,
-    private actionSheetController:ActionSheetController,private nativGeocoder:NativeGeocoder,
-    private toast:ToastController,private fb:FormBuilder, 
+    private actionSheetController:ActionSheetController,
+    private toast:ToastController,private fb:FormBuilder, private nativeGeocoder: NativeGeocoder,
     private createService:CreationService,private mediaService:MediasService,
     private loadingController:LoadingController,private imagePicker:ImagePicker,private manageDataService:ManageDataService) { }
 
@@ -66,6 +66,10 @@ export class CreationAssociationPage implements OnInit {
     this.router.back();
   }
   /*--------------------------_VARIABLES------------------------ */
+  options:NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+};
   credential:FormGroup;
   MyGeocoder:NativeGeocoderResult;
   GeocoderOption:any={useLocale: true,maxResults: 5};
@@ -86,8 +90,8 @@ export class CreationAssociationPage implements OnInit {
   villeAssociation:string='';//ville
   adresseAssociation:string='';//adresse
   numeroContribuable:string='';//numeroContribuable
-  longitudeAssociation:number=11;//longitude
-  latitudeAssociation:number=7;//latitude
+  longitudeAssociation:number=null;//longitude
+  latitudeAssociation:number=null;//latitude
   password_input_type:string = 'password';
   password_confirm_input_type:string = 'password';
   
@@ -109,7 +113,7 @@ export class CreationAssociationPage implements OnInit {
       pays:this.paysAssociation,
       ville:this.villeAssociation,
       contact:this.codeContactAssociation+this.contact.value,
-      adresse:'cameroun,yaounde,cite-verte',
+      adresse:this.adresseAssociation,
       password:this.password.value,
       password_confirmation:this.password_confirmation.value,
       nom_responsable:this.nom_responsable.value,
@@ -237,7 +241,7 @@ public async saveImage(image:any){
       pays:this.paysAssociation,
       ville:this.villeAssociation,
       contact:this.codeContactAssociation+this.contact.value,
-      adresse:this.adresse.value,
+      adresse:this.adresseAssociation,
       password:this.password.value,
       passwordConfirmation:this.password_confirmation.value,
       nom_responsable:this.nom_responsable.value,
@@ -266,24 +270,21 @@ public async saveImage(image:any){
       {
         text:'Ma position',
         handler:()=>{
-          this.longitudeAssociation = this.myCoordinate.coords.longitude;
-          this.latitudeAssociation = this.myCoordinate.coords.latitude;
-          this.nativGeocoder.reverseGeocode(this.latitudeAssociation, this.longitudeAssociation,this.GeocoderOption).then(
-            (result:NativeGeocoderResult[])=>{
-              this.MyGeocoder=result[0];
-              this.adresseAssociation = this.MyGeocoder.subLocality+"."+this.MyGeocoder.locality+"."+this.MyGeocoder.administrativeArea+"."+this.MyGeocoder.countryName;
-              console.log(JSON.stringify(result[0]));
-            }
-          ).catch(async err=>{
-            const toast = this.toast.create({
-              message:`${err}`,
-              icon: 'information-circle',
-              duration:1000,
-              color:"danger"
-            });
-            (await (toast)).present(); 
-            console.log('Error in reverse geocode');
-          });
+          this.longitudeAssociation=this.myCoordinate.coords.longitude,
+          this.latitudeAssociation=this.myCoordinate.coords.latitude,
+          this.nativeGeocoder.reverseGeocode(this.myCoordinate.coords.latitude,this.myCoordinate.coords.longitude, this.options)
+              .then(async (result: NativeGeocoderResult[]) => {
+                this.adresseAssociation =JSON.stringify(result[0].countryName)+''+JSON.stringify(result[0].administrativeArea)+''+JSON.stringify(result[0].subAdministrativeArea)+''+JSON.stringify(result[0].locality)
+                const toast = this.toast.create({
+                  message:`${JSON.stringify(result[0].countryName)+''+JSON.stringify(result[0].administrativeArea)+''+JSON.stringify(result[0].subAdministrativeArea)+''+JSON.stringify(result[0].locality)}`,
+                  icon: 'information-circle',
+                  duration:1000,
+                  color:"success"
+                });
+                (await (toast)).present(); 
+                console.log(JSON.stringify(result))
+              })
+              .catch((error: any) => console.log(error));
         }
       },
       {

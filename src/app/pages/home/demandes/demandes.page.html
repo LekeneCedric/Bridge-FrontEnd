@@ -18,7 +18,7 @@
        </ion-chip>
        <ion-chip class="chip" (click)="openModal()">
        <ion-text>Category</ion-text>
-       <ion-badge color="danger" style="margin-left:2px;border-radius: 100%;">{{selectedCategory.length}}</ion-badge>
+       <ion-badge style="position:absolute;top:0;right:0" color="danger" *ngIf="notifications.length>0">{{notifications.length}}</ion-badge>
        <ion-icon name="chevron-down-outline"></ion-icon>
        </ion-chip>
        <ion-chip class="chip" color="success" (click)="refreshFilter()" style="padding:0;border-radius:100%" >

@@ -4,11 +4,11 @@
 <ion-grid>
   <ion-row>
     <ion-col size="12" class="hello-text">
-      <h1>Bienvenue a bord ! </h1>
+      <h1 style="font-weight:bolder">Bienvenue a bord ! </h1>
     </ion-col>
   </ion-row>
   <ion-row style="text-align:center">
-    <ion-card-subtitle color="dark">
+    <ion-card-subtitle color="dark" style="font-weight:700">
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
     </ion-card-subtitle>
   </ion-row>
@@ -107,8 +107,8 @@
     </ion-col>
   </ion-row>
   <ion-row class="ion-margin-top" style="margin-left:15px">
-    <ion-checkbox color="danger" (click)="validcondition()"></ion-checkbox>
-    <ion-label class="ion-margin-horizontal">accepter les termes et conditions</ion-label>
+    <ion-checkbox color="danger" (click)="validcondition()" style="font-weight:bolder"></ion-checkbox>
+    <ion-label class="ion-margin-horizontal" style="font-weight:bolder">accepter les termes et conditions</ion-label>
 </ion-row>
   <ion-row>
     <ion-col size="12">
@@ -119,7 +119,7 @@
   
   <ion-row class="rowSignup">
     <ion-col class="signupMessage" style="text-align: center;" size="7">
-     <ion-text>Vous avez deja un compte ? </ion-text>
+     <ion-text style="font-weight:bolder">Vous avez deja un compte ? </ion-text>
     </ion-col>
       <ion-col class='signup' size="5" routerLink="/login">
          <ion-text color="danger" style="font-weight: bold;">Connectez vous</ion-text>

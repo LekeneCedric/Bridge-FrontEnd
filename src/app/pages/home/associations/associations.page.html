@@ -7,7 +7,7 @@
     <ion-col>
       <ion-col size="2" style="text-align:center;margin-left:5%" [routerLink]="['/notifications',id]"> 
         <ion-icon name="notifications" size="large" color="warning"></ion-icon>
-        <ion-badge style="position:absolute;top:0;right:0" color="danger">{{notifications.length}}</ion-badge>
+        <ion-badge style="position:absolute;top:0;right:0" color="danger" *ngIf="notifications.length>0">{{notifications.length}}</ion-badge>
       </ion-col>
     </ion-col>
   </ion-row>
@@ -24,13 +24,10 @@
   </ion-segment>
 </ion-header>
 <ion-content>
-
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content color="danger"></ion-refresher-content>
   </ion-refresher>
 
-
-  
     <ion-list *ngIf="selectedSegment=='annonces'" >
       <ion-grid style="text-align:center;margin-top:15%" *ngIf="Annonces!=null && Annonces.length<1">
         <img src="../../../../assets/images/anounce.png" class="ion-margin-vertical">

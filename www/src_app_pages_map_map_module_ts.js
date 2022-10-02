@@ -140,32 +140,38 @@ let MapPage = class MapPage {
     }, 100);
   }
 
-  loadPosition() {
+  getCoordinates() {
     var _this = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_6__.Geolocation.watchPosition({
+        enableHighAccuracy: true
+      }, () => {
+        console.log('watchPosition updated');
+      });
       _this.mycoordinates = yield _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_6__.Geolocation.getCurrentPosition();
     })();
   }
 
   ngOnInit() {
-    this.category = this.route.snapshot.params.category;
-    this.apiKey = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__.environment.map;
-    this.mapRef = document.getElementById('map');
-    this.loadPosition();
-    this.id_don = this.route.snapshot.params.id;
-    this.manageDataService.getOneDon(this.id_don).toPromise().then(data => {
-      this.don = {
-        iconUrl: 'assets/icon/giftbox.png',
-        coordinate: {
-          lat: Number(data.latitude),
-          lng: Number(data.longitude)
-        }
-      };
-    }).catch(err => {
-      console.log(err.message);
-    }).finally(() => {
-      this.createMap();
+    this.getCoordinates().then(() => {
+      this.category = this.route.snapshot.params.category;
+      this.apiKey = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__.environment.map;
+      this.mapRef = document.getElementById('map');
+      this.id_don = this.route.snapshot.params.id;
+      this.manageDataService.getOneDon(this.id_don).toPromise().then(data => {
+        this.don = {
+          iconUrl: 'assets/icon/giftbox.png',
+          coordinate: {
+            lat: Number(data.latitude),
+            lng: Number(data.longitude)
+          }
+        };
+      }).catch(err => {
+        console.log(err.message);
+      }).finally(() => {
+        this.createMap();
+      });
     });
   }
 
@@ -1206,7 +1212,7 @@ class GoogleMap {
   \****************************************************/
 /***/ ((module) => {
 
-module.exports = "capacitor-google-map {\n  display: inline-block;\n  width: 100%;\n  height: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0FBQ0oiLCJmaWxlIjoibWFwLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImNhcGFjaXRvci1nb29nbGUtbWFwIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICB9Il19 */";
+module.exports = "div {\n  display: inline-block;\n  width: 100%;\n  height: 100% !important;\n}\n\nion-content {\n  --background:none ;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hcC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQkFBQTtFQUNBLFdBQUE7RUFDQSx1QkFBQTtBQUNKOztBQUNBO0VBQ0Usa0JBQUE7QUFFRiIsImZpbGUiOiJtYXAucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2e1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6MTAwJSAhaW1wb3J0YW50O1xuICB9XG5pb24tY29udGVudHtcbiAgLS1iYWNrZ3JvdW5kOm5vbmVcbn0iXX0= */";
 
 /***/ }),
 
@@ -1216,7 +1222,7 @@ module.exports = "capacitor-google-map {\n  display: inline-block;\n  width: 100
   \****************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"danger\" slot=\"start\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>map {{category}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <capacitor-google-map id=\"map\"></capacitor-google-map>\n</ion-content>\n";
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-icon name=\"chevron-back-outline\" size=\"large\" color=\"danger\" slot=\"start\" (click)=\"navBack()\"></ion-icon>\n    <ion-title>map {{category}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n   <div id=\"map\" #map></div>\n</ion-content>\n";
 
 /***/ })
 

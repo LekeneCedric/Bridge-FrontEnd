@@ -284,7 +284,18 @@ let SalonPage = class SalonPage {
               return function (_x3) {
                 return _ref4.apply(this, arguments);
               };
-            }());
+            }()).finally(() => {
+              let myData = JSON.parse(localStorage.getItem('mydata'));
+              const notification = {
+                donateur_id: _this3.donateur.id,
+                title: `${myData.name} a valider la reception de < ${_this3.don.titre} >`,
+                message: `${myData.name} a valider la reception de < ${_this3.don.titre} >`
+              };
+
+              _this3.manageDataService.setNotification(notification).toPromise().then(data => {
+                console.log(data);
+              });
+            });
           }
         }]
       });
@@ -317,6 +328,15 @@ let SalonPage = class SalonPage {
         return _ref5.apply(this, arguments);
       };
     }()).finally(() => {
+      let myData = JSON.parse(localStorage.getItem('mydata'));
+      const notification = {
+        donateur_id: this.receiver.id,
+        title: `${myData.name} vous a reserver < ${this.don.titre} >`,
+        message: `${myData.name} Vous a reserve < ${this.don.titre} > dirigez vous vers la messagerie pour programmer une rencontre et recuperer le don`
+      };
+      this.manageDataService.setNotification(notification).toPromise().then(data => {
+        console.log(data);
+      });
       this.ngOnInit();
     });
   }
@@ -342,6 +362,15 @@ let SalonPage = class SalonPage {
         return _ref6.apply(this, arguments);
       };
     }()).finally(() => {
+      let myData = JSON.parse(localStorage.getItem('mydata'));
+      const notification = {
+        donateur_id: this.receiver.id,
+        title: `${myData.name} a annuler la reservation du don < ${this.don.titre} >`,
+        message: `${myData.name} a annuler la reservation du don < ${this.don.titre} > dirigez vous vers la messagerie pour en savoir plus`
+      };
+      this.manageDataService.setNotification(notification).toPromise().then(data => {
+        console.log(data);
+      });
       this.ngOnInit();
     });
   }
@@ -474,7 +503,22 @@ let SalonPage = class SalonPage {
       this.convers.push(message);
       console.log(message);
       this.new_message = "";
-    }).catch(err => {}) : this.manageDataService.addMessageDemande(this.demand_id, this.donat_id, this.reic_id, this.new_message, 0, this.id, this.id == this.donat_id ? this.reic_id : this.donat_id).toPromise().then(res => {
+    }).catch(err => {}).finally(() => {
+      if (this.convers.length <= 1) {
+        let myData = JSON.parse(localStorage.getItem('mydata'));
+        const notification = {
+          donateur_id: this.donateur.id,
+          title: `Nouvelle Demande de Don de ${myData.name}`,
+          message: `Votre Don intitule "${this.don.titre}" a interesse ${myData.name} dirigez vous vers le salon de conversation pour continuer la conversation et si desire lui reserver le Don `
+        };
+        this.manageDataService.setNotification(notification).toPromise().then(data => {
+          console.log(data);
+        });
+      } else {
+        console.log(this.convers.length);
+        console.log('discussion ouverte depuis');
+      }
+    }) : this.manageDataService.addMessageDemande(this.demand_id, this.donat_id, this.reic_id, this.new_message, 0, this.id, this.id == this.donat_id ? this.reic_id : this.donat_id).toPromise().then(res => {
       const message = {
         id: res.id,
         donateur_id: Number(res.donateur_id),
@@ -487,7 +531,22 @@ let SalonPage = class SalonPage {
       this.convers.push(message);
       console.log(message);
       this.new_message = "";
-    }).catch(err => {});
+    }).catch(err => {}).finally(() => {
+      if (this.convers.length <= 1) {
+        console.log('nouvelle reponse demande');
+        let myData = JSON.parse(localStorage.getItem('mydata'));
+        const notification = {
+          donateur_id: this.receiver.id,
+          title: `${myData.name} est interesse par votre demande${this.demande.title}`,
+          message: `Votre Demande intitule "${this.demande.title}" a interesse ${myData.name} dirigez vous vers le salon de conversation pour continuer la conversation et peut etre recevoir un don de sa part`
+        };
+        this.manageDataService.setNotification(notification).toPromise().then(data => {
+          console.log(data);
+        });
+      } else {
+        console.log('discussion ouverte depuis');
+      }
+    });
   }
 
   getConversDons() {

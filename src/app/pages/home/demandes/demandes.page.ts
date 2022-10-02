@@ -76,7 +76,7 @@ public getMyNotifications(){
     data=>{
       console.log(data)
       data.forEach((notif)=>{
-        this.notifications.push(notif);
+        notif.vu==0? this.notifications.push(notif):null;
       })
     }
   )

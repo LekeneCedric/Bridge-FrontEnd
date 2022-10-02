@@ -205,7 +205,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ 60124);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var src_app_modals_modal_add_member_association_modal_add_member_association_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/modals/modal-add-member-association/modal-add-member-association.page */ 86732);
-/* harmony import */ var src_app_modals_modal_associations_membres_modal_associations_membres_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/modals/modal-associations-membres/modal-associations-membres.page */ 62310);
+/* harmony import */ var src_app_modals_modal_association_member_modal_association_member_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/modals/modal-association-member/modal-association-member.page */ 88456);
 /* harmony import */ var src_app_modals_modal_demandes_adhesion_association_modal_demandes_adhesion_association_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/modals/modal-demandes-adhesion-association/modal-demandes-adhesion-association.page */ 2111);
 /* harmony import */ var src_app_services_manage_data_manage_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/manage-data/manage-data.service */ 58027);
 
@@ -267,7 +267,7 @@ let AdministrationAssociationPage = class AdministrationAssociationPage {
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const modal = yield _this2.modalCtrl.create({
-        component: src_app_modals_modal_associations_membres_modal_associations_membres_page__WEBPACK_IMPORTED_MODULE_4__.ModalAssociationsMembresPage,
+        component: src_app_modals_modal_association_member_modal_association_member_page__WEBPACK_IMPORTED_MODULE_4__.ModalAssociationMemberPage,
         componentProps: {
           id_association: _this2.idAssociation
         },

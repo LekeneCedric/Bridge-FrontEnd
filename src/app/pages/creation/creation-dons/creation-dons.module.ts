@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CreationDonsPageRoutingModule } from './creation-dons-routing.module';
 
 import { CreationDonsPage } from './creation-dons.page';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 
 @NgModule({
   imports: [

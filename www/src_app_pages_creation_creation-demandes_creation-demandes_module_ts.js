@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _creation_demandes_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./creation-demandes.page.html?ngResource */ 8911);
 /* harmony import */ var _creation_demandes_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./creation-demandes.page.scss?ngResource */ 57871);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 22560);
-/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ 29036);
+/* harmony import */ var _awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @awesome-cordova-plugins/native-geocoder/ngx */ 79683);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 93819);
 /* harmony import */ var src_app_services_creation_creation_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/creation/creation.service */ 79444);
 /* harmony import */ var src_app_services_medias_medias_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/medias/medias.service */ 28549);
@@ -128,6 +128,12 @@ let CreationDemandesPage = class CreationDemandesPage {
     this.loadingController = loadingController;
     this.toast = toast;
     this.router = router;
+    /*-----------------------------VARIABLES------------------------------------------------*/
+
+    this.options = {
+      useLocale: true,
+      maxResults: 5
+    };
     this.GeocoderOption = {
       useLocale: true,
       maxResults: 5
@@ -137,8 +143,8 @@ let CreationDemandesPage = class CreationDemandesPage {
     this.selectedTitle = '';
     this.selectedDescription = '';
     this.selectedImages = [];
-    this.selectedLatitude = 7;
-    this.selectedLongitude = 11;
+    this.selectedLatitude = null;
+    this.selectedLongitude = null;
     this.selectedCategory = ''; //Modals
 
     this.iscategoriesModalOpen = false;
@@ -184,9 +190,9 @@ let CreationDemandesPage = class CreationDemandesPage {
         contenu: _this2.selectedDescription,
         title: _this2.selectedTitle,
         category: _this2.selectedCategory,
-        adresse: 'cameroun,yaounde',
-        longitude: _this2.selectedLongitude,
-        latitude: _this2.selectedLatitude
+        adresse: _this2.myAdress,
+        longitude: _this2.myCoordinate.coords.longitude,
+        latitude: _this2.myCoordinate.coords.latitude
       };
 
       _this2.creationService.createDemande(demande, token).toPromise().then( /*#__PURE__*/function () {
@@ -250,30 +256,25 @@ let CreationDemandesPage = class CreationDemandesPage {
           text: 'Ma position',
           icon: 'body-outline',
           handler: () => {
-            _this3.selectedLongitude = _this3.myCoordinate.coords.longitude;
-            _this3.selectedLatitude = _this3.myCoordinate.coords.latitude;
+            _this3.selectedLongitude = _this3.myCoordinate.coords.longitude, _this3.selectedLatitude = _this3.myCoordinate.coords.latitude, _this3.nativGeocoder.reverseGeocode(_this3.myCoordinate.coords.latitude, _this3.myCoordinate.coords.longitude, _this3.options).then( /*#__PURE__*/function () {
+              var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (result) {
+                _this3.myAdress = JSON.stringify(result[0].countryName) + '' + JSON.stringify(result[0].administrativeArea) + '' + JSON.stringify(result[0].subAdministrativeArea) + '' + JSON.stringify(result[0].locality);
 
-            _this3.nativGeocoder.reverseGeocode(_this3.selectedLatitude, _this3.selectedLongitude, _this3.GeocoderOption).then(result => {
-              _this3.MyGeocoder = result[0];
-              _this3.myAdress = _this3.MyGeocoder.subLocality + "," + _this3.MyGeocoder.locality + "," + _this3.MyGeocoder.administrativeArea + "," + _this3.MyGeocoder.postalCode + "," + _this3.MyGeocoder.countryName;
-              console.log(JSON.stringify(result[0]));
-            }).catch( /*#__PURE__*/function () {
-              var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
                 const toast = _this3.toast.create({
-                  message: `${err}`,
+                  message: `${JSON.stringify(result[0].countryName) + '' + JSON.stringify(result[0].administrativeArea) + '' + JSON.stringify(result[0].subAdministrativeArea) + '' + JSON.stringify(result[0].locality)}`,
                   icon: 'information-circle',
                   duration: 1000,
-                  color: "danger"
+                  color: "success"
                 });
 
                 (yield toast).present();
-                console.log('Error in reverse geocode');
+                console.log(JSON.stringify(result));
               });
 
               return function (_x3) {
                 return _ref3.apply(this, arguments);
               };
-            }());
+            }()).catch(error => console.log(error));
 
             _this3.setCategoriesModalOpen(false);
           }
@@ -641,7 +642,7 @@ CreationDemandesPage.ctorParameters = () => [{
 }, {
   type: src_app_services_photo_photo_service__WEBPACK_IMPORTED_MODULE_6__.PhotoService
 }, {
-  type: _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__.NativeGeocoder
+  type: _awesome_cordova_plugins_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_3__.NativeGeocoder
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.LoadingController
 }, {

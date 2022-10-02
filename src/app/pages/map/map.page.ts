@@ -36,24 +36,32 @@ export class MapPage implements OnInit {
       this.ngOnInit();
     }, 100);
   }
-  async loadPosition(){
-    this.mycoordinates = await Geolocation.getCurrentPosition();
+  async getCoordinates(){
+    Geolocation.watchPosition({
+      enableHighAccuracy:true
+    },()=>{console.log('watchPosition updated')});
+       this.mycoordinates = await Geolocation.getCurrentPosition();
   }
-  ngOnInit() {
-  this.category = this.route.snapshot.params.category;
-  this.apiKey = environment.map;
-  this.mapRef = document.getElementById('map');
-  this.loadPosition();
-  this.id_don = this.route.snapshot.params.id;
-  this.manageDataService.getOneDon(this.id_don).toPromise().then(
-    data=>{
-      this.don = {iconUrl:'assets/icon/giftbox.png', coordinate:{lat:Number(data.latitude), lng:Number(data.longitude)}}
-    }
-  ).catch((err)=>{console.log(err.message)}).finally(
+  ngOnInit() {  
+
+  this.getCoordinates().then(
     ()=>{
-      this.createMap();
+      this.category = this.route.snapshot.params.category;
+      this.apiKey = environment.map;
+      this.mapRef = document.getElementById('map');
+      this.id_don = this.route.snapshot.params.id;
+      this.manageDataService.getOneDon(this.id_don).toPromise().then(
+        data=>{
+          this.don = {iconUrl:'assets/icon/giftbox.png', coordinate:{lat:Number(data.latitude), lng:Number(data.longitude)}}
+        }
+      ).catch((err)=>{console.log(err.message)}).finally(
+        ()=>{
+          this.createMap();
+        }
+      )
     }
-  )
+  );
+  
  
   }
   async createMap(){

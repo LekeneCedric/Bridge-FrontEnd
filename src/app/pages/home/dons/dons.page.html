@@ -7,7 +7,7 @@
     <ion-col>
       <ion-col size="2" style="text-align:center;margin-left:5%" [routerLink]="['/notifications',id]"> 
         <ion-icon name="notifications" size="large" color="warning"></ion-icon>
-        <ion-badge style="position:absolute;top:0;right:0" color="danger">{{notifications.length}}</ion-badge>
+        <ion-badge style="position:absolute;top:0;right:0" color="danger" *ngIf="notifications.length>0">{{notifications.length}}</ion-badge>
       </ion-col>
     </ion-col>
     <!-- <ion-col>
