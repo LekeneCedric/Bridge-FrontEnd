@@ -27,20 +27,24 @@ export class CreationAssociationDonPage implements OnInit {
     private http:HttpClient, private toast:ToastController,private router:Router,private route:ActivatedRoute) { }
 
   async ngOnInit() {
-    this.association_id = this.route.snapshot.params.id_association;
-    this.myId = this.route.snapshot.params.id_donateur;
-    this.besoin_id = this.route.snapshot.params.id_besoin;
-    this.manageDataService.getOneBesoin(this.besoin_id).toPromise().then(
-      data=>{
-        this.Besoin = data;
-      }
-    )
     Geolocation.watchPosition({
       enableHighAccuracy:true,
       timeout:1000,
       maximumAge:1000,
-    },()=>{console.log('watchPosition updated')});
-       this.myCoordinate = await Geolocation.getCurrentPosition();
+    },()=>{console.log('watchPosition updated')}).then(async ()=>{
+      this.myCoordinate = await Geolocation.getCurrentPosition();
+      this.association_id = this.route.snapshot.params.id_association;
+      this.myId = this.route.snapshot.params.id_donateur;
+      this.besoin_id = this.route.snapshot.params.id_besoin;
+      this.manageDataService.getOneBesoin(this.besoin_id).toPromise().then(
+        data=>{
+          this.Besoin = data;
+        }
+      )
+    });
+   
+    
+       
   }
   /*--------------------------------_VARIABLES--------------------------*/
   options:NativeGeocoderOptions = {

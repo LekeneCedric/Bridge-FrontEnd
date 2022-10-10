@@ -307,6 +307,7 @@ let DonsPage = class DonsPage {
 
   getMyNotifications() {
     this.manageDataService.getNotificationDonateur(this.myid).toPromise().then(data => {
+      console.log('notification');
       console.log(data);
       data.forEach(notif => {
         notif.vu == 0 ? this.notifications.push(notif) : null;
