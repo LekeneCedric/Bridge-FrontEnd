@@ -14,7 +14,9 @@ export class CreationService {
     const api = environment.apiURL+'/dons';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
     })
     return this.http.post(api,credential,{headers:headers})
   }
@@ -23,7 +25,9 @@ export class CreationService {
     const api = environment.apiURL+'/demandes';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
     })
     return this.http.post(api,credential,{headers:headers})
   }
@@ -32,7 +36,9 @@ export class CreationService {
     const api = environment.apiURL+'/associations';
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/json, text/plain, */*',
+      'X-Requested-With': 'XMLHttpRequest'
     });
     return this.http.post(api,credential,{headers:headers})
   }

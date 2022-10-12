@@ -175,22 +175,22 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
     var _this = this;
 
     return (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      _this.association_id = _this.route.snapshot.params.id_association;
-      _this.myId = _this.route.snapshot.params.id_donateur;
-      _this.besoin_id = _this.route.snapshot.params.id_besoin;
-
-      _this.manageDataService.getOneBesoin(_this.besoin_id).toPromise().then(data => {
-        _this.Besoin = data;
-      });
-
       _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_5__.Geolocation.watchPosition({
         enableHighAccuracy: true,
         timeout: 1000,
         maximumAge: 1000
       }, () => {
         console.log('watchPosition updated');
-      });
-      _this.myCoordinate = yield _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_5__.Geolocation.getCurrentPosition();
+      }).then( /*#__PURE__*/(0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+        _this.myCoordinate = yield _capacitor_geolocation__WEBPACK_IMPORTED_MODULE_5__.Geolocation.getCurrentPosition();
+        _this.association_id = _this.route.snapshot.params.id_association;
+        _this.myId = _this.route.snapshot.params.id_donateur;
+        _this.besoin_id = _this.route.snapshot.params.id_besoin;
+
+        _this.manageDataService.getOneBesoin(_this.besoin_id).toPromise().then(data => {
+          _this.Besoin = data;
+        });
+      }));
     })();
   }
 
@@ -281,7 +281,7 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
       _this5.creationService.createDonBesoinAssociation(donation).toPromise().then(data => {
         _this5.upload_image(data, loading);
       }).catch( /*#__PURE__*/function () {
-        var _ref = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+        var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
           loading.dismiss(); //on affiche un message de success
 
           const toast = _this5.toast.create({
@@ -295,7 +295,7 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
         });
 
         return function (_x) {
-          return _ref.apply(this, arguments);
+          return _ref2.apply(this, arguments);
         };
       }());
     })();
@@ -311,7 +311,7 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
       files: this.selectedImages
     };
     this.mediaService.uploadImageAssoBesoinDon(token, fd).then( /*#__PURE__*/function () {
-      var _ref2 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
+      var _ref3 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (data) {
         setTimeout( /*#__PURE__*/(0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
           loading.dismiss();
 
@@ -330,10 +330,10 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
       });
 
       return function (_x2) {
-        return _ref2.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       };
     }()).catch( /*#__PURE__*/function () {
-      var _ref4 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
+      var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (err) {
         loading.dismiss(); //on affiche un message de success
 
         const toast = _this6.toast.create({
@@ -347,7 +347,7 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
       });
 
       return function (_x3) {
-        return _ref4.apply(this, arguments);
+        return _ref5.apply(this, arguments);
       };
     }());
   }
@@ -378,7 +378,7 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
           text: 'Ma position',
           handler: () => {
             _this7.selectedLongitude = _this7.myCoordinate.coords.longitude, _this7.selectedLatitude = _this7.myCoordinate.coords.latitude, _this7.nativGeocoder.reverseGeocode(_this7.myCoordinate.coords.latitude, _this7.myCoordinate.coords.longitude, _this7.options).then( /*#__PURE__*/function () {
-              var _ref5 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (result) {
+              var _ref6 = (0,_home_code237_Documents_GitHub_Bridge_FrontEnd_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (result) {
                 _this7.myAdress = JSON.stringify(result[0].countryName) + '' + JSON.stringify(result[0].administrativeArea) + '' + JSON.stringify(result[0].subAdministrativeArea) + '' + JSON.stringify(result[0].locality);
 
                 const toast = _this7.toast.create({
@@ -393,7 +393,7 @@ let CreationAssociationDonPage = class CreationAssociationDonPage {
               });
 
               return function (_x4) {
-                return _ref5.apply(this, arguments);
+                return _ref6.apply(this, arguments);
               };
             }()).catch(error => console.log(error));
 
